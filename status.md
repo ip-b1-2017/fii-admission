@@ -25,7 +25,7 @@
 ### + Status: *Done  @09/17/2017*
 
 ### + Observations: 
--  ---Edit here---
+- Not enough implication and information from some members at the beginning, but eventually we completed our task.
 
 # 4. Integration, SM:        **Giosanu George**
 ## - Week 1: 
