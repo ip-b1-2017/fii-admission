@@ -27,39 +27,6 @@ funcționalităților dorite. Respectiv baza de date pentru
 admiterea la studii de licență, cea pentru admiterea la studii de
 master, cea pentru preadmitere, cea pentru profesori și cea
 pentru sălile necesare la examen.
-## 5. Scenarii de utilizare
-#### 1. Se dorește introducerea informațiilor unui utilizator în baza de date pentru admiterea la studiile de licență. 
-Se vor prelua datele primite de la modulul Middleware și
-vor fi transformate în interogări asupra tabelei Users și,
-eventual, asupra tabelei Diploma_Bac. La efectuarea
-operațiilor cu succes se va returna modulului Middleware un
-răspuns de succes, în caz contrar se va trimite un mesaj de
-eșec, eventual explicând eroarea întâlnită.  
-#### 2. Se dorește repartizarea pe săli a candidaților ce doresc să susțină examenul de admitere la studiile de licență.
-Se va interoga baza de date specifică admiterii la studiile
-de licență și se va verifica dacă avem săli disponibile conform
-orarului nostru, iar dacă da cât este capacitatea sălii alese,
-precum și concurenții ce pot fi asignați sălii respective.
-Informațiile vor fi salvate în formatul unor liste din care
-reies informații despre concurenți, săli, intervalul orar necesar
-susținerii examenului, precum și despre profesorii
-supraveghetori.
-Din nou, în cazul unui eșec, se va transmite modulului
-Middleware un mesaj de eșec/eroare.
-#### 3. Se dorește verificarea informațiilor introduse de utilizatori de către un administrator.
-###### 3.1. Informațiile introduse sunt în regulă.
-În acest caz, se poate merge mai departe și utilizatorul
-poate fi luat în calcul pentru programarea examenului de
-admitere.
-Eventual, utilizatorul poate primi un mesaj din care sa
-reiasă faptul că informațiile introduse sunt în regulă și că se
-poate pregăti pentru examenul de admitere.
-###### 3.2. Informațiile introduse nu sunt în regulă.
-În acest caz, nu se merge mai departe, utilizatorul nu este
-luat în calcul în vederea examinării.Eventual, utilizatorul poate primi un mesaj din care sa
-reiasă faptul că informațiile introduse nu sunt în regulă și că ar
-trebui să modifice ceva sau pur și simplu nu poate susține
-examenul de admitere.
 
 <p> Baza de date pentru admiterea la studii de licență va conține următoarele entități: </p>
 
@@ -134,3 +101,37 @@ user_orar:**
 </ul>
 
 **(CNP, împreună cu sala_id și examen_id formează cheia primară a tabelei user_orar)**
+
+## 5. Scenarii de utilizare
+#### 1. Se dorește introducerea informațiilor unui utilizator în baza de date pentru admiterea la studiile de licență. 
+Se vor prelua datele primite de la modulul Middleware și
+vor fi transformate în interogări asupra tabelei Users și,
+eventual, asupra tabelei Diploma_Bac. La efectuarea
+operațiilor cu succes se va returna modulului Middleware un
+răspuns de succes, în caz contrar se va trimite un mesaj de
+eșec, eventual explicând eroarea întâlnită.  
+#### 2. Se dorește repartizarea pe săli a candidaților ce doresc să susțină examenul de admitere la studiile de licență.
+Se va interoga baza de date specifică admiterii la studiile
+de licență și se va verifica dacă avem săli disponibile conform
+orarului nostru, iar dacă da cât este capacitatea sălii alese,
+precum și concurenții ce pot fi asignați sălii respective.
+Informațiile vor fi salvate în formatul unor liste din care
+reies informații despre concurenți, săli, intervalul orar necesar
+susținerii examenului, precum și despre profesorii
+supraveghetori.
+Din nou, în cazul unui eșec, se va transmite modulului
+Middleware un mesaj de eșec/eroare.
+#### 3. Se dorește verificarea informațiilor introduse de utilizatori de către un administrator.
+###### 3.1. Informațiile introduse sunt în regulă.
+În acest caz, se poate merge mai departe și utilizatorul
+poate fi luat în calcul pentru programarea examenului de
+admitere.
+Eventual, utilizatorul poate primi un mesaj din care sa
+reiasă faptul că informațiile introduse sunt în regulă și că se
+poate pregăti pentru examenul de admitere.
+###### 3.2. Informațiile introduse nu sunt în regulă.
+În acest caz, nu se merge mai departe, utilizatorul nu este
+luat în calcul în vederea examinării.Eventual, utilizatorul poate primi un mesaj din care sa
+reiasă faptul că informațiile introduse nu sunt în regulă și că ar
+trebui să modifice ceva sau pur și simplu nu poate susține
+examenul de admitere.
