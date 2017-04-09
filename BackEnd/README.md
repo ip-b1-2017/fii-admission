@@ -50,11 +50,13 @@ pentru sălile necesare la examen.
   <li> proba_Ec - câmp numeric ce ține valori reale de maxim doua cifre ce nu poate fi null; </li>
   <li> proba_Ed - câmp numeric ce ține valori reale de maxim doua cifre ce nu poate fi null; </li>
 </ul>
+
 **Medie:**
 <ul>
   <li>UserCNP(cheia străină) - câmp ce ține valori întregi de maxim 13 cifre ce nu poate fi null;</li>
   <li>valoare - câmp numeric ce ține valori întregi de maxim doua cifre ce poate fi null;</li>
 </ul>
+
 **Săli:**
 <ul>
   <li>id(cheia primară) - câmp alfanumeric unic, variabil ca dimensiune dar având maxim 5 caractere ce nu poate fi null;</li>
