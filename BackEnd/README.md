@@ -124,9 +124,11 @@ Se va interoga baza de date specifică admiterii la studiile
 de licență și se va verifica dacă avem săli disponibile conform
 orarului nostru, iar dacă da cât este capacitatea sălii alese,
 precum și concurenții ce pot fi asignați sălii respective.
+
 Informațiile vor fi salvate în formatul unor liste din care
 reies informații despre concurenți, săli, intervalul orar necesar 
 susținerii examenului, precum și despre profesorii
 supraveghetori.
+
 Din nou, în cazul unui eșec, se va transmite modulului
 Middleware un mesaj de eșec/eroare.
