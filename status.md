@@ -8,7 +8,7 @@
 ### + Status: *Done  @09/17/2017*
 
 ### + Observations: 
-- ###### Pe parcursul saptamanii echipa s-a intalnit si a stabilit de comun acord schema pentru strucura diagramei de la baza de date,structura fisei cerintelor si a use caseului.Fisa cerintelor a fost impartita in 7 pentru ca fiecare membru sa aiba o parte,diagramele au fost facute cu totii de fata.Fisa cerintelor a fost completata pe git de fiecare membru in functie de ce parte a avut,intr-o ordine logica,iar diagrama bazei de date si use caseul au fost postate de doua persoane alese aleatoriu.Toate persoanele din echipa au avut ceva de facut,toti au lucrat la partea lui .Nu au fost persoane care nu au cooperat sau nu au lucrat.
+- ###### Pe parcursul saptamanii echipa s-a intalnit si a stabilit de comun acord schema pentru strucura diagramei de la baza de date, structura fisei cerintelor si a use caseului. Fisa cerintelor a fost impartita in 7 pentru ca fiecare membru sa aiba o parte, diagramele au fost facute cu totii de fata. Fisa cerintelor a fost completata pe git de fiecare membru in functie de ce parte a avut, intr-o ordine logica, iar diagrama bazei de date si use caseul au fost postate de doua persoane alese aleatoriu. Toate persoanele din echipa au avut ceva de facut, toti au lucrat la partea lui. Nu au fost persoane care nu au cooperat sau nu au lucrat.
 
 
 
