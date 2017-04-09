@@ -64,7 +64,8 @@ Daca utilizatorul alege optiunea de Sign in se va incarca un formular unde acest
 
 Daca operatiunea de creare a contului a fost cu succes noul utilizator va trebui sa intre pe email unde va primi un link ce trebuie accesat pentru validarea contului. La accesarea linkului se va afisa o pagina cu un mesaj de succes precum si un formular pentru Log in.
 
-
 Dupa logarea cu succes utilizatorul va avea la dispozitie un meniu pentru a naviga prin aplicatie. Daca utilizatorul este un student optiunile vor fi: Dashboard, Settings, Application Form si Diconnect. Daca utilizatorul este un administrator va avea la dispozitie urmatoarele optiuni: Dashboard,Add News si Diconnect.
+
+Pe parcursul completarii formularului, utilizatorul va avea in josul paginii pasii pana la terminarea procesului. Odata cu teminarea unui pas, se va incrementa lista de pasi efectuati. Aceasta lista de pasi din josul paginii coordoneaza utilizatorul corect prin toti pasii. Daca utilizatorul nu a realizat corect un pas, i se va specifica acest lucru si nu va putea sa treaca la urmatorul.
 
 
