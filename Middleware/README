@@ -1,48 +1,53 @@
-##Fișa cerințelor - Modulul Middleware -
+#Fișa cerințelor
+---------------------------
+##Modulul Middleware
+---------------------------
 ##Grupa B1, Anul II
-
+---------------------------
 ###Cuprins
-1.	Descriere
-2.	Actori
-3.	Funcționalități
-4.	Scenarii de utilizare
+1.  Descriere
+2.  Actori
+3.  Funcționalități
+4.  Scenarii de utilizare
+----------------------------
+###1.   Descriere
 
-###1.	Descriere
-În contextul implementării modelului MVC, în calitate de Controller trebuie să punem la dispoziție un API prin intermediul căruia se face legătura dintre componenta View și
-Model, și pentru a putea controla structura View-ului în funcție datele trimise și primite.
+În contextul implementării modelului MVC, în calitate de Controller trebuie să punem la dispoziție un API prin intermediul căruia se face legătura dintre componenta View și Model, și pentru a putea controla structura View-ului în funcție datele trimise și primite.
 
-###2.	Actori
--	View-ul: va apela funcțiile Controller-ului și va fi modificat de acesta în conformitate cu datele trimise
--	Model-ul: va valida datele primite și va trimite un răspuns de confirmare sau infirmare propagat către View, și va stoca aceste date dacă este necesar 
+###2.   Actori
 
-###3.	Funcționalități
--	Introducerea unui utilizator nou în baza de date
--	Introducerea informațiilor de logare ale unui utilizator
--	Introducerea informațiilor de candidatură pentru admitere
--	Validarea candidaturii unui student
--	Alcătuirea unei repartiții pentru examen
--	Crearea unui clasament al studenților
--	Modificarea informațiilor relative la un student
+-   View-ul: va apela funcțiile Controller-ului și va fi modificat de acesta în conformitate cu datele trimise
+-   Model-ul: va valida datele primite și va trimite un răspuns de confirmare sau infirmare propagat către View, și va stoca aceste date dacă este necesar 
 
-###4.	Scenarii de utilizare
+###3.   Funcționalități
+
+-   Introducerea unui utilizator nou în baza de date
+-   Introducerea informațiilor de logare ale unui utilizator
+-   Introducerea informațiilor de candidatură pentru admitere
+-   Validarea candidaturii unui student
+-   Alcătuirea unei repartiții pentru examen
+-   Crearea unui clasament al studenților
+-   Modificarea informațiilor relative la un student
+
+###4.   Scenarii de utilizare
+
 **I. View-ul dorește introducerea unui nou utilizator în baza de date, așadar apelează funcția de validare a informațiilor pentru acesta**
 
 **I.1** Datele sunt în format valid și sunt trimise către baza de date:
-	
+
+**I.1.1** Datele trimise sunt valide în baza de date, deci aceasta stocheaza datele și trimite un mesaj de succes, iar View-ul este modificat pentru a reflecta acest lucru.
     
- **I.1.1** Datele trimise sunt valide în baza de date, deci aceasta stocheaza datele și trimite un mesaj de succes, iar View-ul este modificat pentru a reflecta acest lucru.
-    
- **I.1.2** Datele trimise nu sunt valide în baza de date, deci aceasta trimite un mesaj de eroare, iar View-ul este modificat ca atare.
+...**I.1.2** Datele trimise nu sunt valide în baza de date, deci aceasta trimite un mesaj de eroare, iar View-ul este modificat ca atare.
 
 **I.2** Datele nu sunt în format valid, deci este trimis un mesaj de eroare, iar View-ul este modificat ca atare.
 
-**II.	View-ul dorește introducerea informațiilor de autentificare ale unui utilizator, așadar apelează funcția de validare a acestora**
+**II.   View-ul dorește introducerea informațiilor de autentificare ale unui utilizator, așadar apelează funcția de validare a acestora**
 
 **II.1** Datele sunt trimise către baza de date și sunt valide, autentificarea este facută cu succes și se trimite un mesaj de succes, iar View-ul este modificat corespunzător.
 
 **II.2** Datele sunt trimise către baza de date și nu sunt valide, autentificarea eșuează, și se trimite un mesaj de eroare pentru a modifica View-ul în acest sens.
 
-**III.	View-ul dorește introducerea informațiilor de candidatură ale unui student și este apelată funcția necesară**
+**III.  View-ul dorește introducerea informațiilor de candidatură ale unui student și este apelată funcția necesară**
 
 **III.1** Datele sunt în format valid și sunt trimise către baza de date:
 
@@ -52,17 +57,17 @@ Model, și pentru a putea controla structura View-ului în funcție datele trimi
 
 **III.2** Datele nu sunt în format valid, deci este trimis un mesaj de eroare pentru a face modificarea corespunzătoare în View.
 
-**IV.	View-ul dorește crearea unei repartizări pentru un examen și apelează funcția corespunzătoare**
+**IV.   View-ul dorește crearea unei repartizări pentru un examen și apelează funcția corespunzătoare**
 
 Datele necesare sunt preluate din baza de date, se alcătuiește repartizarea dorită și se modifică View-ul pentru a o afișa.
 
-**V.	View-ul dorește crearea unui clasament cu studenții ce au susținut examenul**
+**V.    View-ul dorește crearea unui clasament cu studenții ce au susținut examenul**
 
 Datele necesare sunt preluate din baza de date, se alcătuiește clasamentul dorit și se modifică View-ul pentru a o afișa.
 
-**VI.	View-ul dorește modificarea informațiilor relative la un student**
+**VI.   View-ul dorește modificarea informațiilor relative la un student**
 
-**VI.**1 Datele sunt în format valid și sunt trimise către baza de date:
+**VI.1** Datele sunt în format valid și sunt trimise către baza de date:
 
 **VI.1.1** Datele trimise sunt valide în baza de date, deci aceasta stocheaza datele și trimite un mesaj de succes propagat, iar View-ul este modificat în acest sens.
 
