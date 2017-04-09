@@ -27,15 +27,3 @@ admiterea la studii de licență, cea pentru admiterea la studii de
 master, cea pentru preadmitere, cea pentru profesori și cea
 pentru sălile necesare la examen.
 
-## Baza de date pentru admiterea la studii de licență va conține următoarele entități:
-## *Users:*
-* CNP(cheia primară) - câmp unic ce ține valori întregi de maxim 13 cifre ce nu poate fi null;
-* mail- câmp alfanumeric unic, variabil ca dimensiune dar având maxim 255 caractere ce nu poate fi null;
-* telefon- câmp alfanumeric unic, variabil ca dimensiune dar având maxim 16 caractere ce nu poate fi null;
-* nume - câmp alfanumeric, variabil ca dimensiune dar având maxim 255 caractere ce nu poate fi null;
-* prenume- câmp alfanumeric , variabil ca dimensiune dar având maxim 255 caractere ce nu poate fi null;
-* role- câmp alfanumeric, variabil ca dimensiune dar având maxim 32 caractere ce nu poate fi null;
-* adresa- câmp alfanumeric, variabil ca dimensiune dar având maxim 50 caractere ce poate fi null;
-* nationalitate- câmp alfanumeric, variabil ca dimensiune dar având maxim 255 caractere ce nu poate fi null;
-* adresa_documente- câmp alfanumeric, variabil ca dimensiune dar având maxim 255 caractere ce nu poate fi null;
-
