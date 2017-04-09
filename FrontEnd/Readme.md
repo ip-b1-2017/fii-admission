@@ -70,4 +70,6 @@ Pe parcursul completarii formularului, utilizatorul va avea in josul paginii pas
 
 Utilizatorul poate schimba limba dorită, din romana in engleza sau invers in functie de preferinta fiecaruia.
 
+Atunci cand administratorul va verifica aplicatiile, daca o aplicatie contine erori atunci administratorul va semnala acea aplicatie iar studentului ii va aparea la status cum ca aplicatia lui trebuie modificata. Daca aplicatia nu contine nici o eroare, atunci studentui ii va aparea in Dashboard, la status cum ca a fost verificata si este corecta.
+
 
