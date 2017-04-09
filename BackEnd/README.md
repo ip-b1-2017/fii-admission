@@ -135,3 +135,24 @@ luat în calcul în vederea examinării.Eventual, utilizatorul poate primi un me
 reiasă faptul că informațiile introduse nu sunt în regulă și că ar
 trebui să modifice ceva sau pur și simplu nu poate susține
 examenul de admitere.
+
+#### 4. Se dorește centralizarea notelor și în final afișarea rezultatelor finale. 
+În acest caz, i se vor asigna fiecărui utilizator, notele 
+obținute la examenul de admitere, apoi i se va calcula media, 
+făcând referire și la rezultatele ce reies din diploma de 
+bacalaureat a acestuia, dupa care, în funcție de nota obținută:
+###### 4.1.Utilizatorul este admis pe unul din locurile  bugetate.
+Administratorul va decide câte locuri bugetate sunt 
+disponibile în anul respectiv și va sorta descrescător în 
+ordinea mediilor utilizatorii, utilizatorul nostru regăsindu-se 
+pe listă. 
+###### 4.2. Utilizatorul este admis pe unul din locurile cu taxă.
+Administratorul va decide câte locuri rămase sunt 
+disponibile în anul respectiv și va sorta descrescător în 
+ordinea mediilor utilizatorii, utilizatorul nostru regăsindu-se 
+pe listă. 
+###### 4.3. Utilizatorul nu este prezent pe nici una din liste.
+În acest caz, se va crea o nouă listă ce va conține un 
+număr (ales de către administrator)de concurenți ce sunt în 
+așteptare, adică pentru care exista șansa admiterii acestora pe 
+un loc cu taxă, utilizatorul nostru regăsindu-se pe listă.
