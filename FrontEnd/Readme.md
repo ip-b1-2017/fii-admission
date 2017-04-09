@@ -45,10 +45,10 @@ Deconecteaza utilizatorul.
 
 Actorii din aplicatie sunt :
 
-1. Aplicantul este ce care isi va crea un cont in aplicatie pentru a se inscrie la studii de licente, de masterat sau de doctorat.
-2. Administratorul 
+1. Aplicantul este cel care isi va crea un cont in aplicatie pentru a se inscrie la studii de licente, de masterat sau de doctorat.
+2. Administratorul poate fi fie un profesor, fie o seretara, iar el se ocupa cu gestionarea bazei de date, verificarea aplicatiilor studentilor, repartizarea candidatilor pe sali, publicarea anunturilor. 
 3. Baza de date va retine datele introduse de catre aplicanti in aplicatie.
-4. Mail Server este cel care proceseaza cererile aplicatilor si realizeaza verificarea adresei de e-mail la inscriere.
+4. Mail Server
 
 ## 4. Scenarii de utilizare
 
