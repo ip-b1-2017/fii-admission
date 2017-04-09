@@ -11,7 +11,7 @@
 4. Scenarii de utilizare
 
 ## 1. Descriere
-Aceasta aplicatie doreste sa faca din admiterea la Facultatea de Informatica o experienta atat pentru noii studenti cat si administratori. 
+Aceasta aplicatie doreste sa faca din admiterea la Facultatea de Informatica o experienta atat pentru noii studenti cat si pentru administratori. 
 
 Un student va interactiona cu o interfata prietenoasa si isi va putea depune candidatura pentru admitere fara a mai fi nevoit sa se deplaseze pana la facultate, in cativa pasi simpli si intuitivi. Pentru a-si putea completa dosarul pentru admitere fiecare student va trebui sa isi creeze un cont si sa se autentifice cu el la intrarea in aplicatie. La incheierea sesiunii de admitere aplicatia va pune la dispozitie studentilor listele cu persoanele admise.
 
@@ -22,13 +22,13 @@ Aplicatia pune la dispozitie si administratorilor o interfata intuitiva si usor 
 #### 2.1.1 Sign up
 Fiecare student care vrea sa aplice pentru admitere va trebui sa isi creeze un cont cu cateva detalii despre el.
 #### 2.1.2 Log in
-La intrarea in aplicatie studentul trebuie sa se autentifice pentru a putea beneficia de serviciile puse la dispozitie de aplicatie
+La intrarea in aplicatie studentul trebuie sa se autentifice pentru a putea beneficia de serviciile puse la dispozitie de aplicatie.
 #### 2.1.3 Settings
 Aceasta optiune ii va permite utilizatorului sa isi modifice datele de cont.
 #### 2.1.4 Dashboard
 Acesta este modulul care il va ajuta pe student sa urmeze pasii necesari inscrierii la admitere si sa vizualizeze informatii cu privire la evolutia aplicatiei sale, la cateva zile mai sunt pana la examen, pana la afisarea rezultatelor, respectiv alte statistici.De asemenea va contine o sectiune cu anunturi de unde va putea afla noi informatii transmise de catre administratori.
 #### 2.1.5 Application Form 
-Este formularul care va contine toate datele necesare inscrierii la admitere, iar studentul il va putea mofica daca un administrator semnaleaza nereguli.
+Este formularul care va contine toate datele necesare inscrierii la admitere, iar studentul il va putea modifica daca un administrator semnaleaza nereguli.
 #### 2.1.6 Diconnect
 Deconecteaza utilizatorul.
 ### 2.2 Partea de administrator
@@ -71,6 +71,6 @@ Pe parcursul completarii formularului, utilizatorul va avea in josul paginii pas
 
 Utilizatorul poate schimba limba dorită, din romana in engleza sau invers in functie de preferinta fiecaruia.
 
-Atunci cand administratorul va verifica aplicatiile, daca o aplicatie contine erori atunci administratorul va semnala acea aplicatie iar studentului ii va aparea la status cum ca aplicatia lui trebuie modificata. Daca aplicatia nu contine nici o eroare, atunci studentui ii va aparea in Dashboard, la status cum ca a fost verificata si este corecta.
+Atunci cand administratorul va verifica aplicatiile, daca o aplicatie contine erori atunci administratorul va semnala acea aplicatie iar studentului ii va aparea la status cum ca aplicatia lui trebuie modificata. Daca aplicatia nu contine nici o eroare, atunci studentui ii va aparea in Dashboard, la status cum ca aplicatia lui a fost verificata si este corecta.
 
 
