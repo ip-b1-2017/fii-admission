@@ -27,6 +27,9 @@
 
 ### + Observations: 
 - Not enough implication and information from some members at the beginning, but eventually we completed our task.
+- UML Diagram: Grigore Marius, Guler Afanasie
+- Usecase Diagram: Lucasi Claudia, Iacob Cristian
+- Requirement Sheet: Domnaru Alexandru
 
 # 4. Integration, SM:        **Giosanu George**
 ## - Week 1: 
