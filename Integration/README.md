@@ -37,3 +37,7 @@ Clientul va avea acces la baza de date, va putea vizualiza cererile de înscrier
 - ### Afișarea rezultatelor
 
 Administratorul serverului va centraliza toate rezultatele în urma examenului de admitere și îi va înștiința pe cei care sunt admiși în urma concursului prin trimitere de notificări și e-mail. 
+
+- ### Pregătirea pentru sesiunea următoare
+
+La finalul sesiunii de admitere, administratorul serverului exportă datele generate pe parcursul sesiunii de admitere, pentru a fi importate în alte aplicații de administrare a anilor în curs. Apoi, pentru ca aplicația să fie gata pentru utilizare în următoarea sesiune de admitere, aceste date generate sunt șterse.
