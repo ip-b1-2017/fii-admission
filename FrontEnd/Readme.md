@@ -41,6 +41,15 @@ Aceasta optiune ii va permite administratorului sa adauge anunturi cu informatii
 #### 2.2.3 Diconnect
 Deconecteaza utilizatorul.
 
+## 3. Actori
+
+Actorii din aplicatie sunt :
+
+1. Persoana care doreste sa se inscrie la FII
+2. Administrator
+3. Baza de date
+4. Server
+
 ## 4. Scenarii de utilizare
 
 Atunci cand un utilizator acceseaza pagina in browser vor putea fi vizualizate cateva informatii despre facultate si vor fi disponibile doua butoane pentru Sign up, respectiv Log in.
