@@ -97,4 +97,5 @@ user_orar:**
 <li>sala_id(cheie străină) -câmp alfanumeric variabil ca dimensiune dar având maxim 5 caractere ce nu poate fi null;</li>
 <li>examen_id(cheie străină) - câmp ce ține valori întregi de maxim 10 cifre ce nu poate fi null;</li>
 </ul>
+
 **(CNP, împreună cu sala_id și examen_id formează cheia primară a tabelei user_orar)**
