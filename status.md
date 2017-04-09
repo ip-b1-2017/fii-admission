@@ -2,7 +2,7 @@
  
 
 
-#### 1. Model / Database, SM:        **Bianca Bulai**
+# 1. Model / Database, SM:        **Bianca Bulai**
 
 # - Week 1: 
 ### + Status: *Done  @09/17/2017*
@@ -11,7 +11,7 @@
 -  ---Edit here---
 
 
-#### 2. View / Front-end, SM:    **Andra Spiridon**
+# 2. View / Front-end, SM:    **Andra Spiridon**
 
 ## - Week 1: 
 ### + Status: *Done  @09/17/2017*
@@ -19,7 +19,7 @@
 ### + Observations: 
 -   ---Edit here---
 
-#### 3. Middleware / Controller, SM:       **Andrei Riscanu**
+# 3. Middleware / Controller, SM:       **Andrei Riscanu**
 
 ## - Week 1: 
 ### + Status: *Done  @09/17/2017*
@@ -27,7 +27,7 @@
 ### + Observations: 
 -  ---Edit here---
 
-#### 4. Integration, SM:        **Giosanu George**
+# 4. Integration, SM:        **Giosanu George**
 ## - Week 1: 
 ### + Status: *Done  @09/17/2017*
 
