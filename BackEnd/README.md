@@ -87,8 +87,10 @@ pentru sălile necesare la examen.
   <li> Examenid(cheie străină) - câmp ce ține valori întregi de maxim 10 cifre ce nu poate fi null; </li>
   <li> valoare - câmp numeric, ce ține valori întregi de maxim două cifre ce nu poate fi null; </li>
 </ul>
+
 **(UserCNP, împreună cu Examenid formează cheia primară a tabelei Note)**
-**Pentru rezolvarea relațiilor many-to-many dintre tabela Users și tabela Orar, am introdus tabela user_orar cu următoarea componență:
+
+**Pentru rezolvarea relațiilor many-to-many dintre tabela Users și tabela , am introdus tabela user_orar cu următoarea componență:
 user_orar:**
 
 <ul>
@@ -96,4 +98,5 @@ user_orar:**
   <li>sala_id(cheie străină) -câmp alfanumeric variabil ca dimensiune dar având maxim 5 caractere ce nu poate fi null;</li>
   <li>examen_id(cheie străină) - câmp ce ține valori întregi de maxim 10 cifre ce nu poate fi null;</li>
 </ul>
+
 **(CNP, împreună cu sala_id și examen_id formează cheia primară a tabelei user_orar)**
