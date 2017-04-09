@@ -3,9 +3,10 @@
 ###### Grupa:B1  Anul:2
 ## Cuprins:
 1. Descriere
-2. Entitati
-3. Descrierea entitatilor
-4. Scenarii de utilizare
+2. Domenii
+3. Acționari/Interese
+4. Actori & obiective
+5. Scenarii de utilizare
 
 ## 1. Descriere
 Primind diverse cerințe de la modulul Middleware, întrun
