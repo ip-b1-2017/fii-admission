@@ -1,6 +1,6 @@
 # **Fisa cerintelor**
 ##  Modulul Integrare
-_ Grupa:B1 Anul:2_
+_ Grupa:B1 Anul:2 _
 ## Cuprins
 1. Descriere
 1. Actori & Obiective
