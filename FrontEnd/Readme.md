@@ -46,7 +46,7 @@ Deconecteaza utilizatorul.
 Actorii din aplicatie sunt :
 
 1. Aplicantul este ce care isi va crea un cont in aplicatie pentru a se inscrie la studii de licente, de masterat sau de doctorat.
-2. Administratorul este cel care va administra aplicatia
+2. Administratorul 
 3. Baza de date
 4. Mail Server
 
