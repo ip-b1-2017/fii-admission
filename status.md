@@ -18,7 +18,12 @@
 ### + Status: *Done  @09/17/2017*
 
 ### + Observations: 
--   ---Edit here---
+-   We had a document where we added our ideas regarding the Use Cases and then each person uplaoded what they did on Github
+-   Design for the pages: Spiridon Andra, Ivascu Gabriela. Gabriela made the design for the dashboard and I made the design for the first page. Next I integrated the design that Gabriela made into the one that I made. 
+-   Use Cases and Requirement Sheet: Rusu Madalina, Chicos Raluca, Chmilevski Monica
+-   Usecase Diagram : Catalin Crainiceanu
+-   https://trello.com/b/WpvUG1k8/frontend
+-   We could have a little bit more colaboration because some of us made our task very early and other let thing on the last minute so we didn't have a lot of timing.
 
 # 3. Middleware / Controller, SM:       **Andrei Riscanu**
 
