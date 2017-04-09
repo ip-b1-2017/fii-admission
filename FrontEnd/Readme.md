@@ -26,7 +26,7 @@ La intrarea in aplicatie studentul trebuie sa se autentifice pentru a putea bene
 #### 2.1.3 Settings
 Aceasta optiune ii va permite utilizatorului sa isi modifice datele de cont.
 #### 2.1.4 Dashboard
-Acesta este modulul care il va ajuta pe student sa urmeze pasii necesari inscrierii la admitere si sa vizualizeze informatii cu privire la evolutia aplicatiei sale, dar si cu privire la cateva zile mai sunt pana la examen, pana la afisarea rezultatelor, respectiv alte statistici.
+Acesta este modulul care il va ajuta pe student sa urmeze pasii necesari inscrierii la admitere si sa vizualizeze informatii cu privire la evolutia aplicatiei sale, la cateva zile mai sunt pana la examen, pana la afisarea rezultatelor, respectiv alte statistici.De asemenea va contine o sectiune cu anunturi de unde va putea afla noi informatii transmise de catre administratori.
 #### 2.1.5 Application Form 
 Este formularul care va contine toate datele necesare inscrierii la admitere, iar studentul il va putea mofica daca un administrator semnaleaza nereguli.
 #### 2.1.6 Diconnect
@@ -36,7 +36,9 @@ Deconecteaza utilizatorul.
 La intrarea in aplicatie administartoru se va autentifica cu un cont special.
 #### 2.2.1 Dashboard 
 Acest modul va ajuta la managmentul verificarilor aplicatiilor studentilor. Va contine o lista cu noile aplicatii depuse de studenti pe care le va putea verifica si va semnala erori in caz ca este nevoie. Aplicatiile verificate si aprobate vor fi mutate in alta lista. Administratorul va putea accesa din acest modul si alte informatii cu privire la statistici precum numarul studentilor inscrisi, numarul aplicatiilor depuse sau validate.
-#### 2.2.2 Diconnect
+#### 2.2.2 Add news
+Aceasta optiune ii va permite administratorului sa adauge anunturi cu informatii noi care vor aparea in Dashboard-ul studentului.
+#### 2.2.3 Diconnect
 Deconecteaza utilizatorul.
 
 ## 4. Scenarii de utilizare
@@ -54,6 +56,6 @@ Daca utilizatorul alege optiunea de Sign in se va incarca un formular unde acest
 Daca operatiunea de creare a contului a fost cu succes noul utilizator va trebui sa intre pe email unde va primi un link ce trebuie accesat pentru validarea contului. La accesarea linkului se va afisa o pagina cu un mesaj de succes precum si un formular pentru Log in.
 
 
-Dupa logarea cu succes utilizatorul va avea la dispozitie un meniu pentru a naviga prin aplicatie. Daca utilizatorul este un student optiunile vor fi: Dashboard, Settings, Application Form si Diconnect. Daca utilizatorul este un administrator va avea la dispozitie urmatoarele optiuni: Dashboard si Diconnect.
+Dupa logarea cu succes utilizatorul va avea la dispozitie un meniu pentru a naviga prin aplicatie. Daca utilizatorul este un student optiunile vor fi: Dashboard, Settings, Application Form si Diconnect. Daca utilizatorul este un administrator va avea la dispozitie urmatoarele optiuni: Dashboard,Add News si Diconnect.
 
 
