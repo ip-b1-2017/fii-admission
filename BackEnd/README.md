@@ -48,7 +48,7 @@ pentru sălile necesare la examen.
   <li> proba_Ea - câmp numeric ce ține valori întregi de maxim doua cifre ce nu poate fi null; </li>
   <li> proba_Eb - câmp numeric ce ține valori întregi de maxim doua cifre ce  poate fi null; </li>
   <li> proba_Ec - câmp numeric ce ține valori întregi de maxim doua cifre ce nu poate fi null; </li>
-  <li> proba_Ed - câmp numeric ce ține valori întregi de maxim doua cifre ce nu poate fi null; </li><
+  <li> proba_Ed - câmp numeric ce ține valori întregi de maxim doua cifre ce nu poate fi null; </li>
   
  
  
