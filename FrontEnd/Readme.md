@@ -49,9 +49,9 @@ Daca utilizatorul nu are cont, dar a apasat pe butonul de Log in, va apasa pe op
 
 Daca utilizatorul introduce un nume de utilizator si/sau parola gresite va primi un mesaj de atentionare, altfel va fi directionat spre pagina principala a aplicatiei.
 
-Daca utilizatorul alege optiunea de Sign in se va incarca un formular unde acesta va trebui sa introduca datele necesarii crearii unui cont. Dupa introducerea datelor va apasa butonul de Submit. Daca datele respecta cerintele specificate va fi afisat un mesaj de succes si instructiuni pentru validarea contului, altfel se vor semnala campurile care nu respecta regulile si dupa modificare utlizatorul poate apasa din nou Submit. 
+Daca utilizatorul alege optiunea de Sign in se va incarca un formular unde acesta va trebui sa introduca datele necesare crearii unui cont. Dupa introducerea datelor va apasa butonul de Submit. Daca datele respecta cerintele specificate va fi afisat un mesaj de succes si instructiuni pentru validarea contului, altfel se vor semnala campurile care nu respecta regulile si dupa modificare utlizatorul poate apasa din nou Submit. 
 
-Daca operatiunea de Submit a fost cu succes noul utilizator va trebui sa intre pe mail unde va primi un link ce trebuie accesat pentru validarea contului. La accesarea linkului se va afisa o pagina cu un mesaj de succes precum si un formular pentru Log in.
+Daca operatiunea de creare a contului a fost cu succes noul utilizator va trebui sa intre pe email unde va primi un link ce trebuie accesat pentru validarea contului. La accesarea linkului se va afisa o pagina cu un mesaj de succes precum si un formular pentru Log in.
 
 
 Dupa logarea cu succes utilizatorul va avea la dispozitie un meniu pentru a naviga prin aplicatie. Daca utilizatorul este un student optiunile vor fi: Dashboard, Settings, Application Form si Diconnect. Daca utilizatorul este un administrator va avea la dispozitie urmatoarele optiuni: Dashboard si Diconnect.
