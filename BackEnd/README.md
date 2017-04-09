@@ -64,5 +64,12 @@ pentru sălile necesare la examen.
   <li>locuri - câmp ce ține valori întregi de maxim 3 cifre ce nu poate fi null;</li>
   <li>nr_prof - câmp ce ține valori întregi de maxim 2 cifre ce nu poate fi null;</li>
 </ul>
- 
- 
+
+**Examen:**
+<ul>
+  <li>id(cheia primară) - câmp unic, ce ține valori întregi de maxim 10 cifre ce nu poate fi null;</li>
+  <li>nr_proba - câmp ce ține valori întregi de maxim 10 cifre ce nu poate fi null;</li>
+  <li>start_date - câmp de tip timestamp ce reține formatul data ce nu poate fi null;</li>
+  <li>end_date - câmp de tip timestamp ce reține formatul data ce nu poate fi null;</li>
+  <li>tip- câmp alfanumeric unic, variabil ca dimensiune dar având maxim 255 caractere ce nu poate fi null;</li>
+</ul>
