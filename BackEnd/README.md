@@ -9,7 +9,7 @@
 5. Scenarii de utilizare
 
 ## 1. Descriere
-Primind diverse cerințe de la modulul Middleware, întrun
+Primind diverse cerințe de la modulul Middleware, într-un
 format JSON, se dorește transformarea acestor cerințe în
 interogări asupra bazei de date, precum și trimiterea înapoi
 către modul a răspunsurilor dorite, tot în format JSON.
