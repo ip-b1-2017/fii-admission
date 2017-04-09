@@ -45,10 +45,10 @@ pentru sălile necesare la examen.
 **Diploma_Bac:**
 <ul>
   <li> UserCNP(cheia străină) - câmp  unic ce ține valori întregi de maxim 13 cifre ce nu poate fi null; </li>
-  <li> proba_Ea - câmp numeric ce ține valori întregi de maxim doua cifre ce nu poate fi null; </li>
-  <li> proba_Eb - câmp numeric ce ține valori întregi de maxim doua cifre ce  poate fi null; </li>
-  <li> proba_Ec - câmp numeric ce ține valori întregi de maxim doua cifre ce nu poate fi null; </li>
-  <li> proba_Ed - câmp numeric ce ține valori întregi de maxim doua cifre ce nu poate fi null; </li>
+  <li> proba_Ea - câmp numeric ce ține valori reale de maxim doua cifre ce nu poate fi null; </li>
+  <li> proba_Eb - câmp numeric ce ține valori reale de maxim doua cifre ce  poate fi null; </li>
+  <li> proba_Ec - câmp numeric ce ține valori reale de maxim doua cifre ce nu poate fi null; </li>
+  <li> proba_Ed - câmp numeric ce ține valori reale de maxim doua cifre ce nu poate fi null; </li>
   
  
  
