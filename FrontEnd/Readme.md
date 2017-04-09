@@ -45,10 +45,10 @@ Deconecteaza utilizatorul.
 
 Actorii din aplicatie sunt :
 
-1. Persoana care doreste sa se inscrie la FII
+1. Aplicant
 2. Administrator
 3. Baza de date
-4. Server
+4. Mail Server
 
 ## 4. Scenarii de utilizare
 
