@@ -26,10 +26,17 @@ La intrarea in aplicatie studentul trebuie sa se autentifice pentru a putea bene
 #### 2.1.3 Settings
 Aceasta optiune ii va permite utilizatorului sa isi modifice datele de cont.
 #### 2.1.4 Dashboard
-Acesta este modulul care il va ajuta pe student sa urmeze pasii necesari inscrierii la admitere si sa vizualizeze informatii cu privire la evolutia aplicatiei sale.
+Acesta este modulul care il va ajuta pe student sa urmeze pasii necesari inscrierii la admitere si sa vizualizeze informatii cu privire la evolutia aplicatiei sale, dar si cu privire la cateva zile mai sunt pana la examen, pana la afisarea rezultatelor, respectiv alte statistici.
 #### 2.1.5 Application Form 
 Este formularul care va contine toate datele necesare inscrierii la admitere, iar studentul il va putea mofica daca un administrator semnaleaza nereguli.
 
 ### 2.2 Partea de administrator
+#### 2.2.1 Log in
+La intrarea in aplicatie administartoru se va autentifica cu un cont special.
+#### 2.2.1 Dashboard 
+Acest modul va ajuta la managmentul verificarilor aplicatiilor studentilor. Va contine o lista cu noile aplicatii depuse de studenti pe care le va putea verifica si va semnala erori in caz ca este nevoie. Aplicatiile verificate si aprobate vor fi mutate in alta lista. Administratorul va putea accesa din acest modul si alte informatii cu privire la statistici precum numarul studentilor inscrisi, numarul aplicatiilor depuse sau validate.
+
+
+
 
 
