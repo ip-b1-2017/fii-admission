@@ -45,8 +45,8 @@ Deconecteaza utilizatorul.
 
 Actorii din aplicatie sunt :
 
-1. Aplicant
-2. Administrator
+1. Aplicantul este ce care isi va crea un cont in aplicatie pentru a se inscrie la studii de licente, de masterat sau de doctorat.
+2. Administratorul este cel care va administra aplicatia
 3. Baza de date
 4. Mail Server
 
@@ -69,7 +69,5 @@ Dupa logarea cu succes utilizatorul va avea la dispozitie un meniu pentru a navi
 Pe parcursul completarii formularului, utilizatorul va avea in josul paginii pasii pana la terminarea procesului. Odata cu teminarea unui pas, se va incrementa lista de pasi efectuati. Aceasta lista de pasi din josul paginii coordoneaza utilizatorul corect prin toti pasii. Daca utilizatorul nu a realizat corect un pas, i se va specifica acest lucru si nu va putea sa treaca la urmatorul.
 
 Utilizatorul poate schimba limba dorită, din romana in engleza sau invers in functie de preferinta fiecaruia.
-
-Atunci cand administratorul va verifica aplicatiile, daca o aplicatie contine erori atunci administratorul va semnala acea aplicatie iar studentului ii va aparea la status cum ca aplicatia lui trebuie modificata. Daca aplicatia nu contine nici o eroare, atunci studentui ii va aparea in Dashboard, la status cum ca a fost verificata si este corecta.
 
 
