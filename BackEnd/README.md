@@ -9,7 +9,7 @@
 5. Scenarii de utilizare
 
 ## 1. Descriere
-Primind diverse cerințe de la modulul Middleware, în
+Primind diverse cerințe de la modulul Middleware, întrun
 format JSON, se dorește transformarea acestor cerințe în
 interogări asupra bazei de date, precum și trimiterea înapoi
 către modul a răspunsurilor dorite, tot în format JSON.
@@ -102,3 +102,31 @@ pentru sălile necesare la examen.
 </ul>
 
 **(CNP, împreună cu sala_id și examen_id formează cheia primară a tabelei user_orar)**
+
+## 5. Scenarii de utilizare
+
+**1)  Se dorește introducerea informațiilor unui
+utilizator în baza de date pentru admiterea la studiile de
+licență.**
+
+Se vor prelua datele primite de la modulul Middleware și
+vor fi transformate în interogări asupra tabelei Users și,
+eventual, asupra tabelei Diploma_Bac. La efectuarea
+operațiilor cu succes se va returna modulului Middleware un
+răspuns de succes, în caz contrar se va trimite un mesaj de
+eșec, eventual explicând eroarea întâlnită.
+
+**2)  Se dorește repartizarea pe săli a candidaților ce
+doresc să susțină examenul de admitere la studiile de
+licență.**
+
+Se va interoga baza de date specifică admiterii la studiile
+de licență și se va verifica dacă avem săli disponibile conform
+orarului nostru, iar dacă da cât este capacitatea sălii alese,
+precum și concurenții ce pot fi asignați sălii respective.
+Informațiile vor fi salvate în formatul unor liste din care
+reies informații despre concurenți, săli, intervalul orar necesar 
+susținerii examenului, precum și despre profesorii
+supraveghetori.
+Din nou, în cazul unui eșec, se va transmite modulului
+Middleware un mesaj de eșec/eroare.
