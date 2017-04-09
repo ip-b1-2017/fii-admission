@@ -90,8 +90,9 @@ pentru sălile necesare la examen.
 
 **(UserCNP, împreună cu Examenid formează cheia primară a tabelei Note)**
 
-**Pentru rezolvarea relațiilor many-to-many dintre tabela Users și tabela , am introdus tabela user_orar cu următoarea componență:
-user_orar:**
+**Pentru rezolvarea relațiilor many-to-many dintre tabela Users și tabela , am introdus tabela user_orar cu următoarea componență:**
+
+**user_orar:**
 
 <ul>
   <li>CNP(cheie străină) - câmp ce ține valori întregi de maxim 13 cifre ce nu poate fi null;</li>
