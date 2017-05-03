@@ -1,0 +1,26 @@
+.form-group{
+    display:flex;
+    .form-control{
+        width:40%;
+        
+    }
+    p{
+        align-self:flex-end;
+    }
+    .custom-input{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        align-items: flex-start;
+        input{
+            width:100%;
+        }
+    }
+}
+.information-pair{
+    width:95%;
+    &:not(:last-child){
+            padding-right:10px;
+    }
+
+}
