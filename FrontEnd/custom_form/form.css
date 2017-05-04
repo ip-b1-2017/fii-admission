@@ -13,7 +13,7 @@
       width: 100%; }
 
 .information-pair {
-  width: 95%; }
+  width: 100%; }
   .information-pair:not(:last-child) {
     padding-right: 10px; }
 

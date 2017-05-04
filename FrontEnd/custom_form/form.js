@@ -187,6 +187,7 @@
                     "class": "custom-input",
                     "html": [
                      {
+                         "name": "sex",
                          "type": "select",
                          "class": "form-control",
                          "caption": "Sex",
@@ -202,10 +203,121 @@
 
           ]
       },
+       {
+           "type": "div",
+           "class": "form-group",
+           "html": [
+               {
+                   "type": "div",
+                   "class": "information-pair",
+                   "html": [
+                       {
+                           "type": "div",
+                           "class": "custom-input",
+                           "html": [
+                               {
+                                   "name": "birth-date",
+                                   "caption": "Data Nasterii",
+                                   "type": "text",
+                                   "class": "form-control"
+                               }
+
+                           ]
+                       },
+                   ]
+               },
+
+                   {
+                       "type": "div",
+                       "class": "information-pair",
+                       "html": [
+                           {
+                               "type": "div",
+                               "class": "custom-input",
+                               "html": [
+                                   {
+                                       "name": "tara-nasterii",
+                                       "caption": "Tara",
+                                       "type": "text",
+                                       "class": "form-control"
+                                   }
+
+                               ]
+                           },
+                           {
+                                     "type": "p",
+                                     "class": "bg-info",
+                                     "html": "Din certificatul de nastere al candidatului"
+                            },
+                       ]
+                   }
+
+           ]
+       },
+       {
+           "type": "div",
+           "class": "form-group",
+           "html": [
+               {
+                   "type": "div",
+                   "class": "information-pair",
+                   "html": [
+                       {
+                           "type": "div",
+                           "class": "custom-input",
+                           "html": [
+                               {
+                                   "name": "judetul-nasterii",
+                                   "caption": "Judetul",
+                                   "type": "text",
+                                   "class": "form-control",
+                                   "placeholder":"Ex. Iasi"
+
+                               }
+
+                           ]
+                       },
+                       {
+                           "type": "p",
+                           "class": "bg-info",
+                           "html": "Din certificatul de nastere al candidatului"
+                       }
+                   ]
+               },
+
+                 {
+                   "type": "div",
+                     "class": "information-pair",
+                     "html": [
+                         {
+                             "type": "div",
+                             "class": "custom-input",
+                             "html": [
+                                 {
+                                     "name": "orasul-nasterii",
+                                     "caption": "Orasul",
+                                     "type": "text",
+                                     "class": "form-control",
+                                     "placeholder":"Ex. Iasi"
+
+                                 }
+
+                             ]
+                         },
+                         {
+                             "type": "p",
+                             "class": "bg-info",
+                             "html": "Din certificatul de nastere al candidatului"
+                         }
+                     ]
+                 }
+
+           ]
+       }
         ]
     });
 });
-// Activate Next Step
+
 
 $(document).ready(function () {
 
