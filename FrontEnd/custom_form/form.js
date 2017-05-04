@@ -516,7 +516,88 @@ $(function () {
 
                 ]
             },
-            
+            {
+                "type": "h4",
+                "html": "Alte observaţii (pentru cazurile în care candidatul a absolvit studiile anterioare în străinătate)",
+                "class": "sub-title"
+            },
+             {
+                "type": "h4",
+                "html": "Act de recunoaştere/ echivalare (eliberat de DPIRP/CNREDt",
+                "class": "sub-title"
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "issued-by",
+                                        "caption": "Emisă de",
+                                        "type": "text",
+                                        "placeholder": "Ex. n2s90",
+                                        "class": "form-control"
+                                    },
+
+                                ]
+                            },
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "bac-number",
+                                "caption": "Data emiterii",
+                                "type": "text",
+                                "datepicker": {
+                                    "minDate": "+1"
+                                },
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "nr-foaie-matricola",
+                                        "caption": "Numărul foii matricole care însoțește actul de studii",
+                                        "type": "text",
+                                        "placeholder": "Ex. ncc32s90",
+                                        "class": "form-control"
+                                    },
+
+                                ]
+                            },
+                        ]
+                    },
+
+
+                ]
+            },
 
 
         ]
