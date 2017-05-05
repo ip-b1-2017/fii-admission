@@ -927,7 +927,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -974,7 +974,7 @@ $(function () {
                 "html": "Absolvent al studiilor de licenţă ",
                 "class": "sub-title"
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1004,17 +1004,17 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                        "name": "absolvent-licenta-diploma",
-                                        "type": "radiobuttons",
-                                        "class": "radio-inline",
-                                        "options": {
-                                            "cu": "Fără diplomă de licenţă",
-                                            "fara": "Cu diplomă de licenţă",
+                                "name": "absolvent-licenta-diploma",
+                                "type": "radiobuttons",
+                                "class": "radio-inline",
+                                "options": {
+                                    "cu": "Fără diplomă de licenţă",
+                                    "fara": "Cu diplomă de licenţă",
 
-                                        },
+                                },
 
 
-                                    }
+                            }
 
                         ]
                     },
@@ -1063,7 +1063,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1147,7 +1147,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1189,7 +1189,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1238,7 +1238,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1280,12 +1280,12 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "h4",
                 "html": "Diploma de licenţă:",
                 "class": "sub-title"
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1327,7 +1327,7 @@ $(function () {
 
                 ]
             },
-              {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1369,7 +1369,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1397,7 +1397,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "h4",
                 "html": "Alte observaţii (pentru cazurile în care candidatul a absolvit studiile anterioare în străinătate)",
                 "class": "sub-title"
@@ -1484,7 +1484,227 @@ $(function () {
     });
 });
 
+$(function () {
+    $("#myform3").dform({
+        "action": "form3.html",
+        "method": "get",
+        "html":
+        [
+            {
+                "type": "h4",
+                "html": "III. Cerinţe specifice facultăţii",
+                "class": "sub-title"
+            },
+            {
 
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "media-bac",
+                                        "caption": "Media generală la examenul de bacalaureat",
+                                        "type": "text",
+                                        "placeholder": "Ex. 8.90",
+                                        "class": "form-control"
+                                    },
+
+                                ]
+                            },
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "media-mate/info",
+                                "caption": "Media la disciplina mate/info (maxima)",
+                                "type": "text",
+                                "placeholder": "Ex. 9.40",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "optiune-test-scris",
+                                        "caption": "Opțiunea pentru testul scris (Matematică, Informatică (Pascal), Informatică (C)):",
+                                        "type": "text",
+                                        "placeholder": "Ex. Matematica",
+                                        "class": "form-control"
+                                    },
+
+                                ]
+                            },
+                        ]
+                    },
+
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "diploma-men",
+                                "type": "radiobuttons",
+                                "caption": "Solicitaţi echivalare cu diploma olimpiadă organizată MEN?",
+                                "class": "radio-inline",
+                                "options": {
+                                    "da": "DA",
+                                    "nu": "NU",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "preadmitere",
+                                "type": "radiobuttons",
+                                "caption": "Ați participat la preadmitere la Facultatea de Informatică din Iași și doriți luarea în considerare a notei la examenul din sesiunea curentă?*",
+                                "class": "radio-inline",
+                                "options": {
+                                    "da": "DA",
+                                    "nu": "NU",
+
+                                },
+
+
+                            },
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "an-preadmitere",
+                                        "caption": "Dacă da, în ce an?",
+                                        "type": "number",
+                                        "placeholder": "Ex. 2015",
+                                        "class": "form-control"
+                                    },
+
+                                ]
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "sustinere-test-iar",
+                                "type": "radiobuttons",
+                                "caption": "Dacă ați răspuns DA la întrebarea anterioară, doriți să susțineți din nou testul scris în această sesiune de admitere**?",
+                                "class": "radio-inline",
+                                "options": {
+                                    "da": "DA",
+                                    "nu": "NU",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "html": [
+                            {
+                                "name": "cerinte-facultate-info",
+                                "type": "p",
+                                "html": "*opțiune valabilă la o singură sesiune de admitere",
+                                "class" : "info"
+                            },
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "html": [
+                            {
+                                "name": "cerinte-facultate-info",
+                                "type": "p",
+                                "html": "** în acest caz, va luată în considerare nota cea mai mare",
+                                "class" : "info"
+                            },
+                        ]
+                    },
+
+                ]
+            },
+
+
+        ]
+    });
+});
 $(document).ready(function () {
 
     var navListItems = $('ul.setup-panel li a'),
