@@ -1636,7 +1636,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -1664,7 +1664,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "html": [
 
@@ -1675,14 +1675,14 @@ $(function () {
                                 "name": "cerinte-facultate-info",
                                 "type": "p",
                                 "html": "*opțiune valabilă la o singură sesiune de admitere",
-                                "class" : "info"
+                                "class": "info"
                             },
                         ]
                     },
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "html": [
 
@@ -1693,7 +1693,7 @@ $(function () {
                                 "name": "cerinte-facultate-info",
                                 "type": "p",
                                 "html": "** în acest caz, va luată în considerare nota cea mai mare",
-                                "class" : "info"
+                                "class": "info"
                             },
                         ]
                     },
@@ -1701,6 +1701,562 @@ $(function () {
                 ]
             },
 
+
+        ]
+    });
+});
+
+$(function () {
+    $("#myform4").dform({
+        "action": "form4.html",
+        "method": "get",
+        "html":
+        [
+            {
+                "type": "h4",
+                "html": "IV. Opţiuni de admitere, în ordinea preferinţelor",
+                "class": "sub-title"
+            },
+
+
+
+        ]
+    });
+});
+
+
+$(function () {
+    $("#myform7").dform({
+        "action": "form7.html",
+        "method": "get",
+        "html":
+        [
+            {
+                "type": "h4",
+                "html": "VII. Chestionar privind alegerea Dumneavoastră",
+                "class": "sub-title"
+            },
+            {
+                "type": "h5",
+                "html": "1. De unde ați aflat despre admiterea la Universitatea „Alexandru Ioan Cuza” din Iași (UAIC)?  (puteți evidenția mai multe surse)",
+                "class": "sub-title"
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-site-admitere",
+                                        "caption": "Site-ul dedicat admiterii (admitere.uaic.ro)",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-site-fac",
+                                        "caption": "Site-ul facultății",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-brosura",
+                                        "caption": "Broșură sau pliant despre admitere",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-facebook",
+                                        "caption": "Pagina de Facebook a Universității",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-prieteni",
+                                        "caption": "Prieteni, cunoștințe, rude",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-porti-deschise",
+                                        "caption": "Săptămâna Porților Deschise la UAIC",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-prezentare-liceu",
+                                        "caption": "Am participat la o prezentare în liceu",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-profesori-liceu",
+                                        "caption": "Profesorii din liceu",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-presa",
+                                        "caption": "Presă",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "sursa-info-altele",
+                                        "caption": "Alte surse (menționați care) :",
+                                        "type": "text",
+                                        "class": "form-control"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "h5",
+                "html": "2. Cât de importanți au fost următorii factorii în alegerea facultății, apreciaţi cât de mult a contat fiecare în opţiunea dv. privind alegerea facultăţii? (0 – deloc, ... 5 – foarte mult)",
+                "class": "sub-title"
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "factori-prestigiul",
+                                "type": "radiobuttons",
+                                "caption": "Prestigiul Universității/facultății",
+                                "class": "radio-inline",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "factori-calitatea",
+                                "type": "radiobuttons",
+                                "caption": "Calitatea educației la UAIC",
+                                "class": "radio-inline",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "factori-sfatul",
+                                "type": "radiobuttons",
+                                "caption": "Sfatul persoanelor apropiate",
+                                "class": "radio-inline",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "factori-profesia",
+                                "type": "radiobuttons",
+                                "caption": "Statutul profesiei pentru care optaţi",
+                                "class": "radio-inline",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "factori-colegii",
+                                "type": "radiobuttons",
+                                "caption": "Colegii",
+                                "class": "radio-inline",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "factori-materiile",
+                                "type": "radiobuttons",
+                                "caption": "Materiile care se studiază",
+                                "class": "radio-inline",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "factori-informatii-facultate",
+                                "type": "radiobuttons",
+                                "caption": "Informațiile furnizate de Universitate",
+                                "class": "radio-inline",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "factori-apropiere-domiciliu",
+                                "type": "radiobuttons",
+                                "caption": "Apropierea de domiciliu",
+                                "class": "radio-inline",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
+
+                                },
+
+
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
 
         ]
     });
