@@ -1726,6 +1726,421 @@ $(function () {
 
 
 $(function () {
+    $("#myform5").dform({
+        "action": "form5.html",
+        "method": "get",
+        "html":
+        [
+            {
+                "type": "h4",
+                "html": "V. Informaţii privind documentele de studii depuse la dosar",
+                "class": "sub-title"
+            },
+
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "documente-diploma-bac-or",
+                                        "caption": "Diploma de bacalaureat (original)",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "documente-diploma-bac-copie",
+                                        "caption": "Diploma de bacalaureat (copie legalizată)",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "documente-adeverinta-or",
+                                        "caption": "Adeverinţă (original)",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "documente-adeverinta-copie",
+                                        "caption": "Adeverinţă (copie legalizată)",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "documente-echiv-studii-or",
+                                        "caption": "Document echivalare studii (original)",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "documente-echiv-studii-copie",
+                                        "caption": "Document echivalare studii (copie legalizată)",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "documente-diploma-olimp-or",
+                                        "caption": "Diplomă olimpiadă (original)",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "participare-alta-admitere",
+                                        "caption": "Participaţi la alt/e concurs/uri de admitere?",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "h5",
+                "html": "La ce alte concursuri de admitere participaţi? ",
+                "class": "sub-title"
+            },
+
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "h5",
+                                "html": "Facultatea ",
+                                "class": "sub-title"
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "h5",
+                                "html": "Domeniu/Specializarea ",
+                                "class": "sub-title"
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "alta-facultate",
+                                        "type": "text",
+                                        "class": "form-control"
+                                    }
+
+                                ]
+                            },
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "alt-domeniu",
+                                "type": "text",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "alta-facultate",
+                                        "type": "text",
+                                        "class": "form-control"
+                                    }
+
+                                ]
+                            },
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "alt-domeniu",
+                                "type": "text",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "alta-facultate",
+                                        "type": "text",
+                                        "class": "form-control"
+                                    }
+
+                                ]
+                            },
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "alt-domeniu",
+                                "type": "text",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [
+                            {
+                                "type": "div",
+                                "class": "custom-input",
+                                "html": [
+                                    {
+                                        "name": "alta-facultate",
+                                        "type": "text",
+                                        "class": "form-control"
+                                    }
+
+                                ]
+                            },
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [
+                            {
+                                "name": "alt-domeniu",
+                                "type": "text",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+        ]
+    });
+});
+
+
+
+$(function () {
     $("#myform7").dform({
         "action": "form7.html",
         "method": "get",
@@ -2033,7 +2448,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -2065,7 +2480,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -2097,7 +2512,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -2129,7 +2544,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -2161,7 +2576,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -2193,7 +2608,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
@@ -2225,7 +2640,7 @@ $(function () {
 
                 ]
             },
-             {
+            {
                 "type": "div",
                 "class": "form-group",
                 "html": [
