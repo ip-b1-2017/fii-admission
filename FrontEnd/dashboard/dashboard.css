@@ -1,13 +1,14 @@
+
 body {
     margin: 0;
 }
 
 ul {
     list-style-type: none;
-    margin: 0;
+    margin-top: 0px;
     padding: 0;
     width: 20%;
-    background-color: #668cff;
+    background-color: #3388CB;
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -19,19 +20,21 @@ li a {
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
+    font-family: "Roboto", sans-serif;
 	color:white;
 }
 
 li a.active {
-    background-color: #002699;
+    background-color: #1C537E;
     color: white;
 }
 
 li a:hover:not(.active) {
-    background-color: #002699;
+    background-color: #1C537E;
     color: white;
 }
-hr { 
+
+hr {
     display: block;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -39,4 +42,100 @@ hr {
     margin-right: 0.80em;
     border-style: inset;
     border-width: 1px;
+}
+input[type=text] {
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+/* When the input field gets focus, change its width to 100% */
+/
+input[type=text]:focus {
+    width: 100%;
+}
+div.tab-content {
+    background-color:white;
+    color:#668cff;
+  /*  margin: 20px 0 20px 0;*/
+    padding: 20px;
+}
+/*
+.button {
+  border-radius: 4px;
+  background-color: #1C537E;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  color: white;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+*/
+p{
+	font-size:70%;
+	color: #cccccc;
+  font-family: "Roboto", sans-serif;
+}
+
+
+#contact{
+  margin-bottom: 0;
+  margin-left: 15px;
+  color:white;
+  font-size: 12px;
+  font-family: "Roboto", monospace;
+}
+.logo {
+  width: auto;
+  height: 50px;
+  background: url("logo.png");
+  background-color: #1C537E;
+  background-position: left;
+  background-size: 130px auto;
+  background-repeat: no-repeat; }
+
+
+
+.content {
+  width: 200px;
+  height: 35px;
+  padding: 15px;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+.content img {
+    margin-right: 10px;
+    float: left;
+      border-radius: 100%;
 }
