@@ -1,17 +1,3 @@
-body {
-    /*margin-top: 75px; *//* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
-
-/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
-
-.full {
-    background: url('../images/programming.jpeg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
 button {
     background-color: white;
     /*color: rgba(62, 156, 242, 0.5);*/
@@ -39,6 +25,10 @@ header {
 h1, h2 {
 	color: white;
 }
+.intro h1, h2 {
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 1em gray, 0 0 0.2em darkblue;
+}
 
 #beneficii {
 	padding-top: 75px;
@@ -49,6 +39,7 @@ h1, h2 {
 #beneficii h2 {
 	color: #20547E;
 	line-height: 1.7;
+	text-shadow: unset;
 }
 
 #beneficii h1 {
@@ -99,6 +90,7 @@ h1, h2 {
 
 #contact h2 {
 	color: black;
+	text-shadow: unset;
 }
 
 #contact h1 {
