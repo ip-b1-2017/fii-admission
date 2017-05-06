@@ -1,0 +1,125 @@
+button {
+    background-color: white;
+    /*color: rgba(62, 156, 242, 0.5);*/
+    color: #2f5e85;
+    font-weight: bold;
+    padding: 10px 40px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.right {
+	float: right !important;
+}
+
+header {
+	min-height:100vh;
+	background: url('../images/programming.jpeg') no-repeat center center;
+	background-size: 100%;
+	background-color: #EDEFF3;
+	padding-top: 25%;
+	/*background: rgba(62, 156, 242, 0.1);*/
+}
+
+h1, h2 {
+	color: white;
+}
+.intro h1, h2 {
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 1em gray, 0 0 0.2em darkblue;
+}
+
+#beneficii {
+	padding-top: 75px;
+	background-color: #EDEFF3;
+	min-height: 640px;
+}
+
+#beneficii h2 {
+	color: #20547E;
+	line-height: 1.7;
+	text-shadow: unset;
+}
+
+#beneficii h1 {
+	color: #20547E;
+	font-size: 3em;
+}
+
+#impresii {
+	padding-top: 75px;
+	background-color: #3388CB;
+	min-height: 640px;
+}
+
+#impresii h4 {
+	color: white;
+}
+
+#impresii h1 {
+	color: white;
+	font-size: 3em;
+}
+#impresii h4 {
+	text-align: justify;
+}
+
+#contact {
+	background-color: #EDEFF3;
+	min-height: 640px;
+}
+
+#padded {
+	padding: 10%;
+}
+
+#right {
+	float: right;
+}
+
+#first {
+	margin-top: 5%;
+	margin-bottom: 7%;
+}
+
+#contactImg {
+	height: 640px;
+	float: left;
+}
+
+#contact h2 {
+	color: black;
+	text-shadow: unset;
+}
+
+#contact h1 {
+	color: #20547E;
+	font-size: 3em;
+}
+
+.detalii {
+	color: black;
+	float: left;
+	padding-top: 75px;
+	padding-left: 15px;
+}
+
+footer {
+  background-color: #3388CB;
+  color: white;
+ }
+
+ footer a {
+ 	color: white;
+ }
+
+ .social img {
+ 	width: 50px;
+ 	margin-right: 20px;
+ }
+
+ .social {
+ 	padding: 20px 20px 20px 0; 
+ }
