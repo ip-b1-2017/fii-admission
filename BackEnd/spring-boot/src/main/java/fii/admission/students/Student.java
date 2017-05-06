@@ -1,9 +1,9 @@
 package fii.admission.students;
+import javax.persistence.*;
 
-import java.sql.*;
-
+@Entity
 public class Student {
-	public String cnp;
+	@Id public String cnp;
 	public String username;
 	public String nume_nastere;
 	public String telefon;

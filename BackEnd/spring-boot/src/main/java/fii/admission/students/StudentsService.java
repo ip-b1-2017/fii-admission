@@ -3,10 +3,17 @@ package fii.admission.students;
 import java.sql.*;
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fii.admission.MainApp;
 
+@Service
 public class StudentsService {
 
+	@Autowired
+	private StudentRepository studentRepository;
+	
 	public static List<Student> getAllStudents() {
 		ArrayList<Student> result = new ArrayList<>();
 		Connection conn = MainApp.getDBConnection();
@@ -97,5 +104,9 @@ public class StudentsService {
 			System.out.printf("[error][getAllStudents] %s\n", exc.getMessage());
 		}
 		return null;
+	}
+	
+	public static boolean addStudent(Student student) {
+		return true;
 	}
 }

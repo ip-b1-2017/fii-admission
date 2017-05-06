@@ -15,11 +15,24 @@ public class StatsController {
 
 	@RequestMapping(value = "/students", method = RequestMethod.GET)
 	public List<Student> getAllStudents() {
-		return StudentsService.getAllStudents();
+		List<Student> result = StudentsService.getAllStudents();
+		//if (result.size() == 0)
+		//	return "{\"status\": 404, \"message\": \"Not Found\"}";
+		return result;
 	}
 	
 	@RequestMapping(value = "/students/{cnp}", method = RequestMethod.GET)
 	public Student getStudent(@PathVariable String cnp) {
-		return StudentsService.getStudent(cnp);
+		Student result = StudentsService.getStudent(cnp);
+		return result;
+		//if (result == null)
+		//	return "{\"status\": 404, \"message\": \"Not Found\"}";
+	}
+
+	@RequestMapping(value = "/students", method = RequestMethod.POST)
+	public String addStudent(@RequestBody Student student) {
+		if( StudentsService.addStudent(student) )
+			return "";
+		return "{\"status\": 409, \"message\": \"Conflict\"}";
 	}
 }
