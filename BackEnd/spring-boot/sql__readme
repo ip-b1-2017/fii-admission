@@ -1,0 +1,2 @@
+sqlite3 FiiAdmission.db < IP-Create.sql
+sqlite3 FiiAdmission.db < IP-Drop.sql
