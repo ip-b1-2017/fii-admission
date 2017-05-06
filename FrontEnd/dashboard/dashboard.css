@@ -194,7 +194,7 @@ p{
   border: 1px solid #E0E0E0;
   float: left;
   width: 100%;
-  margin: 10px 10px 10px 10px;
+  margin: 15px 15px 0px 15px;
   box-shadow: 3px 1px 10px 0 rgba(0, 0, 0, 0.15);
 }
 .widget-header {
@@ -208,10 +208,10 @@ p{
   color: #F9F9F9;
   display: inline-block;
 }
-.sample-widget {max-width: 52%;}
+.sample-widget {max-width: 97%;}
 
 .sample-widget2 {
-  max-width: 25%;
+  max-width: 22%;
 }
 
 
@@ -229,10 +229,17 @@ p{
 
 .main p{
    text-indent: 1.5em;
-   font-size: 14px;
+   font-size: 16px;
 }
-h2{
+
+h3{
   font-family: "Roboto", sans-serif;
-  text-indent: 1em;
-  	color: #cccccc;
+  font-size:16px;
+  text-indent: 0.3em;
+  color: #cccccc;
+}
+.widget-content img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
 }
