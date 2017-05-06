@@ -17,7 +17,7 @@
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "initial-name",
+                                        "name": "initial-name-alfa",
                                         "caption": "Nume de familie la nastere",
                                         "type": "text",
                                         "placeholder": "Ex. Apopei",
@@ -39,7 +39,7 @@
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "parent-initial",
+                                "name": "parent-initial-alfa",
                                 "caption": "Initiala tatalui/mamei",
                                 "type": "text",
                                 "maxlength": "1",
@@ -64,7 +64,7 @@
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "actual-name",
+                                        "name": "actual-name-alfa",
                                         "caption": "Nume de familie actual",
                                         "type": "text",
                                         "placeholder": "Ex. Mihaila",
@@ -86,7 +86,7 @@
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "prenume",
+                                "name": "prenume-alfa",
                                 "caption": "Prenume candidat",
                                 "type": "text",
                                 "placeholder": "Ex. Ioana Maria",
@@ -111,7 +111,7 @@
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "mother-name",
+                                        "name": "mother-name-alfa",
                                         "caption": "Prenumele mamei",
                                         "type": "text",
                                         "placeholder": "Ex. Mihaila",
@@ -136,7 +136,7 @@
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "father-name",
+                                        "name": "father-name-alfa",
                                         "caption": "Prenumele tatalui",
                                         "type": "text",
                                         "placeholder": "Ex. Andrei",
@@ -169,11 +169,11 @@
                                 "html": [
                                     {
                                         "name": "initial-name",
-                                        "caption": "CNP",
+                                        "caption": "CNP-num",
                                         "type": "text",
                                         "placeholder": "2780923232",
                                         "class": "form-control",
-                                        "maxlength": "10"
+                                        "maxlength": "13"
                                     }
 
                                 ]
@@ -187,7 +187,7 @@
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "sex",
+                                "name": "sex-alfa",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Sex",
@@ -236,7 +236,7 @@
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "tara-nasterii",
+                                        "name": "birth-country-alfa",
                                         "caption": "Tara",
                                         "type": "text",
                                         "class": "form-control"
@@ -267,7 +267,7 @@
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "judetul-nasterii",
+                                        "name": "birth-county-alfa",
                                         "caption": "Judetul",
                                         "type": "text",
                                         "class": "form-control",
@@ -294,7 +294,7 @@
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "orasul-nasterii",
+                                        "name": "birth-city-alfa",
                                         "caption": "Orasul",
                                         "type": "text",
                                         "class": "form-control",
@@ -343,7 +343,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "graduate-institution",
+                                        "name": "graduate-institution-alfn",
                                         "caption": "Instituţia unde a absolvit ",
                                         "type": "text",
                                         "placeholder": "Ex. Liceul Teoretic de Informatică \"Grigore Moisil\"",
@@ -360,7 +360,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "country",
+                                "name": "graduate-country-alfa",
                                 "caption": "Țara",
                                 "type": "text",
                                 "placeholder": "Ex. România",
@@ -385,7 +385,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "town",
+                                        "name": "graduate-town-alfa",
                                         "caption": "Localitatea",
                                         "type": "text",
                                         "placeholder": "Ex. Iași",
@@ -402,7 +402,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "city",
+                                "name": "graduate-county-alfa",
                                 "caption": "Județul",
                                 "type": "text",
                                 "placeholder": "Ex. Iași",
@@ -427,7 +427,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "field",
+                                        "name": "graduate-field-alfa",
                                         "caption": "Profilul/Domeniul",
                                         "type": "text",
                                         "placeholder": "Ex. Matematică-Informatică",
@@ -444,10 +444,9 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "length-of-studies",
+                                "name": "length-of-studies-num",
                                 "caption": "Durata studiilor",
-                                "type": "text",
-                                "placeholder": "Ex. 4 ani",
+                                "type": "number",
                                 "class": "form-control"
                             }
 
@@ -469,7 +468,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "graduation-year",
+                                        "name": "graduation-year-num",
                                         "caption": "Anul absolvirii",
                                         "type": "number",
                                         "min": "1950",
@@ -488,7 +487,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "education-form",
+                                "name": "education-form-alfa",
                                 "caption": "Forma de invățământ",
                                 "type": "radiobuttons",
                                 "class": "radio-inline",
@@ -526,7 +525,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "bac-series",
+                                        "name": "bac-series-alfn",
                                         "caption": "Seria",
                                         "type": "text",
                                         "placeholder": "Ex. n2s90",
@@ -543,10 +542,9 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "bac-number",
+                                "name": "bac-num",
                                 "caption": "Numarul",
-                                "type": "text",
-                                "placeholder": "Ex. 3123",
+                                "type": "number",
                                 "class": "form-control"
                             }
 
@@ -568,7 +566,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "issued-by",
+                                        "name": "issued-by-alfnum",
                                         "caption": "Emisă de",
                                         "type": "text",
                                         "placeholder": "Ex. n2s90",
@@ -585,10 +583,10 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "bac-number",
+                                "name": "bac-number-date",
                                 "caption": "Data emiterii",
                                 "type": "text",
-                                "placeholder": "Ex. 21/04/20016",
+                                "placeholder": "Ex. 21.04.2016",
                                 "class": "form-control"
                             }
 
@@ -610,7 +608,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "nr-foaie-matricola",
+                                        "name": "nr-foaie-matricola-alfnum",
                                         "caption": "Numărul foii matricole care însoțește actul de studii",
                                         "type": "text",
                                         "placeholder": "Ex. ncc32s90",
@@ -649,9 +647,9 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "nr_echivalare",
+                                        "name": "nr-echivalare-num",
                                         "caption": "Număr",
-                                        "type": "text",
+                                        "type": "number",
                                         "placeholder": "Ex. 12353",
                                         "class": "form-control"
                                     },
@@ -666,7 +664,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "serie-echivalare",
+                                "name": "serie-echivalare-alfnum",
                                 "caption": "Serie",
                                 "type": "text",
                                 "placeholder": "Ex. w6346",
@@ -691,10 +689,10 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "nr-foaie-matricola",
+                                        "name": "echivalare-date",
                                         "caption": "Data echivalării",
-                                        "type": "text",
-                                        "placeholder": "Ex. 21/04/20016",
+                                        "type": "date",
+                                        "placeholder": "Ex. 21.04.20016",
                                         "class": "form-control"
                                     },
 
@@ -724,7 +722,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "st-la-alta-fac-checkbox",
+                                        "name": "st-la-alta-fac-checkbox-alfa",
                                         "caption": "Student la altă facultate/ universitate",
                                         "type": "checkbox",
                                         "class": "checkbox"
@@ -740,7 +738,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "tara-alte-studii",
+                                "name": "tara-alte-studii-alfa",
                                 "caption": "Țara",
                                 "type": "text",
                                 "placeholder": "Ex. Franța",
@@ -765,7 +763,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "alte-studii-localitate",
+                                        "name": "alte-studii-localitate-alfa",
                                         "caption": "Localitatea",
                                         "type": "text",
                                         "placeholder": "Ex. Paris",
@@ -782,7 +780,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alte-studii-judetul",
+                                "name": "alte-studii-judetul-alfa",
                                 "caption": "Județul",
                                 "type": "text",
                                 "placeholder": "Ex. Paris",
@@ -807,7 +805,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "alte-studii-institutie",
+                                        "name": "alte-studii-institutie-alfn",
                                         "caption": "Denumirea instituţiei de învăţământ superior  ",
                                         "type": "text",
                                         "placeholder": "Ex. ",
@@ -824,7 +822,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alte-studii-facultatea",
+                                "name": "alte-studii-facultatea-alfn",
                                 "caption": "Facultatea",
                                 "type": "text",
                                 "placeholder": "Ex. ",
@@ -849,7 +847,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "alte-studii-domeniu-licenta",
+                                        "name": "alte-studii-domeniu-licenta-alfa",
                                         "caption": "Domeniul de licenţă  ",
                                         "type": "text",
                                         "placeholder": "Ex. ",
@@ -866,7 +864,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alte-studii-specializarea",
+                                "name": "alte-studii-specializarea-alfa",
                                 "caption": "Programul de studii /Specializarea",
                                 "type": "text",
                                 "placeholder": "Ex.",
@@ -891,7 +889,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "education-form",
+                                        "name": "education-form-alfa",
                                         "caption": "Forma de invățământ",
                                         "type": "radiobuttons",
                                         "class": "radio-inline",
@@ -915,7 +913,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alte-studii-anul",
+                                "name": "alte-studii-anul-num",
                                 "caption": "Anul",
                                 "type": "number",
                                 "placeholder": "Ex. 2000",
@@ -940,7 +938,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "alte-studii-semestre-la-buget",
+                                        "name": "alte-studii-semestre-la-buget-num",
                                         "caption": "Numărul semestrelor finanţate de la bugetul de stat",
                                         "type": "number",
                                         "placeholder": "Ex. ",
@@ -957,7 +955,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alte-studii-semestre-la-bursa",
+                                "name": "alte-studii-semestre-la-bursa-num",
                                 "caption": "Numărul semestrelor în care aţi beneficiat de bursă ",
                                 "type": "number",
                                 "placeholder": "Ex.",
@@ -987,7 +985,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "absolvent-licenta-an",
+                                        "name": "absolvent-licenta-an-num",
                                         "caption": "Anul",
                                         "type": "number",
                                         "placeholder": "Ex. ",
@@ -1004,7 +1002,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvent-licenta-diploma",
+                                "name": "absolvent-licenta-diploma-alfa",
                                 "type": "radiobuttons",
                                 "class": "radio-inline",
                                 "options": {
@@ -1034,7 +1032,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "abslovent-licenta-tara",
+                                        "name": "abslovent-licenta-tara-alfa",
                                         "caption": "Țara",
                                         "type": "text",
                                         "placeholder": "Ex. ",
@@ -1051,7 +1049,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvett-licenta-localitatea",
+                                "name": "absolvett-licenta-localitatea-alfa",
                                 "caption": "Localitate",
                                 "type": "text",
                                 "placeholder": "Ex. ",
@@ -1076,7 +1074,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "abslovent-licenta-judet",
+                                        "name": "abslovent-licenta-judet-alfa",
                                         "caption": "Județul",
                                         "type": "text",
                                         "placeholder": "Ex. ",
@@ -1093,7 +1091,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvett-licenta-institutie",
+                                "name": "absolvett-licenta-institutie-alfa",
                                 "caption": "Denumirea instituţiei de învăţământ superior  ",
                                 "type": "text",
                                 "placeholder": "Ex. ",
@@ -1118,7 +1116,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "abslovent-licenta-facultate",
+                                        "name": "abslovent-licenta-facultate-alfnum",
                                         "caption": "Facultatea",
                                         "type": "text",
                                         "placeholder": "Ex. ",
@@ -1135,7 +1133,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvett-licenta-domeniu-licenta",
+                                "name": "absolvett-licenta-domeniu-licenta-alfa",
                                 "caption": "Domeniul de licenţă",
                                 "type": "text",
                                 "placeholder": "Ex. ",
@@ -1160,7 +1158,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "abslovent-licenta-specializare",
+                                        "name": "abslovent-licenta-specializare-alfa",
                                         "caption": "Programul de studii /Specializarea ",
                                         "type": "text",
                                         "placeholder": "Ex. ",
@@ -1177,7 +1175,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvett-licenta-titlu",
+                                "name": "absolvett-licenta-titlu-alfa",
                                 "caption": "Titlul obţinut ",
                                 "type": "text",
                                 "placeholder": "Ex. ",
@@ -1202,7 +1200,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "abslovent-licenta-forma-invat",
+                                        "name": "abslovent-licenta-forma-invat-alfa",
                                         "caption": "Forma de invățământ",
                                         "type": "radiobuttons",
                                         "class": "radio-inline",
@@ -1226,7 +1224,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvent-licenta-semestre-buget",
+                                "name": "absolvent-licenta-semestre-buget-num",
                                 "caption": "Numărul semestrelor finanţate de la bugetul de stat",
                                 "type": "number",
                                 "placeholder": "Ex. 2",
@@ -1251,7 +1249,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "abslovent-licenta-semestre-bursa",
+                                        "name": "abslovent-licenta-semestre-bursa-num",
                                         "caption": "Numărul semestrelor în care aţi beneficiat de bursă",
                                         "type": "number",
                                         "placeholder": "Ex. ",
@@ -1268,10 +1266,10 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvett-licenta-durata-studii",
+                                "name": "absolvett-licenta-durata-studii-num",
                                 "caption": "Durata studiilor (număr de ani)  ",
-                                "type": "text",
-                                "placeholder": "Ex. ",
+                                "type": "number",
+                                "placeholder": "Ex. 4",
                                 "class": "form-control"
                             }
 
@@ -1298,7 +1296,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "abslovent-licenta-diploma-seria",
+                                        "name": "abslovent-licenta-diploma-seria-alfn",
                                         "caption": "Seria",
                                         "type": "text",
                                         "placeholder": "Ex. ",
@@ -1315,7 +1313,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvett-licenta-diploma-numar",
+                                "name": "absolvett-licenta-diploma-num",
                                 "caption": "Număr",
                                 "type": "text",
                                 "placeholder": "Ex. ",
@@ -1340,7 +1338,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "abslovent-licenta-diploma-emisade",
+                                        "name": "abslovent-licenta-diploma-emisade-alfa",
                                         "caption": "Emisă de ",
                                         "type": "text",
                                         "placeholder": "Ex. ",
@@ -1357,7 +1355,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "absolvett-licenta-diploma-data",
+                                "name": "absolvett-licenta-diploma-date",
                                 "caption": "Data emiterii",
                                 "type": "text",
                                 "placeholder": "Ex. ",
@@ -1382,7 +1380,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "absolvent-licenta-diploma-nr-supliment",
+                                        "name": "absolvent-licenta-diploma-nr-supliment-alfn",
                                         "caption": "Numărul suplimentului / foii matricole care însoțește actul de studii",
                                         "type": "text",
                                         "placeholder": "Ex. ncc32s90",
@@ -1421,9 +1419,9 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "nr_echivalare",
+                                        "name": "nr-echivalare-num",
                                         "caption": "Număr",
-                                        "type": "text",
+                                        "type": "num",
                                         "placeholder": "Ex. 12353",
                                         "class": "form-control"
                                     },
@@ -1438,7 +1436,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "serie-echivalare",
+                                "name": "serie-echivalare-alfn",
                                 "caption": "Serie",
                                 "type": "text",
                                 "placeholder": "Ex. w6346",
@@ -1463,10 +1461,10 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "nr-foaie-matricola",
+                                        "name": "data-echivalare-date",
                                         "caption": "Data echivalării",
-                                        "type": "text",
-                                        "placeholder": "Ex. 21/04/20016",
+                                        "type": "date",
+                                        "placeholder": "Ex. 21.04.2016",
                                         "class": "form-control"
                                     },
 
@@ -1509,7 +1507,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "media-bac",
+                                        "name": "media-bac-num",
                                         "caption": "Media generală la examenul de bacalaureat",
                                         "type": "text",
                                         "placeholder": "Ex. 8.90",
@@ -1526,7 +1524,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "media-mate/info",
+                                "name": "media-mate/info-num",
                                 "caption": "Media la disciplina mate/info (maxima)",
                                 "type": "text",
                                 "placeholder": "Ex. 9.40",
@@ -1551,7 +1549,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "optiune-test-scris",
+                                        "name": "optiune-test-scris-alfa",
                                         "caption": "Opțiunea pentru testul scris (Matematică, Informatică (Pascal), Informatică (C)):",
                                         "type": "text",
                                         "placeholder": "Ex. Matematica",
@@ -1576,7 +1574,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "diploma-men",
+                                "name": "diploma-men-alfa",
                                 "type": "radiobuttons",
                                 "caption": "Solicitaţi echivalare cu diploma olimpiadă organizată MEN?",
                                 "class": "radio-inline",
@@ -1621,7 +1619,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "an-preadmitere",
+                                        "name": "an-preadmitere-num",
                                         "caption": "Dacă da, în ce an?",
                                         "type": "number",
                                         "placeholder": "Ex. 2015",
@@ -1995,7 +1993,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "alta-facultate",
+                                        "name": "alta-facultate-alfa",
                                         "type": "text",
                                         "class": "form-control"
                                     }
@@ -2010,7 +2008,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alt-domeniu",
+                                "name": "alt-domeniu-alfa",
                                 "type": "text",
                                 "class": "form-control"
                             }
@@ -2033,7 +2031,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "alta-facultate",
+                                        "name": "alta-facultate-alfa",
                                         "type": "text",
                                         "class": "form-control"
                                     }
@@ -2048,7 +2046,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alt-domeniu",
+                                "name": "alt-domeniu-alfa",
                                 "type": "text",
                                 "class": "form-control"
                             }
@@ -2071,7 +2069,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "alta-facultate",
+                                        "name": "alta-facultate-alfa",
                                         "type": "text",
                                         "class": "form-control"
                                     }
@@ -2086,7 +2084,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alt-domeniu",
+                                "name": "alt-domeniu-alfa",
                                 "type": "text",
                                 "class": "form-control"
                             }
@@ -2109,7 +2107,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "alta-facultate",
+                                        "name": "alta-facultate-alfa",
                                         "type": "text",
                                         "class": "form-control"
                                     }
@@ -2124,7 +2122,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [
                             {
-                                "name": "alt-domeniu",
+                                "name": "alt-domeniu-alfa",
                                 "type": "text",
                                 "class": "form-control"
                             }
@@ -2169,7 +2167,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "sursa-info-site-admitere",
+                                        "name": "sursa-info-site-admitere-alfn",
                                         "caption": "Site-ul dedicat admiterii (admitere.uaic.ro)",
                                         "type": "checkbox",
                                         "class": "checkbox"
@@ -2395,7 +2393,7 @@ $(function () {
                                 "class": "custom-input",
                                 "html": [
                                     {
-                                        "name": "sursa-info-altele",
+                                        "name": "sursa-info-altele-alfn",
                                         "caption": "Alte surse (menționați care) :",
                                         "type": "text",
                                         "class": "form-control"
@@ -2703,25 +2701,25 @@ $(document).ready(function () {
         $('ul.setup-panel li:eq(1)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-2"]').trigger('click');
         $(this).remove();
-    })
+    });
 
     $('#activate-step-3').on('click', function (e) {
         $('ul.setup-panel li:eq(2)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-3"]').trigger('click');
         $(this).remove();
-    })
+    });
 
     $('#activate-step-4').on('click', function (e) {
         $('ul.setup-panel li:eq(3)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-4"]').trigger('click');
         $(this).remove();
-    })
+    });
 
     $('#activate-step-3').on('click', function (e) {
         $('ul.setup-panel li:eq(2)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-3"]').trigger('click');
         $(this).remove();
-    })
+    });
 });
 
 
