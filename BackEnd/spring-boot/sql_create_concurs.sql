@@ -7,7 +7,7 @@ CREATE TABLE EXAMEN (
 	);
 
 CREATE TABLE MEDIE (
-	cnp_student		integer(13),
+	cnp_student		varchar(16),
 	valoare 		real,
 	
 	PRIMARY KEY (cnp_student),
@@ -15,7 +15,7 @@ CREATE TABLE MEDIE (
 	);
 
 CREATE TABLE NOTE (
-	cnp_student 	integer(13),
+	cnp_student 	varchar(16),
 	examen_id 		integer(10),
 	valoare 		real,
 	
@@ -53,7 +53,8 @@ CREATE TABLE STUDII (
 	);
 
 CREATE TABLE STUDENTI (
-	cnp 				integer PRIMARY KEY,
+	cnp 				varchar(16) PRIMARY KEY,
+	username			varchar(255) default 'prenume.nume',
 	nume_nastere		varchar(255),
    	telefon				varchar(16) UNIQUE,
 	prenume 			varchar(255),
@@ -64,9 +65,9 @@ CREATE TABLE STUDENTI (
 	prenume_tata 		varchar(255),
 	prenume_mama		varchar(255),
 	sexul 				varchar(2),
-	data_nastere		timestamp,
+	data_nastere		varchar(64),
 	tara_nastere 		varchar(70),
-	judet nastere 		varchar(70),
+	judet_nastere 		varchar(70),
 	localitate_nastere 	varchar(255),
 	cetatenie 			varchar(70),
 	limba_materna	 	varchar(70),
@@ -74,14 +75,15 @@ CREATE TABLE STUDENTI (
 	stare_civila 		varchar(70),
 	date_CI 			varchar(255),
 	date_pasaport	 	varchar(255),
-	cazare studii 		varchar(2),
+	cazare_studii 		varchar(2),
 	cazare_admitere 	varchar(2),
 	stare_sociala		varchar(255),
-	dizabilitati 		varchar(2)
+	dizabilitati 		varchar(2),
+	login_token			blob default '31415926535897932384626433832795028841971'
 	);
 
 CREATE TABLE STUDENTI_ORAR (
-	cnp 			integer(13),
+	cnp 			varchar(16),
 	sala_id 		varchar(5),
 	examen_id 		integer(10),
 	
