@@ -17,4 +17,9 @@ public class StatsController {
 	public List<Student> getAllStudents() {
 		return StudentsService.getAllStudents();
 	}
+	
+	@RequestMapping(value = "/students/{cnp}", method = RequestMethod.GET)
+	public Student getStudent(@PathVariable String cnp) {
+		return StudentsService.getStudent(cnp);
+	}
 }
