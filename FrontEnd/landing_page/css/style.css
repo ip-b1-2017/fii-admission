@@ -23,10 +23,6 @@ header {
 	/*background: rgba(62, 156, 242, 0.1);*/
 }
 
-section {
-	min-height:100vh;
-}
-
 h1, h2 {
 	color: white;
 }
