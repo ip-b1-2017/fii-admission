@@ -22,6 +22,7 @@ header {
 	padding-top: 25%;
 	/*background: rgba(62, 156, 242, 0.1);*/
 }
+
 h1, h2 {
 	color: white;
 }
@@ -102,8 +103,7 @@ h1, h2 {
 	color: black;
 	float: left;
 	padding-top: 75px;
-	padding-left: 75px;
-
+	padding-left: 15px;
 }
 
 footer {
@@ -122,14 +122,4 @@ footer {
 
  .social {
  	padding: 20px 20px 20px 0; 
- }
-
- .leftSide {
- 	float: left;
- 	width: 50%;
- }
-
- .rightSide {
- 	float: right;
- 	width: 50%;
  }
