@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.ip_b1.fii.admission.Controllers.DTO.AuthEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.AvailableExamClassromEntity;
-import com.ip_b1.fii.admission.Controllers.Utils.AuthUtils;
+import com.ip_b1.fii.admission.DTO.AuthEntity;
+import com.ip_b1.fii.admission.DTO.AvailableExamClassromEntity;
+import com.ip_b1.fii.admission.Utils.AuthUtils;
 
 @RestController
 @RequestMapping("/controller/available_classroom")
