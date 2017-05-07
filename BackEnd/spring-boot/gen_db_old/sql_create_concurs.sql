@@ -73,13 +73,13 @@ CREATE TABLE STUDENTI (
 	limba_materna	 	varchar(70),
 	etnie 				varchar(70),
 	stare_civila 		varchar(70),
-	date_CI 			varchar(255),
+	date_ci 			varchar(255),
 	date_pasaport	 	varchar(255),
 	cazare_studii 		varchar(2),
 	cazare_admitere 	varchar(2),
 	stare_sociala		varchar(255),
 	dizabilitati 		varchar(2),
-	login_token			blob default '31415926535897932384626433832795028841971'
+	login_token			varchar(255) default '31415926535897932384626433832795028841971'
 	);
 
 CREATE TABLE STUDENTI_ORAR (

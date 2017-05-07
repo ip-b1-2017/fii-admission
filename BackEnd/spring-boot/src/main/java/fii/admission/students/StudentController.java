@@ -1,23 +1,18 @@
-package fii.admission.controllers;
+package fii.admission.students;
 
-import fii.admission.students.Student;
-import fii.admission.students.StudentsService;
+import java.util.List;
 
-import java.util.*;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class StatsController {
-	@RequestMapping(value = "/version", method = RequestMethod.GET)
-	public String getVersion() {
-		return "{\"version\": \"1.0\"}";
-	}
-
+public class StudentController {
 	@RequestMapping(value = "/students", method = RequestMethod.GET)
 	public List<Student> getAllStudents() {
 		List<Student> result = StudentsService.getAllStudents();
-		//if (result.size() == 0)
-		//	return "{\"status\": 404, \"message\": \"Not Found\"}";
 		return result;
 	}
 	
@@ -25,8 +20,6 @@ public class StatsController {
 	public Student getStudent(@PathVariable String cnp) {
 		Student result = StudentsService.getStudent(cnp);
 		return result;
-		//if (result == null)
-		//	return "{\"status\": 404, \"message\": \"Not Found\"}";
 	}
 
 	@RequestMapping(value = "/students", method = RequestMethod.POST)

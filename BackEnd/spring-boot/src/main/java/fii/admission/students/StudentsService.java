@@ -3,7 +3,6 @@ package fii.admission.students;
 import java.sql.*;
 import java.util.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fii.admission.MainApp;
@@ -11,9 +10,6 @@ import fii.admission.MainApp;
 @Service
 public class StudentsService {
 
-	@Autowired
-	private StudentRepository studentRepository;
-	
 	public static List<Student> getAllStudents() {
 		ArrayList<Student> result = new ArrayList<>();
 		Connection conn = MainApp.getDBConnection();
@@ -42,7 +38,7 @@ public class StudentsService {
 				student.limba_materna = rs.getString("limba_materna");
 				student.etnie = rs.getString("etnie");
 				student.stare_civila = rs.getString("stare_civila");
-				student.date_CI = rs.getString("date_CI");
+				student.date_ci = rs.getString("date_ci");
 				student.date_pasaport = rs.getString("date_pasaport");
 				student.cazare_studii = rs.getString("cazare_studii");
 				student.cazare_admitere = rs.getString("cazare_admitere");
@@ -88,7 +84,7 @@ public class StudentsService {
 				student.limba_materna = rs.getString("limba_materna");
 				student.etnie = rs.getString("etnie");
 				student.stare_civila = rs.getString("stare_civila");
-				student.date_CI = rs.getString("date_CI");
+				student.date_ci = rs.getString("date_ci");
 				student.date_pasaport = rs.getString("date_pasaport");
 				student.cazare_studii = rs.getString("cazare_studii");
 				student.cazare_admitere = rs.getString("cazare_admitere");

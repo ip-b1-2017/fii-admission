@@ -2,11 +2,12 @@ package fii.admission;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.sql.*;
 
 @SpringBootApplication
 public class MainApp {
-	private static final String DB_FILE = "FiiConcurs.db";
+	private static final String DB_FILE = "FiiAdmission.db";
 	private static Connection sqliteDBConnection;
 	
     public static void createNewDatabase() {
@@ -35,7 +36,6 @@ public class MainApp {
     
     
 	public static void main(String[] args) {
-		// createNewDatabase();
 		SpringApplication.run(MainApp.class, args);
 	}
 }
