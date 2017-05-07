@@ -15,7 +15,7 @@ public class GetApplicationByEmail {
 
         @RequestMapping(method = RequestMethod.POST)
         public ResponseEntity<FormOutEntity> getApplications(@PathVariable String sessionId, @PathVariable String email,@RequestBody AuthEntity auth) {
-            if (!AuthUtils.checkAuth(auth)  || !AuthUtils.checkAuthIsAdmin(auth)) {
+            if ( !AuthUtils.checkAuthIsAdmin(auth)) {
 
                 return new ResponseEntity<>(
                         new FormOutEntity(),

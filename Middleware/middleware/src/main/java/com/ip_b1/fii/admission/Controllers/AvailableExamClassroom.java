@@ -8,6 +8,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.ip_b1.fii.admission.DTO.AuthEntity;
 import com.ip_b1.fii.admission.DTO.AvailableExamClassromEntity;
-import com.ip_b1.fii.admission.DTO.ClassroomInEntity;
 
 import com.ip_b1.fii.admission.Utils.AuthUtils;
 
@@ -24,10 +24,10 @@ import com.ip_b1.fii.admission.Utils.AuthUtils;
 @RequestMapping("/controller/available_classroom")
 public class AvailableExamClassroom {
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<AvailableExamClassromEntity> getClassRoomById(@RequestBody ClassroomInEntity classroom) {
+	@RequestMapping(value = "{id}", method = RequestMethod.POST)
+	public ResponseEntity<AvailableExamClassromEntity> getClassRoomById(@PathVariable("id") Integer classroomID ,@RequestBody AuthEntity auth) {
 
-		if (AuthUtils.checkAuth(classroom.getAuth())) {
+		if (AuthUtils.checkAuth(auth)) {
 			return new ResponseEntity<AvailableExamClassromEntity>(new AvailableExamClassromEntity(),
 					HttpStatus.UNAUTHORIZED);
 		}
@@ -36,7 +36,7 @@ public class AvailableExamClassroom {
 
 		ResponseEntity<AvailableExamClassromEntity> entity = template.getForEntity(
 				"/get_by_id_available_classroom/?classID={classID}", AvailableExamClassromEntity.class,
-				classroom.getClassroomId());
+				classroomID);
 
 		if (entity.getBody().getClass() == null) {
 			return new ResponseEntity<AvailableExamClassromEntity>(new AvailableExamClassromEntity(),

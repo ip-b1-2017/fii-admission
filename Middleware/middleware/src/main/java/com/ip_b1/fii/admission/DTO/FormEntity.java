@@ -3,7 +3,7 @@ package com.ip_b1.fii.admission.DTO;
 import java.util.List;
 
 public class FormEntity {
-    private AuthEntity auth;
+    private com.ip_b1.fii.admission.DTO.AuthEntity auth;
     private List<FormFieldEntity> fields;
 
     public FormEntity() {
