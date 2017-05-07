@@ -10,16 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by fenea on 5/7/2017.
- */
 public class GetResults {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> getDistribution(@RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
-            return new ResponseEntity<String>(
-                    new String(),
+            return new ResponseEntity<>(
+                    "",
                     HttpStatus.UNAUTHORIZED
             );
         } else {
