@@ -1,33 +1,30 @@
 package com.ip_b1.fii.admission.Controllers;
 
 import com.ip_b1.fii.admission.DTO.AuthEntity;
-import com.ip_b1.fii.admission.DTO.NotificationsOutEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
-@RestController
-@RequestMapping("/controller/{sessionId}/get_notifications")
-public class GetNotifications {
+public class GetResults {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<NotificationsOutEntity> showNotifications(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
+    public ResponseEntity<String> getResults(@RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
-                    new NotificationsOutEntity(null),
+                    "Unauthorized",
                     HttpStatus.UNAUTHORIZED
             );
         } else {
             RestTemplate template = new RestTemplate();
 
-            ResponseEntity<NotificationsOutEntity> entity = template.getForEntity(
-                    ServerProperties.modelUrl + "/{sessionId}/get_notifications?username={username}",
-                    NotificationsOutEntity.class,
-                    sessionId,
-                    auth.getUsername()
+            ResponseEntity<String> entity = template.getForEntity(
+                    ServerProperties.modelUrl + "get_result",
+                    String.class
             );
             if( entity.getBody()==null)
                 return new ResponseEntity<>(
@@ -39,9 +36,8 @@ public class GetNotifications {
             return new ResponseEntity<>(
                     entity.getBody(),
                     HttpStatus.OK
-                    //
+
             );
         }
     }
-
 }

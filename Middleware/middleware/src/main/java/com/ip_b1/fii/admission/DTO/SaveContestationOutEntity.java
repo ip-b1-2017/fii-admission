@@ -1,12 +1,17 @@
 package com.ip_b1.fii.admission.DTO;
 
-public class SaveFormOutEntity {
-
+/**
+ * Created by Claudia Lucasi on 5/7/2017.
+ */
+public class SaveContestationOutEntity {
 
     private boolean success;
     private String failureReason;
 
-    public SaveFormOutEntity(boolean success, String failureReason) {
+    public SaveContestationOutEntity() {
+    }
+
+    public SaveContestationOutEntity(boolean success, String failureReason) {
         this.success = success;
         this.failureReason = failureReason;
     }

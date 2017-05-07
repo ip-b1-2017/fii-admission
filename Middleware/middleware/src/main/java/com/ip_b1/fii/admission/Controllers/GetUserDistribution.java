@@ -10,24 +10,22 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/controller/{sessionId}/get_notifications")
-public class GetNotifications {
+@RequestMapping("/controller/get_result")
+public class GetUserDistribution {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<NotificationsOutEntity> showNotifications(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
+    public ResponseEntity<String> getResult(@RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
-                    new NotificationsOutEntity(null),
+                    "unauthorized",
                     HttpStatus.UNAUTHORIZED
             );
         } else {
             RestTemplate template = new RestTemplate();
 
-            ResponseEntity<NotificationsOutEntity> entity = template.getForEntity(
-                    ServerProperties.modelUrl + "/{sessionId}/get_notifications?username={username}",
-                    NotificationsOutEntity.class,
-                    sessionId,
-                    auth.getUsername()
+            ResponseEntity<String> entity = template.getForEntity(
+                    ServerProperties.modelUrl + "get_result",
+                    String.class
             );
             if( entity.getBody()==null)
                 return new ResponseEntity<>(
@@ -35,7 +33,6 @@ public class GetNotifications {
                         HttpStatus.NOT_FOUND
 
                 );
-
             return new ResponseEntity<>(
                     entity.getBody(),
                     HttpStatus.OK

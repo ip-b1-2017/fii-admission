@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>TEST PAGE</title>
+	</head>
+	<body>
+		<form th:action="@{/test}" th:object="${personForm}" method="POST">
+			First name: <input type="text" th:field="*{firstName}" name="FirstName" ><br>
+			Last name: <input type="text" th:field="*{lastName}" name="LastName" ><br>
+			Age<input type="number" th:field="*{age}"  name="age" ><br>
+			<input type="submit" value="Submit">
+		</form>
+		</body>
+	</html>
