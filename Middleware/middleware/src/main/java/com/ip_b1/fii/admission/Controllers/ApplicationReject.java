@@ -12,23 +12,27 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("controller/(sessionId)/application_review_accept")
+@RequestMapping("controller/(sessionId)/application_review_reject")
 public class ApplicationReject {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> reject(@PathVariable String sessionId, AuthEntity user, String CNP, String rejectionMessage){
+    public ResponseEntity<SuccessEntity> reject(@PathVariable String sessionId, AuthEntity user, String CNP, String rejectionMessage) {
 
-        if(!AuthUtils.checkAuthIsAdmin(user)){
+        if (!AuthUtils.checkAuthIsAdmin(user)) {
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
         }
 
-        if(!process(sessionId, CNP, rejectionMessage))
+        int result = process(sessionId, CNP, rejectionMessage);
+
+        if (result == 0)
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
+        else if (result == -1)
+            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
 
     }
 
-    private static boolean process(String sessionId, String cnp, String rejectionMessage) {
+    private static int process(String sessionId, String cnp, String rejectionMessage) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -39,8 +43,8 @@ public class ApplicationReject {
                 cnp
         );
 
-        if(candidate.getStatusCode() == HttpStatus.NOT_FOUND){
-            return false;
+        if (candidate.getStatusCode() == HttpStatus.NOT_FOUND) {
+            return -1;
         }
 
         restTemplate.postForEntity(
@@ -54,7 +58,7 @@ public class ApplicationReject {
                 new NotificationEntity(candidate.getBody().getEmail(), false, rejectionMessage),
                 SuccessEntity.class,
                 sessionId);
-        return success.getBody().isSuccess();
+        return success.getBody().isSuccess() ? 1 : 0;
     }
 
 }

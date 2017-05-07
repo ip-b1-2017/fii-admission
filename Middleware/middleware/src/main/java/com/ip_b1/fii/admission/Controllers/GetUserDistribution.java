@@ -28,7 +28,7 @@ public class GetUserDistribution {
                     ServerProperties.modelUrl + "get_user_distribution",
                     DistributionEntity.class
             );
-            if( entity.getBody()==null)
+            if (entity.getBody() == null)
                 return new ResponseEntity<>(
                         new DistributionEntity(),
                         HttpStatus.NOT_FOUND

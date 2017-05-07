@@ -21,7 +21,6 @@ public class LoginTest {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<LoginTestOutEntity>testLogin(@RequestBody LoginTestInEntity login) {
-     //   System.out.println(login.getUsername());
         if (!check(login)) {
             return new ResponseEntity<>(
                     new LoginTestOutEntity(false, null, "Failed login"),
@@ -30,7 +29,7 @@ public class LoginTest {
         }
 
         String token = authenticateUser(login.getUsername());
-        if (token == null){
+        if (token == null) {
             return new ResponseEntity<>(
                     new LoginTestOutEntity(false, null, "Couldn't set token"),
                     HttpStatus.INTERNAL_SERVER_ERROR
@@ -40,7 +39,7 @@ public class LoginTest {
                 new LoginTestOutEntity(true, token, null),
                 HttpStatus.OK
         );
-	}
+    }
 
     private String authenticateUser(String username) {
         RestTemplate restTemplate = new RestTemplate();
@@ -50,12 +49,11 @@ public class LoginTest {
                 ServerProperties.modelUrl + "/users/set_token",
                 new SetTokenEntity(username, newToken),
                 SuccessEntity.class
-                );
+        );
 
-        if (response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess()){
+        if (response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess()) {
             return newToken;
-        }
-        else{
+        } else {
             return null;
         }
 
@@ -79,6 +77,6 @@ public class LoginTest {
                 login,
                 SuccessEntity.class);
         return entity.isSuccess();
-	}
+    }
 
 }

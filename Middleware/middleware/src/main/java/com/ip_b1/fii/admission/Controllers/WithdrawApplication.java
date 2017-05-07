@@ -16,7 +16,7 @@ public class WithdrawApplication {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SuccessEntity> withdrawApplication(@PathVariable String sessionId, AuthEntity auth, String CNP) {
-        if (!AuthUtils.checkAuth(auth) || !AuthUtils.checkAuthIsAdmin(auth)) {
+        if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
                     new SuccessEntity(false),
                     HttpStatus.UNAUTHORIZED

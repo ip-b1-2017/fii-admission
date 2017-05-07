@@ -8,10 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by Claudia Lucasi on 5/7/2017.
- */
-
 @RestController
 @RequestMapping("/controller/{sessionId}/submit_contestation")
 
@@ -22,14 +18,13 @@ public class SubmitContestation {
         if (!AuthUtils.checkAuth(contestationEntity.getAuth())) {
 
             return new ResponseEntity<>(
-                    new SaveContestationOutEntity(false,"Unauthorized"),
+                    new SaveContestationOutEntity(false, "Unauthorized"),
                     HttpStatus.UNAUTHORIZED
             );
-        }
-        else {
+        } else {
 
 
-            if(!addToDB( contestationEntity)){
+            if (!addToDB(contestationEntity)) {
                 return new ResponseEntity<SaveContestationOutEntity>(new SaveContestationOutEntity(false, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }

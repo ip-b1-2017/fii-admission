@@ -25,10 +25,10 @@ import com.ip_b1.fii.admission.Utils.AuthUtils;
 public class AvailableExamClassroom {
 
 	@RequestMapping(value = "{id}", method = RequestMethod.POST)
-	public ResponseEntity<AvailableExamClassromEntity> getClassRoomById(@PathVariable("id") Integer classroomID ,@RequestBody AuthEntity auth) {
+	public ResponseEntity<AvailableExamClassromEntity> getClassRoomById(@PathVariable("id") Integer classroomID, @RequestBody AuthEntity auth) {
 
 		if (AuthUtils.checkAuth(auth)) {
-			return new ResponseEntity<AvailableExamClassromEntity>(new AvailableExamClassromEntity(),
+			return new ResponseEntity<>(new AvailableExamClassromEntity(),
 					HttpStatus.UNAUTHORIZED);
 		}
 
@@ -39,17 +39,17 @@ public class AvailableExamClassroom {
 				classroomID);
 
 		if (entity.getBody().getClass() == null) {
-			return new ResponseEntity<AvailableExamClassromEntity>(new AvailableExamClassromEntity(),
+			return new ResponseEntity<>(new AvailableExamClassromEntity(),
 					HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<AvailableExamClassromEntity>(entity.getBody(), HttpStatus.OK);
+		return new ResponseEntity<>(entity.getBody(), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<List<AvailableExamClassromEntity>> getAllClassrooms(@RequestBody AuthEntity authEntity) {
 
 		if (AuthUtils.checkAuth(authEntity)) {
-			return new ResponseEntity<List<AvailableExamClassromEntity>>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 
 		RestTemplate template = new RestTemplate();
@@ -59,8 +59,8 @@ public class AvailableExamClassroom {
 				});
 
 		if (entity.getBody().getClass() == null) {
-			return new ResponseEntity<List<AvailableExamClassromEntity>>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<List<AvailableExamClassromEntity>>(entity.getBody(), HttpStatus.OK);
+		return new ResponseEntity<>(entity.getBody(), HttpStatus.OK);
 	}
 }

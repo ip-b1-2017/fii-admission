@@ -18,12 +18,12 @@ import org.springframework.web.client.RestTemplate;
 public class SignUpTest {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SignUpTestOutEntity> testSignUp(@RequestBody SignUpTestInEntity signup){
+    public ResponseEntity<SignUpTestOutEntity> testSignUp(@RequestBody SignUpTestInEntity signup) {
 
-        if(!check(signup)){
+        if (!check(signup)) {
             return new ResponseEntity<>(new SignUpTestOutEntity(false, "Email Used"), HttpStatus.BAD_REQUEST);
         }
-        if(!addToDB(signup)){
+        if (!addToDB(signup)) {
             return new ResponseEntity<>(new SignUpTestOutEntity(false, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(new SignUpTestOutEntity(true, null), HttpStatus.CREATED);
@@ -49,6 +49,5 @@ public class SignUpTest {
                 SuccessEntity.class);
         return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();
     }
-
 
 }

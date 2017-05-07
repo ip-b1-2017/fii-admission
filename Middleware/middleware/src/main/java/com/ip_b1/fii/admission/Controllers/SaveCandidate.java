@@ -17,8 +17,8 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("controller/{sessionId}/save_candidate")
 public class SaveCandidate {
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> saveCandidate(@PathVariable String sessionId, CandidateInEntity candidate){
-        if (!AuthUtils.checkAuth(candidate.getAuth())){
+    public ResponseEntity<SuccessEntity> saveCandidate(@PathVariable String sessionId, CandidateInEntity candidate) {
+        if (!AuthUtils.checkAuth(candidate.getAuth())) {
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
         }
 
@@ -30,7 +30,7 @@ public class SaveCandidate {
                 SuccessEntity.class,
                 sessionId,
                 result.getEmail()
-            ).getStatusCode() != HttpStatus.NOT_FOUND){
+        ).getStatusCode() != HttpStatus.NOT_FOUND) {
             //Insert
             ResponseEntity<SuccessEntity> success = template.postForEntity(
                     ServerProperties.modelUrl + "/{sessionId}/insert_candidate",
@@ -41,8 +41,7 @@ public class SaveCandidate {
             return new ResponseEntity<>(new SuccessEntity(
                     success.getStatusCode() == HttpStatus.CREATED && success.getBody().isSuccess()),
                     HttpStatus.OK);
-        }
-        else{
+        } else {
             //Update
             ResponseEntity<SuccessEntity> success = template.postForEntity(
                     ServerProperties.modelUrl + "/{sessionId}/update_candidate",

@@ -20,13 +20,13 @@ public class SaveForm {
         if (!AuthUtils.checkAuth(formEntity.getAuth())) {
 
             return new ResponseEntity<>(
-                    new SaveFormOutEntity(false,"Unauthorized"),
+                    new SaveFormOutEntity(false, "Unauthorized"),
                     HttpStatus.UNAUTHORIZED
             );
         } else {
 
 
-            if(!addToDB(formEntity)){
+            if (!addToDB(formEntity)) {
                 return new ResponseEntity<>(new SaveFormOutEntity(false, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }

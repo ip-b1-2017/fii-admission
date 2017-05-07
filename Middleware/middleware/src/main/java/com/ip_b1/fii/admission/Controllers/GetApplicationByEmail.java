@@ -13,30 +13,29 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/controller/{sessionId}/get_application_by_Email/{email}")
 public class GetApplicationByEmail {
 
-        @RequestMapping(method = RequestMethod.POST)
-        public ResponseEntity<FormOutEntity> getApplications(@PathVariable String sessionId, @PathVariable String email,@RequestBody AuthEntity auth) {
-            if ( !AuthUtils.checkAuthIsAdmin(auth)) {
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<FormOutEntity> getApplications(@PathVariable String sessionId, @PathVariable String email, @RequestBody AuthEntity auth) {
+        if (!AuthUtils.checkAuthIsAdmin(auth)) {
 
-                return new ResponseEntity<>(
-                        new FormOutEntity(),
-                        HttpStatus.UNAUTHORIZED
-                );
-            }
-            else {
+            return new ResponseEntity<>(
+                    new FormOutEntity(),
+                    HttpStatus.UNAUTHORIZED
+            );
+        } else {
 
 
-                RestTemplate template = new RestTemplate();
+            RestTemplate template = new RestTemplate();
 
-                ResponseEntity<FormOutEntity> entity = template.getForEntity(
-                        ServerProperties.modelUrl + "}/get_application_by_email/{email}",
-                        FormOutEntity.class
+            ResponseEntity<FormOutEntity> entity = template.getForEntity(
+                    ServerProperties.modelUrl + "}/get_application_by_email/{email}",
+                    FormOutEntity.class
 
-                );
+            );
 
-                return new ResponseEntity<>(
-                        entity.getBody(),
-                        HttpStatus.OK
-                );
-            }
+            return new ResponseEntity<>(
+                    entity.getBody(),
+                    HttpStatus.OK
+            );
         }
+    }
 }

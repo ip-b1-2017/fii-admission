@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by fenea on 5/7/2017.
- */
 public class GetDistributionList {
 
     @RestController
@@ -36,7 +33,7 @@ public class GetDistributionList {
                         ServerProperties.modelUrl + "get_distribution",
                         DistributionListEntity.class
                 );
-                if( entity.getBody()==null)
+                if (entity.getBody() == null)
                     return new ResponseEntity<>(
                             new DistributionListEntity(),
                             HttpStatus.NOT_FOUND

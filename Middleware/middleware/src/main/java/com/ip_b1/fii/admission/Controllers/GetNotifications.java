@@ -29,7 +29,7 @@ public class GetNotifications {
                     sessionId,
                     auth.getUsername()
             );
-            if( entity.getBody()==null)
+            if (entity.getBody() == null)
                 return new ResponseEntity<>(
                         entity.getBody(),
                         HttpStatus.NOT_FOUND
@@ -39,7 +39,6 @@ public class GetNotifications {
             return new ResponseEntity<>(
                     entity.getBody(),
                     HttpStatus.OK
-                    //
             );
         }
     }

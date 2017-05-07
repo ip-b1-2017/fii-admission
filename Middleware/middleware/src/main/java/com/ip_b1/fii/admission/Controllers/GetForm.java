@@ -17,13 +17,11 @@ public  class GetForm {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<FormOutEntity> getForm(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
-
             return new ResponseEntity<>(
-                    new FormOutEntity( null),
+                    new FormOutEntity(null),
                     HttpStatus.UNAUTHORIZED
             );
-        }
-        else {
+        } else {
 
 
             RestTemplate template = new RestTemplate();
@@ -35,7 +33,7 @@ public  class GetForm {
                     auth.getUsername()
             );
 
-            return new ResponseEntity<FormOutEntity>(
+            return new ResponseEntity<>(
                     entity.getBody(),
                     HttpStatus.OK
             );

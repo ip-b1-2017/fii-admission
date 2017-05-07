@@ -26,7 +26,7 @@ public class GetResults {
                     ServerProperties.modelUrl + "get_result",
                     String.class
             );
-            if( entity.getBody()==null)
+            if (entity.getBody() == null)
                 return new ResponseEntity<>(
                         entity.getBody(),
                         HttpStatus.NOT_FOUND
