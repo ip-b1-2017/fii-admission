@@ -1,8 +1,8 @@
 package com.ip_b1.fii.admission.Controllers.DTO;
 
 public class AuthEntity {
-    String username;
-    String token;
+    private String username;
+    private String token;
 
     public AuthEntity(String username, String token) {
         this.username = username;

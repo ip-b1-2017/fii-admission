@@ -1,11 +1,8 @@
 package com.ip_b1.fii.admission.Controllers.DTO;
 
-/**
- * Created by fenea on 5/7/2017.
- */
 public class FormFieldEntity {
-    String field;
-    String value;
+    private String field;
+    private String value;
     public FormFieldEntity(String field, String value) {
         this.field = field;
         this.value = value;

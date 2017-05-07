@@ -10,22 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by fenea on 5/7/2017.
- */
 
 @RestController
-@RequestMapping("controller/get_form_fields")
+@RequestMapping("/controller/get_form_fields")
 public class GetFormFields {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<FormOutEntity> testLogin(@RequestBody AuthEntity login) {
        // if (!checkUsernameAuth(login)) {
 
-
+            //Edi face o verificare ms Edi
        // }
 
 
+        System.out.println(login.getUsername());
         return new ResponseEntity<>(
                 new FormOutEntity(null),
                 HttpStatus.OK

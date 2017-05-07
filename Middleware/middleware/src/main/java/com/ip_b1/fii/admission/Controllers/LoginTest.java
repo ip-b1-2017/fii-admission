@@ -5,6 +5,7 @@ import com.ip_b1.fii.admission.Controllers.DTO.LoginTestOutEntity;
 import com.ip_b1.fii.admission.Controllers.DTO.SetTokenEntity;
 import com.ip_b1.fii.admission.Controllers.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,11 +17,12 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Random;
 
 @RestController
-@RequestMapping("controller/login_test")
+@RequestMapping("/controller/login_test")
 public class LoginTest {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<LoginTestOutEntity>testLogin(@RequestBody LoginTestInEntity login) {
+     //   System.out.println(login.getUsername());
         if (!check(login)) {
             return new ResponseEntity<>(
                     new LoginTestOutEntity(false, null, "Failed login"),
