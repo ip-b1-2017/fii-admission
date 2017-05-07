@@ -1,10 +1,9 @@
-package com.ip_b1.fii.admission.Controllers;
+package com.ip_b1.fii.admission.Controllers.DTO;
 
-public class LoginDTO {
-
+public class LoginTestInEntity {
 	private String username;
 	private String password;
-	private String familia_giosanu; 
+
 	public String getUsername() {
 		return username;
 	}
@@ -19,13 +18,5 @@ public class LoginDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getFamilia_giosanu() {
-		return familia_giosanu;
-	}
-
-	public void setFamilia_giosanu(String familia_giosanu) {
-		this.familia_giosanu = familia_giosanu;
 	}
 }
