@@ -15,7 +15,7 @@ public class AddResults {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SuccessEntity> setResult(@RequestBody ResultInEntity result) {
-        if (!AuthUtils.checkAuth(result.getAuth()) || !AuthUtils.checkAuthIsAdmin(result.getAuth())) {
+        if (!AuthUtils.checkAuthIsAdmin(result.getAuth())) {
             return new ResponseEntity<>(
                     new SuccessEntity(false),
                     HttpStatus.UNAUTHORIZED

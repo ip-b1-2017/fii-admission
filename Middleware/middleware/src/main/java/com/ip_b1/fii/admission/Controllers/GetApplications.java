@@ -16,7 +16,7 @@ public class GetApplications {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<ApplicationsEntity> getApplications(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
-        if (!AuthUtils.checkAuth(auth)  || !AuthUtils.checkAuthIsAdmin(auth)) {
+        if ( !AuthUtils.checkAuthIsAdmin(auth)) {
 
             return new ResponseEntity<>(
                     new ApplicationsEntity(),
