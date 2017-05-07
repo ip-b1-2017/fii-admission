@@ -31,11 +31,6 @@ public class ApplicationReject {
     private static boolean process(String sessionId, String cnp, String rejectionMessage) {
 
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/model/(sessionId)/change_status",
-                new FormStatusEntity(cnp, "rejected"),
-                SuccessEntity.class,
-                sessionId);
 
         ResponseEntity<CandidateOutEntity> candidate = restTemplate.getForEntity(
                 ServerProperties.modelUrl + "model/(sessionId)/get_candidate?cnp={cnp}",
@@ -48,7 +43,13 @@ public class ApplicationReject {
             return false;
         }
 
-        ResponseEntity<SuccessEntity> success =restTemplate.postForEntity(
+        restTemplate.postForEntity(
+                ServerProperties.modelUrl + "/model/(sessionId)/change_status",
+                new FormStatusEntity(candidate.getBody().getEmail(), "rejected"),
+                SuccessEntity.class,
+                sessionId);
+
+        ResponseEntity<SuccessEntity> success = restTemplate.postForEntity(
                 ServerProperties.modelUrl + "/model/(sessionId)/add_notification",
                 new NotificationEntity(candidate.getBody().getEmail(), false, rejectionMessage),
                 SuccessEntity.class,
