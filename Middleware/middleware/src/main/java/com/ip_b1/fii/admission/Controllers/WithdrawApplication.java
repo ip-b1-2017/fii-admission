@@ -31,6 +31,7 @@ public class WithdrawApplication {
         return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
     }
 
+
     private static boolean process(String sessionId, String cnp)
     {
         RestTemplate restTemplate = new RestTemplate();
