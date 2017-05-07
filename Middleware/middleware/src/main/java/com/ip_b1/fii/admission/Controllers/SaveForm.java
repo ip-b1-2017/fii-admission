@@ -32,7 +32,7 @@ public class SaveForm {
             }
         }
         return new ResponseEntity<SaveFormOutEntity>(
-               new SaveFormOutEntity(true, ""),
+                new SaveFormOutEntity(true, null),
                 HttpStatus.OK
         );
 
@@ -40,11 +40,14 @@ public class SaveForm {
 
     private static boolean addToDB(FormEntity formEntity) {
 
+        FormOutEntity formOutEntity = new FormOutEntity(formEntity.getFields());
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/save_form",
-                formEntity,
-                SuccessEntity.class);
+                ServerProperties.modelUrl + "/{username}/save_form",
+                formOutEntity,
+                SuccessEntity.class,
+                formEntity.getAuth().getUsername()
+        );
         return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();
     }
 
