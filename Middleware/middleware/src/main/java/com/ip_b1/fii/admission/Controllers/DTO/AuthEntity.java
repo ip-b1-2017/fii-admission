@@ -1,13 +1,13 @@
 package com.ip_b1.fii.admission.Controllers.DTO;
 
-/**
- * Created by fenea on 5/7/2017.
- */
 public class AuthEntity {
-
-
     String username;
     String token;
+
+    public AuthEntity(String username, String token) {
+        this.username = username;
+        this.token = token;
+    }
 
     public String getUsername() {
         return username;
@@ -22,10 +22,6 @@ public class AuthEntity {
     }
 
     public void setToken(String token) {
-        this.token = token;
-    }
-    public AuthEntity(String username, String token) {
-        this.username = username;
         this.token = token;
     }
 
