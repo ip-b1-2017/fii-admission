@@ -19,4 +19,17 @@ public class AuthUtils {
         );
         return entity.getStatusCode() != HttpStatus.NOT_FOUND && entity.getBody().getToken().equals(auth.getToken());
     }
+
+    public static boolean checkAuthIsAdmin(AuthEntity auth){
+        RestTemplate template = new RestTemplate();
+
+        ResponseEntity<UserEntity> entity = template.getForEntity(
+                ServerProperties.modelUrl + "/get_user?username={username}",
+                UserEntity.class,
+                auth.getUsername()
+        );
+        return entity.getStatusCode() != HttpStatus.NOT_FOUND &&
+                entity.getBody().getToken().equals(auth.getToken()) &&
+                entity.getBody().getRole().equals("admin");
+    }
 }
