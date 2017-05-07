@@ -30,7 +30,6 @@ public class GetFormFields {
             );
         }
         else {
-            System.out.println(auth.getUsername());
 
 
             RestTemplate template = new RestTemplate();
