@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>middleware</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Server for the middleware component</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -21,6 +21,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<junit.version>4.12</junit.version>
+		<junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
+		<junit.platform.version>1.0.0-M4</junit.platform.version>
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -35,6 +38,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
