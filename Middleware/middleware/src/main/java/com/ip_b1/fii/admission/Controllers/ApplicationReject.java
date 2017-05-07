@@ -1,9 +1,6 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.AuthEntity;
-import com.ip_b1.fii.admission.DTO.FormStatusEntity;
-import com.ip_b1.fii.admission.DTO.NotificationEntity;
-import com.ip_b1.fii.admission.DTO.SuccessEntity;
+import com.ip_b1.fii.admission.DTO.*;
 import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
 import org.springframework.http.HttpStatus;
@@ -34,18 +31,28 @@ public class ApplicationReject {
     private static boolean process(String sessionId, String cnp, String rejectionMessage) {
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<SuccessEntity> success = restTemplate.postForEntity(
+        restTemplate.postForEntity(
                 ServerProperties.modelUrl + "/model/(sessionId)/change_status",
                 new FormStatusEntity(cnp, "rejected"),
                 SuccessEntity.class,
                 sessionId);
 
-        success = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/model/(sessionId)/add_to_notification",
-                new NotificationEntity(cnp, "rejected"),
+        ResponseEntity<CandidateOutEntity> candidate = restTemplate.getForEntity(
+                ServerProperties.modelUrl + "model/(sessionId)/get_candidate?cnp={cnp}",
+                CandidateOutEntity.class,
+                sessionId,
+                cnp
+        );
+
+        if(candidate.getStatusCode() == HttpStatus.NOT_FOUND){
+            return false;
+        }
+
+        ResponseEntity<SuccessEntity> success =restTemplate.postForEntity(
+                ServerProperties.modelUrl + "/model/(sessionId)/add_notification",
+                new NotificationEntity(candidate.getBody().getEmail(), false, rejectionMessage),
                 SuccessEntity.class,
                 sessionId);
-
         return success.getBody().isSuccess();
     }
 
