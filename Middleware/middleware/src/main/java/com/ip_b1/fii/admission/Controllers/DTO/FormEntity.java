@@ -2,12 +2,9 @@ package com.ip_b1.fii.admission.Controllers.DTO;
 
 import java.util.List;
 
-/**
- * Created by fenea on 5/7/2017.
- */
 public class FormEntity {
-    AuthEntity auth;
-    List<FormFieldEntity> fields;
+    private AuthEntity auth;
+    private List<FormFieldEntity> fields;
 
     public FormEntity() {
     }
