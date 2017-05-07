@@ -17,6 +17,15 @@ public class CandidateOutEntity {
         this.phoneNumber = phoneNumber;
     }
 
+    public CandidateOutEntity(CandidateInEntity entity){
+        this.email = entity.getAuth().getUsername();
+        this.cnp = entity.getCnp();
+        this.firstname = entity.getFirstname();
+        this.lastname = entity.getLastname();
+        this.address = entity.getAddress();
+        this.phoneNumber = entity.getPhoneNumber();
+    }
+
     public String getEmail() {
         return email;
     }
