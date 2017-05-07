@@ -2,13 +2,15 @@ package com.ip_b1.fii.admission.Controllers;
 
 import com.ip_b1.fii.admission.Controllers.DTO.AuthEntity;
 import com.ip_b1.fii.admission.Controllers.DTO.FormOutEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.LoginTestOutEntity;
+import com.ip_b1.fii.admission.Controllers.Utils.AuthUtils;
+import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by fenea on 5/7/2017.
@@ -19,18 +21,31 @@ import org.springframework.web.bind.annotation.RestController;
 public class GetFormFields {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<FormOutEntity> testLogin(@RequestBody AuthEntity login) {
-       // if (!checkUsernameAuth(login)) {
+    public ResponseEntity<FormOutEntity> testLogin(@RequestBody AuthEntity auth) {
+        if (!AuthUtils.checkAuth(auth)) {
 
-            //Edi face o verificare ms Edi
-       // }
+            return new ResponseEntity<>(
+                    new FormOutEntity( null),
+                    HttpStatus.UNAUTHORIZED
+            );
+        }
+        else {
+            System.out.println(auth.getUsername());
 
 
-        System.out.println(login.getUsername());
-        return new ResponseEntity<FormOutEntity>(
-                new FormOutEntity(null),
-                HttpStatus.OK
-        );
+            RestTemplate template = new RestTemplate();
+
+            ResponseEntity<FormOutEntity> entity = template.getForEntity(
+                    ServerProperties.modelUrl + "/get_form_fields?username={username}",
+                    FormOutEntity.class,
+                    auth.getUsername()
+            );
+
+            return new ResponseEntity<FormOutEntity>(
+                    entity.getBody(),
+                    HttpStatus.OK
+            );
+        }
     }
 
 }

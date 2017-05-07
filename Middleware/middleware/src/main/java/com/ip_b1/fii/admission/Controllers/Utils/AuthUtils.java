@@ -17,7 +17,6 @@ public class AuthUtils {
                 UserEntity.class,
                 auth.getUsername()
         );
-
         return entity.getStatusCode() != HttpStatus.NOT_FOUND && entity.getBody().getToken().equals(auth.getToken());
     }
 }
