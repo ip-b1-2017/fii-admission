@@ -33,6 +33,7 @@ public class GetNotifications {
             return new ResponseEntity<>(
                     entity.getBody(),
                     HttpStatus.OK
+                    //
             );
         }
     }
