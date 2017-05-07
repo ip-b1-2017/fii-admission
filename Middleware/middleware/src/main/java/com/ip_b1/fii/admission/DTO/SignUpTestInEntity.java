@@ -1,4 +1,4 @@
-package com.ip_b1.fii.admission.Controllers.DTO;
+package com.ip_b1.fii.admission.DTO;
 
 public class SignUpTestInEntity {
 

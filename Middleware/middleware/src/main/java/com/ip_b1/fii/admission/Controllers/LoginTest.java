@@ -1,11 +1,10 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.Controllers.DTO.LoginTestInEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.LoginTestOutEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.SetTokenEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.SuccessEntity;
+import com.ip_b1.fii.admission.DTO.LoginTestInEntity;
+import com.ip_b1.fii.admission.DTO.LoginTestOutEntity;
+import com.ip_b1.fii.admission.DTO.SetTokenEntity;
+import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,8 +1,7 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.Controllers.DTO.AuthEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.FormOutEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.LoginTestOutEntity;
+import com.ip_b1.fii.admission.DTO.AuthEntity;
+import com.ip_b1.fii.admission.DTO.FormOutEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,4 +1,4 @@
-package com.ip_b1.fii.admission.Controllers.DTO;
+package com.ip_b1.fii.admission.DTO;
 
 /**
  * Created by fenea on 5/7/2017.

@@ -1,6 +1,6 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.Controllers.DTO.AuthEntity;
+import com.ip_b1.fii.admission.DTO.AuthEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

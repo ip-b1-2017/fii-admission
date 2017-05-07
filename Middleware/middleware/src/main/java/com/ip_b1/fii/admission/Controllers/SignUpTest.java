@@ -1,9 +1,9 @@
 package com.ip_b1.fii.admission.Controllers;
 
 
-import com.ip_b1.fii.admission.Controllers.DTO.SignUpTestInEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.SignUpTestOutEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.SuccessEntity;
+import com.ip_b1.fii.admission.DTO.SignUpTestInEntity;
+import com.ip_b1.fii.admission.DTO.SignUpTestOutEntity;
+import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

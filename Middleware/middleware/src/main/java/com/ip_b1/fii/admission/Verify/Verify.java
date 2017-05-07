@@ -1,4 +1,4 @@
-package com.ip_b1.fii.admission.Controllers.Verify;
+package com.ip_b1.fii.admission.Verify;
 
 public interface Verify {
 

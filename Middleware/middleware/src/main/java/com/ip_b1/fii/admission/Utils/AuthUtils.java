@@ -1,7 +1,7 @@
-package com.ip_b1.fii.admission.Controllers.Utils;
+package com.ip_b1.fii.admission.Utils;
 
-import com.ip_b1.fii.admission.Controllers.DTO.AuthEntity;
-import com.ip_b1.fii.admission.Controllers.DTO.UserEntity;
+import com.ip_b1.fii.admission.DTO.AuthEntity;
+import com.ip_b1.fii.admission.DTO.UserEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
