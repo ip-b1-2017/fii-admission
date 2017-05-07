@@ -9,6 +9,9 @@ public class AuthEntity {
     String username;
     String token;
 
+    public AuthEntity(){
+
+    }
     public String getUsername() {
         return username;
     }
