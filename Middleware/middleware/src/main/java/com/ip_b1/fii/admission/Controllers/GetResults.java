@@ -13,17 +13,17 @@ import org.springframework.web.client.RestTemplate;
 public class GetResults {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> getDistribution(@RequestBody AuthEntity auth) {
+    public ResponseEntity<String> getResults(@RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
-                    "",
+                    "Unauthorized",
                     HttpStatus.UNAUTHORIZED
             );
         } else {
             RestTemplate template = new RestTemplate();
 
             ResponseEntity<String> entity = template.getForEntity(
-                    ServerProperties.modelUrl + "get_distribution",
+                    ServerProperties.modelUrl + "get_result",
                     String.class
             );
 
