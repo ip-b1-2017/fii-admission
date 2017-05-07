@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import javax.validation.constraints.Null;
-
-/**
- * Created by fenea on 5/7/2017.
- */
 
 @RestController
 @RequestMapping("/controller/get_form_fields")
