@@ -16,10 +16,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.ip_b1.fii.admission.DTO.AuthEntity;
 import com.ip_b1.fii.admission.DTO.AvailableExamClassromEntity;
-<<<<<<< HEAD
 import com.ip_b1.fii.admission.DTO.ClassroomInEntity;
-=======
->>>>>>> origin/master
+
 import com.ip_b1.fii.admission.Utils.AuthUtils;
 
 @RestController
