@@ -27,7 +27,12 @@ public class GetUserDistribution {
                     ServerProperties.modelUrl + "get_result",
                     String.class
             );
+            if( entity.getBody()==null)
+                return new ResponseEntity<>(
+                        entity.getBody(),
+                        HttpStatus.NOT_FOUND
 
+                );
             return new ResponseEntity<>(
                     entity.getBody(),
                     HttpStatus.OK

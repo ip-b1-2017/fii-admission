@@ -29,6 +29,12 @@ public class GetNotifications {
                     sessionId,
                     auth.getUsername()
             );
+            if( entity.getBody()==null)
+                return new ResponseEntity<>(
+                        entity.getBody(),
+                        HttpStatus.NOT_FOUND
+
+                );
 
             return new ResponseEntity<>(
                     entity.getBody(),
