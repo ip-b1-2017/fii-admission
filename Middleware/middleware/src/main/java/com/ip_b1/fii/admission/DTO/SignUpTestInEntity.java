@@ -1,9 +1,13 @@
 package com.ip_b1.fii.admission.DTO;
 
 public class SignUpTestInEntity {
-
     private String email;
     private String password;
+
+    public SignUpTestInEntity(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public String getEmail() {
         return email;

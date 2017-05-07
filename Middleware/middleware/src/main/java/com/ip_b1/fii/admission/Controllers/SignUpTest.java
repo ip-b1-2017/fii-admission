@@ -26,7 +26,7 @@ public class SignUpTest {
         if(!addToDB(signup)){
             return new ResponseEntity<>(new SignUpTestOutEntity(false, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>(new SignUpTestOutEntity(true, null), HttpStatus.OK);
+        return new ResponseEntity<>(new SignUpTestOutEntity(true, null), HttpStatus.CREATED);
     }
 
     private static boolean check(SignUpTestInEntity signup) {
