@@ -9,7 +9,15 @@ import org.springframework.web.client.RestTemplate;
 
 
 public class AuthUtils {
+    public static boolean claimsAuthenticated(AuthEntity auth){
+        return auth.getUsername() != null && auth.getToken() != null;
+    }
+
     public static boolean checkAuth(AuthEntity auth) {
+        if (auth.getUsername() == null || auth.getToken() == null){
+            return false;
+        }
+
         RestTemplate template = new RestTemplate();
 
         ResponseEntity<UserEntity> entity = template.getForEntity(
