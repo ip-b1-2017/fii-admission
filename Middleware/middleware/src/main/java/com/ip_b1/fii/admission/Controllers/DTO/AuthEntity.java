@@ -8,6 +8,7 @@ public class AuthEntity {
 
     String username;
     String token;
+
     public AuthEntity(){
 
     }

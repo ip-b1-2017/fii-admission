@@ -8,6 +8,9 @@ import java.util.List;
 public class FormOutEntity {
     List<FormFieldEntity> fields;
 
+    public FormOutEntity() {
+    }
+
     public FormOutEntity(List<FormFieldEntity> fields) {
         this.fields = fields;
     }

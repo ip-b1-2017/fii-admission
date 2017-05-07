@@ -9,6 +9,9 @@ public class FormEntity {
     AuthEntity auth;
     List<FormFieldEntity> fields;
 
+    public FormEntity() {
+    }
+
     public FormEntity(AuthEntity auth, List<FormFieldEntity> fields) {
         this.auth = auth;
         this.fields = fields;
