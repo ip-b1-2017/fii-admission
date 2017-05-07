@@ -8,7 +8,6 @@ public class FormFieldEntity {
         this.value = value;
     }
 
-
     public String getField() {
         return field;
     }

@@ -1,7 +1,5 @@
 package com.ip_b1.fii.admission.DTO;
 
-import java.util.List;
-
 public class NotificationsOutEntity {
 
     private String notifications;

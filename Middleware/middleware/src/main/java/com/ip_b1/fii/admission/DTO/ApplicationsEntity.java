@@ -2,9 +2,6 @@ package com.ip_b1.fii.admission.DTO;
 
 import java.util.List;
 
-/**
- * Created by fenea on 5/7/2017.
- */
 public class ApplicationsEntity {
     List<String> applications;
 

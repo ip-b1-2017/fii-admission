@@ -1,8 +1,5 @@
 package com.ip_b1.fii.admission.DTO;
 
-/**
- * Created by Claudia Lucasi on 5/7/2017.
- */
 public class ContestationEntity {
     private String contestation;
     private AuthEntity auth;
