@@ -1,6 +1,5 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.ApplicationsEntity;
 import com.ip_b1.fii.admission.DTO.AuthEntity;
 import com.ip_b1.fii.admission.DTO.FormOutEntity;
 import com.ip_b1.fii.admission.ServerProperties;
@@ -10,10 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by fenea on 5/7/2017.
- */
-
 @RestController
 @RequestMapping("/controller/{sessionId}/get_application_by_Email/{email}")
 public class GetApplicationByEmail {
@@ -22,7 +17,7 @@ public class GetApplicationByEmail {
         public ResponseEntity<FormOutEntity> getApplications(@PathVariable String sessionId, @PathVariable String email,@RequestBody AuthEntity auth) {
             if (!AuthUtils.checkAuth(auth)  || !AuthUtils.checkAuthIsAdmin(auth)) {
 
-                return new ResponseEntity<FormOutEntity>(
+                return new ResponseEntity<>(
                         new FormOutEntity(),
                         HttpStatus.UNAUTHORIZED
                 );
@@ -38,7 +33,7 @@ public class GetApplicationByEmail {
 
                 );
 
-                return new ResponseEntity<FormOutEntity>(
+                return new ResponseEntity<>(
                         entity.getBody(),
                         HttpStatus.OK
                 );

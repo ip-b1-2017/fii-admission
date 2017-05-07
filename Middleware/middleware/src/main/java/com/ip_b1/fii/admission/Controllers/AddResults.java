@@ -1,7 +1,5 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.AuthEntity;
-import com.ip_b1.fii.admission.DTO.NotificationsOutEntity;
 import com.ip_b1.fii.admission.DTO.ResultInEntity;
 import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;

@@ -10,11 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by fenea on 5/7/2017.
- */
-
-
 @RestController
 @RequestMapping("/controller/{sessionId}/get_applications")
 public class GetApplications {
@@ -23,7 +18,7 @@ public class GetApplications {
     public ResponseEntity<ApplicationsEntity> getApplications(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)  || !AuthUtils.checkAuthIsAdmin(auth)) {
 
-            return new ResponseEntity<ApplicationsEntity>(
+            return new ResponseEntity<>(
                     new ApplicationsEntity(),
                     HttpStatus.UNAUTHORIZED
             );
@@ -39,7 +34,7 @@ public class GetApplications {
 
             );
 
-            return new ResponseEntity<ApplicationsEntity>(
+            return new ResponseEntity<>(
                     entity.getBody(),
                     HttpStatus.OK
             );

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-
 @RestController
 @RequestMapping("/controller/get_form_fields")
 public class SaveForm {
@@ -28,10 +27,10 @@ public class SaveForm {
 
 
             if(!addToDB(formEntity)){
-                return new ResponseEntity<SaveFormOutEntity>(new SaveFormOutEntity(false, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(new SaveFormOutEntity(false, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-        return new ResponseEntity<SaveFormOutEntity>(
+        return new ResponseEntity<>(
                 new SaveFormOutEntity(true, null),
                 HttpStatus.OK
         );

@@ -9,10 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by fenea on 5/7/2017.
- */
-
 @RestController
 @RequestMapping("/controller/get_result")
 public class GetUserDistribution {
@@ -20,8 +16,8 @@ public class GetUserDistribution {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> getResult(@RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
-            return new ResponseEntity<String>(
-                    new String("unauthorized"),
+            return new ResponseEntity<>(
+                    "unauthorized",
                     HttpStatus.UNAUTHORIZED
             );
         } else {
