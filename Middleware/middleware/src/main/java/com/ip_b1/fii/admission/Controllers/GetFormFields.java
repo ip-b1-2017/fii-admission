@@ -15,18 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("controller/get_form_fields")
+@RequestMapping("/controller/get_form_fields")
 public class GetFormFields {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<FormOutEntity> testLogin(@RequestBody AuthEntity login) {
        // if (!checkUsernameAuth(login)) {
 
-
+            //Edi face o verificare ms Edi
        // }
 
 
-        return new ResponseEntity<>(
+        System.out.println(login.getUsername());
+        return new ResponseEntity<FormOutEntity>(
                 new FormOutEntity(null),
                 HttpStatus.OK
         );
