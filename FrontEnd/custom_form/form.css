@@ -8,7 +8,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; }
+    align-items: flex-start;
+    justify-content: center; }
     .form-group .custom-input input {
       width: 100%; }
 
@@ -16,6 +17,9 @@
   width: 100%; }
   .information-pair:not(:last-child) {
     padding-right: 10px; }
+
+label {
+  text-align: left; }
 
 .custom-input-row {
   width: 100%;

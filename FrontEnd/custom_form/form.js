@@ -1503,72 +1503,76 @@ $(function () {
                         "type": "div",
                         "class": "information-pair",
                         "html": [{
-                            "type": "div",
-                            "class": "custom-input",
-                            "html": [{
-                                    "name": "optiune-test-scris-alfa",
-                                    "caption": "Opțiunea pentru testul scris (Matematică, Informatică (Pascal), Informatică (C)):",
-                                    "type": "text",
-                                    "placeholder": "Ex. Matematica",
-                                    "class": "form-control"
-                                },
-
-                            ]
-                        }, ]
-                    },
-
-
-                ]
-            },
-            {
-                "type": "div",
-                "class": "form-group",
-                "html": [
-
-                    {
                         "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "diploma-men-alfa",
-                                "type": "radiobuttons",
-                                "caption": "Solicitaţi echivalare cu diploma olimpiadă organizată MEN?",
-                                "class": "radio-inline",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Optiunea pentru testul scris",
                                 "options": {
-                                    "da": "DA",
-                                    "nu": "NU",
-
-                                },
-
-
+                                    "mate": "Matematica",
+                                    "info1": "Informatica (Pascal)",
+                                    "info2": "Informatica (C)"
+                                }
                             }
 
                         ]
-                    },
+                    } ]
+                    },{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Solicitati echivalare cu diploma la olimpiada organizata MEN?",
+                                "options": {
+                                    "da": "Da",
+                                    "nu": "Nu"
+                                }
+                            }
+
+                        ]
+                    } ]
+                    }
+
 
                 ]
             },
-            {
+              {
                 "type": "div",
                 "class": "form-group",
                 "html": [
 
-                    {
+                          {
                         "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                        "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "preadmitere",
-                                "type": "radiobuttons",
-                                "caption": "Ați participat la preadmitere la Facultatea de Informatică din Iași și doriți luarea în considerare a notei la examenul din sesiunea curentă?*",
-                                "class": "radio-inline",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Ați participat la preadmitere la Facultatea de Informatică din Iași și doriți luarea în considerare a notei la examenul din sesiunea curentă?",
                                 "options": {
-                                    "da": "DA",
-                                    "nu": "NU",
+                                    "da": "Da",
+                                    "nu": "Nu"
+                                }
+                            }
 
-                                },
+                        ]
+                    } ]
+                },
+                {
 
-
-                            },
-                            {
                                 "type": "div",
                                 "class": "custom-input",
                                 "html": [{
@@ -1581,10 +1585,8 @@ $(function () {
 
                                 ]
                             }
-
-                        ]
-                    },
-
+                
+     
                 ]
             },
             {
@@ -1594,23 +1596,25 @@ $(function () {
 
                     {
                         "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                        "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "sustinere-test-iar",
-                                "type": "radiobuttons",
-                                "caption": "Dacă ați răspuns DA la întrebarea anterioară, doriți să susțineți din nou testul scris în această sesiune de admitere**?",
-                                "class": "radio-inline",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Daca ati raspuns DA la intrebarea anterioara, doriti sa sustineti din nou testul scris in aceasta sesiune de admitere**?",
                                 "options": {
-                                    "da": "DA",
-                                    "nu": "NU",
-
-                                },
-
-
+                                    "da": "Da",
+                                    "nu": "Nu"
+                                }
                             }
 
                         ]
-                    },
+                    } ]
+                },
 
                 ]
             },
