@@ -1,8 +1,8 @@
 package fiiadmission.view.controller;
 
 import fiiadmission.dto.LoginDTO;
-import fiiadmission.view.Model.RegisterDTO;
-import fiiadmission.view.Model.SessionIdentifier;
+import fiiadmission.dto.RegisterDTO;
+import fiiadmission.dto.SessionIdentifier;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
