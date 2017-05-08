@@ -9,4 +9,5 @@ sqlite3 FiiAdmission.db < gen_db_new\USER.sql
 sqlite3 FiiAdmission.db < gen_db_new\MEDIE.sql
 sqlite3 FiiAdmission.db < gen_db_new\SALI.sql
 sqlite3 FiiAdmission.db < gen_db_new\SALI_EXAMEN.sql
+sqlite3 FiiAdmission.db < gen_db_new\FORM.sql
 sqlite3 FiiAdmission.db < gen_db_new\STUDENTI.SQL
