@@ -1672,7 +1672,118 @@ $(function () {
         ]
     });
 });
+$(function () {
+    $("#myform6").dform({
+        "action": "form.html",
+        "method": "get",
+        "html": [
+            {
+                "type": "h4",
+                "html": "Taxe:",
+                "class": "sub-title"
+            },
+            {
+                "type":"ul",
+                "html":[
+                    {
+                        "type":"li",
+                        "html":"Taxă de înscriere: 300 Ron"
+                    },
+                       {
+                        "type":"li",
+                        "html":"Taxă de şcolarizare: 3500 Ron"
+                    }
+                ]
+            },
+            {
+                "type": "h4",
+                "html": "Acte necesare:",
+                "class": "sub-title"
+            },
+            {
+                "type":"ul",
+                "html":[
+                    {
+                        "type":"li",
+                        "html":"fişa de înscriere"
+                    },
+                    {
+                        "type":"li",
+                        "html":"trei fotografii tip buletin de identitate"
+                    },
+                    {
+                        "type":"li",
+                        "html":"diploma de bacalaureat sau echivalentă cu aceasta, recunoscută de M.E.N."
+                    },
+                    {
+                        "type":"ul",
+                        "html":[
+                            {
+                                "type":"li",
+                                "html":"candidaţii care au promovat examenul de bacalaureat în sesiunea iunie-iulie 2016 pot prezenta la înscriere, în locul diplomei de bacalaureat, adeverinţa eliberată de liceu, în care se menţionează atât media generală, cât şi notele obţinute la probele susţinute şi notele la disciplinele care se iau în calcul la stabilirea mediei"
+                            },
+                            {
+                                "type":"li",
+                                "html":"dacă un candidat nu depune la o specializare diploma în original, va depune şi o adeverinţă de la facultatea unde are actele în original"
+                            }
+                        ]
+                    },
+                    {
+                        "type":"li",
+                        "html":"certificat de naştere, în copie legalizată"
+                    },
+                    {
+                        "type":"li",
+                        "html":"certificatul de căsătorie sau documentul care atestă schimbarea numelui, în copie legalizată (dacă este cazul)"
+                    },
+                    {
+                        "type":"li",
+                        "html":"copie după cartea de identitate, care atestă domiciliul în România"
+                    },
+                    {
+                        "type":"li",
+                        "html":"adeverinţă medicală tip"
+                    },
+                    {
+                        "type":"li",
+                        "html":"chitanţă care dovedeşte plata taxei de înscriere sau actele necesare pentru scutirea de plata taxei"
+                    },
+                    {
+                        "type":"li",
+                        "html":"dosar plic"
+                    }
+                ]
+            },
+            {
+                "type":"p",
+                "html":"Candidaţii cetăţeni români cu domiciliul în România, dar cu studii efectuate în străinătate (inclusiv Republica Moldova) vor prezenta la înscriere diploma de bacalaureat echivalată de către Ministerul Educaţiei Naţionale (CNRED)."
+            },
+            {
+                "type": "h4",
+                "html": "Candidaţii care au absolvit liceul inainte de 2016 vor depune la dosar, după caz:",
+                "class": "sub-title"
+            },
+            {
+                "type":"ul",
+                "html":[
+                    {
+                        "type":"li",
+                        "html":"declaraţie pe propria răspundere că nu au urmat cursurile nici unei facultăţi"
+                    },
+                    {
+                        "type":"li",
+                        "html":"adeverinţă de la facultatea urmată, care să ateste numărul de semestre finanţate de la buget de care au beneficiat"
+                    }
+                ]
+            },
+            {
+                "type":"p",
+                "html":"Întrucât candidaţii au dreptul de a se prezenta concomitent la două sau mai multe domenii, în vederea admiterii în învăţământul superior, dosarul cu actele originale se depune la prima opţiune. Înscrierea pentru celelalte domenii se face pe baza documentelor mai sus menţionate, prezentate în copie (pentru domeniile din Universitatea „Alexandru Ioan Cuza” Iaşi) sau în copie legalizată (pentru domeniile altor instituţii în afara Universităţii „Alexandru Ioan Cuza” Iaşi), la care se adaugă o adeverinţă de înscriere de la facultatea unde s-a depus dosarul cu actele originale. Indiferent dacă Facultatea de Informatică reprezintă sau nu prima opţiune, testul scris este obligatoriu pentru toţi candidaţii"
+            }
 
+        ]
+    });
+});
 
 $(function () {
     $("#myform5").dform({
