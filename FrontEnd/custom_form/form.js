@@ -1523,7 +1523,8 @@ $(function () {
                     },{
                         "type": "div",
                         "class": "information-pair",
-                        "html": [{
+                        "html": [
+                            {
                         "type": "div",
 
                         "class": "custom-input",
@@ -1691,7 +1692,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "documente-diploma-bac-or",
                                         "caption": "Diploma de bacalaureat (original)",
@@ -1711,7 +1712,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "documente-diploma-bac-copie",
                                         "caption": "Diploma de bacalaureat (copie legalizată)",
@@ -1737,7 +1738,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "documente-adeverinta-or",
                                         "caption": "Adeverinţă (original)",
@@ -1757,7 +1758,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "documente-adeverinta-copie",
                                         "caption": "Adeverinţă (copie legalizată)",
@@ -1783,7 +1784,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "documente-echiv-studii-or",
                                         "caption": "Document echivalare studii (original)",
@@ -1803,7 +1804,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "documente-echiv-studii-copie",
                                         "caption": "Document echivalare studii (copie legalizată)",
@@ -1830,7 +1831,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "documente-diploma-olimp-or",
                                         "caption": "Diplomă olimpiadă (original)",
@@ -1850,7 +1851,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "participare-alta-admitere",
                                         "caption": "Participaţi la alt/e concurs/uri de admitere?",
@@ -2065,7 +2066,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-site-admitere-alfn",
                                         "caption": "Site-ul dedicat admiterii (admitere.uaic.ro)",
@@ -2085,7 +2086,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-site-fac",
                                         "caption": "Site-ul facultății",
@@ -2111,7 +2112,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-brosura",
                                         "caption": "Broșură sau pliant despre admitere",
@@ -2131,7 +2132,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-facebook",
                                         "caption": "Pagina de Facebook a Universității",
@@ -2157,7 +2158,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-prieteni",
                                         "caption": "Prieteni, cunoștințe, rude",
@@ -2177,7 +2178,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-porti-deschise",
                                         "caption": "Săptămâna Porților Deschise la UAIC",
@@ -2203,7 +2204,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-prezentare-liceu",
                                         "caption": "Am participat la o prezentare în liceu",
@@ -2223,7 +2224,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-profesori-liceu",
                                         "caption": "Profesorii din liceu",
@@ -2249,7 +2250,7 @@ $(function () {
                         "class": "information-pair",
                         "html": [{
                                 "type": "div",
-                                "class": "custom-input",
+                                "class": "custom-input-row",
                                 "html": [{
                                         "name": "sursa-info-presa",
                                         "caption": "Presă",
@@ -2296,15 +2297,16 @@ $(function () {
                 "type": "div",
                 "class": "form-group",
                 "html": [
-
-                    {
+                {
+                       
                         "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "factori-prestigiul",
-                                "type": "radiobuttons",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
                                 "caption": "Prestigiul Universității/facultății",
-                                "class": "radio-inline",
                                 "options": {
                                     "0": "0",
                                     "1": "1",
@@ -2314,28 +2316,21 @@ $(function () {
                                     "5": "5",
 
                                 },
-
-
                             }
 
                         ]
+                    
                     },
-
-                ]
-            },
-            {
-                "type": "div",
-                "class": "form-group",
-                "html": [
-
-                    {
+                   {
+                       
                         "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "factori-calitatea",
-                                "type": "radiobuttons",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
                                 "caption": "Calitatea educației la UAIC",
-                                "class": "radio-inline",
                                 "options": {
                                     "0": "0",
                                     "1": "1",
@@ -2345,28 +2340,21 @@ $(function () {
                                     "5": "5",
 
                                 },
-
-
                             }
 
                         ]
+                    
                     },
-
-                ]
-            },
-            {
-                "type": "div",
-                "class": "form-group",
-                "html": [
-
                     {
+                       
                         "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "factori-sfatul",
-                                "type": "radiobuttons",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
                                 "caption": "Sfatul persoanelor apropiate",
-                                "class": "radio-inline",
                                 "options": {
                                     "0": "0",
                                     "1": "1",
@@ -2376,28 +2364,20 @@ $(function () {
                                     "5": "5",
 
                                 },
-
-
                             }
 
                         ]
+                    
                     },
-
-                ]
-            },
-            {
-                "type": "div",
-                "class": "form-group",
-                "html": [
-
-                    {
+                     {
+                       
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "factori-profesia",
-                                "type": "radiobuttons",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
                                 "caption": "Statutul profesiei pentru care optaţi",
-                                "class": "radio-inline",
                                 "options": {
                                     "0": "0",
                                     "1": "1",
@@ -2407,28 +2387,28 @@ $(function () {
                                     "5": "5",
 
                                 },
-
-
                             }
 
                         ]
-                    },
-
+                    
+                    }
                 ]
             },
+            
             {
                 "type": "div",
                 "class": "form-group",
                 "html": [
-
-                    {
+                {
+                       
                         "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "factori-colegii",
-                                "type": "radiobuttons",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
                                 "caption": "Colegii",
-                                "class": "radio-inline",
                                 "options": {
                                     "0": "0",
                                     "1": "1",
@@ -2438,28 +2418,21 @@ $(function () {
                                     "5": "5",
 
                                 },
-
-
                             }
 
                         ]
+                    
                     },
-
-                ]
-            },
-            {
-                "type": "div",
-                "class": "form-group",
-                "html": [
-
-                    {
+                   {
+                       
                         "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "factori-materiile",
-                                "type": "radiobuttons",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
                                 "caption": "Materiile care se studiază",
-                                "class": "radio-inline",
                                 "options": {
                                     "0": "0",
                                     "1": "1",
@@ -2469,28 +2442,21 @@ $(function () {
                                     "5": "5",
 
                                 },
-
-
                             }
 
                         ]
+                    
                     },
-
-                ]
-            },
-            {
-                "type": "div",
-                "class": "form-group",
-                "html": [
-
                     {
+                       
                         "type": "div",
+
                         "class": "custom-input",
                         "html": [{
-                                "name": "factori-informatii-facultate",
-                                "type": "radiobuttons",
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
                                 "caption": "Informațiile furnizate de Universitate",
-                                "class": "radio-inline",
                                 "options": {
                                     "0": "0",
                                     "1": "1",
@@ -2500,47 +2466,61 @@ $(function () {
                                     "5": "5",
 
                                 },
-
-
                             }
 
                         ]
+                    
                     },
+                     {
+                       
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "option-test",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Apropierea de domiciliu",
+                                "options": {
+                                    "0": "0",
+                                    "1": "1",
+                                    "2": "2",
+                                    "3": "3",
+                                    "4": "4",
+                                    "5": "5",
 
+                                },
+                            }
+
+                        ]
+                    
+                    }
                 ]
-            },
-            {
+            }  ,
+             {
                 "type": "div",
-                "class": "form-group",
                 "html": [
 
                     {
                         "type": "div",
-                        "class": "custom-input",
                         "html": [{
-                                "name": "factori-apropiere-domiciliu",
-                                "type": "radiobuttons",
-                                "caption": "Apropierea de domiciliu",
-                                "class": "radio-inline",
-                                "options": {
-                                    "0": "0",
-                                    "1": "1",
-                                    "2": "2",
-                                    "3": "3",
-                                    "4": "4",
-                                    "5": "5",
-
-                                },
-
-
-                            }
-
-                        ]
+                            "name": "cerinte-facultate-info",
+                            "type": "p",
+                            "html": "Declar pe propria răspundere, cunoscând consecinţele administrative şi juridice ale declaraţiilor inexacte/ false, că datele furnizate în această fişă sunt conforme cu realitatea şi că am luat cunoştinţă prevederile metodologiei de admitere. ",
+                            "class": "info"
+                        }, ]
                     },
+                    {
+                        "type": "div",
+                        "html": [{
+                            "name": "cerinte-facultate-info",
+                            "type": "p",
+                            "html": "Datele declarate de Dumneavoastră sunt prelucrate de Universitatea „Alexandru Ioan Cuza” din Iaşi, în conformitate cu prevederile Legii 677/2001, privind protecţia persoanelor cu privire la prelucrarea datelor cu caracter personal şi libera circulaţie a acestor date, modificată şi completată.  ",
+                            "class": "info"
+                        }, ]
+                    }
 
                 ]
-            },
-
+            }      
         ]
     });
 });
