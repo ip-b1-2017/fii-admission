@@ -94,7 +94,7 @@ CREATE TABLE STUDENTI (
 	cnp 				varchar(16) PRIMARY KEY,
 	username			varchar(255) default 'prenume.nume',
 	nume_nastere		varchar(255),
-   	telefon				varchar(16) UNIQUE,
+   	telefon				varchar(16),
 	prenume 			varchar(255),
 	adresa 				varchar(255),
 	nationalitate 		varchar(255),
