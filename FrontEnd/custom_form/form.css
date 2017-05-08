@@ -17,4 +17,23 @@
   .information-pair:not(:last-child) {
     padding-right: 10px; }
 
+.custom-input-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+  .custom-input-row label {
+    align-self: flex-start; }
+  .custom-input-row .custom-section {
+    margin: 0 10px;
+    height: 40px;
+    display: flex;
+    align-items: flex-end; }
+  .custom-input-row .ui-dform-radiobuttons {
+    margin-top: 25px; }
+    .custom-input-row .ui-dform-radiobuttons input {
+      margin-right: 5px; }
+    .custom-input-row .ui-dform-radiobuttons label {
+      margin-right: 10px; }
+
 /*# sourceMappingURL=form.css.map */
