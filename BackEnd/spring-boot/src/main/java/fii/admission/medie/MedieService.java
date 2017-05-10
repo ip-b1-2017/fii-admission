@@ -1,4 +1,4 @@
-package fii.admission.note;
+package fii.admission.medie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,20 +9,19 @@ import org.springframework.stereotype.Service;
 import fii.admission.MainApp;
 
 @Service
-public class NoteService {
+public class MedieService {
 	
-	static public List<Note> getAllNote() {
-		ArrayList<Note> result = new ArrayList<Note>();
+	static public List<Medie> getAllMedie() {
+		ArrayList<Medie> result = new ArrayList<Medie>();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM NOTE";
+		String query = "SELECT * FROM MEDIE";
 		try{
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
-				Note p = new Note();
+				Medie p = new Medie();
 				p.setCandidatCNP(rs.getString("CANDIDATCNP"));
 				p.setValoare(rs.getFloat("VALOARE"));
-				p.setExamenId(rs.getString("EXAMENID"));
 				result.add(p);
 			}
 			stmt.close();
@@ -30,88 +29,84 @@ public class NoteService {
 			if(result.isEmpty()) return null;
 			else return result;
 		} catch(Exception exc) {
-			System.out.printf("[error][getAllNote] %s\n", exc.getMessage());
+			System.out.printf("[error][getAllMedie] %s\n", exc.getMessage());
 		}
 		return null;
 	}
 	
-	public static Note getNote(String candidatcnp) {
-		Note result = new Note();
+	public static Medie getMedie(String candidatCNP) {
+		Medie result = new Medie();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM NOTE WHERE CANDIDATCNP = ?";
+		String query = "SELECT * FROM MEDIE WHERE CANDIDATCNP = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1, candidatcnp);
+			pstmt.setString(1, candidatCNP);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result.setCandidatCNP(rs.getString("CANDIDATCNP"));
 				result.setValoare(rs.getFloat("VALOARE"));
-				result.setExamenId(rs.getString("EXAMENID"));
 			}
 			else return null;
 			pstmt.close();
 			rs.close();
 			return result;
 		} catch(Exception exc) {
-			System.out.printf("[error][getNote] %s\n", exc.getMessage());
+			System.out.printf("[error][getMedie] %s\n", exc.getMessage());
 		}
 		return null;
 	}
 	
-	public static int updateNote(String candidatcnp, Note note) {
+	public static int updateMedie(String candidatCNP, Medie medie) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE NOTE SET candidatcnp = ?, " + 
-					   "valoare = ?, examenid = ? WHERE candidatcnp = ?";
+		String query = "UPDATE MEDIE SET CANDIDATCNP = ?, VALOARE = ? WHERE CANDIDATCNP = ?";
 			
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, note.getCandidatCNP());
-			pstmt.setFloat(2, note.getValoare());
-			pstmt.setString(3, note.getExamenId());
-			pstmt.setString(4, candidatcnp);
+			pstmt.setString(1, medie.getCandidatCNP());
+			pstmt.setFloat(2, medie.getValoare());
+			pstmt.setString(3, candidatCNP);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
 		} catch(Exception exc) {
-			System.out.printf("[error][updateNote] %s\n", exc.getMessage());
+			System.out.printf("[error][updateMedie] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
 	
-	public static int deleteNote(String candidatcnp) {
+	public static int deleteMedie(String candidatCNP) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "DELETE FROM NOTE WHERE CANDIDATCNP = ?";
+		String query = "DELETE FROM MEDIE WHERE CANDIDATCNP = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, candidatcnp);
+			pstmt.setString(1, candidatCNP);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
 		} catch(Exception exc) {
-			System.out.printf("[error][deleteNote] %s\n", exc.getMessage());
+			System.out.printf("[error][deleteMedie] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
 	
-	public static int insertNote(Note note) {
+	public static int insertMedie(Medie medie) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO NOTE "
-				+ "(CANDIDATCNP, VALOARE,EXAMENID)"
-				+ "VALUES ( ?, ?, ?)";		
+		String query = "INSERT INTO MEDIE "
+				+ "(CANDIDATCNP,VALOARE)"
+				+ "VALUES ( ?, ?)";		
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, note.getCandidatCNP());
-			pstmt.setFloat(2, note.getValoare());
-			pstmt.setString(3, note.getExamenId());
+			pstmt.setString(1, medie.getCandidatCNP());
+			pstmt.setFloat(2, medie.getValoare());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
 		} catch(Exception exc) {
-			System.out.printf("[error][updateNote] %s\n", exc.getMessage());
+			System.out.printf("[error][updateMedie] %s\n", exc.getMessage());
 		}
 		return 0;
 	}

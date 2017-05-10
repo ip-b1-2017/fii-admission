@@ -32,7 +32,7 @@ public class NoteController {
 		return new ResponseEntity<Note>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/note/{candidatcnp}", method = RequestMethod.POST)
+	@RequestMapping(value = "/note/{candidatcnp}", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> updateNote(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Note note) {
 		int result = NoteService.updateNote(candidatcnp, note);
 		if(result == 0)
@@ -50,7 +50,7 @@ public class NoteController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/note", method = RequestMethod.PUT)
+	@RequestMapping(value = "/note", method = RequestMethod.POST)
 	public ResponseEntity<Integer> insertNote(@RequestBody Note note) {
 		int result = NoteService.insertNote(note);
 		if(result == 0)

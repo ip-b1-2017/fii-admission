@@ -1,26 +1,26 @@
 package fii.admission.note;
 
 public class Note {
-	float valoare;
-        String candidatcnp;
-	String examenid;
+	private float valoare;
+    private String candidatcnp;
+	private String examenid;
         
 	public float getValoare(){
             return valoare;
-        }
-        public String getCandidatCNP(){
-            return candidatcnp;
-        }
-        public String getExamenId(){
-            return examenid;
-        }
-        public void setValoare(float valoare){
+    }
+	public void setValoare(float valoare){
             this.valoare= valoare;
-        }
-        public void setCandidatCNP(String candidatcnp){
+    }
+    public String getCandidatCNP(){
+            return candidatcnp;
+    }
+	public void setCandidatCNP(String candidatcnp){
             this.candidatcnp=candidatcnp;
-        }
-        public void setExamenId(String examendid){
+    }
+    public String getExamenId(){
+            return examenid;
+    }
+    public void setExamenId(String examendid){
             this.examenid=examenid;
-        }
+    }
 }

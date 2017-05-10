@@ -14,15 +14,15 @@ public class NotificariService {
 	static public List<Notificari> getAllNotificari() {
 		ArrayList<Notificari> result = new ArrayList<Notificari>();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM Notificari";
+		String query = "SELECT * FROM NOTIFICARI";
 		try{
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				Notificari p = new Notificari();
-				p.setText(rs.getString("text"));
-				p.setSeen(rs.getString("seen"));
-				p.setUserEmail(rs.getString("useremail"));
+				p.setText(rs.getString("TEXT"));
+				p.setSeen(rs.getString("SEEN"));
+				p.setUserEmail(rs.getString("USEREMAIL"));
 				result.add(p);
 			}
 			stmt.close();
@@ -38,15 +38,15 @@ public class NotificariService {
 	public static Notificari getNotificari(String useremail) {
 		Notificari result = new Notificari();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM Notificari WHERE useremail = ?";
+		String query = "SELECT * FROM NOTIFICARI WHERE USEREMAIL = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, useremail);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result.setText(rs.getString("text"));
-				result.setSeen(rs.getString("seen"));
-				result.setUserEmail(rs.getString("useremail"));
+				result.setText(rs.getString("TEXT"));
+				result.setSeen(rs.getString("SEEN"));
+				result.setUserEmail(rs.getString("USEREMAIL"));
 			}
 			else return null;
 			pstmt.close();
@@ -61,7 +61,7 @@ public class NotificariService {
 	public static int updateNotificari(String useremail, Notificari notificari) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE Notificari SET text = ?, seen = ?, useremail =?  where useremail = ?";
+		String query = "UPDATE NOTIFICARI SET text = ?, seen = ?, useremail =?  where useremail = ?";
 			
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -81,7 +81,7 @@ public class NotificariService {
 	public static int deleteNotificari(String useremail) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "DELETE FROM Notificari WHERE useremail = ?";
+		String query = "DELETE FROM NOTIFICARI WHERE useremail = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, useremail);
@@ -97,7 +97,7 @@ public class NotificariService {
 	public static int insertNotificari(Notificari notificari) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO Notificari "
+		String query = "INSERT INTO NOTIFICARI "
 				+ "(text, seen, useremail)"
 				+ "VALUES ( ?, ?, ?)";		
 		

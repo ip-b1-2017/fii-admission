@@ -1,11 +1,11 @@
 package fii.admission.profesori;
 
 public class Profesor {
-	String nume;
-	String prenume;
-	String PCNP;
-	String sali_examensaliid;
-	String sali_examenexamenid;
+	private String nume;
+	private String prenume;
+	private String PCNP;
+	private String sali_examensaliid;
+	private String sali_examenexamenid;
 	
 	public String getNume() {
 		return nume;

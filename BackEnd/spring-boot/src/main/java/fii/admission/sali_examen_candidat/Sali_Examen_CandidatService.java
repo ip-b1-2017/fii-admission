@@ -14,13 +14,13 @@ public class Sali_Examen_CandidatService {
 	static public List<Sali_Examen_Candidat> getAllSali_Examen_Candidat() {
 		ArrayList<Sali_Examen_Candidat> result = new ArrayList<Sali_Examen_Candidat>();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM Sali_Examen_Candidat";
+		String query = "SELECT * FROM SALI_EXAMEN_CANDIDAT";
 		try{
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				Sali_Examen_Candidat p = new Sali_Examen_Candidat();
-				p.setCandidatCNP(rs.getString("candidatcnp"));
+				p.setCandidatCNP(rs.getString("CANDIDATCNP"));
 				p.setSaliExamenSaliId(rs.getString("SALI_EXAMENSALIID"));
 				p.setSaliExamenExamenId(rs.getString("SALI_EXAMENEXAMENID"));
 				result.add(p);
@@ -38,13 +38,13 @@ public class Sali_Examen_CandidatService {
 	public static Sali_Examen_Candidat getSali_Examen_Candidat(String candidatcnp) {
 		Sali_Examen_Candidat result = new Sali_Examen_Candidat();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM Sali_Examen_Candidat WHERE candidatcnp = ?";
+		String query = "SELECT * FROM SALI_EXAMEN_CANDIDAT WHERE candidatcnp = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidatcnp);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result.setCandidatCNP(rs.getString("candidatcnp"));
+				result.setCandidatCNP(rs.getString("CANDIDATCNP"));
 				result.setSaliExamenSaliId(rs.getString("SALI_EXAMENSALIID"));
 				result.setSaliExamenExamenId(rs.getString("SALI_EXAMENEXAMENID"));
 			}
@@ -61,7 +61,7 @@ public class Sali_Examen_CandidatService {
 	public static int updateSali_Examen_Candidat(String candidatcnp, Sali_Examen_Candidat prof) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE Sali_Examen_Candidat SET candidatcnp = ?, sali_examensaliid = ?, sali_examenexamenid = ? "
+		String query = "UPDATE SALI_EXAMEN_CANDIDAT SET candidatcnp = ?, sali_examensaliid = ?, sali_examenexamenid = ? "
                         + "where candidatcnp = ?";
 			
 		try{
@@ -82,7 +82,7 @@ public class Sali_Examen_CandidatService {
 	public static int deleteSali_Examen_Candidat(String candidatcnp) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "DELETE FROM Sali_Examen_Candidat WHERE candidatcnp = ?";
+		String query = "DELETE FROM SALI_EXAMEN_CANDIDAT WHERE candidatcnp = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, candidatcnp);
@@ -98,7 +98,7 @@ public class Sali_Examen_CandidatService {
 	public static int insertSali_Examen_Candidat(Sali_Examen_Candidat prof) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO Sali_Examen_Candidat "
+		String query = "INSERT INTO SALI_EXAMEN_CANDIDAT "
 				+ "(candidatcnp, SALI_EXAMENSALIID, SALI_EXAMENEXAMENID)"
 				+ "VALUES ( ?, ?, ?)";		
 		

@@ -32,7 +32,7 @@ public class ProfesorController {
 		return new ResponseEntity<Profesor>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/profesori/{cnp}", method = RequestMethod.POST)
+	@RequestMapping(value = "/profesori/{cnp}", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> updateProfesor(@PathVariable("cnp") String cnp, @RequestBody Profesor prof) {
 		int result = ProfesoriService.updateProfesor(cnp, prof);
 		if(result == 0)
@@ -50,7 +50,7 @@ public class ProfesorController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/profesori", method = RequestMethod.PUT)
+	@RequestMapping(value = "/profesori", method = RequestMethod.POST)
 	public ResponseEntity<Integer> insertProfesor(@RequestBody Profesor prof) {
 		int result = ProfesoriService.insertProfesor(prof);
 		if(result == 0)
