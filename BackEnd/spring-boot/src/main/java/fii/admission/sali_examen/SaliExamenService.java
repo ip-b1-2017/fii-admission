@@ -1,4 +1,4 @@
-package fii.admission.saliexamen;
+package fii.admission.sali_examen;
 
 import java.util.ArrayList;
 import java.util.List;

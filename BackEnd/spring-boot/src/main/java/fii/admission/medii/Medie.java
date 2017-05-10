@@ -1,4 +1,4 @@
-package fii.admission.medie;
+package fii.admission.medii;
 
 public class Medie {
 	private String candidatCNP;

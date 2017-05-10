@@ -1,4 +1,4 @@
-package fii.admission.saliexamen;
+package fii.admission.sali_examen;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SaliExamenController {
-	@RequestMapping(value = "/saliexamen", method = RequestMethod.GET)
+	@RequestMapping(value = "/sali_examen", method = RequestMethod.GET)
 	public ResponseEntity<List<SaliExamen>> getAllSaliExamen() {
 		List<SaliExamen> result = SaliExamenService.getAllSaliExamen();
 		
@@ -22,7 +22,7 @@ public class SaliExamenController {
 		return new ResponseEntity<List<SaliExamen>>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/saliexamen/{saliid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/sali_examen/{saliid}", method = RequestMethod.GET)
 	public ResponseEntity<SaliExamen> getSaliExamen(@PathVariable String saliid) {
 		SaliExamen result = SaliExamenService.getSaliExamen(saliid);
 		
@@ -32,7 +32,7 @@ public class SaliExamenController {
 		return new ResponseEntity<SaliExamen>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/saliexamen/{saliid}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/sali_examen/{saliid}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateSaliExamen(@PathVariable("saliid") String saliid, @RequestBody SaliExamen saliExamen) {
 		int result = SaliExamenService.updateSaliExamen(saliid, saliExamen);
 		if(result == 0)
@@ -41,7 +41,7 @@ public class SaliExamenController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/saliexamen/{saliid}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/sali_examen/{saliid}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteSaliExamen(@PathVariable("saliid") String saliid) {
 		int result = SaliExamenService.deleteSaliExamen(saliid);
 		if(result == 0)
@@ -50,7 +50,7 @@ public class SaliExamenController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/saliexamen", method = RequestMethod.POST)
+	@RequestMapping(value = "/sali_examen", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertSaliExamen(@RequestBody SaliExamen saliExamen) {
 		int result = SaliExamenService.insertSaliExamen(saliExamen);
 		if(result == 0)

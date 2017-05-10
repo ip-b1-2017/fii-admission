@@ -32,7 +32,7 @@ public class NotificariController {
 		return new ResponseEntity<Notificari>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateNotificari(@PathVariable("useremail") String useremail, @RequestBody Notificari notificari) {
 		int result = NotificariService.updateNotificari(useremail, notificari);
 		if(result == 0)
@@ -50,7 +50,7 @@ public class NotificariController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/notificari", method = RequestMethod.POST)
+	@RequestMapping(value = "/notificari", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertNotificari(@RequestBody Notificari notificari) {
 		int result = NotificariService.insertNotificari(notificari);
 		if(result == 0)

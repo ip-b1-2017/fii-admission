@@ -31,7 +31,7 @@ public class SaliController {
 		return new ResponseEntity<Sali>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/sali/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/sali/{id}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateSali(@PathVariable("id") String id, @RequestBody Sali sali) {
 		int result = SaliService.updateSali(id, sali);
 		if(result == 0)
@@ -49,7 +49,7 @@ public class SaliController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/sali", method = RequestMethod.POST)
+	@RequestMapping(value = "/sali", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertSali(@RequestBody Sali sali) {
 		int result = SaliService.insertSali(sali);
 		if(result == 0)
