@@ -1,4 +1,4 @@
-package fii.admission.examen;
+package fii.admission.examene;
 
 import java.util.List;
 

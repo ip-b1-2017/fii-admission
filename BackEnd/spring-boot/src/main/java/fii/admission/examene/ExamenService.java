@@ -1,4 +1,4 @@
-package fii.admission.examen;
+package fii.admission.examene;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,9 +110,9 @@ public class ExamenService {
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, examen.getId());
-			pstmt.setInt(2, examen.getStartDate());
+			pstmt.setString(2, examen.getStartDate());
 			pstmt.setString(3, examen.getEndDate());
-			pstmt.setString(4, examen.getNrProba());
+			pstmt.setInt(4, examen.getNrProba());
 			pstmt.setString(5, examen.getTip());
 			result = pstmt.executeUpdate();
 			pstmt.close();

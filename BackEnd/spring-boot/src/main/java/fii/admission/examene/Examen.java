@@ -1,9 +1,9 @@
-package fii.admission.examen;
+package fii.admission.examene;
 
 public class Examen {
 	private String id;
 	private String	start_date;
-	private String end_date,;
+	private String end_date;
 	private String tip;   
     private int nr_proba;
 	

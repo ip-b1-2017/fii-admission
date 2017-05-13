@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package user;
-
-/**
- *
- * @author Asus
- */
+package fii.admission.users;
 
 public class User {
 	private String role;
@@ -17,10 +7,11 @@ public class User {
 	private String lastname;
 	private String parola;
 	private String token;
+	
 	public String getFirstName(){
 		return firstname;
 	}
-	public String getLasttName(){
+	public String getLastName(){
 		return lastname;
 	}
 	public void setFirstName(String firstname){

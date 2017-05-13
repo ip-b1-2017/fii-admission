@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package user;
-
-/**
- *
- * @author Asus
- */
+package fii.admission.users;
 
 import java.util.List;
 
@@ -62,7 +52,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/users", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertUser(@RequestBody User user) {
-		int result = UserService.insertUser(email);
+		int result = UserService.insertUser(user);
 		if(result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
 		else 
