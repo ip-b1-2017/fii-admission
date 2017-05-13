@@ -29,7 +29,7 @@ public class AuthenticationController{
     private IValidator validator = new Validator();
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String getLoginForm(@RequestParam(value="error", required=false) String error,
+    public @ResponseBody ModelAndView getLoginForm(@RequestParam(value="error", required=false) String error,
             Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
         if(req.getCookies() != null){
             rep.sendRedirect("/dashboard");
@@ -37,14 +37,14 @@ public class AuthenticationController{
         }
         else{
             model.addAttribute("error", error);
-            return "login";
+            //return null;
+            return new ModelAndView("/login");
         }
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void login(HttpServletRequest req,
-                      HttpServletResponse res
-    ) throws URISyntaxException {
+                      HttpServletResponse res) throws URISyntaxException {
         if (req.getCookies() != null) {
             for (Cookie cookie : req.getCookies())
                 System.out.println(cookie.getName() + " " + cookie.getValue());
