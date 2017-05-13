@@ -1,5 +1,14 @@
-package fii.admission.users;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package user;
 
+/**
+ *
+ * @author Asus
+ */
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
@@ -14,16 +23,16 @@ public class UserService {
 	static public List<User> getAllUser() {
 		ArrayList<User> result = new ArrayList<User>();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM User";
+		String query = "SELECT * FROM USER";
 		try{
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				User user = new User();
-				user.setRole(rs.getString("Role"));
+				user.setRole(rs.getString("ROLE"));
 				user.setEmail(rs.getString("EMAIL"));
 				user.setParola(rs.getString("PAROLA"));
-                                user.setToken(rs.getString("TOKEN"));
+                user.setToken(rs.getString("TOKEN"));
 				result.add(user);
 			}
 			stmt.close();
