@@ -3,7 +3,7 @@ package fii.admission.notificari;
 public class Notificari {
 	private String text;
 	private String seen;
-    private String useremail;
+        private String useremail;
 	
 	public String getText(){
             return text;
