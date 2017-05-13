@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/controller/get_distribution")
+@RequestMapping("/controller/get_distribution_list")
 public class GetDistributionList {
     @RequestMapping(method = RequestMethod.POST)
         public ResponseEntity<DistributionListEntity> run(@RequestBody AuthEntity auth) {

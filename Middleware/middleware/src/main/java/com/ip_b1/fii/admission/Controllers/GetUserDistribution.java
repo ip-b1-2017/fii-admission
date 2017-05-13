@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/controller/get_distribution")
+@RequestMapping("/controller/get_user_distribution")
 public class GetUserDistribution {
 
     @RequestMapping(method = RequestMethod.POST)

@@ -12,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/controller/{sessionId}/get_application_by_Email/{email}")
 public class GetApplicationByEmail {
-
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<FormOutEntity> run(@PathVariable String sessionId, @PathVariable String email, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuthIsAdmin(auth)) {
