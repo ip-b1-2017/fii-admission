@@ -32,7 +32,7 @@ public class AuthenticationController{
     public @ResponseBody ModelAndView getLoginForm(@RequestParam(value="error", required=false) String error,
             Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
         if(req.getCookies() != null){
-            rep.sendRedirect("/dashboard");
+            rep.sendRedirect("/login");
             return null;
         }
         else{
@@ -77,7 +77,7 @@ public class AuthenticationController{
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView createAccount(HttpServletRequest req) {
+    public ModelAndView createAccount(String error, Model model, HttpServletRequest req, HttpServletResponse rep) {
 
         Map params = req.getParameterMap();
         /*
@@ -113,10 +113,17 @@ public class AuthenticationController{
         ResponseEntity<SignUpResponse> responseSignUp = rt.postForEntity(ServerProperties.middleUrl + "/register", singleValueParams,SignUpResponse.class);
 
         System.out.println(responseSignUp.getBody().getFailureReason());
+
         if (!responseSignUp.getBody().isSuccess()) {
-                //print failure message
-            return new ModelAndView("redirect:HTML/signup2.html","msg",responseSignUp.getBody().getFailureReason());
+            model.addAttribute("error", error);
+            return new ModelAndView("/register");
+        }else {
+            try {
+                rep.sendRedirect("/login");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
-        return new ModelAndView("redirect:HTML/login2.html");
     }
 }
