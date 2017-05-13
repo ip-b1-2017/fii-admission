@@ -1,9 +1,9 @@
 package fii.admission.sali_examen_candidat;
 
 public class Sali_Examen_Candidat {
-	String candidatcnp;
-	String sali_examensaliid;
-	String sali_examenexamenid;
+	private String candidatcnp;
+	private String sali_examensaliid;
+	private String sali_examenexamenid;
 	
 	public String getCandidatCNP() {
 		return candidatcnp;

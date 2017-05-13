@@ -32,7 +32,7 @@ public class Sali_Examen_CandidatController {
 		return new ResponseEntity<Sali_Examen_Candidat>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/Sali_Examen_Candidat/{candidatcnp}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/Sali_Examen_Candidat/{candidatcnp}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateSali_Examen_Candidat(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Sali_Examen_Candidat sali) {
 		int result = Sali_Examen_CandidatService.updateSali_Examen_Candidat(candidatcnp, sali);
 		if(result == 0)
@@ -50,7 +50,7 @@ public class Sali_Examen_CandidatController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/Sali_Examen_Candidat", method = RequestMethod.POST)
+	@RequestMapping(value = "/Sali_Examen_Candidat", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertSali_Examen_Candidat(@RequestBody Sali_Examen_Candidat sali) {
 		int result = Sali_Examen_CandidatService.insertSali_Examen_Candidat(sali);
 		if(result == 0)
