@@ -22,18 +22,22 @@ public class Validator implements IValidator {
     }
 
     @Override
-    public boolean isValid(String str) {
-        int i = 0;
-        String[] pair;
-        parser.setBody(str);
-        while(parser.hasNext()){
-            pair = parser.next();
-            Pattern p = null;
-            for(Map.Entry entry : this.fieldRegex.entrySet()){
-                if(pair[0].contains((String)entry.getKey())){
-                    return ((Pattern)entry.getValue()).matcher(pair[1]).matches();
+    public boolean isValid(Map<String, String[]> params) {
+        boolean validParameterName;
+        for(Map.Entry<String, String[]> entry : params.entrySet()){
+            validParameterName = false;
+            for(Map.Entry<String, Pattern> validator : this.fieldRegex.entrySet()){
+                if((entry.getKey()).contains(validator.getKey())){
+                    validParameterName = false;
+                    for(String str : entry.getValue()) {
+                        if(!validator.getValue().matcher(str).matches()){
+                            return false;
+                        }
+                    }
                 }
             }
+            if(!validParameterName)
+                return false;
         }
         return true;
     }

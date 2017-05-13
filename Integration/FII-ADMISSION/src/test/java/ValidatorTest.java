@@ -22,7 +22,7 @@ class ValidatorTest {
         validator = null;
     }
 
-    @Test
+    /*@Test
     void numbersContainsOnlyDigits() {
         boolean res = validator.isValid("res-num=123");
         assertTrue(res);
@@ -86,7 +86,7 @@ class ValidatorTest {
     void dateShouldNotContainYearFormatedWithLessThenFourDigites(){
         boolean res = validator.isValid("red-date=01.01.200");
         assertFalse(res);
-    }
+    }*/
 
 
 }

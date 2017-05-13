@@ -1,22 +1,18 @@
 package fiiadmission.view.controller;
 
-import fiiadmission.dto.LoginDTO;
-import fiiadmission.dto.RegisterDTO;
 import fiiadmission.dto.SessionIdentifier;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import validator.BodyParser;
-import validator.IBodyParser;
-import validator.IValidator;
-import validator.Validator;
+import validator.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Map;
 
 /**
  * Created by rusub on 5/6/2017.
@@ -28,9 +24,6 @@ public class AuthenticationController{
     private static final String URL = "";
     private static final String REGISTER_URL = "";
     private IValidator validator = new Validator();
-
-    @Autowired
-    private HttpServletRequest request;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public void getLoginFormular(HttpServletRequest req, HttpServletResponse rep){
@@ -47,22 +40,25 @@ public class AuthenticationController{
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public void login(@RequestBody  String body,
+    public void login(HttpServletRequest req,
                       HttpServletResponse res
                         ) throws URISyntaxException {
-        if(!validator.isValid(body)){
+        if(req.getCookies() != null){
+            for(Cookie cookie : req.getCookies())
+                System.out.println(cookie.getName() + " " + cookie.getValue());
+        }
+
+        Map params = req.getParameterMap();
+        if(!validator.isValid(params)){
             //wrong input parameters
             //TODO: return a html to inform user
             return;
         }
         RestTemplate rt = new RestTemplate();
-        IBodyParser parser = new BodyParser(body);
-        LoginDTO dto = new LoginDTO();
-        dto.setUsername(parser.next()[1]);
-        dto.setPassword(parser.next()[1]);
+        Map singleValueParams = Mapper.changeToSingle(params);
         //TODO test the returning result
         SessionIdentifier si = rt.postForEntity(
-                new URI(URL), dto,
+                new URI(URL), singleValueParams,
                 SessionIdentifier.class).getBody();
         Cookie cookie1 = new Cookie("user-name", si.getUsername());
         Cookie cookie2 = new Cookie("user-token", si.getToken());
@@ -78,21 +74,25 @@ public class AuthenticationController{
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void createAccount(@RequestBody String body){
+    @ResponseBody
+    public void createAccount(HttpServletRequest req){
 
-        if(!validator.isValid(body)){
+        Map params = req.getParameterMap();
+        if(!validator.isValid(params)){
             //TODO: tell user via html error code or javascript modal window
         }
-        RegisterDTO auth = new RegisterDTO();
-        IBodyParser parser = new BodyParser(body);
-        auth.setFirstName(parser.next()[1]);
-        auth.setLastName(parser.next()[1]);
-        auth.setEmail(parser.next()[1]);
-        auth.setPassword(parser.next()[1]);
-        auth.setCNP(Long.parseLong(parser.next()[1]));
-
+        Map singleValueParams;
+        try {
+            singleValueParams = Mapper.changeToSingle(params);
+        }catch (IllegalArgumentException ex){
+            //TODO treat error;
+            System.out.println(ex);
+            return;
+        }
         RestTemplate rt = new RestTemplate();
-        ResponseEntity res = rt.postForObject(REGISTER_URL, auth, ResponseEntity.class);
-        //TODO test res http status for sending back to user a feedback
+        ResponseEntity res = rt.postForObject(REGISTER_URL, singleValueParams, ResponseEntity.class);
+        if(res.getStatusCode() != HttpStatus.OK){
+            //TODO treat
+        }
     }
 }
