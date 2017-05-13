@@ -50,6 +50,4 @@ public class GetApplicationByEmailTest {
         Assert.assertEquals(HttpStatus.NOT_FOUND, testResult.getStatusCode());
     }
 
-
-
 }
