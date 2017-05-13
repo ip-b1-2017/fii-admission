@@ -10,15 +10,15 @@ import fii.admission.MainApp;
 
 @Service
 public class FormService {
-	
+
 	static public List<Form> getAllForm() {
 		ArrayList<Form> result = new ArrayList<Form>();
 		Connection con = MainApp.getDBConnection();
 		String query = "SELECT * FROM FORM";
-		try{
+		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next()) {
+			while (rs.next()) {
 				Form form = new Form();
 				form.setInformatii(rs.getString("INFORMATII"));
 				form.setStatus(rs.getString("STATUS"));
@@ -27,43 +27,45 @@ public class FormService {
 			}
 			stmt.close();
 			rs.close();
-			if(result.isEmpty()) return null;
-			else return result;
-		} catch(Exception exc) {
+			if (result.isEmpty())
+				return null;
+			else
+				return result;
+		} catch (Exception exc) {
 			System.out.printf("[error][getAllForm] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static Form getForm(String candidatcnp) {
 		Form result = new Form();
 		Connection con = MainApp.getDBConnection();
 		String query = "SELECT * FROM FORM WHERE CANDIDATCNP = ?";
-		try{
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidatcnp);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				result.setInformatii(rs.getString("INFORMATII"));
 				result.setStatus(rs.getString("STATUS"));
 				result.setCandidatCnp(rs.getString("CANDIDATCNP"));
-			}
-			else return null;
+			} else
+				return null;
 			pstmt.close();
 			rs.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][getForm] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static int updateForm(String candidatcnp, Form form) {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "UPDATE FORM SET informatii = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
-			
-		try{
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, form.getInformatii());
 			pstmt.setString(2, form.getStatus());
@@ -72,36 +74,34 @@ public class FormService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][updateForm] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
-	
+
 	public static int deleteForm(String candidatcnp) {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM FORM WHERE candidatcnp = ?";
-		try{
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, candidatcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][deleteForm] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
-	
+
 	public static int insertForm(Form form) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO FORM "
-				+ "(INFORMATII, STATUS, CANDIDATCNP)"
-				+ "VALUES ( ?, ?, ?)";		
-		
-		try{
+		String query = "INSERT INTO FORM " + "(INFORMATII, STATUS, CANDIDATCNP)" + "VALUES ( ?, ?, ?)";
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, form.getInformatii());
 			pstmt.setString(2, form.getStatus());
@@ -109,10 +109,9 @@ public class FormService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][updateForm] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
 }
-

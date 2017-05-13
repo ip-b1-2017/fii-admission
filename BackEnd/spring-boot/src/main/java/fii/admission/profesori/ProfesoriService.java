@@ -10,15 +10,15 @@ import fii.admission.MainApp;
 
 @Service
 public class ProfesoriService {
-	
+
 	static public List<Profesor> getAllProfesori() {
 		ArrayList<Profesor> result = new ArrayList<Profesor>();
 		Connection con = MainApp.getDBConnection();
 		String query = "SELECT * FROM PROFESORI";
-		try{
+		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next()) {
+			while (rs.next()) {
 				Profesor p = new Profesor();
 				p.setNume(rs.getString("NUME"));
 				p.setPrenume(rs.getString("PRENUME"));
@@ -29,46 +29,48 @@ public class ProfesoriService {
 			}
 			stmt.close();
 			rs.close();
-			if(result.isEmpty()) return null;
-			else return result;
-		} catch(Exception exc) {
+			if (result.isEmpty())
+				return null;
+			else
+				return result;
+		} catch (Exception exc) {
 			System.out.printf("[error][getAllProfesori] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static Profesor getProfesor(String pcnp) {
 		Profesor result = new Profesor();
 		Connection con = MainApp.getDBConnection();
 		String query = "SELECT * FROM PROFESORI WHERE PCNP = ?";
-		try{
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, pcnp);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				result.setNume(rs.getString("NUME"));
 				result.setPrenume(rs.getString("PRENUME"));
 				result.setPCNP(rs.getString("PCNP"));
 				result.setSaliExamenSaliId(rs.getString("SALI_EXAMENSALIID"));
 				result.setSaliExamenExamenId(rs.getString("SALI_EXAMENEXAMENID"));
-			}
-			else return null;
+			} else
+				return null;
 			pstmt.close();
 			rs.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][getProfesor] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static int updateProfesor(String pcnp, Profesor prof) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE PROFESORI SET nume = ?, prenume = ?, pcnp = ?, " + 
-					   "sali_examensaliid = ?, sali_examenexamenid = ? where pcnp = ?";
-			
-		try{
+		String query = "UPDATE PROFESORI SET nume = ?, prenume = ?, pcnp = ?, "
+				+ "sali_examensaliid = ?, sali_examenexamenid = ? where pcnp = ?";
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, prof.getNume());
 			pstmt.setString(2, prof.getPrenume());
@@ -79,36 +81,35 @@ public class ProfesoriService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][updateProfesor] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
-	
+
 	public static int deleteProfesor(String pcnp) {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM PROFESORI WHERE pcnp = ?";
-		try{
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, pcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][deleteProfesor] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
-	
+
 	public static int insertProfesor(Profesor prof) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO PROFESORI "
-				+ "(NUME, PRENUME, PCNP, SALI_EXAMENSALIID, SALI_EXAMENEXAMENID)"
-				+ "VALUES ( ?, ?, ?, ?, ?)";		
-		
-		try{
+		String query = "INSERT INTO PROFESORI " + "(NUME, PRENUME, PCNP, SALI_EXAMENSALIID, SALI_EXAMENEXAMENID)"
+				+ "VALUES ( ?, ?, ?, ?, ?)";
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, prof.getNume());
 			pstmt.setString(2, prof.getPrenume());
@@ -118,7 +119,7 @@ public class ProfesoriService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][updateProfesor] %s\n", exc.getMessage());
 		}
 		return 0;

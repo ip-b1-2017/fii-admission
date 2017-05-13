@@ -7,40 +7,51 @@ public class User {
 	private String lastname;
 	private String parola;
 	private String token;
-	
-	public String getFirstName(){
+
+	public String getFirstName() {
 		return firstname;
 	}
-	public String getLastName(){
+
+	public String getLastName() {
 		return lastname;
 	}
-	public void setFirstName(String firstname){
-		this.firstname=firstname;
+
+	public void setFirstName(String firstname) {
+		this.firstname = firstname;
 	}
-	public void setLastName(String lastname){
+
+	public void setLastName(String lastname) {
 		this.lastname = lastname;
 	}
+
 	public String getRole() {
 		return role;
 	}
+
 	public void setRole(String role) {
 		this.role = role;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getParola() {
 		return parola;
 	}
+
 	public void setParola(String parola) {
 		this.parola = parola;
 	}
+
 	public String getToken() {
 		return token;
 	}
+
 	public void setToken(String token) {
 		this.token = token;
 	}

@@ -15,48 +15,47 @@ public class UserController {
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUser() {
 		List<User> result = UserService.getAllUser();
-		
-		if(result == null)
+
+		if (result == null)
 			return new ResponseEntity<List<User>>(result, HttpStatus.NO_CONTENT);
-		
+
 		return new ResponseEntity<List<User>>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable String email) {
 		User result = UserService.getUser(email);
-		
-		if(result == null)
+
+		if (result == null)
 			return new ResponseEntity<User>(result, HttpStatus.NOT_FOUND);
 
 		return new ResponseEntity<User>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateUser(@PathVariable("email") String email, @RequestBody User user) {
 		int result = UserService.updateUser(email, user);
-		if(result == 0)
+		if (result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else 
+		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteUser(@PathVariable("email") String email) {
 		int result = UserService.deleteUser(email);
-		if(result == 0)
+		if (result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else 
+		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/users", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertUser(@RequestBody User user) {
 		int result = UserService.insertUser(user);
-		if(result == 0)
+		if (result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else 
+		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 }
-

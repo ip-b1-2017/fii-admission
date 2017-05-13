@@ -15,47 +15,48 @@ public class MedieController {
 	@RequestMapping(value = "/medii", method = RequestMethod.GET)
 	public ResponseEntity<List<Medie>> getAllMedie() {
 		List<Medie> result = MedieService.getAllMedie();
-		
-		if(result == null)
+
+		if (result == null)
 			return new ResponseEntity<List<Medie>>(result, HttpStatus.NO_CONTENT);
-		
+
 		return new ResponseEntity<List<Medie>>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/medii/{candidatCNP}", method = RequestMethod.GET)
 	public ResponseEntity<Medie> getMedie(@PathVariable String candidatCNP) {
 		Medie result = MedieService.getMedie(candidatCNP);
-		
-		if(result == null)
+
+		if (result == null)
 			return new ResponseEntity<Medie>(result, HttpStatus.NOT_FOUND);
 
 		return new ResponseEntity<Medie>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/medii/{candidatCNP}", method = RequestMethod.POST)
-	public ResponseEntity<Integer> updateMedie(@PathVariable("candidatCNP") String candidatCNP, @RequestBody Medie medie) {
+	public ResponseEntity<Integer> updateMedie(@PathVariable("candidatCNP") String candidatCNP,
+			@RequestBody Medie medie) {
 		int result = MedieService.updateMedie(candidatCNP, medie);
-		if(result == 0)
+		if (result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else 
+		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/medii/{candidatCNP}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteMedie(@PathVariable("candidatCNP") String candidatCNP) {
 		int result = MedieService.deleteMedie(candidatCNP);
-		if(result == 0)
+		if (result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else 
+		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/medii", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertMedie(@RequestBody Medie medie) {
 		int result = MedieService.insertMedie(medie);
-		if(result == 0)
+		if (result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else 
+		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 }
