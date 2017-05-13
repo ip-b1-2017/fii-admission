@@ -13,14 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+@RestController
+@RequestMapping("/controller/get_distribution")
 public class GetDistributionList {
-
-    @RestController
-    @RequestMapping("/controller/get_distribution")
-    public class GetUserDistribution {
-
-        @RequestMapping(method = RequestMethod.POST)
-        public ResponseEntity<DistributionListEntity> getUserDist(@RequestBody AuthEntity auth) {
+    @RequestMapping(method = RequestMethod.POST)
+        public ResponseEntity<DistributionListEntity> run(@RequestBody AuthEntity auth) {
             if (!AuthUtils.checkAuth(auth)) {
                 return new ResponseEntity<>(
                         new DistributionListEntity(),
@@ -46,7 +43,4 @@ public class GetDistributionList {
                 );
             }
         }
-
-    }
-
 }
