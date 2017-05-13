@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/controller/submit_form")
 public class SubmitForm {
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SubmitFormOutEntity> testLogin(@RequestBody FormEntity formEntity) {
+    public ResponseEntity<SubmitFormOutEntity> run(@RequestBody FormEntity formEntity) {
         if (!AuthUtils.checkAuth(formEntity.getAuth())) {
 
             return new ResponseEntity<>(
