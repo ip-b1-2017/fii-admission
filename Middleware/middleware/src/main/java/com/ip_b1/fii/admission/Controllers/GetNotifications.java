@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 public class GetNotifications {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<NotificationsOutEntity> showNotifications(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
+    public ResponseEntity<NotificationsOutEntity> run(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
                     new NotificationsOutEntity(null),
