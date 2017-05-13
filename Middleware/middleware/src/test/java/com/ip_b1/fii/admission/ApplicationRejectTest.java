@@ -28,7 +28,7 @@ public class ApplicationRejectTest {
         AuthEntity testEntity = new AuthEntity("alexd@info.uaic.ro", "some_valid_token");
         ResponseEntity<SuccessEntity> testResult = test.reject(null, testEntity, "some_valid_cnp", "some_message");
         Assert.assertEquals(HttpStatus.UNAUTHORIZED, testResult.getStatusCode());
-    }
+}
 
     @Test
     public void invalid_cnp_returns_not_found(){

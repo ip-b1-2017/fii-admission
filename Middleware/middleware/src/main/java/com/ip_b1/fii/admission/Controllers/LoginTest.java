@@ -21,7 +21,6 @@ public class LoginTest {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<LoginTestOutEntity>testLogin(@RequestBody LoginTestInEntity login) {
-        System.out.println(login.getUsername());
         if (!check(login)) {
             return new ResponseEntity<>(
                     new LoginTestOutEntity(false, null, "Failed login"),
