@@ -1,4 +1,4 @@
-package fii.admission.examene;
+package fii.admission.examen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +48,9 @@ public class ExamenService {
 			if(rs.next()) {
 				result.setId(rs.getString("id"));
 				result.setStartDate(rs.getString("START_DATE"));
-                                result.setEndDate(rs.getString("END_DATE"));
-                                result.setTip(rs.getString("tip"));
-                                result.setNrProba(rs.getInt("NR_PROBA"));
+                result.setEndDate(rs.getString("END_DATE"));
+                result.setTip(rs.getString("tip"));
+                result.setNrProba(rs.getInt("NR_PROBA"));
 			}
 			else return null;
 			pstmt.close();
@@ -104,15 +104,15 @@ public class ExamenService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "INSERT INTO Examen "
-				+ "(ID, NR_PROBA,START_DATE, END_DATE,TIP)"
+				+ "(ID, START_DATE, END_DATE,NR_PROBA,TIP)"
 				+ "VALUES ( ?, ?, ?, ?, ?)";		
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, examen.getId());
-			pstmt.setInt(2, examen.getNrProba());
-			pstmt.setString(3, examen.getStartDate());
-			pstmt.setString(4, examen.getEndDate());
+			pstmt.setInt(2, examen.getStartDate());
+			pstmt.setString(3, examen.getEndDate());
+			pstmt.setString(4, examen.getNrProba());
 			pstmt.setString(5, examen.getTip());
 			result = pstmt.executeUpdate();
 			pstmt.close();
