@@ -87,6 +87,8 @@ CREATE TABLE USER (
   EMAIL  varchar(255) NOT NULL, 
   PAROLA varchar(255) NOT NULL, 
   TOKEN  varchar(255) NOT NULL, 
+  FIRSTNAME varchar(255) NOT NULL,
+  LASTNAME varchar(255) NOT NULL
   PRIMARY KEY (EMAIL)
   );
 
