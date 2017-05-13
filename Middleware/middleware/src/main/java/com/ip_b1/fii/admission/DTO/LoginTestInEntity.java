@@ -9,6 +9,9 @@ public class LoginTestInEntity {
 		this.password = password;
 	}
 
+	public LoginTestInEntity() {
+	}
+
 	public String getUsername() {
 		return username;
 	}
