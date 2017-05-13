@@ -13,8 +13,22 @@ package user;
 public class User {
 	private String role;
 	private String email;
+	private String firstname;
+	private String lastname;
 	private String parola;
 	private String token;
+	public String getFirstName(){
+		return firstname;
+	}
+	public String getLasttName(){
+		return lastname;
+	}
+	public void setFirstName(String firstname){
+		this.firstname=firstname;
+	}
+	public void setLastName(String lastname){
+		this.lastname = lastname;
+	}
 	public String getRole() {
 		return role;
 	}

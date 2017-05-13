@@ -32,7 +32,9 @@ public class UserService {
 				user.setRole(rs.getString("ROLE"));
 				user.setEmail(rs.getString("EMAIL"));
 				user.setParola(rs.getString("PAROLA"));
-                user.setToken(rs.getString("TOKEN"));
+               			user.setToken(rs.getString("TOKEN"));
+				user.setFirstName(rs.getString("FIRSTNAME"));
+				user.setLastName(rs.getString("LASTNAME"));
 				result.add(user);
 			}
 			stmt.close();
@@ -58,6 +60,8 @@ public class UserService {
 				result.setEmail(rs.getString("EMAIL"));
 				result.setParola(rs.getString("PAROLA"));
 				result.setToken(rs.getString("TOKEN"));
+				result.setFirstName(rs.getString("FIRSTNAME"));
+				result.setLastName(rs.getString("LASTNAME"));
 			}
 			else return null;
 			pstmt.close();
@@ -73,7 +77,7 @@ public class UserService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "UPDATE USER SET role = ?, email = ?, parola = ?, " + 
-					   "token = ? where email = ?";
+					   "token = ?, firstname = ?, lastname =? where email = ?";
 			
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -81,7 +85,9 @@ public class UserService {
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getParola());
 			pstmt.setString(4, user.getToken());
-			pstmt.setString(5, email);
+			pstmt.setString(5, user.getFirstName());
+			pstmt.setString(6, user.getLastName());
+			pstmt.setString(7, email);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
@@ -111,8 +117,8 @@ public class UserService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "INSERT INTO USER "
-				+ "(ROLE, EMAIL, PAROLA, TOKEN)"
-				+ "VALUES ( ?, ?, ?, ?)";		
+				+ "(ROLE, EMAIL, PAROLA, TOKEN,FIRSTNAME,LASTNAME)"
+				+ "VALUES ( ?, ?, ?, ?,?,?)";		
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -120,6 +126,8 @@ public class UserService {
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getParola());
 			pstmt.setString(4, user.getToken());
+			pstmt.setString(5, user.getFirstName());
+			pstmt.setString(6, user.getLastName());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
