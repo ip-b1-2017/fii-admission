@@ -6,9 +6,11 @@ import fiiadmission.view.Model.SignUpResponse;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import validator.*;
@@ -84,6 +86,7 @@ public class AuthenticationController{
 
         Map singleValueParams;
         System.out.println("salut");
+
         try {
             singleValueParams = Mapper.changeToSingle(params);
         } catch (IllegalArgumentException ex) {
@@ -91,13 +94,28 @@ public class AuthenticationController{
             System.out.println(ex);
             return null;
         }
+
         RestTemplate rt = new RestTemplate();
+
+        rt.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+
+            }
+        });
+
         System.out.println("reasda");
-        SignUpResponse responseSignUp = rt.postForObject(ServerProperties.middleUrl + "/register", singleValueParams, SignUpResponse.class);
-        System.out.println(responseSignUp.getFailureReason());
-        if (!responseSignUp.isSuccess()) {
+        ResponseEntity<SignUpResponse> responseSignUp = rt.postForEntity(ServerProperties.middleUrl + "/register", singleValueParams,SignUpResponse.class);
+
+        System.out.println(responseSignUp.getBody().getFailureReason());
+        if (!responseSignUp.getBody().isSuccess()) {
                 //print failure message
-            return new ModelAndView("redirect:HTML/signup2.html","msg",responseSignUp.getFailureReason());
+            return new ModelAndView("redirect:HTML/signup2.html","msg",responseSignUp.getBody().getFailureReason());
         }
         return new ModelAndView("redirect:HTML/login2.html");
     }

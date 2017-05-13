@@ -24,9 +24,10 @@ public class SignUpTest {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SignUpTestOutEntity> testSignUp(@RequestBody SignUpTestInEntity signup) {
 
-        System.out.println(signup.getEmail());
 
-        if (check(signup)) {
+        System.out.println(signup.getEmail());
+        if (!check(signup)) {
+            System.out.println(1);
             return new ResponseEntity<>(new SignUpTestOutEntity(false, "Email Used"), HttpStatus.BAD_REQUEST);
         }
         System.out.println("ce plm");
