@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Loginform</title>
+<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"/>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'/>
+
+<!-- our own files -->
+
+<link rel="stylesheet" href="../CSS/login_signup2.css" type="text/css" media="screen"/>
+
+</head>
+
+<body>
+    
+    <div class="form">
+        
+        <div class="logo"></div>
+        <br><br>
+        
+        <div id="signup">
+            
+            <h1>Sign Up</h1>
+            
+            <form action="http://localhost:8090/register" method="POST">
+
+                <div class="field-wrap">
+                    <label >Email Address:</label><br>
+                    <input type="text" placeholder="Enter Email Address" name="email" required>
+                </div>
+                
+                <div class="field-wrap">
+                    <label>Password:</label><br>
+    		 	    <input type="password" placeholder="Set A Password" name="password" required>
+    		    </div>
+
+                <div class="field-wrap">
+                    <label>Confirm Password:</label><br>
+                    <input type="password" placeholder="Confirm  Password" name="confirm_password" required>
+                </div>
+
+                <button type="submit" class="button button-block"/>Get Started</button>
+                              <c:out value="${msg}" escapeXml="false"></c:out>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
