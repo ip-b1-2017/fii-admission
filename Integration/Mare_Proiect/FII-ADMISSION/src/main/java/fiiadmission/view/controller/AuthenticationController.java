@@ -1,10 +1,13 @@
 package fiiadmission.view.controller;
 
+import fiiadmission.ServerProperties;
 import fiiadmission.dto.SessionIdentifier;
 import fiiadmission.view.Model.SignUpResponse;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,31 +15,27 @@ import validator.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.net.URI;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Map;
 
 /**
  * Created by rusub on 5/6/2017.
  */
-@RestController
-public class AuthenticationController {
-
-    //TODO fill URL and REGISTER_URL with corresponding urls
-    private static final String URL = "";
-    private static final String REGISTER_URL = "http://localhost:8081/controller/register";
+@Controller
+public class AuthenticationController{
     private IValidator validator = new Validator();
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public void getLoginFormular(HttpServletRequest req, HttpServletResponse rep) {
-        if (req.getCookies() != null) {
-            /*
-                username already login
-                TODO: redirect to another page
-             */
-        } else {
-            rep.addCookie(new Cookie("name", "value"));
-            //TODO: return here login formular to user
+    public String getLoginForm(@RequestParam(value="error", required=false) String error,
+            Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
+        if(req.getCookies() != null){
+            rep.sendRedirect("/dashboard");
+            return null;
+        }
+        else{
+            model.addAttribute("error", error);
+            return "login";
         }
     }
 
@@ -49,8 +48,8 @@ public class AuthenticationController {
                 System.out.println(cookie.getName() + " " + cookie.getValue());
         }
 
-        Map params = req.getParameterMap();
-        if (!validator.isValid(params)) {
+        Map<String, String[]> params = req.getParameterMap();
+        if(!validator.isValid(params)){
             //wrong input parameters
             //TODO: return a html to inform user
             return;
@@ -59,7 +58,7 @@ public class AuthenticationController {
         Map singleValueParams = Mapper.changeToSingle(params);
         //TODO test the returning result
         SessionIdentifier si = rt.postForEntity(
-                new URI(URL), singleValueParams,
+                ServerProperties.middleUrl + "/login_test", singleValueParams,
                 SessionIdentifier.class).getBody();
         Cookie cookie1 = new Cookie("user-name", si.getUsername());
         Cookie cookie2 = new Cookie("user-token", si.getToken());
@@ -94,7 +93,7 @@ public class AuthenticationController {
         }
         RestTemplate rt = new RestTemplate();
         System.out.println("reasda");
-        SignUpResponse responseSignUp = rt.postForObject(REGISTER_URL, singleValueParams, SignUpResponse.class);
+        SignUpResponse responseSignUp = rt.postForObject(ServerProperties.middleUrl + "/register", singleValueParams, SignUpResponse.class);
         System.out.println(responseSignUp.getFailureReason());
         if (!responseSignUp.isSuccess()) {
                 //print failure message
