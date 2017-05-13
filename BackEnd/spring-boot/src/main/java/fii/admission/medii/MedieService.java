@@ -1,4 +1,4 @@
-package fii.admission.medii;
+package fii.admission.medie;
 
 import java.util.ArrayList;
 import java.util.List;

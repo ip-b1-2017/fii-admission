@@ -1,4 +1,4 @@
-package fii.admission.medii;
+package fii.admission.medie;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
