@@ -282,6 +282,374 @@
                     }
 
                 ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "stare-civila",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Starea civila",
+                                "options": {
+                                    "cas": "Casatorit(a)",
+                                    "necas": "Necasatorit(a)",
+                                    "divor": "Divortat(a)/Vaduv(a)"
+                                }
+                            }
+
+                        ]
+                    }                 
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                   {
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "tip-act-identitate",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Tipul actului de identitate",
+                                "options": {
+                                    "ci": "CI",
+                                    "pas": "Pasaport"
+                                }
+                            }
+
+                        ]
+                    },
+                      {
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "serie-act-alfa",
+                                    "caption": "Seria ",
+                                    "type": "text",
+                                    "placeholder": "Ex. MZ",
+                                    "class": "form-control"
+                                },
+
+                            ]
+                        }
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "act-number-num",
+                                    "caption": "Numarul ",
+                                    "type": "text",
+                                    "placeholder": "Ex. MZ",
+                                    "class": "form-control"
+                                },
+
+                            ]
+                        }, ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "act-elibeat-alfn",
+                                "caption": "Eliberat de",
+                                "type": "text",
+                                "placeholder": "Ex. SPCLEP Iasi",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+               {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "act-elib-date",
+                                    "caption": "Data eliberarii ",
+                                    "type": "text",
+                                    "placeholder": "Ex. 25.02.2016",
+                                    "class": "form-control"
+                                },
+
+                            ]
+                        }, ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "act-exp-date",
+                                "caption": "Data expirarii",
+                                "type": "text",
+                                "placeholder": "Ex. 25.02.2020",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type":"h4",
+                "html":"Domiciliu actual stabil"
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [ {
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "domiciliu-stabil",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Domiciliu stabil",
+                                "options": {
+                                    "urb": "Urban",
+                                    "rur": "Rural"
+                                }
+                            }
+
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "domiciliu-tara-alfa",
+                                "caption": "Tara",
+                                "type": "text",
+                                "placeholder": "Ex. Romania",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "domiciliu-judet-alfa",
+                                    "caption": "Judetul ",
+                                    "type": "text",
+                                    "placeholder": "Ex. Iasi",
+                                    "class": "form-control"
+                                },
+
+                            ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "domiciliu-loc-alfa",
+                                "caption": "Localitatea",
+                                "type": "text",
+                                "placeholder": "Ex. Iasi",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "domiciliu-strada-alfnum",
+                                    "caption": "Strada ",
+                                    "type": "text",
+                                    "placeholder": "Ex. Plopilor",
+                                    "class": "form-control"
+                                },
+
+                            ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "domiciliu-nr-num",
+                                "caption": "Numarul",
+                                "type": "number",
+                                "placeholder": "Ex. 25",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "domiciliu-bloc-alfnum",
+                                    "caption": "Bloc ",
+                                    "type": "text",
+                                    "placeholder": "Ex. C7",
+                                    "class": "form-control"
+                                },
+
+                            ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "domiciliu-sc-alfnum",
+                                "caption": "Scara",
+                                "type": "number",
+                                "placeholder": "Ex. B",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "domiciliu-et-alfnum",
+                                    "caption": "Etaj ",
+                                    "type": "text",
+                                    "placeholder": "Ex. 5",
+                                    "class": "form-control"
+                                },
+
+                            ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "domiciliu-ap",
+                                "caption": "Apartament",
+                                "type": "number",
+                                "placeholder": "Ex. 7",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "domiciliu-cod-alfnum",
+                                    "caption": "Cod ",
+                                    "type": "text",
+                                    "placeholder": "Ex.700340",
+                                    "class": "form-control"
+                                },
+
+                            ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "phone",
+                                "caption": "Telefon",
+                                "type": "number",
+                                "placeholder": "Ex. 0741542032",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [
+                    {
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "email",
+                                    "caption": "Email ",
+                                    "type": "text",
+                                    "placeholder": "Ex. user@gmail.com",
+                                    "class": "form-control"
+                                }
+
+                            ]
+                    }
+
+                  
+
+                ]
             }
         ]
     });

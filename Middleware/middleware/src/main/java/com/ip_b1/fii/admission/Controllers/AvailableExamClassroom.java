@@ -25,7 +25,7 @@ import com.ip_b1.fii.admission.Utils.AuthUtils;
 public class AvailableExamClassroom {
 
 	@RequestMapping(value = "{id}", method = RequestMethod.POST)
-	public ResponseEntity<AvailableExamClassromEntity> getClassRoomById(@PathVariable("id") Integer classroomID, @RequestBody AuthEntity auth) {
+	public ResponseEntity<AvailableExamClassromEntity> run(@PathVariable("id") Integer classroomID, @RequestBody AuthEntity auth) {
 
 		if (AuthUtils.checkAuth(auth)) {
 			return new ResponseEntity<>(new AvailableExamClassromEntity(),

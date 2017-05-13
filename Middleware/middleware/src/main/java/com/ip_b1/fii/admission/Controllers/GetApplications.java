@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 public class GetApplications {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ApplicationsEntity> getApplications(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
+    public ResponseEntity<ApplicationsEntity> run(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuthIsAdmin(auth)) {
 
             return new ResponseEntity<>(

@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 public  class GetForm {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<FormOutEntity> getForm(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
+    public ResponseEntity<FormOutEntity> run(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
                     new FormOutEntity(null),

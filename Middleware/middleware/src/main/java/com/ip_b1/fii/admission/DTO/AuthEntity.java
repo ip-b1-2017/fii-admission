@@ -13,6 +13,9 @@ public class AuthEntity {
         return username;
     }
 
+    public AuthEntity() {
+    }
+
     public String getToken() {
         return token;
     }
