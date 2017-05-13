@@ -1,4 +1,14 @@
-package fii.admission.forms;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package fii.admission.form;
+
+/**
+ *
+ * @author Asus
+ */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +30,7 @@ public class FormService {
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				Form form = new Form();
-				form.setFormular(rs.getString("FORMULAR"));
+				form.setInformatii(rs.getString("INFORMATII"));
 				form.setStatus(rs.getString("STATUS"));
 				form.setCandidatCnp(rs.getString("CANDIDATCNP"));
 				result.add(form);
@@ -44,7 +54,7 @@ public class FormService {
 			pstmt.setString(1, candidatcnp);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result.setFormular(rs.getString("FORMULAR"));
+				result.setInformatii(rs.getString("INFORMATII"));
 				result.setStatus(rs.getString("STATUS"));
 				result.setCandidatCnp(rs.getString("CANDIDATCNP"));
 			}
@@ -61,11 +71,11 @@ public class FormService {
 	public static int updateForm(String candidatcnp, Form form) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE FORM SET FORMULAR = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
+		String query = "UPDATE FORM SET informatii = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
 			
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, form.getFormular());
+			pstmt.setString(1, form.getInformatii());
 			pstmt.setString(2, form.getStatus());
 			pstmt.setString(3, form.getCandidatCnp());
 			pstmt.setString(4, candidatcnp);
@@ -98,12 +108,12 @@ public class FormService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "INSERT INTO FORM "
-				+ "(FORMULAR, STATUS, CANDIDATCNP)"
-				+ "VALUES (?, ?, ?)";		
+				+ "(INFORMATII, STATUS, CANDIDATCNP)"
+				+ "VALUES ( ?, ?, ?)";		
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, form.getFormular());
+			pstmt.setString(1, form.getInformatii());
 			pstmt.setString(2, form.getStatus());
 			pstmt.setString(3, form.getCandidatCnp());
 			result = pstmt.executeUpdate();
@@ -115,3 +125,4 @@ public class FormService {
 		return 0;
 	}
 }
+

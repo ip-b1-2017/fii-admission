@@ -1,5 +1,14 @@
-package fii.admission.forms;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package fii.admission.form;
 
+/**
+ *
+ * @author Asus
+ */
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -12,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FormController {
-	@RequestMapping(value = "/forms", method = RequestMethod.GET)
+	@RequestMapping(value = "/formuri", method = RequestMethod.GET)
 	public ResponseEntity<List<Form>> getAllForm() {
 		List<Form> result = FormService.getAllForm();
 		
@@ -22,7 +31,7 @@ public class FormController {
 		return new ResponseEntity<List<Form>>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/forms/{candidatcnp}", method = RequestMethod.GET)
+	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.GET)
 	public ResponseEntity<Form> getForm(@PathVariable String candidatcnp) {
 		Form result = FormService.getForm(candidatcnp);
 		
@@ -32,7 +41,7 @@ public class FormController {
 		return new ResponseEntity<Form>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/forms/{candidatcnp}", method = RequestMethod.POST)
+	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateForm(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Form form) {
 		int result = FormService.updateForm(candidatcnp, form);
 		if(result == 0)
@@ -41,7 +50,7 @@ public class FormController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/forms/{candidatcnp}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteForm(@PathVariable("candidatcnp") String candidatcnp) {
 		int result = FormService.deleteForm(candidatcnp);
 		if(result == 0)
@@ -49,10 +58,9 @@ public class FormController {
 		else 
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
-
-	@RequestMapping(value = "/forms", method = RequestMethod.PUT)
+	
+	@RequestMapping(value = "/formuri", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertForm(@RequestBody Form form) {
-		FormService.deleteForm(form.candidatcnp);
 		int result = FormService.insertForm(form);
 		if(result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
