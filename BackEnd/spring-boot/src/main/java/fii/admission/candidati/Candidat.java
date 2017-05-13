@@ -1,18 +1,21 @@
-package fii.admission.candidati;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package fii.admission.candidat;
+
+/**
+ *
+ * @author Asus
+ */
 
 public class Candidat {
-	String CNP;
-	String telefon;
-	String nume;
-	String prenume;
-	String useremail;
+	private String nume;
+	private String prenume;
+	private String CNP;
+	private String useremail;
 	
-	public String getTelefon() {
-		return telefon;
-	}
-	public void setTelefon(String telefon) {
-		this.telefon = telefon;
-	}
 	public String getNume() {
 		return nume;
 	}

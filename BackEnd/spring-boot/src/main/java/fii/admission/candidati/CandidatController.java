@@ -1,5 +1,15 @@
-package fii.admission.candidati;
+package fii.admission.candidat;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Asus
+ */
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -41,7 +51,7 @@ public class CandidatController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/candidati/{cnp}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/candidati/{cnp}", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> deleteCandidat(@PathVariable("cnp") String cnp) {
 		int result = CandidatService.deleteCandidat(cnp);
 		if(result == 0)
@@ -50,7 +60,7 @@ public class CandidatController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/candidati", method = RequestMethod.PUT)
+	@RequestMapping(value = "/candidati", method = RequestMethod.POST)
 	public ResponseEntity<Integer> insertCandidat(@RequestBody Candidat candidat) {
 		int result = CandidatService.insertCandidat(candidat);
 		if(result == 0)
