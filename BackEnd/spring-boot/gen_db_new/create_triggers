@@ -19,3 +19,45 @@ BEGIN
     DELETE FROM sali_examen_candidat
           WHERE sali_examen_candidat.SALI_EXAMENSALIID = old.ID;
 END;
+
+
+CREATE TRIGGER Candidat_Delete_Trigger
+         AFTER DELETE
+            ON Candidat
+BEGIN
+    DELETE FROM User
+          WHERE user.email = old.useremail;
+END;
+
+CREATE TRIGGER Note_Delete_Trigger
+         AFTER DELETE
+            ON Candidat
+BEGIN
+    DELETE FROM Note
+          WHERE note.candidatcnp = old.cnp;
+END;
+
+CREATE TRIGGER Medie_Delete_Trigger
+         AFTER DELETE
+            ON Candidat
+BEGIN
+    DELETE FROM Medie
+          WHERE medie.candidatcnp = old.cnp;
+END;
+
+CREATE TRIGGER Notificari_Delete_Trigger
+         AFTER DELETE
+            ON Candidat
+BEGIN
+    DELETE FROM Notificari
+          WHERE notificari.useremail = old.useremail;
+END;
+
+CREATE TRIGGER Form_Delete_Trigger
+         AFTER DELETE
+            ON Candidat
+BEGIN
+    DELETE FROM Form
+          WHERE Form.candidatcnp = old.cnp;
+END;
+
