@@ -1,0 +1,2 @@
+DROP TRIGGER Sali_Delete_Trigger;
+DROP TRIGGER Examen_Delete_Trigger;
