@@ -30,7 +30,7 @@ public class FormService {
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				Form form = new Form();
-				form.setInformatii(rs.getString("INFORMATII"));
+				form.setInformatii(rs.getString("FORMULAR"));
 				form.setStatus(rs.getString("STATUS"));
 				form.setCandidatCnp(rs.getString("CANDIDATCNP"));
 				result.add(form);
