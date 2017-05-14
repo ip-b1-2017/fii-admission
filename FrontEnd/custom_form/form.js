@@ -2521,11 +2521,9 @@ $(function () {
     });
 });
 
-
-
 $(function () {
-    $("#myform7").dform({
-        "action": "form7.html",
+    $("#myform8").dform({
+        "action": "form8.html",
         "method": "get",
         "html": [{
                 "type": "h4",
@@ -3003,6 +3001,342 @@ $(function () {
         ]
     });
 });
+
+$(function () {
+    $("#myform7").dform({
+        "action": "form7.html",
+        "method": "get",
+        "html": [{
+                "type": "h4",
+                "html": "VIII. Acte necesare",
+                "class": "sub-title"
+            },
+
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Fişa de înscriere ",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": " Fotografie tip buletin de identitate",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "fisa-de-inscriere",
+                                    "type": "file",
+                                    "class": "form-control"
+                                }
+
+                            ]
+                        }, ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "fotografie",
+                                "type": "file",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Diploma de bacalaureat sau echivalentă cu aceasta, recunoscută de M.E.N. ",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Certificat de naştere",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "diploma-bac",
+                                    "type": "file",
+                                    "class": "form-control"
+                                }
+
+                            ]
+                        }, ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "certificat-nastere",
+                                "type": "file",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Certificatul de căsătorie sau documentul care atestă schimbarea numelui",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Cartea de identitate, care atestă domiciliul în România",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "certificat-casatorie",
+                                    "type": "file",
+                                    "class": "form-control"
+                                }
+
+                            ]
+                        }, ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "carte-identitate",
+                                "type": "file",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Adeverinţă medicală tip ",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Chitanţă care dovedeşte plata taxei de înscriere sau actele necesare pentru scutirea de plata taxei",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "adeverinta-medicala",
+                                    "type": "file",
+                                    "class": "form-control"
+                                }
+
+                            ]
+                        }, ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "chitanta-taxa",
+                                "type": "file",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "h4",
+                "html": "Candidaţii care au absolvit liceul inainte de 2016 vor depune la dosar, după caz:",
+                "class": "sub-title"
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Declaraţie pe propria răspundere că nu au urmat cursurile nici unei facultăţi ",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Adeverinţă de la facultatea urmată, care să ateste numărul de semestre finanţate de la buget de care au beneficiat",
+                                "class": "input-title"
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                            "type": "div",
+                            "class": "custom-input",
+                            "html": [{
+                                    "name": "declaratie-absolvent-2016",
+                                    "type": "file",
+                                    "class": "form-control"
+                                }
+
+                            ]
+                        }, ]
+                    },
+
+                    {
+                        "type": "div",
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "adeverinta-semestre-finantate",
+                                "type": "file",
+                                "class": "form-control"
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+
+           
+        ]
+    });
+});
 $(document).ready(function () {
 
     var navListItems = $('ul.setup-panel li a'),
@@ -3055,6 +3389,11 @@ $(document).ready(function () {
     $('#activate-step-7').on('click', function (e) {
         $('ul.setup-panel li:eq(6)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-7"]').trigger('click');
+        $(this).remove();
+    });
+    $('#activate-step-8').on('click', function (e) {
+        $('ul.setup-panel li:eq(7)').removeClass('disabled');
+        $('ul.setup-panel li a[href="#step-8"]').trigger('click');
         $(this).remove();
     });
 

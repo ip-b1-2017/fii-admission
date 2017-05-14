@@ -54,4 +54,10 @@ input[type=checkbox] {
   display: flex;
   justify-content: flex-start; }
 
+.input-title{
+  font-weight: bold;
+  text-align: left;
+  color: #337ab7;
+}
+
 /*# sourceMappingURL=form.css.map */
