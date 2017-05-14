@@ -35,11 +35,12 @@ public class UserController {
 	}
 
 	
-	@RequestMapping(value = "/check_email/{email}", method = RequestMethod.GET)
-	public ResponseEntity<Success> checkEmail(@PathVariable("email") String email) {
-
-		User result = UserService.getUser(email);
-
+	@RequestMapping(value = "/check_email", method = RequestMethod.POST)
+	public ResponseEntity<Success> checkEmail(@RequestBody Email email) {
+		System.out.println("salut");
+		System.out.println(email.getEmail());
+		User result = UserService.getUser(email.getEmail());
+		//System.out.println(result);
 		if(result == null) {
 			return new ResponseEntity<Success>(new Success(true), HttpStatus.NOT_FOUND);
 		}else {
