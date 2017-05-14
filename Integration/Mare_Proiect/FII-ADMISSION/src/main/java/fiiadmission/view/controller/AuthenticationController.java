@@ -21,9 +21,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Map;
 
-/**
- * Created by rusub on 5/6/2017.
- */
 @Controller
 public class AuthenticationController{
     private IValidator validator = new Validator();
@@ -31,43 +28,69 @@ public class AuthenticationController{
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public @ResponseBody ModelAndView getLoginForm(@RequestParam(value="error", required=false) String error,
             Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
-        //if(req.getCookies() != null){
-           // rep.sendRedirect("/dashboard");
-          //  return null;
-        //}
-        //else{
-         //   model.addAttribute("error", error);
-            //return null;
+        if(req.getCookies() != null){
+            rep.sendRedirect("/dashboard");
+            return null;
+        }
+        else{
+            model.addAttribute("error", error);
             return new ModelAndView("/login");
-       // }
+        }
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public void login(HttpServletRequest req,
-                      HttpServletResponse res) throws URISyntaxException {
+    public ModelAndView login(HttpServletRequest req, HttpServletResponse res, Model model) throws URISyntaxException {
+        /*
         if (req.getCookies() != null) {
             for (Cookie cookie : req.getCookies())
                 System.out.println(cookie.getName() + " " + cookie.getValue());
         }
+        */
 
         Map<String, String[]> params = req.getParameterMap();
+
         if(!validator.isValid(params)){
             //wrong input parameters
             //TODO: return a html to inform user
-            return;
+            model.addAttribute("inv", "Invalid email");
+            return new ModelAndView("/login");
         }
+
         RestTemplate rt = new RestTemplate();
-        Map singleValueParams = Mapper.changeToSingle(params);
+        Map<String,String> singleValueParams = Mapper.changeToSingle(params);
         //TODO test the returning result
-        SessionIdentifier si = rt.postForEntity(
+
+        rt.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+
+            }
+        });
+
+        ResponseEntity<SessionIdentifier> identifier = rt.postForEntity(
                 ServerProperties.middleUrl + "/login_test", singleValueParams,
-                SessionIdentifier.class).getBody();
-        Cookie cookie1 = new Cookie("user-name", si.getUsername());
+                SessionIdentifier.class);
+
+        SessionIdentifier si = identifier.getBody();
+
+        if(!si.isSucces()){
+            model.addAttribute("failure", si.getFailureReason());
+            return new ModelAndView("/login");
+        }
+
+        Cookie cookie1 = new Cookie("user-name", singleValueParams.get("username"));
         Cookie cookie2 = new Cookie("user-token", si.getToken());
+
         cookie1.setSecure(true);
         cookie2.setSecure(true);
         res.addCookie(cookie1);
         res.addCookie(cookie2);
+        return new ModelAndView("/login");
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
