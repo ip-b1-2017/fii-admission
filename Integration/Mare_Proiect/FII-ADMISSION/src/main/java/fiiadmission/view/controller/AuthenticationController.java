@@ -31,15 +31,15 @@ public class AuthenticationController{
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public @ResponseBody ModelAndView getLoginForm(@RequestParam(value="error", required=false) String error,
             Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
-        if(req.getCookies() != null){
-            rep.sendRedirect("/dashboard");
-            return null;
-        }
-        else{
-            model.addAttribute("error", error);
+        //if(req.getCookies() != null){
+           // rep.sendRedirect("/dashboard");
+          //  return null;
+        //}
+        //else{
+         //   model.addAttribute("error", error);
             //return null;
             return new ModelAndView("/login");
-        }
+       // }
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -71,14 +71,10 @@ public class AuthenticationController{
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public void getAuthenticationFormular(HttpServletResponse res) {
-        //TODO return formular
-        try {
-            res.getOutputStream().println("IT WORKS!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public ModelAndView getAuthenticationFormular(HttpServletResponse res) {
+        return new ModelAndView("/register");
     }
+
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
@@ -90,7 +86,7 @@ public class AuthenticationController{
         }*/
 
         Map singleValueParams;
-        System.out.println("salut");
+
 
         try {
             singleValueParams = Mapper.changeToSingle(params);

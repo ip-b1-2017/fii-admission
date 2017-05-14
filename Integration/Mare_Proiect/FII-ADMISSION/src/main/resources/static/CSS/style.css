@@ -1,0 +1,85 @@
+button {
+    background-color: white;
+    /*color: rgba(62, 156, 242, 0.5);*/
+    color: #2f5e85;
+    font-weight: bold;
+    padding: 10px 40px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.right {
+	float: right;
+}
+
+header {
+	min-height:100vh;
+	background: url('../images/programming.jpeg') no-repeat center center;
+	background-size: 100%;
+	background-color: #EDEFF3;
+	padding-top: 25%;
+	/*background: rgba(62, 156, 242, 0.1);*/
+}
+
+h1, h2 {
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 1em gray, 0 0 0.2em darkblue;
+}
+
+.beneficii {
+	padding-top: 75px;
+	background-color: #EDEFF3;
+	min-height: 640px;
+}
+
+.impresii {
+	padding-top: 75px;
+	background-color: #3388CB;
+	min-height: 640px;
+}
+
+.contact {
+	background-color: #EDEFF3;
+	min-height: 640px;
+}
+
+.padded {
+	padding: 10%;
+}
+
+.first {
+	margin-top: 5%;
+	margin-bottom: 7%;
+}
+
+.contactImg {
+	height: 640px;
+	float: left;
+}
+
+.detalii {
+	color: black;
+	float: left;
+	padding-top: 75px;
+	padding-left: 15px;
+}
+
+footer {
+  background-color: #3388CB;
+  color: white;
+ }
+
+ footer a {
+ 	color: white;
+ }
+
+ .social img {
+ 	width: 50px;
+ 	margin-right: 20px;
+ }
+
+ .social {
+ 	padding: 20px 20px 20px 0; 
+ }
