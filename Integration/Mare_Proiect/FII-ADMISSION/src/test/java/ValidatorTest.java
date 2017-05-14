@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import validator.IValidator;
 import validator.Validator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -12,81 +15,112 @@ import static org.junit.jupiter.api.Assertions.*;
 class ValidatorTest {
 
     IValidator validator;
+    Map<String, String[]> map;
     @BeforeEach
     void setUp() {
         validator = new Validator();
+        map = new HashMap<String, String[]>();
     }
 
     @AfterEach
     void tearDown() {
         validator = null;
-    }
-
-    /*@Test
-    void numbersContainsOnlyDigits() {
-        boolean res = validator.isValid("res-num=123");
-        assertTrue(res);
-    }
-
-    @Test
-    void numbersDoNotContainsLetters(){
-        boolean res = validator.isValid("res-num=123a");
-        assertFalse(res);
-    }
-
-    @Test
-    void wordsContainsOnlyLetters(){
-        boolean res = validator.isValid("res-alfa=word");
-        assertTrue(res);
-    }
-
-    @Test
-    void wordsDoNotContainsCharactersOtherThanLetters(){
-        boolean res = validator.isValid("res-alfa=word21");
-        assertFalse(res);
+        map = null;
     }
 
     @Test
     void alphaNumericWordsShouldContainsOnlyLettersAndDigits(){
-        boolean res = validator.isValid("res-alfn=word21");
+        map.put("res-alfn", new String[]{"wordȚ21"});
+        boolean res = validator.isValid(map);
         assertTrue(res);
     }
 
     @Test
     void alphaNumericWordsShouldOtherCharacters(){
-        boolean res = validator.isValid("res-alfn=12as@#");
+        map.put("res-alfn", new String[]{"12as@#"});
+        System.out.println(map.size());
+        boolean res = validator.isValid(map);
         assertFalse(res);
     }
 
     @Test
+    void numbersContainsOnlyDigits() {
+        map.put("res-num", new String[]{"123"});
+        boolean res = validator.isValid(map);
+        assertTrue(res);
+    }
+
+    @Test
+    void numbersDoNotContainsLetters(){
+        map.put("res-num", new String[]{"123a"});
+        boolean res = validator.isValid(map);
+        assertFalse(res);
+    }
+
+    @Test
+    void wordsContainsOnlyLetters(){
+        map.put("res-alfa", new String[]{"wordăîĂ"});
+        boolean res = validator.isValid(map);
+        assertTrue(res);
+    }
+
+    @Test
+    void wordsDoNotContainsCharactersOtherThanLetters(){
+        map.put("res-alfa", new String[]{"word2@#1"});
+        boolean res = validator.isValid(map);
+        assertFalse(res);
+    }
+
+
+    @Test
     void emailsShouldNotContainsAtSymbolInLocalPart(){
-        boolean res = validator.isValid(("res-email=popescu@ion@gmail.com"));
+        map.put("res-email", new String[]{"popescu@ion@gmail.com"});
+        boolean res = validator.isValid(map);
         assertFalse(res);
     }
 
     @Test
     void emailsShouldContainsOnlyOneAtSymbol(){
-        boolean res = validator.isValid("res-email=popescu@gmail.com");
+        map.put("res-email", new String[]{"popescu_ion@gmail.com"});
+        boolean res = validator.isValid(map);
         assertTrue(res);
     }
 
     @Test
     void allShouldAcceptAnyWord(){
-        boolean res = validator.isValid("res-all=o4r01012!@@@^%25");
+        map.put("res-all", new String[]{"o4r01012!@@@^%25"});
+        boolean res = validator.isValid(map);
         assertTrue(res);
     }
 
     @Test
     void dateShouldContainsThreeNumbersSeparateByDots(){
-        boolean res = validator.isValid("red-date=01.01.2017");
+        map.put("res-date", new String[]{"01.01.2017"});
+        boolean res = validator.isValid(map);
         assertTrue(true);
     }
 
     @Test
     void dateShouldNotContainYearFormatedWithLessThenFourDigites(){
-        boolean res = validator.isValid("red-date=01.01.200");
+        map.put("res-date", new String[]{"01.01.20"});
+        boolean res = validator.isValid(map);
         assertFalse(res);
-    }*/
+    }
 
+    @Test
+    void namesThatDoNotCorrespondToConvetionShouldNotPass(){
+        map.put("res-word", new String[]{"word"});
+        map.put("res", new String[]{"1234"});
+        boolean res = validator.isValid(map);
+        assertFalse(res);
+    }
+
+    @Test
+    void namesThatCorrespondToConvetionShouldBeAccepted(){
+        map.put("res-alfa", new String[]{"word"});
+        map.put("res-num", new String[]{"1234"});
+        boolean res = validator.isValid(map);
+        assertTrue(res);
+    }
 
 }
