@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <title>Teachers</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
  <!-- <li><div class="avatar"></div><h3>John Smith</h3></li> -->
 
 <div class="content">
-    <img src="avatar.png" alt="" width="50px" />
+    <img src="/images/profesori/avatar.png" alt="" width="50px" />
     <h3>Administrator</h3>
 </div>​
 
@@ -57,18 +57,19 @@
         </div>
         <div class="widget-content">
           <br>
+            <form th:action="@{/delete}" method="post">
           <label for="cod">Nume:<br>
-    			</label> <input type="text" name="cod" id="cod" value="" />
+    			</label> <input type="text" name="nume" id="cod" value="" />
     			<br><br>
     			<label for="etaj">Prenume:<br>
-    			</label> <input type="text" name="etaj" id="etaj" value="" />
+    			</label> <input type="text" name="prenume" id="etaj" value="" />
     			<br><br>
     			<label for="nr">CNP:<br>
-    			</label> <input type="number" name="nr" id="nr" value="" />
+    			</label> <input type="number" name="cnp" id="nr" value="" />
     			<br><br>
-		<input type="submit" value="Adaugare profesor">
-		<input type="submit" value="Stergere profesor">
-
+		    <input type="submit" name="button" value="add">
+		    <input type="submit" name="button" value="delete">
+            </form>
         </div>
       </div>
 </div>

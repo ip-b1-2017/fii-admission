@@ -84,10 +84,5 @@ public class SessionController {
         }
     }
 
-    @RequestMapping(value = "/delete_teacher", method = RequestMethod.GET)
-    public ModelAndView getTeachers(HttpServletRequest req, HttpServletResponse rep){
-        return new ModelAndView("profesori");
-    }
-
 
 }
