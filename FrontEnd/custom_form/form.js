@@ -1,7 +1,7 @@
 ﻿$(function () {
     $("#myform").dform({
-        "action": "form.html",
-        "method": "get",
+        "action":"http://localhost:8090/form",
+        "method": "post",
         "html": [{
                 "type": "div",
                 "class": "form-group",
@@ -658,8 +658,8 @@
 
 $(function () {
     $("#myform2").dform({
-        "action": "form2.html",
-        "method": "get",
+        "action": "http://localhost:8090/form",
+        "method": "post",
         "html": [{
                 "type": "h4",
                 "html": " II.a. Studiile preuniversitare absolvite, nivel liceu",
@@ -1819,8 +1819,8 @@ $(function () {
 
 $(function () {
     $("#myform3").dform({
-        "action": "form3.html",
-        "method": "get",
+        "action": "http://localhost:8090/form",
+		"method": "post",
         "html": [{
                 "type": "h4",
                 "html": "III. Cerinţe specifice facultăţii",
@@ -2027,8 +2027,8 @@ $(function () {
 
 $(function () {
     $("#myform4").dform({
-        "action": "form4.html",
-        "method": "get",
+        "action": "http://localhost:8090/form",
+		"method": "post",
         "html": [{
                 "type": "h4",
                 "html": "IV. Opţiuni de admitere, în ordinea preferinţelor",
@@ -2042,8 +2042,8 @@ $(function () {
 });
 $(function () {
     $("#myform6").dform({
-        "action": "form.html",
-        "method": "get",
+        "action": "http://localhost:8090/form",
+		"method": "post",
         "html": [
             {
                 "type": "h4",
@@ -2155,8 +2155,8 @@ $(function () {
 
 $(function () {
     $("#myform5").dform({
-        "action": "form5.html",
-        "method": "get",
+        "action": "http://localhost:8090/form",
+		"method": "post",
         "html": [{
                 "type": "h4",
                 "html": "V. Informaţii privind documentele de studii depuse la dosar",
@@ -2523,8 +2523,8 @@ $(function () {
 
 $(function () {
     $("#myform8").dform({
-        "action": "form8.html",
-        "method": "get",
+        "action": "http://localhost:8090/form",
+		"method": "post",
         "html": [{
                 "type": "h4",
                 "html": "VII. Chestionar privind alegerea Dumneavoastră",
@@ -3004,8 +3004,8 @@ $(function () {
 
 $(function () {
     $("#myform7").dform({
-        "action": "form7.html",
-        "method": "get",
+        "action": "http://localhost:8090/form",
+		"method": "post",
         "html": [{
                 "type": "h4",
                 "html": "VIII. Acte necesare",
@@ -3337,6 +3337,15 @@ $(function () {
         ]
     });
 });
+
+function sendForm(formId){
+	$.post(
+		$(formId).attr("action"),
+		$(formId).serialize()
+	);
+	alert($(formId).serialize());
+}
+
 $(document).ready(function () {
 
     var navListItems = $('ul.setup-panel li a'),
@@ -3396,5 +3405,7 @@ $(document).ready(function () {
         $('ul.setup-panel li a[href="#step-8"]').trigger('click');
         $(this).remove();
     });
-
+    $('#finish-button').on('click', function (e) {
+        sendForm("#myform7");
+    })
 });
