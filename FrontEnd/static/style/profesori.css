@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: #e6e6e6;
 }
 
 ul {
@@ -60,7 +61,7 @@ p{
 .logo {
   width: auto;
   height: 50px;
-  background: url("/images/logo.png");
+  background: url("logo.png");
   background-color: #1C537E;
   background-position: left;
   background-size: 130px auto;

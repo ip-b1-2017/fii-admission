@@ -5,7 +5,14 @@ public class Candidat {
 	private String prenume;
 	private String CNP;
 	private String useremail;
+	private String telefon;
 
+	public void setTelefon(String telefon){
+		this.telefon=telefon;
+	}
+	public String getTelefon(){
+		return telefon;
+	}
 	public String getNume() {
 		return nume;
 	}

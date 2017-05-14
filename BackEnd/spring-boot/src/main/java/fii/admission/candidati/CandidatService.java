@@ -24,6 +24,7 @@ public class CandidatService {
 				candidat.setPrenume(rs.getString("PRENUME"));
 				candidat.setCNP(rs.getString("CNP"));
 				candidat.setUserEmail(rs.getString("USEREMAIL"));
+				candidat.setTelefon(rs.getString("TELEFON"));
 				result.add(candidat);
 			}
 			stmt.close();
@@ -51,6 +52,7 @@ public class CandidatService {
 				result.setPrenume(rs.getString("PRENUME"));
 				result.setCNP(rs.getString("CNP"));
 				result.setUserEmail(rs.getString("USEREMAIL"));
+				result.setTelefon(rs.getString("TELEFON"));
 			} else
 				return null;
 			pstmt.close();
@@ -65,7 +67,9 @@ public class CandidatService {
 	public static int updateCandidat(String cnp, Candidat candidat) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE CANDIDAT SET nume = ?, prenume = ?, pcnp = ?, " + "useremail = ? where cnp = ?";
+		String query = "UPDATE CANDIDAT SET nume = ?, prenume = ?, pcnp = ?, "
+				+ "useremail = ? telefon = ? " +
+				"where cnp = ?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -73,7 +77,8 @@ public class CandidatService {
 			pstmt.setString(2, candidat.getPrenume());
 			pstmt.setString(3, candidat.getCNP());
 			pstmt.setString(4, candidat.getUserEmail());
-			pstmt.setString(5, cnp);
+			pstmt.setString(5,candidat.getTelefon());
+			pstmt.setString(6, cnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
@@ -102,7 +107,7 @@ public class CandidatService {
 	public static int insertCandidat(Candidat candidat) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO CANDIDAT " + "(NUME, PRENUME, CNP, USEREMAIL)" + "VALUES ( ?, ?, ?, ?)";
+		String query = "INSERT INTO CANDIDAT " + "(NUME, PRENUME, CNP, USEREMAIL,TELEFON)" + "VALUES ( ?, ?, ?, ?,?)";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -110,6 +115,7 @@ public class CandidatService {
 			pstmt.setString(2, candidat.getPrenume());
 			pstmt.setString(3, candidat.getCNP());
 			pstmt.setString(4, candidat.getUserEmail());
+			pstmt.setString(5,candidat.getTelefon());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
