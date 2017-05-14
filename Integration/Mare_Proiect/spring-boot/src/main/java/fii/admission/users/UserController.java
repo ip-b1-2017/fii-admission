@@ -1,9 +1,4 @@
-
 package fii.admission.users;
-
-/**
- *
- * @author Asus*/
 
 import java.util.List;
 
@@ -33,11 +28,15 @@ public class UserController {
 	@RequestMapping(value = "/check_email/{email}", method = RequestMethod.GET)
 	public ResponseEntity<Success> checkEmail(@PathVariable("email") String email) {
 		User result = UserService.getUser(email);
+<<<<<<< HEAD
 		System.out.println(result);
+=======
+
+>>>>>>> 852e2d1c7b3e947a06b70808da051c3197cec172
 		if(result == null) {
-			return new ResponseEntity<Success>(new Success(true), HttpStatus.OK);
+			return new ResponseEntity<Success>(new Success(false), HttpStatus.NOT_FOUND);
 		}else {
-			return new ResponseEntity<Success>(new Success(false), HttpStatus.OK);
+			return new ResponseEntity<Success>(new Success(true), HttpStatus.OK);
 		}
 	}
 	/*
