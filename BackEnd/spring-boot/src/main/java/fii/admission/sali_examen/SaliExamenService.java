@@ -14,7 +14,7 @@ public class SaliExamenService {
 	static public List<SaliExamen> getAllSaliExamen() {
 		ArrayList<SaliExamen> result = new ArrayList<SaliExamen>();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM SALIEXAMEN";
+		String query = "SELECT * FROM SALI_EXAMEN";
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -39,7 +39,7 @@ public class SaliExamenService {
 	public static SaliExamen getSaliExamen(String saliid) {
 		SaliExamen result = new SaliExamen();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM SALIEXAMEN WHERE saliid = ?";
+		String query = "SELECT * FROM SALI_EXAMEN WHERE saliid = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, saliid);
@@ -61,7 +61,7 @@ public class SaliExamenService {
 	public static int updateSaliExamen(String saliid, SaliExamen saliExamen) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE SALIEXAMEN SET saliid = ?, examenid = ? where saliid = ?";
+		String query = "UPDATE SALI_EXAMEN SET saliid = ?, examenid = ? where saliid = ?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -80,7 +80,7 @@ public class SaliExamenService {
 	public static int deleteSaliExamen(String saliid) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "DELETE FROM SALIEXAMEN WHERE saliid = ?";
+		String query = "DELETE FROM SALI_EXAMEN WHERE saliid = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, saliid);
@@ -96,7 +96,7 @@ public class SaliExamenService {
 	public static int insertSaliExamen(SaliExamen saliExamen) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO SALIEXAMEN " + "(saliid, examenid)" + "VALUES ( ?, ?)";
+		String query = "INSERT INTO SALI_EXAMEN " + "(saliid, examenid)" + "VALUES ( ?, ?)";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
