@@ -115,7 +115,7 @@ public class AuthenticationController{
         System.out.println(responseSignUp.getBody().getFailureReason());
 
         if (!responseSignUp.getBody().isSuccess()) {
-            model.addAttribute("error", error);
+            model.addAttribute("error", responseSignUp.getBody().getFailureReason());
             return new ModelAndView("/register");
         }else {
             try {

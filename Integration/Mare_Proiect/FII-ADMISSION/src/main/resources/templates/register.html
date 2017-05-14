@@ -36,8 +36,9 @@
                 <div class="field-wrap">
                     <label >Email Address:</label><br>
                     <input type="text" placeholder="Enter Email Address" name="email" required>
+                    <p id="error_msg" th:text="${error}"></p>
                 </div>
-                
+
                 <div class="field-wrap">
                     <label>Password:</label><br>
     		 	    <input type="password" placeholder="Set A Password" name="password" required>
@@ -49,6 +50,7 @@
                 </div>
 
                 <button type="submit" class="button button-block"/>Get Started</button>
+
             </form>
         </div>
     </div>
