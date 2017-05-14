@@ -57,10 +57,13 @@ public class SignUpTest {
 
             }
         });
-
-        SuccessEntity entity = restTemplate.postForObject(
-                ServerProperties.modelUrl + "/check_email",signup.getEmail(),SuccessEntity.class);
-        return entity.isSuccess();
+        System.out.println(ServerProperties.modelUrl + "/check_email");
+        Map<String,String> map = new HashMap<>();
+        map.put("email", signup.getEmail());
+        ResponseEntity<SuccessEntity> entity = restTemplate.postForEntity(
+                ServerProperties.modelUrl + "/check_email",map,SuccessEntity.class);
+        System.out.println(entity.getBody().isSuccess());
+        return entity.getBody().isSuccess();
     }
     private static boolean addToDB(SignUpTestInEntity signup) {
 
@@ -78,7 +81,7 @@ public class SignUpTest {
         });
         UserEntity user = new UserEntity();
         user.setEmail(signup.getEmail());
-        user.setRole("user");
+        user.setRol("user");
         user.setParola(signup.getPassword());
         user.setToken(".");
         ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
