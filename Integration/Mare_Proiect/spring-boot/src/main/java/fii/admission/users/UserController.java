@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping(value = "/model")
 @RestController
-@RequestMapping(value ="/model")
 public class UserController {
-	/*
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUser() {
 		List<User> result = UserService.getAllUser();
@@ -23,7 +22,18 @@ public class UserController {
 		
 		return new ResponseEntity<List<User>>(result, HttpStatus.OK);
 	}
-	*/
+	
+	@RequestMapping(value = "/users/{email}", method = RequestMethod.GET)
+	public ResponseEntity<User> getUser(@PathVariable("email") String email) {
+		User result = UserService.getUser(email);
+
+		if(result == null) {
+			return new ResponseEntity<User>(result, HttpStatus.NOT_FOUND);
+		}else {
+			return new ResponseEntity<User>(result, HttpStatus.OK);
+		}
+	}
+
 	
 	@RequestMapping(value = "/check_email/{email}", method = RequestMethod.GET)
 	public ResponseEntity<Success> checkEmail(@PathVariable("email") String email) {
@@ -35,7 +45,7 @@ public class UserController {
 			return new ResponseEntity<Success>(new Success(true), HttpStatus.OK);
 		}
 	}
-	/*
+	
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateUser(@PathVariable("email") String email, @RequestBody User user) {
 		int result = UserService.updateUser(email, user);
@@ -44,8 +54,8 @@ public class UserController {
 		else 
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
-	*/
-	/*
+
+
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteUser(@PathVariable("email") String email) {
 		int result = UserService.deleteUser(email);
@@ -54,7 +64,7 @@ public class UserController {
 		else 
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
-	*/
+
 	@RequestMapping(value = "/add_user", method = RequestMethod.POST)
 	public ResponseEntity<Success> insertUser(@RequestBody User user) {
 		System.out.println("error super big");

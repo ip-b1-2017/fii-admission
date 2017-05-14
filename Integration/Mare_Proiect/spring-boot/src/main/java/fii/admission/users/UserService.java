@@ -10,65 +10,67 @@ import fii.admission.MainApp;
 
 @Service
 public class UserService {
-	
+
 	static public List<User> getAllUser() {
 		ArrayList<User> result = new ArrayList<User>();
 		Connection con = MainApp.getDBConnection();
 		String query = "SELECT * FROM USER";
-		try{
+		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next()) {
+			while (rs.next()) {
 				User user = new User();
-				user.setRole(rs.getString("ROLE"));
+				user.setRol(rs.getString("ROL"));
 				user.setEmail(rs.getString("EMAIL"));
 				user.setParola(rs.getString("PAROLA"));
-               			user.setToken(rs.getString("TOKEN"));
+				user.setToken(rs.getString("TOKEN"));
 				result.add(user);
 			}
 			stmt.close();
 			rs.close();
-			if(result.isEmpty()) return null;
-			else return result;
-		} catch(Exception exc) {
+			if (result.isEmpty())
+				return null;
+			else
+				return result;
+		} catch (Exception exc) {
 			System.out.printf("[error][getAllUser] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static User getUser(String email) {
 		User result = new User();
 		Connection con = MainApp.getDBConnection();
 		String query = "SELECT * FROM USER WHERE email = ?";
-		try{
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, email);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
-				result.setRole(rs.getString("ROLE"));
+			if (rs.next()) {
+				result.setRol(rs.getString("ROL"));
 				result.setEmail(rs.getString("EMAIL"));
 				result.setParola(rs.getString("PAROLA"));
 				result.setToken(rs.getString("TOKEN"));
-			}
-			else return null;
+			} else
+				return null;
 			pstmt.close();
 			rs.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][getUser] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static int updateUser(String email, User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE USER SET role = ?, email = ?, parola = ?, " + 
-					   "token = ?, firstname = ?, lastname =? where email = ?";
-			
-		try{
+		String query = "UPDATE USER SET ROL = ?, email = ?, parola = ?, "
+				+ "token = ?, firstname = ?, lastname =? where email = ?";
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, user.getRole());
+			pstmt.setString(1, user.getRol());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getParola());
 			pstmt.setString(4, user.getToken());
@@ -76,48 +78,45 @@ public class UserService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][updateUser] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
-	
+
 	public static int deleteUser(String email) {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM USER WHERE email = ?";
-		try{
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, email);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][deleteUser] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
-	
+
 	public static int insertUser(User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO USER "
-				+ "(ROL, EMAIL, PAROLA, TOKEN)"
-				+ "VALUES ( ?, ?, ?, ?)";
-		
-		try{
+		String query = "INSERT INTO USER " + "(ROL, EMAIL, PAROLA, TOKEN)" + "VALUES ( ?, ?, ?, ?)";
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, user.getRole());
+			pstmt.setString(1, user.getRol());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getParola());
 			pstmt.setString(4, user.getToken());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][updateUser] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
 }
-

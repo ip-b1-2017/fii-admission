@@ -1,7 +1,7 @@
 package fii.admission.users;
 
 public class User {
-	private String role;
+	private String rol;
 	private String email;
 	private String password;
 	private String token;
@@ -10,12 +10,12 @@ public class User {
 
 	}
 
-	public String getRole() {
-		return role;
+	public String getRol() {
+		return rol;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
 	public String getEmail() {
