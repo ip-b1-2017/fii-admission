@@ -33,7 +33,7 @@ public class UserController {
 	@RequestMapping(value = "/check_email/{email}", method = RequestMethod.GET)
 	public ResponseEntity<Success> checkEmail(@PathVariable("email") String email) {
 		User result = UserService.getUser(email);
-		System.out.println("error");
+		System.out.println(result);
 		if(result == null) {
 			return new ResponseEntity<Success>(new Success(true), HttpStatus.OK);
 		}else {
