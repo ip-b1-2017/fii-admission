@@ -22,6 +22,7 @@ public class LoginTest {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<LoginTestOutEntity>testLogin(@RequestBody LoginTestInEntity login) {
         if (!check(login)) {
+
             return new ResponseEntity<>(
                     new LoginTestOutEntity(false, null, "Failed login"),
                     HttpStatus.UNAUTHORIZED
