@@ -18,9 +18,11 @@ body {
   color: white;
 
  }
+
  #error_msg{
    color:red;
  }
+
 a {
   text-decoration: none;
   color: #194a71;
