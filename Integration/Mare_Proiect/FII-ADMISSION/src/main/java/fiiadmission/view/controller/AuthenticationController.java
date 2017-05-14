@@ -73,11 +73,6 @@ public class AuthenticationController{
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public void getAuthenticationFormular(HttpServletResponse res) {
         //TODO return formular
-        try {
-            res.getOutputStream().println("IT WORKS!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
