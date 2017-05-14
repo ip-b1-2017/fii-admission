@@ -8,12 +8,15 @@ import com.ip_b1.fii.admission.DTO.UserEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +46,19 @@ public class SignUpTest {
         Map<String,String> variable = new HashMap<>();
         variable.put("email",signup.getEmail());
         RestTemplate restTemplate = new RestTemplate();
+
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+
+            }
+        });
+
         SuccessEntity entity = restTemplate.getForObject(
                 ServerProperties.modelUrl + "/check_email/{email}",SuccessEntity.class,variable);
         return entity.isSuccess();
@@ -50,6 +66,17 @@ public class SignUpTest {
     private static boolean addToDB(SignUpTestInEntity signup) {
 
         RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+
+            }
+        });
         UserEntity user = new UserEntity();
         user.setEmail(signup.getEmail());
         user.setRole("user");
