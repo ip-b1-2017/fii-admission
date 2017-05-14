@@ -32,7 +32,7 @@ public class Sali_Examen_CandidatController {
 		return new ResponseEntity<Sali_Examen_Candidat>(result, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/Sali_Examen_Candidat/{candidatcnp}", method = RequestMethod.POST)
+	@RequestMapping(value = "/sali_examen_candidat/{candidatcnp}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateSali_Examen_Candidat(@PathVariable("candidatcnp") String candidatcnp,
 			@RequestBody Sali_Examen_Candidat sali) {
 		int result = Sali_Examen_CandidatService.updateSali_Examen_Candidat(candidatcnp, sali);
@@ -42,7 +42,7 @@ public class Sali_Examen_CandidatController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/Sali_Examen_Candidat/{candidatcnp}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/sali_examen_candidat/{candidatcnp}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteSali_Examen_Candidat(@PathVariable("candidatcnp") String candidatcnp) {
 		int result = Sali_Examen_CandidatService.deleteSali_Examen_Candidat(candidatcnp);
 		if (result == 0)
@@ -51,7 +51,7 @@ public class Sali_Examen_CandidatController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/Sali_Examen_Candidat", method = RequestMethod.PUT)
+	@RequestMapping(value = "/sali_examen_candidat", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertSali_Examen_Candidat(@RequestBody Sali_Examen_Candidat sali) {
 		int result = Sali_Examen_CandidatService.insertSali_Examen_Candidat(sali);
 		if (result == 0)
