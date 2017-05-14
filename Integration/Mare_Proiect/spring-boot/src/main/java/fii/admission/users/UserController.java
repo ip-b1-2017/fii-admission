@@ -47,16 +47,6 @@ public class UserController {
 			return new ResponseEntity<Success>(new Success(false), HttpStatus.OK);
 		}
 	}
-	
-	@RequestMapping(value = "/users/{email}", method = RequestMethod.POST)
-	public ResponseEntity<Integer> updateUser(@PathVariable("email") String email, @RequestBody User user) {
-		int result = UserService.updateUser(email, user);
-		if(result == 0)
-			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else 
-			return new ResponseEntity<Integer>(result, HttpStatus.OK);
-	}
-
 
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteUser(@PathVariable("email") String email) {
@@ -76,6 +66,28 @@ public class UserController {
 			return new ResponseEntity<Success>(new Success(false), HttpStatus.NOT_MODIFIED);
 		else 
 			return new ResponseEntity<Success>(new Success(true), HttpStatus.CREATED);
+	}
+
+	@RequestMapping(value="/users/check_password", method = RequestMethod.POST)
+	public ResponseEntity<Success> checkPassword(@RequestBody UserIn user){
+		if (UserService.isLogged(user)) {
+			System.out.println("Exista!");
+			return new ResponseEntity<Success>(new Success(true),HttpStatus.OK);
+		}else{
+			System.out.println("Nu exista!");
+			return new ResponseEntity<Success>(new Success(false),HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@RequestMapping(value="/users/set_token", method = RequestMethod.POST)
+	public ResponseEntity<Success> updateToken(@RequestBody SetTokenEntity ust){
+
+			if(UserService.updateToken(ust)){
+				System.out.println("Updated");
+				return new ResponseEntity<Success>(new Success(true),HttpStatus.OK);
+			}else{
+				return new ResponseEntity<Success>(new Success(false),HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 	}
 }
 

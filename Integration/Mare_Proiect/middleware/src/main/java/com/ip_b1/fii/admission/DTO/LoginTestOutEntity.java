@@ -5,12 +5,10 @@ public class LoginTestOutEntity {
     private String token;
     private String failureReason;
 
+    public LoginTestOutEntity(){
 
-    public LoginTestOutEntity(boolean success, String token, String failureReason) {
-        this.success = success;
-        this.token = token;
-        this.failureReason = failureReason;
     }
+
 
     public boolean isSuccess() {
         return success;

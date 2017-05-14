@@ -1,5 +1,8 @@
-package com.ip_b1.fii.admission.DTO;
+package fii.admission.users;
 
+/**
+ * Created by cosmin on 5/14/2017.
+ */
 public class SetTokenEntity {
     private String email;
     private String token;

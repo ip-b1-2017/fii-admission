@@ -1,6 +1,7 @@
 package fiiadmission.view.controller;
 
 import fiiadmission.ServerProperties;
+import fiiadmission.dto.Login;
 import fiiadmission.dto.SessionIdentifier;
 import fiiadmission.view.Model.SignUpResponse;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
@@ -28,57 +29,58 @@ public class AuthenticationController{
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public @ResponseBody ModelAndView getLoginForm(@RequestParam(value="error", required=false) String error,
             Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
+        System.out.println("Giosanito");
         if(req.getCookies() != null){
             rep.sendRedirect("/dashboard");
             return null;
         }
         else{
-            model.addAttribute("error", error);
             return new ModelAndView("/login");
         }
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login(HttpServletRequest req, HttpServletResponse res, Model model) throws URISyntaxException {
+    public ModelAndView login(HttpServletRequest req, HttpServletResponse res, Model model) throws URISyntaxException, IOException {
         /*
         if (req.getCookies() != null) {
             for (Cookie cookie : req.getCookies())
                 System.out.println(cookie.getName() + " " + cookie.getValue());
         }
         */
-
         Map<String, String[]> params = req.getParameterMap();
-
         if(!validator.isValid(params)){
             //wrong input parameters
             //TODO: return a html to inform user
             model.addAttribute("inv", "Invalid email");
             return new ModelAndView("/login");
         }
-
         RestTemplate rt = new RestTemplate();
         Map<String,String> singleValueParams = Mapper.changeToSingle(params);
-        //TODO test the returning result
 
+        //TODO test the returning result
         rt.setErrorHandler(new ResponseErrorHandler() {
             @Override
             public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
                 return false;
             }
-
             @Override
             public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
-
             }
         });
+        Login login = new Login();
+        login.setUsername(singleValueParams.get("email"));
+        login.setPassword(singleValueParams.get("pswall"));
 
         ResponseEntity<SessionIdentifier> identifier = rt.postForEntity(
-                ServerProperties.middleUrl + "/login_test", singleValueParams,
+                ServerProperties.middleUrl + "/login_test", login,
                 SessionIdentifier.class);
 
         SessionIdentifier si = identifier.getBody();
 
-        if(!si.isSucces()){
+
+        System.out.println(si.isSuccess());
+        System.out.println(si.getFailureReason());
+        if(!si.isSuccess()){
             model.addAttribute("failure", si.getFailureReason());
             return new ModelAndView("/login");
         }
@@ -90,7 +92,8 @@ public class AuthenticationController{
         cookie2.setSecure(true);
         res.addCookie(cookie1);
         res.addCookie(cookie2);
-        return new ModelAndView("/login");
+
+        return new ModelAndView("redirect:/dashboard");
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -107,10 +110,7 @@ public class AuthenticationController{
         /*
         if (!validator.isValid(params)) {
         }*/
-
         Map singleValueParams;
-
-
         try {
             singleValueParams = Mapper.changeToSingle(params);
         } catch (IllegalArgumentException ex) {

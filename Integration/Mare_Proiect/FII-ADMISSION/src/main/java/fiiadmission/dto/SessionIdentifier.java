@@ -5,26 +5,21 @@ package fiiadmission.dto;
  */
 public class SessionIdentifier {
 
-    private boolean succes;
+    private boolean success;
     private String token;
     private String failureReason;
+
     public SessionIdentifier(){
 
     }
-    public boolean isSucces() {
-        return succes;
+
+
+    public boolean isSuccess() {
+        return success;
     }
 
-    public void setSucces(boolean succes) {
-        this.succes = succes;
-    }
-
-    public String getFailureReason() {
-        return failureReason;
-    }
-
-    public void setFailureReason(String failureReason) {
-        this.failureReason = failureReason;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
     public String getToken() {
@@ -33,5 +28,13 @@ public class SessionIdentifier {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getFailureReason() {
+        return failureReason;
+    }
+
+    public void setFailureReason(String failureReason) {
+        this.failureReason = failureReason;
     }
 }

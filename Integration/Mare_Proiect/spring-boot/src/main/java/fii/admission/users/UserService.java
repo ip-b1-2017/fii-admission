@@ -62,11 +62,30 @@ public class UserService {
 		return null;
 	}
 
+	public static boolean isLogged(UserIn user){
+		Connection con = MainApp.getDBConnection();
+		String query = "SELECT * FROM USER WHERE email = ? and parola = ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setString(1, user.getUsername());
+			pstmt.setString(2,user.getPassword());
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+			pstmt.close();
+			rs.close();
+		} catch (Exception exc) {
+			System.out.printf("[error][getUser] %s\n", exc.getMessage());
+		}
+		return false;
+	}
+
 	public static int updateUser(String email, User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "UPDATE USER SET ROL = ?, email = ?, parola = ?, "
-				+ "token = ?, firstname = ?, lastname =? where email = ?";
+				+ "token = ? where email = ?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -118,5 +137,23 @@ public class UserService {
 			System.out.printf("[error][updateUser] %s\n", exc.getMessage());
 		}
 		return 0;
+	}
+	public static boolean updateToken(SetTokenEntity ust){
+		int result;
+		Connection con = MainApp.getDBConnection();
+		String query = "UPDATE USER SET "
+				+ "token = ? where email = ?";
+
+		try {
+			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			pstmt.setString(1, ust.getToken());
+			pstmt.setString(2, ust.getEmail());
+			result = pstmt.executeUpdate();
+			pstmt.close();
+			return true;
+		} catch (Exception exc) {
+			System.out.printf("[error][updateUser] %s\n", exc.getMessage());
+		}
+		return false;
 	}
 }

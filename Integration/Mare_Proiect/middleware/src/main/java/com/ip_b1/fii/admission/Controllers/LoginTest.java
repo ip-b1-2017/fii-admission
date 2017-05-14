@@ -7,52 +7,85 @@ import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.Random;
 
 @RestController
-@RequestMapping("/controller/login_test")
+@RequestMapping(value="/controller/login_test")
 public class LoginTest {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<LoginTestOutEntity>testLogin(@RequestBody LoginTestInEntity login) {
-        if (!check(login)) {
+        LoginTestOutEntity entity = new LoginTestOutEntity();
 
+        if (!check(login)) {
+            entity.setSuccess(false);
+            entity.setFailureReason("Failed login");
+            entity.setToken(null);
             return new ResponseEntity<>(
-                    new LoginTestOutEntity(false, null, "Failed login"),
-                    HttpStatus.UNAUTHORIZED
+                    entity,
+                    HttpStatus.NOT_FOUND
             );
         }
 
         String token = authenticateUser(login.getUsername());
         if (token == null) {
+            entity.setSuccess(false);
+            entity.setFailureReason("Couldn't set token");
+            entity.setToken(null);
             return new ResponseEntity<>(
-                    new LoginTestOutEntity(false, null, "Couldn't set token"),
+                    entity,
                     HttpStatus.INTERNAL_SERVER_ERROR
             );
         }
+        entity.setSuccess(true);
+        entity.setFailureReason(null);
+        entity.setToken(token);
         return new ResponseEntity<>(
-                new LoginTestOutEntity(true, token, null),
+                entity,
                 HttpStatus.OK
         );
+
     }
 
     private String authenticateUser(String username) {
         RestTemplate restTemplate = new RestTemplate();
         String newToken = generateToken();
 
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+
+            }
+        });
+        SetTokenEntity token = new SetTokenEntity();
+        token.setToken(newToken);
+        token.setEmail(username);
+        System.out.println(newToken);
+        System.out.println(token.getEmail());
+
         ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
                 ServerProperties.modelUrl + "/users/set_token",
-                new SetTokenEntity(username, newToken),
+                token,
                 SuccessEntity.class
         );
 
-        if (response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess()) {
+        System.out.println(response.getBody().isSuccess());
+        if (response.getBody().isSuccess()) {
             return newToken;
         } else {
             return null;
@@ -73,11 +106,23 @@ public class LoginTest {
 
     private static boolean check(LoginTestInEntity login) {
         RestTemplate restTemplate = new RestTemplate();
-        SuccessEntity entity = restTemplate.postForObject(
+
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+
+            }
+        });
+        ResponseEntity<SuccessEntity> entity = restTemplate.postForEntity(
                 ServerProperties.modelUrl + "/users/check_password",
                 login,
                 SuccessEntity.class);
-        return entity.isSuccess();
+        return entity.getBody().isSuccess();
     }
 
 }

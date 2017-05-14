@@ -1,30 +1,24 @@
 package com.ip_b1.fii.admission.DTO;
 
 public class LoginTestInEntity {
-	private String username;
-	private String password;
+	private String email;
+	private String pswall;
+	public LoginTestInEntity(){
 
-	public LoginTestInEntity(String username, String password) {
-		this.username = username;
-		this.password = password;
 	}
-
-	public LoginTestInEntity() {
-	}
-
 	public String getUsername() {
-		return username;
+		return email;
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.email = username;
 	}
 
 	public String getPassword() {
-		return password;
+		return pswall;
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.pswall = password;
 	}
 }
