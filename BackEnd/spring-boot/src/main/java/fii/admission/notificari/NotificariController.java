@@ -22,7 +22,7 @@ public class NotificariController {
 		return new ResponseEntity<List<Notificari>>(result, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/Notificari/{useremail}", method = RequestMethod.GET)
+	@RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.GET)
 	public ResponseEntity<Notificari> getNotificari(@PathVariable String useremail) {
 		Notificari result = NotificariService.getNotificari(useremail);
 
