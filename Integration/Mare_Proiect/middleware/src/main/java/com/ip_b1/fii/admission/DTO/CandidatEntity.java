@@ -7,7 +7,6 @@ public class CandidatEntity {
     private String useremail;
 
     public CandidatEntity(){
-
     }
 
     public String getNume() {

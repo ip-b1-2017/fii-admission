@@ -31,5 +31,4 @@ public class GetCandidates {
                 HttpStatus.OK
         );
     }
-
 }
