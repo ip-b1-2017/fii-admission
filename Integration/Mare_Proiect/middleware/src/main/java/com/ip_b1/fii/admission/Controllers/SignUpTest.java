@@ -29,7 +29,7 @@ public class SignUpTest {
 
 
         System.out.println(signup.getEmail());
-        if (!check(signup)) {
+        if (check(signup)) {
             System.out.println(1);
             return new ResponseEntity<>(new SignUpTestOutEntity(false, "Email Used"), HttpStatus.BAD_REQUEST);
         }

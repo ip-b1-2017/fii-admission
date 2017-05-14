@@ -20,7 +20,7 @@ public class UserService {
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
 				User user = new User();
-				user.setRole(rs.getString("ROLE"));
+				user.setRole(rs.getString("ROL"));
 				user.setEmail(rs.getString("EMAIL"));
 				user.setParola(rs.getString("PAROLA"));
                			user.setToken(rs.getString("TOKEN"));
@@ -45,7 +45,7 @@ public class UserService {
 			pstmt.setString(1, email);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result.setRole(rs.getString("ROLE"));
+				result.setRole(rs.getString("ROL"));
 				result.setEmail(rs.getString("EMAIL"));
 				result.setParola(rs.getString("PAROLA"));
 				result.setToken(rs.getString("TOKEN"));
