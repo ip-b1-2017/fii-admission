@@ -20,7 +20,7 @@ public class UserService {
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				User user = new User();
-				user.setRole(rs.getString("ROLE"));
+				user.setRole(rs.getString("ROL"));
 				user.setEmail(rs.getString("EMAIL"));
 				user.setParola(rs.getString("PAROLA"));
 				user.setToken(rs.getString("TOKEN"));
@@ -49,7 +49,7 @@ public class UserService {
 			pstmt.setString(1, email);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				result.setRole(rs.getString("ROLE"));
+				result.setRole(rs.getString("ROL"));
 				result.setEmail(rs.getString("EMAIL"));
 				result.setParola(rs.getString("PAROLA"));
 				result.setToken(rs.getString("TOKEN"));
@@ -69,7 +69,7 @@ public class UserService {
 	public static int updateUser(String email, User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE USER SET role = ?, email = ?, parola = ?, "
+		String query = "UPDATE USER SET rol = ?, email = ?, parola = ?, "
 				+ "token = ?, firstname = ?, lastname =? where email = ?";
 
 		try {
@@ -109,7 +109,7 @@ public class UserService {
 	public static int insertUser(User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO USER " + "(ROLE, EMAIL, PAROLA, TOKEN,FIRSTNAME,LASTNAME)"
+		String query = "INSERT INTO USER " + "(ROL, EMAIL, PAROLA, TOKEN,FIRSTNAME,LASTNAME)"
 				+ "VALUES ( ?, ?, ?, ?,?,?)";
 
 		try {
