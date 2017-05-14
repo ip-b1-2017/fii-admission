@@ -32,7 +32,7 @@ public class AuthenticationController{
     public @ResponseBody ModelAndView getLoginForm(@RequestParam(value="error", required=false) String error,
             Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
         if(req.getCookies() != null){
-            rep.sendRedirect("/login");
+            rep.sendRedirect("/dashboard");
             return null;
         }
         else{
