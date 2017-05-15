@@ -67,7 +67,7 @@ public class ExamenService {
 	public static int updateExamen(String id, Examen examen) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE Examen SET id=?, start_date = ? , end_date, nr_proba = ?, tip = ? where id = ?";
+		String query = "UPDATE Examen SET id=?, start_date = ? , end_date = ?, nr_proba = ?, tip = ? where id = ?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
