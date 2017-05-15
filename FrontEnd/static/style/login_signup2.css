@@ -119,7 +119,7 @@ textarea {
 .logo {
   width: auto;
   height: 50px;
-  background: url("logo.png");
+  background: url("../images/logo.png");
   /*background-color: #3388CB;*/
   background-position: center;
   background-size: 200px auto;
