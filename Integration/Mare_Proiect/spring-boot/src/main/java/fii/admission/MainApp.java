@@ -9,23 +9,23 @@ import java.sql.*;
 public class MainApp {
 	private static final String DB_FILE = "FiiAdmission.db";
 	private static Connection sqliteDBConnection;
-	
-    public static void createNewDatabase() {
-    	 
-        String url = "jdbc:sqlite:./" + DB_FILE;
- 
-        try (Connection conn = DriverManager.getConnection(url)) {
-            if (conn != null) {
-                System.out.printf("[debug][createNewDatabase] Database \"%s\" created!\n", DB_FILE);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    
-    public static Connection getDBConnection() {
-    	if (sqliteDBConnection == null) {
-    		try {
+
+	public static void createNewDatabase() {
+
+		String url = "jdbc:sqlite:./" + DB_FILE;
+
+		try (Connection conn = DriverManager.getConnection(url)) {
+			if (conn != null) {
+				System.out.printf("[debug][createNewDatabase] Database \"%s\" created!\n", DB_FILE);
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public static Connection getDBConnection() {
+		if (sqliteDBConnection == null) {
+			try {
 				sqliteDBConnection = DriverManager.getConnection("jdbc:sqlite:./" + DB_FILE);
 			} catch (SQLException e) {
 				System.out.printf("[error][getDBConnection] %s\n", e.getMessage());

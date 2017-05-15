@@ -63,9 +63,10 @@ public class NoteService {
 	public static int updateNote(String candidatcnp, Note note) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE NOTE SET candidatcnp = ?, " + "valoare = ?, examenid = ? WHERE candidatcnp = ?";
-
-		try {
+		String query = "UPDATE NOTE SET candidatcnp = ?, "
+			     + "valoare = ?, examenid = ? WHERE candidatcnp = ?";
+			
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, note.getCandidatCNP());
 			pstmt.setFloat(2, note.getValoare());
@@ -74,7 +75,7 @@ public class NoteService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][updateNote] %s\n", exc.getMessage());
 		}
 		return 0;
@@ -99,9 +100,11 @@ public class NoteService {
 	public static int insertNote(Note note) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO NOTE " + "(CANDIDATCNP, VALOARE,EXAMENID)" + "VALUES ( ?, ?, ?)";
-
-		try {
+		String query = "INSERT INTO NOTE "
+				+ "(CANDIDATCNP, VALOARE,EXAMENID)"
+				+ " VALUES ( ?, ?, ?)";		
+		
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, note.getCandidatCNP());
 			pstmt.setFloat(2, note.getValoare());
@@ -109,7 +112,7 @@ public class NoteService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][updateNote] %s\n", exc.getMessage());
 		}
 		return 0;

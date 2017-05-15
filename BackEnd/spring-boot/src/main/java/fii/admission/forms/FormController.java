@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping(value = "/model")
 @RestController
 public class FormController {
 	@RequestMapping(value = "/formuri", method = RequestMethod.GET)
@@ -59,3 +60,4 @@ public class FormController {
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 }
+

@@ -16,13 +16,13 @@ public class UserController {
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> getAllUser() {
 		List<User> result = UserService.getAllUser();
-		
-		if(result == null)
+
+		if (result == null)
 			return new ResponseEntity<List<User>>(result, HttpStatus.NO_CONTENT);
-		
+
 		return new ResponseEntity<List<User>>(result, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable("email") String email) {
 		User result = UserService.getUser(email);
@@ -37,10 +37,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/check_email", method = RequestMethod.POST)
 	public ResponseEntity<Success> checkEmail(@RequestBody Email email) {
-		System.out.println("salut");
-		System.out.println(email.getEmail());
 		User result = UserService.getUser(email.getEmail());
-		//System.out.println(result);
+
 		if(result == null) {
 			return new ResponseEntity<Success>(new Success(true), HttpStatus.NOT_FOUND);
 		}else {
@@ -51,17 +49,16 @@ public class UserController {
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteUser(@PathVariable("email") String email) {
 		int result = UserService.deleteUser(email);
-		if(result == 0)
+		if (result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else 
+		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/add_user", method = RequestMethod.POST)
 	public ResponseEntity<Success> insertUser(@RequestBody User user) {
-		System.out.println("error super big");
 		int result = UserService.insertUser(user);
-		System.out.println("error super big");
+
 		if(result == 0)
 			return new ResponseEntity<Success>(new Success(false), HttpStatus.NOT_MODIFIED);
 		else 

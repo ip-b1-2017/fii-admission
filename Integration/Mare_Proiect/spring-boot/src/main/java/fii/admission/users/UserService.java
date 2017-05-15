@@ -122,7 +122,8 @@ public class UserService {
 	public static int insertUser(User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO USER " + "(ROL, EMAIL, PAROLA, TOKEN)" + "VALUES ( ?, ?, ?, ?)";
+		String query = "INSERT INTO USER " + "(ROL, EMAIL, PAROLA, TOKEN)" 
+			     + " VALUES ( ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -142,7 +143,7 @@ public class UserService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "UPDATE USER SET "
-				+ "token = ? where email = ?";
+			     + "token = ? where email = ?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());

@@ -45,8 +45,8 @@ public class FormService {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidatcnp);
 			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				result.setInformatii(rs.getString("FORMULAR"));
+			if(rs.next()) {
+				result.setInformatii(rs.getString("INFORMATII"));
 				result.setStatus(rs.getString("STATUS"));
 				result.setCandidatCnp(rs.getString("CANDIDATCNP"));
 			} else
@@ -63,18 +63,18 @@ public class FormService {
 	public static int updateForm(String candidatcnp, Form form) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE FORM SET formular = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
-
-		try {
+		String query = "UPDATE FORM SET informatii = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
+			
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, form.getFormular());
+			pstmt.setString(1, form.getInformatii());
 			pstmt.setString(2, form.getStatus());
 			pstmt.setString(3, form.getCandidatCnp());
 			pstmt.setString(4, candidatcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][updateForm] %s\n", exc.getMessage());
 		}
 		return 0;
@@ -84,13 +84,13 @@ public class FormService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM FORM WHERE candidatcnp = ?";
-		try {
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, candidatcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][deleteForm] %s\n", exc.getMessage());
 		}
 		return 0;
@@ -99,19 +99,22 @@ public class FormService {
 	public static int insertForm(Form form) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO FORM " + "(FORMULAR, STATUS, CANDIDATCNP)" + "VALUES ( ?, ?, ?)";
-
-		try {
+		String query = "INSERT INTO FORM "
+				+ " (INFORMATII, STATUS, CANDIDATCNP)"
+				+ " VALUES ( ?, ?, ?)";		
+		
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, form.getFormular());
+			pstmt.setString(1, form.getInformatii());
 			pstmt.setString(2, form.getStatus());
 			pstmt.setString(3, form.getCandidatCnp());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][updateForm] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
 }
+

@@ -99,9 +99,11 @@ public class SaliService {
 	public static int insertSali(Sali sali) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO SALI " + "(id, locatie, locuri)" + "VALUES ( ?, ?, ?)";
-
-		try {
+		String query = "INSERT INTO SALI "
+				+ " (id, locatie, locuri)"
+				+ " VALUES ( ?, ?, ?)";		
+		
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, sali.getId());
 			pstmt.setString(2, sali.getLocatie());
@@ -109,7 +111,7 @@ public class SaliService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][updateSali] %s\n", exc.getMessage());
 		}
 		return 0;

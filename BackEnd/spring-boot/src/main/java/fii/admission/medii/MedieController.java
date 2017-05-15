@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping(value = "/model")
 @RestController
 public class MedieController {
 	@RequestMapping(value = "/medii", method = RequestMethod.GET)
@@ -33,28 +34,27 @@ public class MedieController {
 	}
 
 	@RequestMapping(value = "/medii/{candidatCNP}", method = RequestMethod.POST)
-	public ResponseEntity<Integer> updateMedie(@PathVariable("candidatCNP") String candidatCNP,
-			@RequestBody Medie medie) {
+	public ResponseEntity<Integer> updateMedie(@PathVariable("candidatCNP") String candidatCNP, @RequestBody Medie medie) {
 		int result = MedieService.updateMedie(candidatCNP, medie);
-		if (result == 0)
+		if(result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else
+		else 
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/medii/{candidatCNP}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteMedie(@PathVariable("candidatCNP") String candidatCNP) {
 		int result = MedieService.deleteMedie(candidatCNP);
-		if (result == 0)
+		if(result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
-		else
+		else 
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/medii", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertMedie(@RequestBody Medie medie) {
 		int result = MedieService.insertMedie(medie);
-		if (result == 0)
+		if(result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
 		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);

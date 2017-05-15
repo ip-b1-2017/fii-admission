@@ -26,7 +26,7 @@ public class ExamenController {
 	public ResponseEntity<Examen> getExamen(@PathVariable String id) {
 		Examen result = ExamenService.getExamen(id);
 
-		if (result == null)
+		if(result == null)
 			return new ResponseEntity<Examen>(result, HttpStatus.NOT_FOUND);
 
 		return new ResponseEntity<Examen>(result, HttpStatus.OK);
@@ -35,7 +35,7 @@ public class ExamenController {
 	@RequestMapping(value = "/examene/{id}", method = RequestMethod.POST)
 	public ResponseEntity<Integer> updateExamen(@PathVariable("id") String id, @RequestBody Examen examen) {
 		int result = ExamenService.updateExamen(id, examen);
-		if (result == 0)
+		if(result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
 		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
@@ -44,7 +44,7 @@ public class ExamenController {
 	@RequestMapping(value = "/examene/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Integer> deleteExamen(@PathVariable("id") String id) {
 		int result = ExamenService.deleteExamen(id);
-		if (result == 0)
+		if(result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
 		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);
@@ -53,7 +53,7 @@ public class ExamenController {
 	@RequestMapping(value = "/examene", method = RequestMethod.PUT)
 	public ResponseEntity<Integer> insertExamen(@RequestBody Examen examen) {
 		int result = ExamenService.insertExamen(examen);
-		if (result == 0)
+		if(result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
 		else
 			return new ResponseEntity<Integer>(result, HttpStatus.OK);

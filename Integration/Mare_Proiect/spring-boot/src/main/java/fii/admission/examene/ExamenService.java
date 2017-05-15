@@ -10,7 +10,7 @@ import fii.admission.MainApp;
 
 @Service
 public class ExamenService {
-	
+
 	static public List<Examen> getAllExamen() {
 		ArrayList<Examen> result = new ArrayList<Examen>();
 		Connection con = MainApp.getDBConnection();
@@ -29,14 +29,16 @@ public class ExamenService {
 			}
 			stmt.close();
 			rs.close();
-			if(result.isEmpty()) return null;
-			else return result;
-		} catch(Exception exc) {
+			if (result.isEmpty())
+				return null;
+			else
+				return result;
+		} catch (Exception exc) {
 			System.out.printf("[error][getAllExamen] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static Examen getExamen(String id) {
 		Examen result = new Examen();
 		Connection con = MainApp.getDBConnection();
@@ -48,11 +50,11 @@ public class ExamenService {
 			if(rs.next()) {
 				result.setId(rs.getString("id"));
 				result.setStartDate(rs.getString("START_DATE"));
-                result.setEndDate(rs.getString("END_DATE"));
-                result.setTip(rs.getString("tip"));
-                result.setNrProba(rs.getInt("NR_PROBA"));
-			}
-			else return null;
+				result.setEndDate(rs.getString("END_DATE"));
+				result.setTip(rs.getString("tip"));
+				result.setNrProba(rs.getInt("NR_PROBA"));
+			} else
+				return null;
 			pstmt.close();
 			rs.close();
 			return result;
@@ -61,13 +63,13 @@ public class ExamenService {
 		}
 		return null;
 	}
-	
+
 	public static int updateExamen(String id, Examen examen) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE Examen SET id=?, start_date = ? , end_date, nr_proba = ?, tip = ? where id = ?";
-			
-		try{
+		String query = "UPDATE Examen SET id=?, start_date = ?, end_date = ?, nr_proba = ?, tip = ? where id = ?";
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, examen.getId());
 			pstmt.setString(2, examen.getStartDate());
@@ -83,7 +85,7 @@ public class ExamenService {
 		}
 		return 0;
 	}
-	
+
 	public static int deleteExamen(String id) {
 		int result;
 		Connection con = MainApp.getDBConnection();
@@ -99,13 +101,13 @@ public class ExamenService {
 		}
 		return 0;
 	}
-	
+
 	public static int insertExamen(Examen examen) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO Examen "
-				+ "(ID, START_DATE, END_DATE,NR_PROBA,TIP)"
-				+ "VALUES ( ?, ?, ?, ?, ?)";		
+		String query = "INSERT INTO Examen"
+				+ " (ID, START_DATE, END_DATE,NR_PROBA,TIP)"
+				+ " VALUES ( ?, ?, ?, ?, ?)";		
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());

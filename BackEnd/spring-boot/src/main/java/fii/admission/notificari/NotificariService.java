@@ -99,9 +99,11 @@ public class NotificariService {
 	public static int insertNotificari(Notificari notificari) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO NOTIFICARI " + "(text, seen, useremail)" + "VALUES ( ?, ?, ?)";
-
-		try {
+		String query = "INSERT INTO NOTIFICARI "
+				+ " (text, seen, useremail)"
+				+ " VALUES ( ?, ?, ?)";		
+		
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, notificari.getText());
 			pstmt.setString(2, notificari.getSeen());

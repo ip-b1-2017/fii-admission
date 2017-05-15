@@ -6,10 +6,6 @@ public class User {
 	private String password;
 	private String token;
 
-	public User(){
-
-	}
-
 	public String getRol() {
 		return rol;
 	}
@@ -30,8 +26,8 @@ public class User {
 		return password;
 	}
 
-	public void setParola(String parola) {
-		this.password = parola;
+	public void setParola(String password) {
+		this.password = password;
 	}
 
 	public String getToken() {

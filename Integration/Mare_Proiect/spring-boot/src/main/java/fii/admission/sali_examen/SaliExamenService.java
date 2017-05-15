@@ -10,15 +10,15 @@ import fii.admission.MainApp;
 
 @Service
 public class SaliExamenService {
-	
+
 	static public List<SaliExamen> getAllSaliExamen() {
 		ArrayList<SaliExamen> result = new ArrayList<SaliExamen>();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM SALIEXAMEN";
-		try{
+		String query = "SELECT * FROM SALI_EXAMEN";
+		try {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			while(rs.next()) {
+			while (rs.next()) {
 				SaliExamen p = new SaliExamen();
 				p.setSaliId(rs.getString("SALIID"));
 				p.setExamenId(rs.getString("EXAMENID"));
@@ -26,42 +26,44 @@ public class SaliExamenService {
 			}
 			stmt.close();
 			rs.close();
-			if(result.isEmpty()) return null;
-			else return result;
-		} catch(Exception exc) {
+			if (result.isEmpty())
+				return null;
+			else
+				return result;
+		} catch (Exception exc) {
 			System.out.printf("[error][getAllSaliExamen] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static SaliExamen getSaliExamen(String saliid) {
 		SaliExamen result = new SaliExamen();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM SALIEXAMEN WHERE saliid = ?";
-		try{
+		String query = "SELECT * FROM SALI_EXAMEN WHERE saliid = ?";
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, saliid);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				result.setSaliId(rs.getString("SALIID"));
 				result.setExamenId(rs.getString("EXAMENID"));
-			}
-			else return null;
+			} else
+				return null;
 			pstmt.close();
 			rs.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][getSaliExamen] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static int updateSaliExamen(String saliid, SaliExamen saliExamen) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE SALIEXAMEN SET saliid = ?, examenid = ? where saliid = ?";
-			
-		try{
+		String query = "UPDATE SALI_EXAMEN SET saliid = ?, examenid = ? where saliid = ?";
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, saliExamen.getSaliId());
 			pstmt.setString(2, saliExamen.getExamenId());
@@ -69,34 +71,34 @@ public class SaliExamenService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][updateSaliExamen] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
-	
+
 	public static int deleteSaliExamen(String saliid) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "DELETE FROM SALIEXAMEN WHERE saliid = ?";
-		try{
+		String query = "DELETE FROM SALI_EXAMEN WHERE saliid = ?";
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, saliid);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][deleteSaliExamen] %s\n", exc.getMessage());
 		}
 		return 0;
 	}
-	
+
 	public static int insertSaliExamen(SaliExamen saliExamen) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO SALIEXAMEN "
-				+ "(saliid, examenid)"
-				+ "VALUES ( ?, ?)";		
+		String query = "INSERT INTO SALI_EXAMEN "
+				+ " (saliid, examenid)"
+				+ " VALUES ( ?, ?)";
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -105,7 +107,7 @@ public class SaliExamenService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch(Exception exc) {
+		} catch (Exception exc) {
 			System.out.printf("[error][updateSaliExamen] %s\n", exc.getMessage());
 		}
 		return 0;
