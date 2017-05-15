@@ -87,8 +87,8 @@ BEGIN
        SET examenid = new.id
      WHERE examenid = old.id;
     UPDATE sali_examen_candidat
-       SET sali_examensaliid = new.id
-     WHERE sali_examensaliid = old.id;
+       SET sali_examenexamenid = new.id
+     WHERE sali_examenexamenid = old.id;
     UPDATE note
        SET examenid = new.id
      WHERE note.EXAMENID = old.id;
@@ -102,9 +102,10 @@ BEGIN
        SET saliid = new.id
      WHERE saliid = old.id;
     UPDATE sali_examen_candidat
-       SET saliid = new.id
-     WHERE saliid = old.id;
+       SET sali_examensaliid = new.id
+     WHERE sali_examensaliid = old.id;
 END;
+
 
 CREATE TRIGGER User_Update_Trigger 
 UPDATE OF EMAIL 
