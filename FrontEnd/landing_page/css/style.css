@@ -16,7 +16,7 @@ button {
 
 header {
 	min-height:100vh;
-	background: url('../images/programming.jpeg') no-repeat center center;
+	background: url('../../static/images/programming.jpeg') no-repeat center center;
 	background-size: 100%;
 	background-color: #EDEFF3;
 	padding-top: 25%;

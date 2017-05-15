@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping(value = "/model")
 @RestController
 public class NoteController {
 	@RequestMapping(value = "/note", method = RequestMethod.GET)

@@ -15,10 +15,10 @@ public class CandidatService {
 		ArrayList<Candidat> result = new ArrayList<Candidat>();
 		Connection con = MainApp.getDBConnection();
 		String query = "SELECT * FROM CANDIDAT";
-		try {
+		try{
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			while (rs.next()) {
+			while(rs.next()) {
 				Candidat candidat = new Candidat();
 				candidat.setNume(rs.getString("NUME"));
 				candidat.setPrenume(rs.getString("PRENUME"));
@@ -43,11 +43,11 @@ public class CandidatService {
 		Candidat result = new Candidat();
 		Connection con = MainApp.getDBConnection();
 		String query = "SELECT * FROM CANDIDAT WHERE CNP = ?";
-		try {
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, cnp);
 			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next()) {
 				result.setNume(rs.getString("NUME"));
 				result.setPrenume(rs.getString("PRENUME"));
 				result.setCNP(rs.getString("CNP"));
@@ -58,7 +58,7 @@ public class CandidatService {
 			pstmt.close();
 			rs.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][getCandidat] %s\n", exc.getMessage());
 		}
 		return null;
@@ -68,7 +68,7 @@ public class CandidatService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "UPDATE CANDIDAT SET nume = ?, prenume = ?, pcnp = ?, "
-				+ "useremail = ? telefon = ? " +
+				+ "useremail = ?, telefon = ? " +
 				"where cnp = ?";
 
 		try {
@@ -82,7 +82,7 @@ public class CandidatService {
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][updateCandidat] %s\n", exc.getMessage());
 		}
 		return 0;
@@ -92,13 +92,13 @@ public class CandidatService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM CANDIDAT WHERE cnp = ?";
-		try {
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, cnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][deleteCandidat] %s\n", exc.getMessage());
 		}
 		return 0;
@@ -107,7 +107,8 @@ public class CandidatService {
 	public static int insertCandidat(Candidat candidat) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO CANDIDAT " + "(NUME, PRENUME, CNP, USEREMAIL,TELEFON)" + "VALUES ( ?, ?, ?, ?,?)";
+		String query = "INSERT INTO CANDIDAT " + "(NUME, PRENUME, CNP, USEREMAIL,TELEFON)" 
+			     + " VALUES ( ?, ?, ?, ?,?)";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -115,11 +116,11 @@ public class CandidatService {
 			pstmt.setString(2, candidat.getPrenume());
 			pstmt.setString(3, candidat.getCNP());
 			pstmt.setString(4, candidat.getUserEmail());
-			pstmt.setString(5,candidat.getTelefon());
+			pstmt.setString(5, candidat.getTelefon());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
-		} catch (Exception exc) {
+		} catch(Exception exc) {
 			System.out.printf("[error][updateCandidat] %s\n", exc.getMessage());
 		}
 		return 0;

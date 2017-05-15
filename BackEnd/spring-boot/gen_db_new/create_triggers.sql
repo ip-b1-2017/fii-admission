@@ -61,3 +61,60 @@ BEGIN
           WHERE Form.candidatcnp = old.cnp;
 END;
 
+CREATE TRIGGER Candidat_Update_Trigger
+     UPDATE OF CNP
+            ON candidat
+BEGIN
+    UPDATE sali_examen_candidat
+       SET CANDIDATCNP = new.CNP
+     WHERE CANDIDATCNP = old.CNP;
+    UPDATE form
+       SET candidatcnp = new.CNP
+     WHERE candidatcnp = old.CNP;
+    UPDATE medie
+       SET candidatcnp = new.CNP
+     WHERE candidatcnp = old.cnp;
+    UPDATE note
+       SET candidatcnp = new.CNP
+     WHERE candidatcnp = old.cnp;
+END;
+
+CREATE TRIGGER Examen_Update_Trigger
+     UPDATE OF id
+            ON examen
+BEGIN
+    UPDATE sali_examen
+       SET examenid = new.id
+     WHERE examenid = old.id;
+    UPDATE sali_examen_candidat
+       SET sali_examenexamenid = new.id
+     WHERE sali_examenexamenid = old.id;
+    UPDATE note
+       SET examenid = new.id
+     WHERE note.EXAMENID = old.id;
+END;
+
+CREATE TRIGGER Sali_Update_Trigger
+     UPDATE OF id
+            ON sali
+BEGIN
+    UPDATE sali_examen
+       SET saliid = new.id
+     WHERE saliid = old.id;
+    UPDATE sali_examen_candidat
+       SET sali_examensaliid = new.id
+     WHERE sali_examensaliid = old.id;
+END;
+
+
+CREATE TRIGGER User_Update_Trigger 
+UPDATE OF EMAIL 
+ON user BEGIN 
+
+UPDATE candidat 
+SET useremail = new.EMAIL 
+WHERE useremail = old.EMAIL; 
+UPDATE notificari 
+SET useremail = new.email 
+WHERE useremail = old.email; 
+END;

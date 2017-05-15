@@ -68,9 +68,9 @@ public class ProfesoriService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "UPDATE PROFESORI SET nume = ?, prenume = ?, pcnp = ?, "
-				+ "sali_examensaliid = ?, sali_examenexamenid = ? where pcnp = ?";
-
-		try {
+			     + "sali_examensaliid = ?, sali_examenexamenid = ? where pcnp = ?";
+			
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, prof.getNume());
 			pstmt.setString(2, prof.getPrenume());

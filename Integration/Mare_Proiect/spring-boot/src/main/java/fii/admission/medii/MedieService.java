@@ -10,7 +10,7 @@ import fii.admission.MainApp;
 
 @Service
 public class MedieService {
-	
+
 	static public List<Medie> getAllMedie() {
 		ArrayList<Medie> result = new ArrayList<Medie>();
 		Connection con = MainApp.getDBConnection();
@@ -26,14 +26,16 @@ public class MedieService {
 			}
 			stmt.close();
 			rs.close();
-			if(result.isEmpty()) return null;
-			else return result;
-		} catch(Exception exc) {
+			if (result.isEmpty())
+				return null;
+			else
+				return result;
+		} catch (Exception exc) {
 			System.out.printf("[error][getAllMedie] %s\n", exc.getMessage());
 		}
 		return null;
 	}
-	
+
 	public static Medie getMedie(String candidatCNP) {
 		Medie result = new Medie();
 		Connection con = MainApp.getDBConnection();
@@ -45,8 +47,8 @@ public class MedieService {
 			if(rs.next()) {
 				result.setCandidatCNP(rs.getString("CANDIDATCNP"));
 				result.setValoare(rs.getFloat("VALOARE"));
-			}
-			else return null;
+			} else
+				return null;
 			pstmt.close();
 			rs.close();
 			return result;
@@ -55,13 +57,13 @@ public class MedieService {
 		}
 		return null;
 	}
-	
+
 	public static int updateMedie(String candidatCNP, Medie medie) {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "UPDATE MEDIE SET CANDIDATCNP = ?, VALOARE = ? WHERE CANDIDATCNP = ?";
-			
-		try{
+
+		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, medie.getCandidatCNP());
 			pstmt.setFloat(2, medie.getValoare());
@@ -74,7 +76,7 @@ public class MedieService {
 		}
 		return 0;
 	}
-	
+
 	public static int deleteMedie(String candidatCNP) {
 		int result;
 		Connection con = MainApp.getDBConnection();
@@ -90,13 +92,13 @@ public class MedieService {
 		}
 		return 0;
 	}
-	
+
 	public static int insertMedie(Medie medie) {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "INSERT INTO MEDIE "
-				+ "(CANDIDATCNP,VALOARE)"
-				+ "VALUES ( ?, ?)";		
+				+ " (CANDIDATCNP,VALOARE)"
+				+ " VALUES ( ?, ?)";		
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());

@@ -96,9 +96,11 @@ public class SaliExamenService {
 	public static int insertSaliExamen(SaliExamen saliExamen) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO SALI_EXAMEN " + "(saliid, examenid)" + "VALUES ( ?, ?)";
-
-		try {
+		String query = "INSERT INTO SALI_EXAMEN "
+				+ " (saliid, examenid)"
+				+ " VALUES ( ?, ?)";
+		
+		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
 			pstmt.setString(1, saliExamen.getSaliId());
 			pstmt.setString(2, saliExamen.getExamenId());

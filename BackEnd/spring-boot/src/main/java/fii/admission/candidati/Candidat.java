@@ -45,3 +45,4 @@ public class Candidat {
 		this.useremail = useremail;
 	}
 }
+

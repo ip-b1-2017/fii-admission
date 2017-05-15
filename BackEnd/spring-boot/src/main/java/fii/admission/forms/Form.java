@@ -5,7 +5,7 @@ public class Form {
 	private String status;
 	private String candidatcnp;
 
-	public String getFormular() {
+	public String getInformatii() {
 		return informatii;
 	}
 

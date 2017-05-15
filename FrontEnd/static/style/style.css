@@ -62,7 +62,9 @@ h1, h2 {
 }
 
 .contactImg {
-	height: 640px;
+	width: 100%;
+    	height: auto;
+	min-height: 640px;
 	float: left;
 }
 

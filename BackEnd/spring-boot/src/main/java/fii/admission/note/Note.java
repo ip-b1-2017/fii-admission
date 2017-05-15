@@ -25,7 +25,7 @@ public class Note {
 		return examenid;
 	}
 
-	public void setExamenId(String examendid) {
+	public void setExamenId(String examenid) {
 		this.examenid = examenid;
 	}
 }

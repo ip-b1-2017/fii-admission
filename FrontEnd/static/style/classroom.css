@@ -62,7 +62,7 @@ p{
 .logo {
   width: auto;
   height: 50px;
-  background: url("logo.png");
+  background: url("../images/logo.png");
   background-color: #1C537E;
   background-position: left;
   background-size: 130px auto;

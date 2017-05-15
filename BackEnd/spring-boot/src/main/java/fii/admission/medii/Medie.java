@@ -19,5 +19,4 @@ public class Medie {
 	public void setCandidatCNP(String candidatCNP) {
 		this.candidatCNP = candidatCNP;
 	}
-
 }
