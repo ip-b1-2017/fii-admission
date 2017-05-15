@@ -8,3 +8,4 @@ DROP TRIGGER Form_Delete_Trigger;
 
 DROP TRIGGER Candidat_Update_Trigger;
 DROP TRIGGER Examen_Update_Trigger;
+DROP TRIGGER Sali_Update_Trigger;
