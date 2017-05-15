@@ -650,11 +650,214 @@
                   
 
                 ]
-            }
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [ {
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "solicitare-cazare-studii",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Solicitaţi cazare pe timpul studiilor?",
+                                "options": {
+                                    "da": "DA",
+                                    "nu": "NU"
+                                }
+                            }
+
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "solicitare-cazare-admitere",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Solicitaţi cazare în perioada testului scris de admitere?",
+                                "options": {
+                                    "da": "DA",
+                                    "nu": "NU"
+                                }
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type":"h4",
+                "html":"Alte date personale ale candidatului"
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Starea socială specială:  ",
+                                "class": "sub-title"
+                            },
+
+
+                        ]
+                    }
+                    
+
+                ]
+            },
+              {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "div",
+                                "class": "custom-input-row",
+                                "html": [{
+                                        "name": "orfan-ambii-parinti",
+                                        "caption": "Orfan de ambii părinţi",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "div",
+                                "class": "custom-input-row",
+                                "html": [{
+                                        "name": "orfan-un-parinte",
+                                        "caption": "Orfan de un părinte",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "div",
+                                "class": "custom-input-row",
+                                "html": [{
+                                        "name": "provenit-case-copii",
+                                        "caption": "Provenit din case de copii",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "div",
+                                "class": "custom-input-row",
+                                "html": [{
+                                        "name": "provenit-plasament",
+                                        "caption": "Provenit din plasament familial",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "div",
+                                "class": "custom-input-row",
+                                "html": [{
+                                        "name": "provenit-familie-monoparentala",
+                                        "caption": "Provenit din familie monoparentală",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "div",
+                                "class": "custom-input-row",
+                                "html": [{
+                                        "name": "categorie-persoana-dizabilitati",
+                                        "caption": "Candidat care se încadrează în categoria persoanelor cu dizabilităţi",
+                                        "type": "checkbox",
+                                        "class": "checkbox"
+                                    },
+
+                                ]
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+           
+            
+
         ]
     });
 });
-
 
 $(function () {
     $("#myform2").dform({
@@ -1588,7 +1791,7 @@ $(function () {
                         "class": "custom-input",
                         "html": [{
                                 "name": "alte-studii-anul-num",
-                                "caption":"Nu marul semestrelor finantate de bugetul de stat",
+                                "caption":"Numarul semestrelor finantate de bugetul de stat",
                                 "type": "number",
                                 "placeholder": "Ex.3 ",
                                 "class": "form-control"
