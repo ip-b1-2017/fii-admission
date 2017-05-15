@@ -1,8 +1,6 @@
+
 package fii.admission.users;
 
-/**
- * Created by cosmin on 5/14/2017.
- */
 public class UserIn {
     private String email;
     private String pswall;
