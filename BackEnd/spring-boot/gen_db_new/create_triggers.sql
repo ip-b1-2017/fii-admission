@@ -93,3 +93,16 @@ BEGIN
        SET examenid = new.id
      WHERE note.EXAMENID = old.id;
 END;
+
+CREATE TRIGGER Sali_Update_Trigger
+     UPDATE OF id
+            ON sali
+BEGIN
+    UPDATE sali_examen
+       SET saliid = new.id
+     WHERE saliid = old.id;
+    UPDATE sali_examen_candidat
+       SET saliid = new.id
+     WHERE saliid = old.id;
+END;
+
