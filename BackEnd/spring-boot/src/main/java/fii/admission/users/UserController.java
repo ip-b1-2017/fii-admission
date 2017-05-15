@@ -23,9 +23,15 @@ public class UserController {
 		return new ResponseEntity<List<User>>(result, HttpStatus.OK);
 	}
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/users/{email}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable("email") String email) {
 		User result = UserService.getUser(email);
+=======
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+	public ResponseEntity<User> getUser(@PathVariable int id) {
+		User result = UserService.getUser(id);
+>>>>>>> 023589181397ba2ec6f7f1dc9fcd09c786d579d2
 
 		if(result == null) {
 			return new ResponseEntity<User>(result, HttpStatus.NOT_FOUND);
@@ -34,6 +40,7 @@ public class UserController {
 		}
 	}
 
+<<<<<<< HEAD
 	
 	@RequestMapping(value = "/check_email", method = RequestMethod.POST)
 	public ResponseEntity<Success> checkEmail(@RequestBody Email email) {
@@ -44,11 +51,20 @@ public class UserController {
 		}else {
 			return new ResponseEntity<Success>(new Success(false), HttpStatus.OK);
 		}
+=======
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.POST)
+	public ResponseEntity<Integer> updateUser(@PathVariable("id") int id, @RequestBody User user) {
+		int result = UserService.updateUser(id, user);
+		if (result == 0)
+			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+		else
+			return new ResponseEntity<Integer>(result, HttpStatus.OK);
+>>>>>>> 023589181397ba2ec6f7f1dc9fcd09c786d579d2
 	}
 
-	@RequestMapping(value = "/users/{email}", method = RequestMethod.DELETE)
-	public ResponseEntity<Integer> deleteUser(@PathVariable("email") String email) {
-		int result = UserService.deleteUser(email);
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Integer> deleteUser(@PathVariable("id") int id) {
+		int result = UserService.deleteUser(id);
 		if (result == 0)
 			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
 		else

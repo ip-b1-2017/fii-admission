@@ -1,0 +1,72 @@
+.form-group {
+    display: flex;
+    .form-control {
+        width: 40%;
+    }
+    p {
+        align-self: flex-end;
+    }
+    .custom-input {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      
+        input {
+            width: 100%;
+        }
+    }
+}
+
+.information-pair {
+    width: 100%;
+    &:not(:last-child) {
+        padding-right: 10px;
+    }
+}
+label{
+    text-align: left;
+}
+.custom-input-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    label {
+        align-self: flex-start;
+    }
+    .custom-section {
+        margin: 0 10px;
+        height: 40px;
+        display: flex;
+        align-items: flex-end;
+    }
+    .ui-dform-radiobuttons{
+        margin-top: 25px;
+        input{
+            margin-right:5px;
+        }
+        label{
+            margin-right:10px;
+        }
+    }
+}
+input[type=checkbox]{
+    margin-right: 10px;
+}
+#myform3{
+    .custom-input{
+          justify-content: center;
+    }
+}
+.ui-dform-ul{
+        display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+#myform6{
+    .sub-title{
+        display: flex;
+        justify-content: flex-start;
+    }
+}

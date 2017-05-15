@@ -83,13 +83,14 @@ CREATE TABLE SALI_EXAMEN_CANDIDAT (
   );
 
 CREATE TABLE USER (
+    ID numeric(4,0) not null,
   ROL   varchar(255) NOT NULL, 
-  EMAIL  varchar(255) NOT NULL, 
+  EMAIL  varchar(255) NOT NULL unique, 
   PAROLA varchar(255) NOT NULL, 
   TOKEN  varchar(255) NOT NULL, 
   FIRSTNAME varchar(255) NOT NULL,
   LASTNAME varchar(255) NOT NULL,
-  PRIMARY KEY (EMAIL)
+  PRIMARY KEY (ID)
   );
 
 CREATE TABLE STUDENTI (
