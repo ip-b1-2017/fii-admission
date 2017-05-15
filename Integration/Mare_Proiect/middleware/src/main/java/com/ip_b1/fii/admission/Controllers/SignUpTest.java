@@ -81,8 +81,10 @@ public class SignUpTest {
         });
         UserEntity user = new UserEntity();
         user.setEmail(signup.getEmail());
+        System.out.println(signup.getEmail());
         user.setRol("user");
-        user.setParola(signup.getPassword());
+        System.out.println(signup.getPswall());
+        user.setParola(signup.getPswall());
         user.setToken(".");
         ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
                 ServerProperties.modelUrl + "/add_user",

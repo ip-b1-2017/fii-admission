@@ -34,6 +34,13 @@ h1, h2 {
 	min-height: 640px;
 }
 
+.beneficii ul {
+	color: #20547E;
+	line-height: 1.7;
+	text-shadow: unset;
+	font-size: 2em;
+}
+
 .impresii {
 	padding-top: 75px;
 	background-color: #3388CB;

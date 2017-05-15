@@ -18,11 +18,11 @@ body {
   color: white;
 
  }
-
  #error_msg{
-   color:red;
+   color: red;
+   font-size:20px;
+   margin: auto;
  }
-
 a {
   text-decoration: none;
   color: #194a71;
@@ -123,7 +123,7 @@ textarea {
 .logo {
   width: auto;
   height: 50px;
-  background: url("../images/logo.png");
+  background: url("logo.png");
   /*background-color: #3388CB;*/
   background-position: center;
   background-size: 200px auto;

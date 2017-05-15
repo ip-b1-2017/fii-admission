@@ -3,6 +3,7 @@ package fiiadmission.view.controller;
 import fiiadmission.ServerProperties;
 import fiiadmission.dto.Login;
 import fiiadmission.dto.SessionIdentifier;
+import fiiadmission.dto.SignUpTestInEntity;
 import fiiadmission.view.Model.SignUpResponse;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -30,13 +31,8 @@ public class AuthenticationController{
     public @ResponseBody ModelAndView getLoginForm(@RequestParam(value="error", required=false) String error,
             Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
         System.out.println("Giosanito");
-        if(req.getCookies() != null){
-            rep.sendRedirect("/dashboard");
-            return null;
-        }
-        else{
             return new ModelAndView("/login");
-        }
+
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -107,18 +103,28 @@ public class AuthenticationController{
     public ModelAndView createAccount(String error, Model model, HttpServletRequest req, HttpServletResponse rep) {
 
         Map params = req.getParameterMap();
-        /*
-        if (!validator.isValid(params)) {
-        }*/
+
         Map singleValueParams;
+
+
+        Map<String, String[]> paramss = req.getParameterMap();
+        if(!validator.isValid(paramss)){
+
+            model.addAttribute("inv", "Invalid email");
+            return new ModelAndView("/register");
+        }
+
         try {
             singleValueParams = Mapper.changeToSingle(params);
         } catch (IllegalArgumentException ex) {
-            //TODO treat error;
             System.out.println(ex);
             return null;
         }
 
+        if(!singleValueParams.get("pswall").equals(singleValueParams.get("cpswall"))){
+            model.addAttribute("match", "These passwords don't match. Try again?");
+            return new ModelAndView("/register");
+        }
         RestTemplate rt = new RestTemplate();
 
         rt.setErrorHandler(new ResponseErrorHandler() {
@@ -133,8 +139,12 @@ public class AuthenticationController{
             }
         });
 
-        System.out.println("reasda");
-        ResponseEntity<SignUpResponse> responseSignUp = rt.postForEntity(ServerProperties.middleUrl + "/register", singleValueParams,SignUpResponse.class);
+        SignUpTestInEntity sign_Up = new SignUpTestInEntity();
+        sign_Up.setEmail((String) singleValueParams.get("email"));
+        sign_Up.setPswall((String) singleValueParams.get("pswall"));
+        System.out.println((String) singleValueParams.get("email"));
+        System.out.println((String) singleValueParams.get("pswall"));
+        ResponseEntity<SignUpResponse> responseSignUp = rt.postForEntity(ServerProperties.middleUrl + "/register", sign_Up,SignUpResponse.class);
 
         System.out.println(responseSignUp.getBody().getFailureReason());
 
