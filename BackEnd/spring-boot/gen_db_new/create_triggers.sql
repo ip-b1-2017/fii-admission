@@ -106,3 +106,14 @@ BEGIN
      WHERE saliid = old.id;
 END;
 
+CREATE TRIGGER User_Update_Trigger 
+UPDATE OF EMAIL 
+ON user BEGIN 
+
+UPDATE candidat 
+SET useremail = new.EMAIL 
+WHERE useremail = old.EMAIL; 
+UPDATE notificari 
+SET useremail = new.email 
+WHERE useremail = old.email; 
+END;
