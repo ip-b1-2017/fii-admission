@@ -26,6 +26,7 @@ public class UserService {
 				user.setToken(rs.getString("TOKEN"));
 				user.setFirstName(rs.getString("FIRSTNAME"));
 				user.setLastName(rs.getString("LASTNAME"));
+				user.setId(rs.getInt("ID"));
 				result.add(user);
 			}
 			stmt.close();
@@ -40,13 +41,13 @@ public class UserService {
 		return null;
 	}
 
-	public static User getUser(String email) {
+	public static User getUser(int id) {
 		User result = new User();
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM USER WHERE email = ?";
+		String query = "SELECT * FROM USER WHERE id = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1, email);
+			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result.setRole(rs.getString("ROL"));
@@ -55,6 +56,7 @@ public class UserService {
 				result.setToken(rs.getString("TOKEN"));
 				result.setFirstName(rs.getString("FIRSTNAME"));
 				result.setLastName(rs.getString("LASTNAME"));
+				result.setId(rs.getInt("ID"));
 			} else
 				return null;
 			pstmt.close();
@@ -66,21 +68,22 @@ public class UserService {
 		return null;
 	}
 
-	public static int updateUser(String email, User user) {
+	public static int updateUser(int id, User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE USER SET rol = ?, email = ?, parola = ?, "
-				+ "token = ?, firstname = ?, lastname =? where email = ?";
+		String query = "UPDATE USER SET id = ?, rol = ?, email = ?, parola = ?, "
+				+ "token = ?, firstname = ?, lastname =? where id = ?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, user.getRole());
-			pstmt.setString(2, user.getEmail());
-			pstmt.setString(3, user.getParola());
-			pstmt.setString(4, user.getToken());
-			pstmt.setString(5, user.getFirstName());
-			pstmt.setString(6, user.getLastName());
-			pstmt.setString(7, email);
+			pstmt.setInt(1, user.getId());
+			pstmt.setString(2, user.getRole());
+			pstmt.setString(3, user.getEmail());
+			pstmt.setString(4, user.getParola());
+			pstmt.setString(5, user.getToken());
+			pstmt.setString(6, user.getFirstName());
+			pstmt.setString(7, user.getLastName());
+			pstmt.setInt(8, id);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
@@ -90,13 +93,13 @@ public class UserService {
 		return 0;
 	}
 
-	public static int deleteUser(String email) {
+	public static int deleteUser(int id) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "DELETE FROM USER WHERE email = ?";
+		String query = "DELETE FROM USER WHERE id = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, email);
+			pstmt.setInt(1, id);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
@@ -109,8 +112,8 @@ public class UserService {
 	public static int insertUser(User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO USER " + "(ROL, EMAIL, PAROLA, TOKEN,FIRSTNAME,LASTNAME)"
-				+ "VALUES ( ?, ?, ?, ?,?,?)";
+		String query = "INSERT INTO USER " + "(ROL, EMAIL, PAROLA, TOKEN,FIRSTNAME,LASTNAME,ID)"
+				+ "VALUES ( ?, ?, ?, ?,?,?,?)";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
@@ -120,6 +123,7 @@ public class UserService {
 			pstmt.setString(4, user.getToken());
 			pstmt.setString(5, user.getFirstName());
 			pstmt.setString(6, user.getLastName());
+			pstmt.setInt(7,user.getId());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;

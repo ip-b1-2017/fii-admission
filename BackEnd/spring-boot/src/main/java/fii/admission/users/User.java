@@ -1,13 +1,19 @@
 package fii.admission.users;
 
 public class User {
+	private int id;
 	private String role;
 	private String email;
 	private String firstname;
 	private String lastname;
 	private String parola;
 	private String token;
-
+	public int getId(){
+		return id;
+	}
+	public void setId(int id){
+		this.id=id;
+	}
 	public String getFirstName() {
 		return firstname;
 	}
