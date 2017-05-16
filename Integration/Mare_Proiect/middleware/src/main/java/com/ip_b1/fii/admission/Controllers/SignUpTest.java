@@ -57,11 +57,11 @@ public class SignUpTest {
 
             }
         });
-        System.out.println(ServerProperties.modelUrl + "/check_email");
+        System.out.println(ServerProperties.modelUrl + "/users/check_email");
         Map<String,String> map = new HashMap<>();
         map.put("email", signup.getEmail());
         ResponseEntity<SuccessEntity> entity = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/check_email",map,SuccessEntity.class);
+                ServerProperties.modelUrl + "/users/check_email",map,SuccessEntity.class);
         System.out.println(entity.getBody().isSuccess());
         return entity.getBody().isSuccess();
     }
@@ -85,7 +85,7 @@ public class SignUpTest {
         user.setParola(signup.getPassword());
         user.setToken(".");
         ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/add_user",
+                ServerProperties.modelUrl + "/users/add_user",
                 user,
                 SuccessEntity.class);
         return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();

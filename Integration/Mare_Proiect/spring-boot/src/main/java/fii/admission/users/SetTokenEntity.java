@@ -23,4 +23,9 @@ public class SetTokenEntity {
     public void setToken(String token) {
         this.token = token;
     }
+
+    @Override
+    public String toString() {
+        return "email: " + email + " | token: " + token;
+    }
 }
