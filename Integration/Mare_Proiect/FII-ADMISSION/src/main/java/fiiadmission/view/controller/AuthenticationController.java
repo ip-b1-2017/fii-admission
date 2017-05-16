@@ -2,6 +2,7 @@ package fiiadmission.view.controller;
 
 import fiiadmission.ServerProperties;
 import fiiadmission.dto.Login;
+import fiiadmission.dto.RoleEntity;
 import fiiadmission.dto.SessionIdentifier;
 import fiiadmission.dto.SignUpTestInEntity;
 import fiiadmission.view.Model.SignUpResponse;
@@ -21,6 +22,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -37,23 +39,15 @@ public class AuthenticationController{
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(HttpServletRequest req, HttpServletResponse res, Model model) throws URISyntaxException, IOException {
-        /*
-        if (req.getCookies() != null) {
-            for (Cookie cookie : req.getCookies())
-                System.out.println(cookie.getName() + " " + cookie.getValue());
-        }
-        */
+
         Map<String, String[]> params = req.getParameterMap();
         if(!validator.isValid(params)){
-            //wrong input parameters
-            //TODO: return a html to inform user
             model.addAttribute("inv", "Invalid email");
             return new ModelAndView("/login");
         }
         RestTemplate rt = new RestTemplate();
         Map<String,String> singleValueParams = Mapper.changeToSingle(params);
 
-        //TODO test the returning result
         rt.setErrorHandler(new ResponseErrorHandler() {
             @Override
             public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
@@ -83,13 +77,21 @@ public class AuthenticationController{
 
         Cookie cookie1 = new Cookie("user-name", singleValueParams.get("username"));
         Cookie cookie2 = new Cookie("user-token", si.getToken());
-
         cookie1.setSecure(true);
         cookie2.setSecure(true);
+
+        Map<String, String> urlParams = new HashMap<String, String>();
+        urlParams.put("token", si.getToken());
+        ResponseEntity<RoleEntity> role = rt.getForEntity(ServerProperties.middleUrl + "/get_role/{token}", RoleEntity.class, urlParams);
+
         res.addCookie(cookie1);
         res.addCookie(cookie2);
-
-        return new ModelAndView("redirect:/dashboard");
+        System.out.println(role.getBody().getRole());
+        if(role.getBody().getRole().equals("user")) {
+            return new ModelAndView("redirect:/dashboard");
+        }else{
+            return new ModelAndView("redirect:/dashboard_admin");
+        }
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)

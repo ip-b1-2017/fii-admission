@@ -65,5 +65,16 @@ public class UserController {
 			return new ResponseEntity<Success>(new Success(false), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+    @RequestMapping(value="/users/get_role/{token}", method = RequestMethod.GET)
+    public ResponseEntity<RoleEntity> getRole(@PathVariable("token") String token) {
+        RoleEntity role = UserService.getRole(token);
+        if (role!=null) {
+            return new ResponseEntity<RoleEntity>(role, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<RoleEntity>(role, HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
 

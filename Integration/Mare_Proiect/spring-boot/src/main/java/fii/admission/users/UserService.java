@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import fii.admission.MainApp;
 
+import javax.management.relation.Role;
+
 @Service
 public class UserService {
 
@@ -156,5 +158,25 @@ public class UserService {
 			System.out.printf("[error][updateUser] %s\n", exc.getMessage());
 		}
 		return false;
+	}
+
+	public static RoleEntity getRole(String token){
+		Connection con = MainApp.getDBConnection();
+		RoleEntity role = new RoleEntity();
+		String query = "SELECT ROl FROM USER WHERE token = ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setString(1, token);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				role.setRole(rs.getString("ROL"));
+				return role;
+			}
+			pstmt.close();
+			rs.close();
+		} catch (Exception exc) {
+			System.out.printf("[error][getUser] %s\n", exc.getMessage());
+		}
+		return null;
 	}
 }
