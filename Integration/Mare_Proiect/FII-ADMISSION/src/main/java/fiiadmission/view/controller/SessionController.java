@@ -1,9 +1,12 @@
 package fiiadmission.view.controller;
 
 import fiiadmission.ServerProperties;
+import fiiadmission.TolerantRestTemplate;
 import fiiadmission.dto.AuthEntity;
 import fiiadmission.dto.FormOutEntity;
+import fiiadmission.dto.SuccessReasonEntity;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -83,9 +86,13 @@ public class SessionController {
 
             Map<String, String> asSingle = Mapper.changeToSingle(map);
 
-            RestTemplate template = new RestTemplate();
-            template.postForEntity(ServerProperties.middleUrl + "/controller/save_form",
-                    new FormOutEntity(new AuthEntity()))
+            RestTemplate template = new TolerantRestTemplate();
+            ResponseEntity<SuccessReasonEntity> result = template.postForEntity(
+                    ServerProperties.middleUrl + "/controller/save_form",
+                    new FormOutEntity(auth, asSingle), SuccessReasonEntity.class);
+
+            //TODO: respond differently to errors...
+            //TODO: send the SuccessReason back
 
             return null;
         }

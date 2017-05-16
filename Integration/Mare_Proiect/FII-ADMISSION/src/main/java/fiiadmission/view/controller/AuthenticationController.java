@@ -1,6 +1,7 @@
 package fiiadmission.view.controller;
 
 import fiiadmission.ServerProperties;
+import fiiadmission.TolerantRestTemplate;
 import fiiadmission.dto.Login;
 import fiiadmission.dto.RoleEntity;
 import fiiadmission.dto.SessionIdentifier;
@@ -127,19 +128,7 @@ public class AuthenticationController {
             model.addAttribute("match", "These passwords don't match. Try again?");
             return new ModelAndView("/register");
         }
-        RestTemplate rt = new RestTemplate();
-
-        rt.setErrorHandler(new ResponseErrorHandler() {
-            @Override
-            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
-                return false;
-            }
-
-            @Override
-            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
-
-            }
-        });
+        RestTemplate rt = new TolerantRestTemplate();
 
         SignUpTestInEntity sign_Up = new SignUpTestInEntity();
         sign_Up.setEmail((String) singleValueParams.get("email"));
