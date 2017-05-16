@@ -1,6 +1,7 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.FormEntity;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ip_b1.fii.admission.DTO.FormInEntity;
 import com.ip_b1.fii.admission.DTO.FormOutEntity;
 import com.ip_b1.fii.admission.DTO.SaveFormOutEntity;
 import com.ip_b1.fii.admission.DTO.SuccessEntity;
@@ -18,9 +19,10 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/controller/save_form")
 public class SaveForm {
 
-    private static boolean addToDB(FormEntity formEntity) {
-
-        FormOutEntity formOutEntity = new FormOutEntity(formEntity.getFields());
+    private static boolean addToDB(FormInEntity formEntity) {
+        FormOutEntity formOutEntity = new FormOutEntity(
+                new ObjectMapper().writeValueAsString(formEntity.getFields()),
+                );
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
                 ServerProperties.modelUrl + "/{username}/save_form",
@@ -32,7 +34,7 @@ public class SaveForm {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SaveFormOutEntity> saveFormPost(@RequestBody FormEntity formEntity) {
+    public ResponseEntity<SaveFormOutEntity> saveFormPost(@RequestBody FormInEntity formEntity) {
         if (!AuthUtils.checkAuth(formEntity.getAuth())) {
 
             return new ResponseEntity<>(

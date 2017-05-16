@@ -1,7 +1,7 @@
 package com.ip_b1.fii.admission.Controllers;
 
 
-import com.ip_b1.fii.admission.DTO.FormEntity;
+import com.ip_b1.fii.admission.DTO.FormInEntity;
 import com.ip_b1.fii.admission.DTO.FormOutEntity;
 import com.ip_b1.fii.admission.DTO.SubmitFormOutEntity;
 import com.ip_b1.fii.admission.DTO.SuccessEntity;
@@ -22,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/controller/submit_form")
 public class SubmitForm {
-    private static boolean addToDB(FormEntity formEntity) {
+    private static boolean addToDB(FormInEntity formEntity) {
 
         FormOutEntity formOutEntity = new FormOutEntity(formEntity.getFields());
         RestTemplate restTemplate = new RestTemplate();
@@ -36,7 +36,7 @@ public class SubmitForm {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SubmitFormOutEntity> testLogin(@RequestBody FormEntity formEntity) {
+    public ResponseEntity<SubmitFormOutEntity> testLogin(@RequestBody FormInEntity formEntity) {
         if (!AuthUtils.checkAuth(formEntity.getAuth())) {
 
             return new ResponseEntity<>(

@@ -5,6 +5,7 @@ public class CandidatEntity {
     private String prenume;
     private String CNP;
     private String useremail;
+    private String telefon;
 
     public CandidatEntity() {
     }
@@ -39,6 +40,22 @@ public class CandidatEntity {
 
     public void setUserEmail(String useremail) {
         this.useremail = useremail;
+    }
+
+    public String getUseremail() {
+        return useremail;
+    }
+
+    public void setUseremail(String useremail) {
+        this.useremail = useremail;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
     }
 }
 

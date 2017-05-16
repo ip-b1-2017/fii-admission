@@ -1,15 +1,15 @@
 package com.ip_b1.fii.admission.DTO;
 
-import java.util.List;
+import java.util.Map;
 
-public class FormEntity {
+public class FormInEntity {
     private com.ip_b1.fii.admission.DTO.AuthEntity auth;
-    private List<FormFieldEntity> fields;
+    private Map<String, String> fields;
 
-    public FormEntity() {
+    public FormInEntity() {
     }
 
-    public FormEntity(AuthEntity auth, List<FormFieldEntity> fields) {
+    public FormInEntity(AuthEntity auth, Map<String, String> fields) {
         this.auth = auth;
         this.fields = fields;
     }
@@ -22,11 +22,11 @@ public class FormEntity {
         this.auth = auth;
     }
 
-    public List<FormFieldEntity> getFields() {
+    public Map<String, String> getFields() {
         return fields;
     }
 
-    public void setFields(List<FormFieldEntity> fields) {
+    public void setFields(Map<String, String> fields) {
         this.fields = fields;
     }
 }
