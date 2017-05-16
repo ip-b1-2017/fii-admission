@@ -2,6 +2,7 @@ package fii.admission.users;
 
 import java.util.List;
 
+import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,44 +26,44 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/check_email", method = RequestMethod.POST)
-	public ResponseEntity<Success> checkEmail(@RequestBody Email email) {
+	public ResponseEntity<SuccessEntity> checkEmail(@RequestBody Email email) {
 		User result = UserService.getUser(email.getEmail());
 
 		if(result == null) {
-			return new ResponseEntity<Success>(new Success(true), HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.NOT_FOUND);
 		}else {
-			return new ResponseEntity<Success>(new Success(false), HttpStatus.OK);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.OK);
 		}
 	}
 
 	@RequestMapping(value = "/add_user", method = RequestMethod.POST)
-	public ResponseEntity<Success> insertUser(@RequestBody User user) {
+	public ResponseEntity<SuccessEntity> insertUser(@RequestBody User user) {
 		int result = UserService.insertUser(user);
 
 		if(result == 0)
-			return new ResponseEntity<Success>(new Success(false), HttpStatus.NOT_MODIFIED);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
 		else 
-			return new ResponseEntity<Success>(new Success(true), HttpStatus.CREATED);
+			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value="/users/check_password", method = RequestMethod.POST)
-	public ResponseEntity<Success> checkPassword(@RequestBody UserIn user){
+	public ResponseEntity<SuccessEntity> checkPassword(@RequestBody UserIn user){
 		if (UserService.isLogged(user)) {
 			System.out.println("[debug][checkPassword] User is logged!");
-			return new ResponseEntity<Success>(new Success(true),HttpStatus.OK);
+			return new ResponseEntity<>(new SuccessEntity(true),HttpStatus.OK);
 		}else{
 			System.out.println("[debug][checkPassword] User is not logged!");
-			return new ResponseEntity<Success>(new Success(false),HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
 		}
 	}
 
 	@RequestMapping(value="/users/set_token", method = RequestMethod.POST)
-	public ResponseEntity<Success> updateToken(@RequestBody SetTokenEntity ust) {
+	public ResponseEntity<SuccessEntity> updateToken(@RequestBody SetTokenEntity ust) {
 		if (UserService.updateToken(ust)) {
 			System.out.println("Updated");
-			return new ResponseEntity<Success>(new Success(true), HttpStatus.OK);
+			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
 		} else {
-			return new ResponseEntity<Success>(new Success(false), HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
