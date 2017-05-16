@@ -5,6 +5,7 @@ package fii.admission.users;
  */
 public class RoleEntity {
     private String Role;
+
     public RoleEntity() {
     }
 

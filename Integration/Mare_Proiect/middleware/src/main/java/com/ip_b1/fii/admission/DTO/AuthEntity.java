@@ -9,19 +9,19 @@ public class AuthEntity {
         this.token = token;
     }
 
+    public AuthEntity() {
+    }
+
     public String getUsername() {
         return username;
     }
 
-    public AuthEntity() {
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getToken() {
         return token;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public void setToken(String token) {

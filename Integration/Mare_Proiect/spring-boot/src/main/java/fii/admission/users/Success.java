@@ -3,9 +3,10 @@ package fii.admission.users;
 public class Success {
     private boolean success;
 
-    public Success(){
+    public Success() {
 
     }
+
     public Success(boolean success) {
         this.success = success;
     }

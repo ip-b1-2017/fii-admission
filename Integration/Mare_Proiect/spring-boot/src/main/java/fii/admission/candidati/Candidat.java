@@ -1,48 +1,50 @@
 package fii.admission.candidati;
 
 public class Candidat {
-	private String nume;
-	private String prenume;
-	private String CNP;
-	private String useremail;
-	private String telefon;
+    private String nume;
+    private String prenume;
+    private String CNP;
+    private String useremail;
+    private String telefon;
 
-	public void setTelefon(String telefon){
-		this.telefon=telefon;
-	}
-	public String getTelefon(){
-		return telefon;
-	}
-	public String getNume() {
-		return nume;
-	}
+    public String getTelefon() {
+        return telefon;
+    }
 
-	public void setNume(String nume) {
-		this.nume = nume;
-	}
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
 
-	public String getPrenume() {
-		return prenume;
-	}
+    public String getNume() {
+        return nume;
+    }
 
-	public void setPrenume(String prenume) {
-		this.prenume = prenume;
-	}
+    public void setNume(String nume) {
+        this.nume = nume;
+    }
 
-	public String getCNP() {
-		return CNP;
-	}
+    public String getPrenume() {
+        return prenume;
+    }
 
-	public void setCNP(String CNP) {
-		this.CNP = CNP;
-	}
+    public void setPrenume(String prenume) {
+        this.prenume = prenume;
+    }
 
-	public String getUserEmail() {
-		return useremail;
-	}
+    public String getCNP() {
+        return CNP;
+    }
 
-	public void setUserEmail(String useremail) {
-		this.useremail = useremail;
-	}
+    public void setCNP(String CNP) {
+        this.CNP = CNP;
+    }
+
+    public String getUserEmail() {
+        return useremail;
+    }
+
+    public void setUserEmail(String useremail) {
+        this.useremail = useremail;
+    }
 }
 

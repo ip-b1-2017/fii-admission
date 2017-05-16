@@ -1,6 +1,8 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.*;
+import com.ip_b1.fii.admission.DTO.ContestationEntity;
+import com.ip_b1.fii.admission.DTO.SaveContestationOutEntity;
+import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,19 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/controller/{sessionId}/submit_contestation")
 
 public class SubmitContestation {
+
+    private static boolean addToDB(ContestationEntity contestationEntity) {
+
+        contestationEntity = new ContestationEntity(contestationEntity.getContestation(), contestationEntity.getAuth());
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
+                ServerProperties.modelUrl + "/{username}/save_contestation",
+                contestationEntity,
+                SuccessEntity.class,
+                contestationEntity.getAuth().getUsername()
+        );
+        return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SaveContestationOutEntity> testLogin(@PathVariable String sessionId, @RequestBody ContestationEntity contestationEntity) {
@@ -33,18 +48,5 @@ public class SubmitContestation {
                 HttpStatus.OK
         );
 
-    }
-
-    private static boolean addToDB(ContestationEntity contestationEntity) {
-
-        contestationEntity = new ContestationEntity(contestationEntity.getContestation(), contestationEntity.getAuth());
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/{username}/save_contestation",
-                contestationEntity,
-                SuccessEntity.class,
-                contestationEntity.getAuth().getUsername()
-        );
-        return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();
     }
 }

@@ -5,7 +5,7 @@ public class LoginTestOutEntity {
     private String token;
     private String failureReason;
 
-    public LoginTestOutEntity(){
+    public LoginTestOutEntity() {
 
     }
 

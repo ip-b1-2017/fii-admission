@@ -1,4 +1,3 @@
-
 package fii.admission.users;
 
 public class UserIn {
@@ -27,5 +26,10 @@ public class UserIn {
 
     public void setPassword(String password) {
         this.pswall = password;
+    }
+
+    @Override
+    public String toString() {
+        return "email: " + email + " | pswall: " + pswall;
     }
 }

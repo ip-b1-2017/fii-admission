@@ -33,7 +33,6 @@ public class GetNotifications {
                 return new ResponseEntity<>(
                         entity.getBody(),
                         HttpStatus.NOT_FOUND
-
                 );
 
             return new ResponseEntity<>(

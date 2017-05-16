@@ -9,12 +9,12 @@ import org.springframework.web.client.RestTemplate;
 
 
 public class AuthUtils {
-    public static boolean claimsAuthenticated(AuthEntity auth){
+    public static boolean claimsAuthenticated(AuthEntity auth) {
         return auth.getUsername() != null && auth.getToken() != null;
     }
 
     public static boolean checkAuth(AuthEntity auth) {
-        if (auth.getUsername() == null || auth.getToken() == null){
+        if (auth.getUsername() == null || auth.getToken() == null) {
             return false;
         }
 
@@ -28,7 +28,7 @@ public class AuthUtils {
         return entity.getStatusCode() != HttpStatus.NOT_FOUND && entity.getBody().getToken().equals(auth.getToken());
     }
 
-    public static boolean checkAuthIsAdmin(AuthEntity auth){
+    public static boolean checkAuthIsAdmin(AuthEntity auth) {
         RestTemplate template = new RestTemplate();
 
         ResponseEntity<UserEntity> entity = template.getForEntity(
