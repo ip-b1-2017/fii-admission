@@ -22,7 +22,7 @@ public class ApplicationAccept {
 
         if(!process(CNP))
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
-        return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
+        return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK) ;
 
     }
 

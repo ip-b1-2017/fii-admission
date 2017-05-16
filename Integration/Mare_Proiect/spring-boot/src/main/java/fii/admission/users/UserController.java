@@ -24,6 +24,18 @@ public class UserController {
 
 		return new ResponseEntity<List<User>>(result, HttpStatus.OK);
 	}
+
+	@RequestMapping(value = "/users/get_user", method = RequestMethod.POST)
+	public ResponseEntity<User> getUser(@RequestBody Email email) {
+		System.out.print("[debug][getUser] " + email.getEmail() + " => ");
+		User result = UserService.getUser(email.getEmail());
+		System.out.println(result.toString());
+
+		if (result == null)
+			return new ResponseEntity<User>(result, HttpStatus.NO_CONTENT);
+
+		return new ResponseEntity<User>(result, HttpStatus.OK);
+	}
 	
 	@RequestMapping(value = "/check_email", method = RequestMethod.POST)
 	public ResponseEntity<SuccessEntity> checkEmail(@RequestBody Email email) {

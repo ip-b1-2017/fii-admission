@@ -52,7 +52,7 @@ public class FormController {
 		if (result == 0)
 			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
 		else
-			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
+			return new ResponseEntity<> (new SuccessEntity(true), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.DELETE)
