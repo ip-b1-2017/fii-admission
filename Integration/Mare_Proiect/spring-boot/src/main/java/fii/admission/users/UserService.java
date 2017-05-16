@@ -141,6 +141,7 @@ public class UserService {
 		}
 		return 0;
 	}
+
 	public static boolean updateToken(SetTokenEntity ust){
 		int result;
 		Connection con = MainApp.getDBConnection();

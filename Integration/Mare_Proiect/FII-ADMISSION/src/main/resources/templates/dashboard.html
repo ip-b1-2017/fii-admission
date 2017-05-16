@@ -24,7 +24,6 @@
 
 
   <li><a class="active" href="dashboard.html">Dashboard</a></li>
-  <li><a href="#settings">Settings</a></li>
   <li><a href="form.html">Application Form</a></li>
   <li><a href="/disconnect">Disconnect</a></li>
 
@@ -63,7 +62,7 @@
         <!--   <i class="fa fa-cog"></i>  -->
          </div>
          <div class="widget-content">
-           <h3> Verificat</h3>
+           <h3 th:text="${status_aplicatie}"></h3>
          </div>
        </div>
 
@@ -90,11 +89,11 @@
 
                    <div class="widget-box sample-widget2">
                          <div class="widget-header">
-                           <h2>Statistici:</h2>
+                           <h2>Numar persoane inscrise</h2>
                      <!--      <i class="fa fa-cog"></i>   -->
                          </div>
                          <div class="widget-content">
-                           <h3> S-au inscris 127 de candidati.</h3>
+                           <h3 th:text="${nr_aplicatii_depuse}"></h3>
                          </div>
                        </div>
 
