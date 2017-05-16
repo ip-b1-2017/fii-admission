@@ -16,15 +16,35 @@ import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.Random;
 
 @RestController
-@RequestMapping(value="/controller/login_test")
+@RequestMapping(value = "/controller/login_test")
 public class LoginTest {
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<LoginTestOutEntity>testLogin(@RequestBody LoginTestInEntity login) {
+    private static boolean check(LoginTestInEntity login) {
+        RestTemplate restTemplate = new RestTemplate();
+
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+
+            }
+        });
+        ResponseEntity<SuccessEntity> entity = restTemplate.postForEntity(
+                ServerProperties.modelUrl + "/users/is_logged_in",
+                login,
+                SuccessEntity.class);
+        return entity.getBody().isSuccess();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<LoginTestOutEntity> testLogin(@RequestBody LoginTestInEntity login) {
         LoginTestOutEntity entity = new LoginTestOutEntity();
 
         if (!check(login)) {
@@ -98,31 +118,10 @@ public class LoginTest {
         int length = 16;
         StringBuilder result = new StringBuilder(length);
         Random random = new Random();
-        for (int i = 0; i < length; i++){
+        for (int i = 0; i < length; i++) {
             result.append(charset.charAt(random.nextInt(charset.length())));
         }
         return result.toString();
-    }
-
-    private static boolean check(LoginTestInEntity login) {
-        RestTemplate restTemplate = new RestTemplate();
-
-        restTemplate.setErrorHandler(new ResponseErrorHandler() {
-            @Override
-            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
-                return false;
-            }
-
-            @Override
-            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
-
-            }
-        });
-        ResponseEntity<SuccessEntity> entity = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/users/check_password",
-                login,
-                SuccessEntity.class);
-        return entity.getBody().isSuccess();
     }
 
 }

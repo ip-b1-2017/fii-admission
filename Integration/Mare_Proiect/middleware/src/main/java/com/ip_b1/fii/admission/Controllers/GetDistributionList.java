@@ -1,7 +1,6 @@
 package com.ip_b1.fii.admission.Controllers;
 
 import com.ip_b1.fii.admission.DTO.AuthEntity;
-import com.ip_b1.fii.admission.DTO.DistributionEntity;
 import com.ip_b1.fii.admission.DTO.DistributionListEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
@@ -17,30 +16,30 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/controller/get_distribution_list")
 public class GetDistributionList {
     @RequestMapping(method = RequestMethod.POST)
-        public ResponseEntity<DistributionListEntity> run(@RequestBody AuthEntity auth) {
-            if (!AuthUtils.checkAuth(auth)) {
+    public ResponseEntity<DistributionListEntity> run(@RequestBody AuthEntity auth) {
+        if (!AuthUtils.checkAuth(auth)) {
+            return new ResponseEntity<>(
+                    new DistributionListEntity(),
+                    HttpStatus.UNAUTHORIZED
+            );
+        } else {
+            RestTemplate template = new RestTemplate();
+
+            ResponseEntity<DistributionListEntity> entity = template.getForEntity(
+                    ServerProperties.modelUrl + "get_distribution",
+                    DistributionListEntity.class
+            );
+            if (entity.getBody() == null)
                 return new ResponseEntity<>(
                         new DistributionListEntity(),
-                        HttpStatus.UNAUTHORIZED
-                );
-            } else {
-                RestTemplate template = new RestTemplate();
-
-                ResponseEntity<DistributionListEntity> entity = template.getForEntity(
-                        ServerProperties.modelUrl + "get_distribution",
-                        DistributionListEntity.class
-                );
-                if (entity.getBody() == null)
-                    return new ResponseEntity<>(
-                            new DistributionListEntity(),
-                            HttpStatus.NOT_FOUND
-
-                    );
-                return new ResponseEntity<>(
-                        entity.getBody(),
-                        HttpStatus.OK
+                        HttpStatus.NOT_FOUND
 
                 );
-            }
+            return new ResponseEntity<>(
+                    entity.getBody(),
+                    HttpStatus.OK
+
+            );
         }
+    }
 }

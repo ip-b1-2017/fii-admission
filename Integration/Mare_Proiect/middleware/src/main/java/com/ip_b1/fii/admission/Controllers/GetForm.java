@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/controller/{sessionId}/get_form")
-public  class GetForm {
+public class GetForm {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<FormOutEntity> run(@PathVariable String sessionId, @RequestBody AuthEntity auth) {

@@ -1,6 +1,7 @@
 package com.ip_b1.fii.admission.Controllers;
 
 import com.ip_b1.fii.admission.DTO.CandidatEntity;
+import com.ip_b1.fii.admission.DTO.ProfessorEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -14,22 +15,21 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/controller/get_candidates")
-public class GetCandidates {
-
+@RequestMapping("/controller/get_professors")
+public class GetProfessors {
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<CandidatEntity>> run() {
+    public ResponseEntity<List<ProfessorEntity>> run() {
 
         RestTemplate template = new RestTemplate();
 
-        ResponseEntity<List<CandidatEntity>> candidatResponse =
-                template.exchange(ServerProperties.modelUrl + "/candidati",
-                        HttpMethod.GET, null, new ParameterizedTypeReference<List<CandidatEntity>>() {
+        ResponseEntity<List<ProfessorEntity>> professorResponse =
+                template.exchange(ServerProperties.modelUrl + "/profesori",
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<ProfessorEntity>>() {
                         });
-        List<CandidatEntity> candidates = candidatResponse.getBody();
+        List<ProfessorEntity> professors = professorResponse.getBody();
 
-        return new ResponseEntity<List<CandidatEntity>>(
-                candidates,
+        return new ResponseEntity<List<ProfessorEntity>>(
+                professors,
                 HttpStatus.OK
         );
     }

@@ -15,23 +15,6 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("controller/(sessionId)/application_review_reject")
 public class ApplicationReject {
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> reject(@PathVariable String sessionId, AuthEntity user, String CNP, String rejectionMessage) {
-
-        if (!AuthUtils.checkAuthIsAdmin(user)) {
-            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
-        }
-
-        int result = process(sessionId, CNP, rejectionMessage);
-
-        if (result == 0)
-            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
-        else if (result == -1)
-            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
-
-    }
-
     private static int process(String sessionId, String cnp, String rejectionMessage) {
 
         RestTemplate restTemplate = new RestTemplate();
@@ -59,6 +42,23 @@ public class ApplicationReject {
                 SuccessEntity.class,
                 sessionId);
         return success.getBody().isSuccess() ? 1 : 0;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<SuccessEntity> reject(@PathVariable String sessionId, AuthEntity user, String CNP, String rejectionMessage) {
+
+        if (!AuthUtils.checkAuthIsAdmin(user)) {
+            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
+        }
+
+        int result = process(sessionId, CNP, rejectionMessage);
+
+        if (result == 0)
+            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
+        else if (result == -1)
+            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
+
     }
 
 }

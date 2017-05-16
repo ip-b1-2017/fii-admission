@@ -23,8 +23,8 @@ import java.util.Map;
 @RequestMapping("/controller")
 public class GetRole {
 
-    @RequestMapping(value="/get_role/{token}", method = RequestMethod.GET)
-    public ResponseEntity<RoleEntity> get_role(@PathVariable("token") String token){
+    @RequestMapping(value = "/get_role/{token}", method = RequestMethod.GET)
+    public ResponseEntity<RoleEntity> get_role(@PathVariable("token") String token) {
 
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new ResponseErrorHandler() {
@@ -42,10 +42,10 @@ public class GetRole {
         Map<String, String> urlParams = new HashMap<String, String>();
         urlParams.put("token", token);
         ResponseEntity<RoleEntity> role = restTemplate.getForEntity(ServerProperties.modelUrl + "/users/get_role/{token}", RoleEntity.class, urlParams);
-        if(role.getBody().getRole()!=null){
+        if (role.getBody().getRole() != null) {
             return new ResponseEntity<RoleEntity>(role.getBody(), HttpStatus.OK);
-        }else{
-            return new ResponseEntity<RoleEntity>(role.getBody(),HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<RoleEntity>(role.getBody(), HttpStatus.NOT_FOUND);
         }
 
     }
