@@ -1,44 +1,41 @@
 package com.ip_b1.fii.admission.Controllers;
 
 import com.ip_b1.fii.admission.DTO.AuthEntity;
-import com.ip_b1.fii.admission.DTO.FormStatusEntity;
 import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("controller/(sessionId)/application_review_accept")
+@RequestMapping("controller/application_review_accept/cnp={CNP}")
 public class ApplicationAccept {
 
-    private static boolean process(String sessionId, String cnp) {
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<SuccessEntity> accept(@PathVariable(name = "CNP") String CNP){
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<SuccessEntity> success = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/model/(sessionId)/form_set_status",
-                new FormStatusEntity(cnp, "accepted"),
-                SuccessEntity.class,
-                sessionId);
-        return success.getBody().isSuccess();
+        //if(!AuthUtils.checkAuthIsAdmin(user)){
+        //    return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
+        //}
+
+        if(!process(CNP))
+            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK) ;
+
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> accept(@PathVariable String sessionId, AuthEntity user, String CNP) {
+    private static boolean process(String cnp) {
 
-        if (!AuthUtils.checkAuthIsAdmin(user)) {
-            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
-        }
+        RestTemplate restTemplate = new RestTemplate();
 
-        if (!process(sessionId, CNP))
-            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
-        return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
-
+        ResponseEntity<SuccessEntity> success = restTemplate.postForEntity(
+                ServerProperties.modelUrl + "/formuri/set_status/" + cnp,
+                "accepted",
+                SuccessEntity.class
+                );
+        return success.getBody().isSuccess();
     }
 
 }
