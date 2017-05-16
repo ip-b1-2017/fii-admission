@@ -1,8 +1,6 @@
 package com.ip_b1.fii.admission.DTO;
 
 public class SaveFormOutEntity {
-
-
     private boolean success;
     private String failureReason;
 
