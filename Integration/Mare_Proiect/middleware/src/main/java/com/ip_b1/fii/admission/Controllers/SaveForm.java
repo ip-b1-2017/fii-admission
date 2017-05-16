@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/controller/get_form_fields")
+@RequestMapping("/controller/save_form")
 public class SaveForm {
 
     private static boolean addToDB(FormEntity formEntity) {
@@ -32,7 +32,7 @@ public class SaveForm {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SaveFormOutEntity> testLogin(@RequestBody FormEntity formEntity) {
+    public ResponseEntity<SaveFormOutEntity> saveFormPost(@RequestBody FormEntity formEntity) {
         if (!AuthUtils.checkAuth(formEntity.getAuth())) {
 
             return new ResponseEntity<>(
