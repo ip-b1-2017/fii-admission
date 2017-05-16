@@ -1,6 +1,8 @@
-﻿$(function () {
+﻿var postTo = "https://localhost:8090/ses/form_save";
+
+$(function () {
     $("#myform").dform({
-        "action":"http://localhost:8090/form",
+        "action": postTo,
         "method": "post",
         "html": [{
                 "type": "div",
@@ -13,6 +15,7 @@
                                 "class": "custom-input",
                                 "html": [{
                                         "name": "initial-name-alfa",
+                                        "th:value" : "${error}",
                                         "caption": "Nume de familie la nastere",
                                         "type": "text",
                                         "placeholder": "Ex. Apopei",
@@ -304,7 +307,7 @@
                             }
 
                         ]
-                    }                 
+                    }
                 ]
             },
             {
@@ -647,18 +650,16 @@
                             ]
                     }
 
-                  
+
 
                 ]
             }
         ]
     });
 });
-
-
 $(function () {
     $("#myform2").dform({
-        "action": "http://localhost:8090/form",
+        "action": postTo,
         "method": "post",
         "html": [{
                 "type": "h4",
@@ -1270,7 +1271,7 @@ $(function () {
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "alte-studii-anul-num",
+                                "name": "alte-studii-anul-1-num",
                                 "caption": "Anul",
                                 "type": "number",
                                 "placeholder": "Ex. 2000",
@@ -1587,7 +1588,7 @@ $(function () {
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "alte-studii-anul-num",
+                                "name": "alte-studii-anul-2-num",
                                 "caption":"Nu marul semestrelor finantate de bugetul de stat",
                                 "type": "number",
                                 "placeholder": "Ex.3 ",
@@ -1816,10 +1817,9 @@ $(function () {
         ]
     });
 });
-
 $(function () {
     $("#myform3").dform({
-        "action": "http://localhost:8090/form",
+        "action": postTo,
 		"method": "post",
         "html": [{
                 "type": "h4",
@@ -1875,7 +1875,7 @@ $(function () {
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-scris",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Optiunea pentru testul scris",
@@ -1897,7 +1897,7 @@ $(function () {
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-MEN",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Solicitati echivalare cu diploma la olimpiada organizata MEN?",
@@ -1927,7 +1927,7 @@ $(function () {
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-preadmitere",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Ați participat la preadmitere la Facultatea de Informatică din Iași și doriți luarea în considerare a notei la examenul din sesiunea curentă?",
@@ -1954,8 +1954,8 @@ $(function () {
 
                                 ]
                             }
-                
-     
+
+
                 ]
             },
             {
@@ -1971,7 +1971,7 @@ $(function () {
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-again",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Daca ati raspuns DA la intrebarea anterioara, doriti sa sustineti din nou testul scris in aceasta sesiune de admitere**?",
@@ -2024,10 +2024,9 @@ $(function () {
         ]
     });
 });
-
 $(function () {
     $("#myform4").dform({
-        "action": "http://localhost:8090/form",
+        "action": postTo,
 		"method": "post",
         "html": [{
                 "type": "h4",
@@ -2042,7 +2041,7 @@ $(function () {
 });
 $(function () {
     $("#myform6").dform({
-        "action": "http://localhost:8090/form",
+        "action": postTo,
 		"method": "post",
         "html": [
             {
@@ -2152,10 +2151,9 @@ $(function () {
         ]
     });
 });
-
 $(function () {
     $("#myform5").dform({
-        "action": "http://localhost:8090/form",
+        "action": postTo,
 		"method": "post",
         "html": [{
                 "type": "h4",
@@ -2395,7 +2393,7 @@ $(function () {
                             "type": "div",
                             "class": "custom-input",
                             "html": [{
-                                    "name": "alta-facultate-alfa",
+                                    "name": "alta-facultate-1-alfa",
                                     "type": "text",
                                     "class": "form-control"
                                 }
@@ -2408,7 +2406,7 @@ $(function () {
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "alt-domeniu-alfa",
+                                "name": "alt-domeniu-1-alfa",
                                 "type": "text",
                                 "class": "form-control"
                             }
@@ -2428,7 +2426,7 @@ $(function () {
                             "type": "div",
                             "class": "custom-input",
                             "html": [{
-                                    "name": "alta-facultate-alfa",
+                                    "name": "alta-facultate-2-alfa",
                                     "type": "text",
                                     "class": "form-control"
                                 }
@@ -2441,7 +2439,7 @@ $(function () {
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "alt-domeniu-alfa",
+                                "name": "alt-domeniu-2-alfa",
                                 "type": "text",
                                 "class": "form-control"
                             }
@@ -2461,7 +2459,7 @@ $(function () {
                             "type": "div",
                             "class": "custom-input",
                             "html": [{
-                                    "name": "alta-facultate-alfa",
+                                    "name": "alta-facultate-3-alfa",
                                     "type": "text",
                                     "class": "form-control"
                                 }
@@ -2474,7 +2472,7 @@ $(function () {
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "alt-domeniu-alfa",
+                                "name": "alt-domeniu-3-alfa",
                                 "type": "text",
                                 "class": "form-control"
                             }
@@ -2494,7 +2492,7 @@ $(function () {
                             "type": "div",
                             "class": "custom-input",
                             "html": [{
-                                    "name": "alta-facultate-alfa",
+                                    "name": "alta-facultate-4-alfa",
                                     "type": "text",
                                     "class": "form-control"
                                 }
@@ -2507,7 +2505,7 @@ $(function () {
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "alt-domeniu-alfa",
+                                "name": "alt-domeniu-4-alfa",
                                 "type": "text",
                                 "class": "form-control"
                             }
@@ -2520,10 +2518,9 @@ $(function () {
         ]
     });
 });
-
 $(function () {
     $("#myform8").dform({
-        "action": "http://localhost:8090/form",
+        "action": postTo,
 		"method": "post",
         "html": [{
                 "type": "h4",
@@ -2775,12 +2772,12 @@ $(function () {
                 "class": "form-group",
                 "html": [
                 {
-                       
+
                         "type": "div",
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-prestigiu",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Prestigiul Universității/facultății",
@@ -2796,15 +2793,15 @@ $(function () {
                             }
 
                         ]
-                    
+
                     },
                    {
-                       
+
                         "type": "div",
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-calitate",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Calitatea educației la UAIC",
@@ -2820,15 +2817,15 @@ $(function () {
                             }
 
                         ]
-                    
+
                     },
                     {
-                       
+
                         "type": "div",
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-sfat-pers-apr",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Sfatul persoanelor apropiate",
@@ -2844,14 +2841,14 @@ $(function () {
                             }
 
                         ]
-                    
+
                     },
                      {
-                       
+
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-sfat-prof-opt",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Statutul profesiei pentru care optaţi",
@@ -2867,22 +2864,22 @@ $(function () {
                             }
 
                         ]
-                    
+
                     }
                 ]
             },
-            
+
             {
                 "type": "div",
                 "class": "form-group",
                 "html": [
                 {
-                       
+
                         "type": "div",
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-colegii",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Colegii",
@@ -2898,15 +2895,15 @@ $(function () {
                             }
 
                         ]
-                    
+
                     },
                    {
-                       
+
                         "type": "div",
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-materii",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Materiile care se studiază",
@@ -2922,15 +2919,15 @@ $(function () {
                             }
 
                         ]
-                    
+
                     },
                     {
-                       
+
                         "type": "div",
 
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-furnizate",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Informațiile furnizate de Universitate",
@@ -2946,14 +2943,14 @@ $(function () {
                             }
 
                         ]
-                    
+
                     },
                      {
-                       
+
                         "type": "div",
                         "class": "custom-input",
                         "html": [{
-                                "name": "option-test",
+                                "name": "option-test-domiciliu",
                                 "type": "select",
                                 "class": "form-control",
                                 "caption": "Apropierea de domiciliu",
@@ -2969,7 +2966,7 @@ $(function () {
                             }
 
                         ]
-                    
+
                     }
                 ]
             }  ,
@@ -2997,14 +2994,13 @@ $(function () {
                     }
 
                 ]
-            }      
+            }
         ]
     });
 });
-
 $(function () {
     $("#myform7").dform({
-        "action": "http://localhost:8090/form",
+        "action": postTo,
 		"method": "post",
         "html": [{
                 "type": "h4",
@@ -3054,7 +3050,9 @@ $(function () {
                             "html": [{
                                     "name": "fisa-de-inscriere",
                                     "type": "file",
-                                    "class": "form-control"
+                                    "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                                 }
 
                             ]
@@ -3067,7 +3065,9 @@ $(function () {
                         "html": [{
                                 "name": "fotografie",
                                 "type": "file",
-                                "class": "form-control"
+                                "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                             }
 
                         ]
@@ -3117,7 +3117,9 @@ $(function () {
                             "html": [{
                                     "name": "diploma-bac",
                                     "type": "file",
-                                    "class": "form-control"
+                                    "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                                 }
 
                             ]
@@ -3130,7 +3132,9 @@ $(function () {
                         "html": [{
                                 "name": "certificat-nastere",
                                 "type": "file",
-                                "class": "form-control"
+                                "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                             }
 
                         ]
@@ -3180,7 +3184,9 @@ $(function () {
                             "html": [{
                                     "name": "certificat-casatorie",
                                     "type": "file",
-                                    "class": "form-control"
+                                    "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                                 }
 
                             ]
@@ -3193,7 +3199,9 @@ $(function () {
                         "html": [{
                                 "name": "carte-identitate",
                                 "type": "file",
-                                "class": "form-control"
+                                "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                             }
 
                         ]
@@ -3243,7 +3251,9 @@ $(function () {
                             "html": [{
                                     "name": "adeverinta-medicala",
                                     "type": "file",
-                                    "class": "form-control"
+                                    "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                                 }
 
                             ]
@@ -3256,7 +3266,9 @@ $(function () {
                         "html": [{
                                 "name": "chitanta-taxa",
                                 "type": "file",
-                                "class": "form-control"
+                                "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                             }
 
                         ]
@@ -3311,7 +3323,9 @@ $(function () {
                             "html": [{
                                     "name": "declaratie-absolvent-2016",
                                     "type": "file",
-                                    "class": "form-control"
+                                    "class": "form-control",
+                                    "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                                 }
 
                             ]
@@ -3324,7 +3338,9 @@ $(function () {
                         "html": [{
                                 "name": "adeverinta-semestre-finantate",
                                 "type": "file",
-                                "class": "form-control"
+                                "class": "form-control",
+                                "onchange" : "encodeImageFileAsURL(this)",
+                                "value" : ""
                             }
 
                         ]
@@ -3333,17 +3349,38 @@ $(function () {
                 ]
             },
 
-           
+
         ]
     });
 });
+
+
+function encodeImageFileAsURL(element) {
+	var file = element.files[0];
+	var reader = new FileReader();
+	reader.readAsDataURL(file);
+	var formData = new FormData();
+	reader.onloadend = function() {
+		var ex = (reader.result).split("+").join("%2B");
+		formData.append(element.name, ex);
+		$.ajax({
+			url: postTo,
+			type: "POST",
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: formData})
+				.done(function(e){
+				alert('done!');
+		});
+	}
+}
 
 function sendForm(formId){
 	$.post(
 		$(formId).attr("action"),
 		$(formId).serialize()
 	);
-	alert($(formId).serialize());
 }
 
 $(document).ready(function () {
@@ -3370,17 +3407,20 @@ $(document).ready(function () {
 
     // DEMO ONLY //
     $('#activate-step-2').on('click', function (e) {
+        sendForm("#myform");
         $('ul.setup-panel li:eq(1)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-2"]').trigger('click');
         $(this).remove();
     });
 
     $('#activate-step-3').on('click', function (e) {
+        sendForm("#myform2");
         $('ul.setup-panel li:eq(2)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-3"]').trigger('click');
         $(this).remove();
     });
     $('#activate-step-4').on('click', function (e) {
+        sendForm("#myform3");
         $('ul.setup-panel li:eq(3)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-4"]').trigger('click');
         $(this).remove();
@@ -3391,11 +3431,13 @@ $(document).ready(function () {
         $(this).remove();
     });
     $('#activate-step-6').on('click', function (e) {
+        sendForm("#myform5");
         $('ul.setup-panel li:eq(5)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-6"]').trigger('click');
         $(this).remove();
     });
     $('#activate-step-7').on('click', function (e) {
+        sendForm("#myform6");
         $('ul.setup-panel li:eq(6)').removeClass('disabled');
         $('ul.setup-panel li a[href="#step-7"]').trigger('click');
         $(this).remove();
@@ -3406,6 +3448,6 @@ $(document).ready(function () {
         $(this).remove();
     });
     $('#finish-button').on('click', function (e) {
-        sendForm("#myform7");
+        sendForm("#myform8");
     })
 });

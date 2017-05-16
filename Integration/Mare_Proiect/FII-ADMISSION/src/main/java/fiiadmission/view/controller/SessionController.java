@@ -1,9 +1,13 @@
 package fiiadmission.view.controller;
 
+import fiiadmission.ServerProperties;
+import fiiadmission.dto.AuthEntity;
+import fiiadmission.dto.FormOutEntity;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import validator.IValidator;
 import validator.Mapper;
@@ -11,6 +15,8 @@ import validator.Validator;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -29,7 +35,7 @@ public class SessionController {
         //send info about form or statistics
     }
 
-    @RequestMapping(value = "/form", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/form", method = RequestMethod.GET)
     public void seeForm(@PathVariable("sesion") String session,
                         HttpServletRequest req){
         if(req.getCookies() == null){
@@ -38,29 +44,7 @@ public class SessionController {
         else{
             //return form;
         }
-    }
-
-    @RequestMapping(value = "/form_save", method = RequestMethod.POST)
-    public void saveForm(HttpServletRequest req){
-        if(req.getCookies() != null){
-            //access denied
-        }
-        else{
-            Map form = req.getParameterMap();
-            if(!validator.isValid(form)){
-                //form is invalid
-                //send a message to user to tell that
-            }
-            Map singleValueParameters;
-            try {
-                singleValueParameters = Mapper.changeToSingle(form);
-            }catch(IllegalArgumentException ex){
-                System.out.println(ex);
-                return;
-            }
-            //save form
-        }
-    }
+    }*/
 
     @RequestMapping(value = "/form_submit", method = RequestMethod.POST)
     public void submitForm(HttpServletRequest req){
@@ -81,6 +65,29 @@ public class SessionController {
                 return;
             }
             // submit form
+        }
+    }
+
+    @RequestMapping(value = "/form_save", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView saveForm(HttpServletRequest req) {
+        AuthEntity auth = AuthEntity.fromCookie(req.getCookies());
+        if (auth == null){
+            return new ModelAndView("redirect:/login");
+        }
+        else {
+            Map<String, String[]> map = req.getParameterMap();
+            for (Map.Entry<String, String[]> e : map.entrySet()) {
+                System.out.println(e.getKey() + " " + Arrays.toString(e.getValue()));
+            }
+
+            Map<String, String> asSingle = Mapper.changeToSingle(map);
+
+            RestTemplate template = new RestTemplate();
+            template.postForEntity(ServerProperties.middleUrl + "/controller/save_form",
+                    new FormOutEntity(new AuthEntity()))
+
+            return null;
         }
     }
 
