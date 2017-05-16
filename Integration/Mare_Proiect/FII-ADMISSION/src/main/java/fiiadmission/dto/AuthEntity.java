@@ -27,7 +27,7 @@ public class AuthEntity {
         this.token = token;
     }
 
-    public static AuthEntity fromCookie(Cookie[] cookies){
+    public static AuthEntity fromCookies(Cookie[] cookies){
         String username = null;
         String token = null;
 

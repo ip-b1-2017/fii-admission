@@ -7,20 +7,18 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 public class UserUtils {
-    public String getCandidateCnp(String username){
+    public static String getCandidateCnp(String username){
         try{
             RestTemplate template = new RestTemplate();
-            try {
-                ResponseEntity<CandidatEntity> response = template.getForEntity(
-                        ServerProperties.modelUrl + "/candidat/email/{email}",
-                        CandidatEntity.class,
-                        username
-                );
-                return response.getBody().getCNP();
-            }
-            catch(RestClientException ex){
-                return null;
-            }
+            ResponseEntity<CandidatEntity> response = template.getForEntity(
+                    ServerProperties.modelUrl + "/candidat/email/{email}",
+                    CandidatEntity.class,
+                    username
+            );
+            return response.getBody().getCNP();
+        }
+        catch(RestClientException ex){
+            return null;
         }
     }
 }
