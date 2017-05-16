@@ -25,8 +25,6 @@ public class InsertProfessor {
         professorToAdd.setNume(professor.getNume());
         professorToAdd.setPrenume(professor.getPrenume());
         professorToAdd.setPCNP(professor.getPCNP());
-        professorToAdd.setSali_examenexamenid(professor.getSali_examenexamenid());
-        professorToAdd.setSali_examensaliid(professor.getSali_examensaliid());
 
         RestTemplate template = new RestTemplate();
 
