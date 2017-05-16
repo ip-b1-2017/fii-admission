@@ -1,7 +1,7 @@
 ﻿$(function () {
     $("#myform").dform({
-        "action":"http://localhost:8090/form",
-        "method": "post",
+        "action": "form.html",
+        "method": "get",
         "html": [{
                 "type": "div",
                 "class": "form-group",
@@ -861,8 +861,8 @@
 
 $(function () {
     $("#myform2").dform({
-        "action": "http://localhost:8090/form",
-        "method": "post",
+        "action": "form2.html",
+        "method": "get",
         "html": [{
                 "type": "h4",
                 "html": " II.a. Studiile preuniversitare absolvite, nivel liceu",
@@ -2022,8 +2022,8 @@ $(function () {
 
 $(function () {
     $("#myform3").dform({
-        "action": "http://localhost:8090/form",
-		"method": "post",
+        "action": "form3.html",
+        "method": "get",
         "html": [{
                 "type": "h4",
                 "html": "III. Cerinţe specifice facultăţii",
@@ -2230,14 +2230,114 @@ $(function () {
 
 $(function () {
     $("#myform4").dform({
-        "action": "http://localhost:8090/form",
-		"method": "post",
+        "action": "form4.html",
+        "method": "get",
         "html": [{
                 "type": "h4",
                 "html": "IV. Opţiuni de admitere, în ordinea preferinţelor",
                 "class": "sub-title"
             },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [{
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Domeniul ",
+                                "class":"input-title"
+                            },
 
+
+                        ]
+                    },
+                    {
+                        "type": "div",
+                        "class": "information-pair",
+                        "html": [{
+                                "type": "h5",
+                                "html": "Ordinea preferinţelor (completati ambele) ",
+                                "class":"input-title"
+                            },
+
+
+                        ]
+                    },
+
+                ]
+            },
+             {
+                "type": "div",
+                "class": "form-group",
+                "html": [ {
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "optiune-admitere-romana",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Informatică (limba română)",
+                                "options": {
+                                    "1": "1",
+                                    "2": "2"
+                                }
+                            }
+
+                        ]
+                    },
+
+                    {
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "optiune-admitere-engleza",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Informatică (limba engleză)*",
+                                "options": {
+                                    "1": "1",
+                                    "2": "2"
+                                }
+                            }
+
+                        ]
+                    },
+
+                ]
+            },
+            {
+                "type":"p",
+                "html":"*Competenţele de limbă engleză se dovedesc fie cu certificate Cambridge, Toefl sau IELTS valabile și valide, fie prin obţinerea cel puţin a calificativului B la proba orală de limbă engleză la examenul de Bacalaureat.",
+                
+        },
+        {
+                "type": "div",
+                "class": "form-group",
+                "html": [ {
+                        "type": "div",
+
+                        "class": "custom-input",
+                        "html": [{
+                                "name": "accept-inmatriculare-taxa",
+                                "type": "select",
+                                "class": "form-control",
+                                "caption": "Acceptaţi să fiţi  înmatriculat pe locurile cu taxă disponibile în cazul în care nu aţi fost admis pe locurile finanţate de la buget?",
+                                "options": {
+                                    "da": "DA",
+                                    "nu": "NU",
+                                    "taxa":"Numai cu taxă"
+                                }
+                            }
+
+                        ]
+                    }
+
+
+                ]
+            }
 
 
         ]
@@ -2245,8 +2345,8 @@ $(function () {
 });
 $(function () {
     $("#myform6").dform({
-        "action": "http://localhost:8090/form",
-		"method": "post",
+        "action": "form.html",
+        "method": "get",
         "html": [
             {
                 "type": "h4",
@@ -2358,8 +2458,8 @@ $(function () {
 
 $(function () {
     $("#myform5").dform({
-        "action": "http://localhost:8090/form",
-		"method": "post",
+        "action": "form5.html",
+        "method": "get",
         "html": [{
                 "type": "h4",
                 "html": "V. Informaţii privind documentele de studii depuse la dosar",
@@ -2726,8 +2826,8 @@ $(function () {
 
 $(function () {
     $("#myform8").dform({
-        "action": "http://localhost:8090/form",
-		"method": "post",
+        "action": "form8.html",
+        "method": "get",
         "html": [{
                 "type": "h4",
                 "html": "VII. Chestionar privind alegerea Dumneavoastră",
@@ -3207,8 +3307,8 @@ $(function () {
 
 $(function () {
     $("#myform7").dform({
-        "action": "http://localhost:8090/form",
-		"method": "post",
+        "action": "form7.html",
+        "method": "get",
         "html": [{
                 "type": "h4",
                 "html": "VIII. Acte necesare",
@@ -3540,15 +3640,6 @@ $(function () {
         ]
     });
 });
-
-function sendForm(formId){
-	$.post(
-		$(formId).attr("action"),
-		$(formId).serialize()
-	);
-	alert($(formId).serialize());
-}
-
 $(document).ready(function () {
 
     var navListItems = $('ul.setup-panel li a'),
@@ -3608,7 +3699,5 @@ $(document).ready(function () {
         $('ul.setup-panel li a[href="#step-8"]').trigger('click');
         $(this).remove();
     });
-    $('#finish-button').on('click', function (e) {
-        sendForm("#myform7");
-    })
+
 });

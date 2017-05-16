@@ -1,32 +1,27 @@
 package com.ip_b1.fii.admission.DTO;
 
 public class SignUpTestInEntity {
-    private String password;
     private String email;
+    private String pswall;
 
-    public SignUpTestInEntity(){
 
-    }
-
-    public SignUpTestInEntity( String email, String password) {
-
-        this.email = email;
-        this.password = password;
+    public SignUpTestInEntity() {
 
     }
+
     public String getEmail() {
         return email;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getPswall() {
+        return pswall;
+    }
+
+    public void setPswall(String password) {
+        this.pswall = password;
     }
 }

@@ -7,6 +7,11 @@ public class ContestationEntity {
     public ContestationEntity() {
     }
 
+    public ContestationEntity(String contestation, AuthEntity auth) {
+        this.contestation = contestation;
+        this.auth = auth;
+    }
+
     public String getContestation() {
         return contestation;
     }
@@ -20,11 +25,6 @@ public class ContestationEntity {
     }
 
     public void setAuth(AuthEntity auth) {
-        this.auth = auth;
-    }
-
-    public ContestationEntity(String contestation, AuthEntity auth) {
-        this.contestation = contestation;
         this.auth = auth;
     }
 }

@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<title>Teachers</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/CSS/profesori.css" type="text/css" media="screen">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Montserrat:700,400|Roboto:400,100,300,500,900'
-    rel='stylesheet' type='text/css'>
+    <title>Teachers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style/profesori.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Montserrat:700,400|Roboto:400,100,300,500,900'
+          rel='stylesheet' type='text/css'>
 </head>
 <body bgcolor="#e6e6e6">
 <ul>
 
-<div class="logo"></div>
+    <div class="logo"></div>
 
- <!-- <li><div class="avatar"></div><h3>John Smith</h3></li> -->
+    <!-- <li><div class="avatar"></div><h3>John Smith</h3></li> -->
 
-<div class="content">
-    <img src="/images/profesori/avatar.png" alt="" width="50px" />
-    <h3>Administrator</h3>
-</div>​
+    <div class="content">
+        <img src="/images/profesori/avatar.png" alt="" width="50px" />
+        <h3>Administrator</h3>
+    </div>​
 
 
 
-  <li><a href="#dash">Dashboard</a></li>
-  <li><a href="#settings">Settings</a></li>
-  <li><a href="#form">View Applications</a></li>
-  <li><a class="active" href="#form">Teachers</a></li>
-  <li><a href="#form">Classrooms</a></li>
-  <li><a href="#disconn">Disconnect</a></li>
-  <br>
-  <hr>
-  <br><br><br><br><br>
-  <br><br><br><br><br>
+    <li><a href="#dash">Dashboard</a></li>
+    <li><a href="#settings">Settings</a></li>
+    <li><a href="#form">View Applications</a></li>
+    <li><a class="active" href="#form">Teachers</a></li>
+    <li><a href="#form">Classrooms</a></li>
+    <li><a href="#disconn">Disconnect</a></li>
+    <br>
+    <hr>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
 
-      <p id="contact">
+    <p id="contact">
         Contact<br>
         Adress:<br>
         Facultatea de informatica,<br>
@@ -42,7 +42,7 @@
         700483, ROMANIA <br>
         Phone: +40 232 201090<br>
         E-mail: secretariat@info.uaic.ro
-      	</p>
+    </p>
 </ul>
 
 <!-- <div id="section-dash" class="tab-content" style="margin-left:20%;padding:1px 16px;height:1000px;">
@@ -50,31 +50,31 @@
  -->
 
 <div class="main">
-<div class="widget-box sample-widget">
+    <div class="widget-box sample-widget">
         <div class="widget-header">
-          <h2>Classroom:</h2>
-          <i class="fa fa-cog"></i>
+            <h2>Classroom:</h2>
+            <i class="fa fa-cog"></i>
         </div>
         <div class="widget-content">
-          <br>
+            <br>
             <form th:action="@{/delete}" method="post">
-          <label for="cod">Nume:<br>
-    			</label> <input type="text" name="nume" id="cod" value="" />
-    			<br><br>
-    			<label for="etaj">Prenume:<br>
-    			</label> <input type="text" name="prenume" id="etaj" value="" />
-    			<br><br>
-    			<label for="nr">CNP:<br>
-    			</label> <input type="number" name="cnp" id="nr" value="" />
-    			<br><br>
-		    <input type="submit" name="button" value="add">
-		    <input type="submit" name="button" value="delete">
+                <label for="cod">Nume:<br>
+                </label> <input type="text" name="nume" id="cod" value="" />
+                <br><br>
+                <label for="etaj">Prenume:<br>
+                </label> <input type="text" name="prenume" id="etaj" value="" />
+                <br><br>
+                <label for="nr">CNP:<br>
+                </label> <input type="number" name="cnp" id="nr" value="" />
+                <br><br>
+                <input type="submit" name="button" value="add">
+                <input type="submit" name="button" value="delete">
             </form>
         </div>
-      </div>
+    </div>
 </div>
 
- <br><br>
+<br><br>
 
 </body>
 </html>

@@ -6,6 +6,13 @@ public class NotificationEntity {
     private boolean seen;
     private String message;
 
+    public NotificationEntity(String email, boolean seen, String message) {
+
+        this.email = email;
+        this.seen = seen;
+        this.message = message;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -27,13 +34,6 @@ public class NotificationEntity {
     }
 
     public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public NotificationEntity(String email, boolean seen, String message) {
-
-        this.email = email;
-        this.seen = seen;
         this.message = message;
     }
 }

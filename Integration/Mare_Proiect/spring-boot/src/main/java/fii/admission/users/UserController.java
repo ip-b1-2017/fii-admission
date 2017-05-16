@@ -2,10 +2,7 @@ package fii.admission.users;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -65,7 +62,7 @@ public class UserController {
 
     @RequestMapping(value = "/users/is_logged_in", method = RequestMethod.POST)
     public ResponseEntity<Success> isLoggedIn(@RequestBody UserIn user) {
-        System.out.print("[debug][checkPassword] " + user.toString() + " => ");
+        System.out.print("[debug][isLoggedIn] " + user.toString() + " => ");
         if (UserService.isLogged(user)) {
             System.out.println("User logged in");
             return new ResponseEntity<Success>(new Success(true), HttpStatus.OK);
@@ -84,6 +81,19 @@ public class UserController {
         } else {
             System.out.println("Not updated");
             return new ResponseEntity<Success>(new Success(false), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/users/get_role/{token}", method = RequestMethod.GET)
+    public ResponseEntity<RoleEntity> getRole(@PathVariable("token") String token) {
+        System.out.print("[debug][getRole] token: " + token + " => ");
+        RoleEntity role = UserService.getRole(token);
+        System.out.println(role.getRole());
+
+        if (role != null) {
+            return new ResponseEntity<RoleEntity>(role, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<RoleEntity>(role, HttpStatus.NOT_FOUND);
         }
     }
 }
