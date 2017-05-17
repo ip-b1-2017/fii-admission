@@ -27,7 +27,7 @@ public class GetNotifications {
                     ServerProperties.modelUrl + "/{sessionId}/get_notifications?username={username}",
                     NotificationsOutEntity.class,
                     sessionId,
-                    auth.getUsername()
+                    auth.getEmail()
             );
             if (entity.getBody() == null)
                 return new ResponseEntity<>(

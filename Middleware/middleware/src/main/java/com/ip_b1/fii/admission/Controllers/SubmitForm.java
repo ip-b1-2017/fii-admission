@@ -11,10 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * Created by Iacob Cristian on 5/7/2017.
- */
-
 @RestController
 @RequestMapping("/controller/submit_form")
 public class SubmitForm {
@@ -34,7 +30,7 @@ public class SubmitForm {
             }
         }
 
-        return new ResponseEntity<SubmitFormOutEntity>(
+        return new ResponseEntity<>(
                 new SubmitFormOutEntity(true, null),
                 HttpStatus.OK
         );
@@ -49,7 +45,7 @@ public class SubmitForm {
                 ServerProperties.modelUrl + "/{username}/submit_form",
                 formOutEntity,
                 SuccessEntity.class,
-                formEntity.getAuth().getUsername()
+                formEntity.getAuth().getEmail()
         );
         return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();
     }

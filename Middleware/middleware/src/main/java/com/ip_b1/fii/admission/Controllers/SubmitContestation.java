@@ -25,10 +25,10 @@ public class SubmitContestation {
 
 
             if (!addToDB(contestationEntity)) {
-                return new ResponseEntity<SaveContestationOutEntity>(new SaveContestationOutEntity(false, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(new SaveContestationOutEntity(false, "Internal Server Error"), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-        return new ResponseEntity<SaveContestationOutEntity>(
+        return new ResponseEntity<>(
                 new SaveContestationOutEntity(true, null),
                 HttpStatus.OK
         );
@@ -43,7 +43,7 @@ public class SubmitContestation {
                 ServerProperties.modelUrl + "/{username}/save_contestation",
                 contestationEntity,
                 SuccessEntity.class,
-                contestationEntity.getAuth().getUsername()
+                contestationEntity.getAuth().getEmail()
         );
         return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();
     }

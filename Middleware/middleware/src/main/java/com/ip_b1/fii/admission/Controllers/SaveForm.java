@@ -45,7 +45,7 @@ public class SaveForm {
                 ServerProperties.modelUrl + "/{username}/save_form",
                 formOutEntity,
                 SuccessEntity.class,
-                formEntity.getAuth().getUsername()
+                formEntity.getAuth().getEmail()
         );
         return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();
     }
