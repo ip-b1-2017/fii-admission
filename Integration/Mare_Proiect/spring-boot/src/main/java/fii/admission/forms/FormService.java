@@ -20,9 +20,9 @@ public class FormService {
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				Form form = new Form();
-				form.setInformatii(rs.getString("FORMULAR"));
+				form.setFields(rs.getString("FORMULAR"));
 				form.setStatus(rs.getString("STATUS"));
-				form.setCandidatCnp(rs.getString("CANDIDATCNP"));
+				form.setCandidateCnp(rs.getString("CANDIDATCNP"));
 				result.add(form);
 			}
 			stmt.close();
@@ -46,9 +46,9 @@ public class FormService {
 			pstmt.setString(1, candidatcnp);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result.setInformatii(rs.getString("FORMULAR"));
+				result.setFields(rs.getString("FORMULAR"));
 				result.setStatus(rs.getString("STATUS"));
-				result.setCandidatCnp(rs.getString("CANDIDATCNP"));
+				result.setCandidateCnp(rs.getString("CANDIDATCNP"));
 			} else
 				return null;
 			pstmt.close();
@@ -67,9 +67,9 @@ public class FormService {
 			
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, form.getInformatii());
+			pstmt.setString(1, form.getFields());
 			pstmt.setString(2, form.getStatus());
-			pstmt.setString(3, form.getCandidatCnp());
+			pstmt.setString(3, form.getCandidateCnp());
 			pstmt.setString(4, candidatcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -105,9 +105,9 @@ public class FormService {
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, form.getInformatii());
+			pstmt.setString(1, form.getFields());
 			pstmt.setString(2, form.getStatus());
-			pstmt.setString(3, form.getCandidatCnp());
+			pstmt.setString(3, form.getCandidateCnp());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
