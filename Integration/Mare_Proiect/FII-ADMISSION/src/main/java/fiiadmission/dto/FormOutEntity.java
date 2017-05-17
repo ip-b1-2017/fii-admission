@@ -3,20 +3,20 @@ package fiiadmission.dto;
 import java.util.Map;
 
 public class FormOutEntity {
-    AuthEntity authEntity;
+    AuthEntity auth;
     Map<String, String> fields;
 
-    public FormOutEntity(AuthEntity authEntity, Map<String, String> fields) {
-        this.authEntity = authEntity;
+    public FormOutEntity(AuthEntity auth, Map<String, String> fields) {
+        this.auth = auth;
         this.fields = fields;
     }
 
-    public AuthEntity getAuthEntity() {
-        return authEntity;
+    public AuthEntity getAuth() {
+        return auth;
     }
 
-    public void setAuthEntity(AuthEntity authEntity) {
-        this.authEntity = authEntity;
+    public void setAuth(AuthEntity auth) {
+        this.auth = auth;
     }
 
     public Map<String, String> getFields() {

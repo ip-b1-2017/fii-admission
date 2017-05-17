@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import validator.Mapper;
@@ -35,7 +36,7 @@ public class FormController {
     @RequestMapping(value = "/form_submit", method = RequestMethod.POST)
     public ResponseEntity<SuccessReasonEntity> submitForm(HttpServletRequest req){
         AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
-        if(req.getCookies() == null){
+        if(auth == null){
             return new ResponseEntity<SuccessReasonEntity>(
                     new SuccessReasonEntity(false, "redirect:/login"),
                     HttpStatus.UNAUTHORIZED);
@@ -51,7 +52,7 @@ public class FormController {
             RestTemplate template = new TolerantRestTemplate();
 
             return template.postForEntity(
-                    ServerProperties.middleUrl + "/controller/submit_form",
+                    ServerProperties.middleUrl + "/submit_form",
                     new FormOutEntity(auth, asSingle), SuccessReasonEntity.class);
         }
     }
@@ -75,9 +76,26 @@ public class FormController {
 
             RestTemplate template = new TolerantRestTemplate();
 
-            return template.postForEntity(
-                    ServerProperties.middleUrl + "/controller/save_form",
-                    new FormOutEntity(auth, asSingle), SuccessReasonEntity.class);
+            try {
+                ResponseEntity<SuccessReasonEntity> result = template.postForEntity(
+                        ServerProperties.middleUrl + "/save_form",
+                        new FormOutEntity(auth, asSingle),
+                        SuccessReasonEntity.class);
+                if (result.getStatusCode() == HttpStatus.OK){
+                    return new ResponseEntity<>(result.getBody(), HttpStatus.OK);
+                }
+                return new ResponseEntity<>(
+                        new SuccessReasonEntity(false, "Internal Server Error: bad status code."),
+                        HttpStatus.BAD_REQUEST
+                );
+            }
+            catch(RestClientException ex){
+                System.out.println(ex.toString());
+                return new ResponseEntity<>(
+                        new SuccessReasonEntity(false,"Failed to save form."),
+                        HttpStatus.BAD_REQUEST);
+            }
+
         }
     }
 }

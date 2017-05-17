@@ -1,5 +1,7 @@
 package fii.admission.users;
 
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 import fii.admission.DTO.SuccessEntity;
@@ -25,14 +27,16 @@ public class UserController {
 		return new ResponseEntity<List<User>>(result, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/users/get_user", method = RequestMethod.POST)
-	public ResponseEntity<User> getUser(@RequestBody Email email) {
-		System.out.print("[debug][getUser] " + email.getEmail() + " => ");
-		User result = UserService.getUser(email.getEmail());
-		System.out.println(result.toString());
+	@RequestMapping(value = "/users/get_user/{emailB64}", method = RequestMethod.GET)
+	public ResponseEntity<User> getUser(@PathVariable String emailB64) {
+        System.out.println(emailB64);
+        String email = new String(Base64.getDecoder().decode(emailB64.getBytes()));
+		System.out.print("[debug][getUser] " + email + " => ");
+		User result = UserService.getUser(email);
+		System.out.println(result);
 
 		if (result == null)
-			return new ResponseEntity<User>(result, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<User>(result, HttpStatus.NOT_FOUND);
 
 		return new ResponseEntity<User>(result, HttpStatus.OK);
 	}
@@ -53,7 +57,7 @@ public class UserController {
 		int result = UserService.insertUser(user);
 
 		if(result == 0)
-			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.BAD_REQUEST);
 		else 
 			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.CREATED);
 	}
@@ -75,19 +79,9 @@ public class UserController {
 			System.out.println("Updated");
 			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.BAD_REQUEST);
 		}
 	}
-
-    @RequestMapping(value="/users/get_role/{token}", method = RequestMethod.GET)
-    public ResponseEntity<RoleEntity> getRole(@PathVariable("token") String token) {
-        RoleEntity role = UserService.getRole(token);
-        if (role!=null) {
-            return new ResponseEntity<RoleEntity>(role, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<RoleEntity>(role, HttpStatus.NOT_FOUND);
-        }
-    }
 
 }
 

@@ -4,6 +4,9 @@ public class SuccessReasonEntity {
     private boolean success;
     private String failureReason;
 
+    public SuccessReasonEntity() {
+    }
+
     public SuccessReasonEntity(boolean success, String failureReason) {
         this.success = success;
         this.failureReason = failureReason;
