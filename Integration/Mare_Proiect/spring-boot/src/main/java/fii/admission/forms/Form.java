@@ -28,4 +28,13 @@ public class Form {
     public void setCandidatCnp(String candidatcnp) {
         this.candidatcnp = candidatcnp;
     }
+
+    @Override
+    public String toString() {
+        return "Form{" +
+                "informatii='" + informatii + '\'' +
+                ", status='" + status + '\'' +
+                ", candidatcnp='" + candidatcnp + '\'' +
+                '}';
+    }
 }

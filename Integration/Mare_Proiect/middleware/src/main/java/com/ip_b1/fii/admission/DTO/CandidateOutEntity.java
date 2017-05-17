@@ -5,16 +5,17 @@ public class CandidateOutEntity {
     private String cnp;
     private String firstname;
     private String lastname;
-    private String address;
-    private String phoneNumber;
+    private String phone;
 
-    public CandidateOutEntity(String email, String cnp, String firstname, String lastname, String address, String phoneNumber) {
+    public CandidateOutEntity() {
+    }
+
+    public CandidateOutEntity(String email, String cnp, String firstname, String lastname, String phoneNumber) {
         this.email = email;
         this.cnp = cnp;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
+        this.phone = phoneNumber;
     }
 
     public CandidateOutEntity(CandidateInEntity entity) {
@@ -22,8 +23,7 @@ public class CandidateOutEntity {
         this.cnp = entity.getCnp();
         this.firstname = entity.getFirstname();
         this.lastname = entity.getLastname();
-        this.address = entity.getAddress();
-        this.phoneNumber = entity.getPhoneNumber();
+        this.phone = entity.getPhoneNumber();
     }
 
     public String getEmail() {
@@ -58,19 +58,11 @@ public class CandidateOutEntity {
         this.lastname = lastname;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

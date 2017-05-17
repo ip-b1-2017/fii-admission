@@ -1,4 +1,4 @@
-﻿var postTo = "https://localhost:8090/ses/form_save";
+﻿var postTo = "https://localhost:8090/form_save";
 
 $(function () {
     $("#myform").dform({

@@ -29,4 +29,12 @@ public class FormInEntity {
     public void setFields(Map<String, String> fields) {
         this.fields = fields;
     }
+
+    @Override
+    public String toString() {
+        return "FormInEntity{" +
+                "auth=" + auth +
+                ", fields=" + fields +
+                '}';
+    }
 }

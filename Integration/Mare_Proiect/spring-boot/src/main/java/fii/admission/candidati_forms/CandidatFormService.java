@@ -27,11 +27,11 @@ public class CandidatFormService {
             while (rs.next()) {
                 //salvam campurile pentru candidat in candidat
                 Candidat candidat = new Candidat();
-                candidat.setCNP(rs.getString("CNP"));
-                candidat.setTelefon(rs.getString("TELEFON"));
-                candidat.setNume("NUME");
-                candidat.setPrenume("PRENUME");
-                candidat.setUserEmail("USEREMAIL");
+                candidat.setCnp(rs.getString("CNP"));
+                candidat.setPhone(rs.getString("TELEFON"));
+                candidat.setLastname("NUME");
+                candidat.setFirstname("PRENUME");
+                candidat.setEmail("USEREMAIL");
                 //salvam campurile pentru formular in form
                 Form form = new Form();
                 form.setCandidatCnp(rs.getString("CANDIDATCNP"));

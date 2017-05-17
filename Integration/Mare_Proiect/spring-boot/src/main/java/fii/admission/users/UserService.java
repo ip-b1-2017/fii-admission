@@ -22,7 +22,7 @@ public class UserService {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 User user = new User();
-                user.setRol(rs.getString("ROL"));
+                user.setRole(rs.getString("ROL"));
                 user.setEmail(rs.getString("EMAIL"));
                 user.setParola(rs.getString("PAROLA"));
                 user.setToken(rs.getString("TOKEN"));
@@ -49,7 +49,7 @@ public class UserService {
             pstmt.setString(1, email);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                result.setRol(rs.getString("ROL"));
+                result.setRole(rs.getString("ROL"));
                 result.setEmail(rs.getString("EMAIL"));
                 result.setParola(rs.getString("PAROLA"));
                 result.setToken(rs.getString("TOKEN"));
@@ -91,7 +91,7 @@ public class UserService {
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query.toString());
-            pstmt.setString(1, user.getRol());
+            pstmt.setString(1, user.getRole());
             pstmt.setString(2, user.getEmail());
             pstmt.setString(3, user.getParola());
             pstmt.setString(4, user.getToken());
@@ -129,7 +129,7 @@ public class UserService {
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query.toString());
-            pstmt.setString(1, user.getRol());
+            pstmt.setString(1, user.getRole());
             pstmt.setString(2, user.getEmail());
             pstmt.setString(3, user.getParola());
             pstmt.setString(4, user.getToken());

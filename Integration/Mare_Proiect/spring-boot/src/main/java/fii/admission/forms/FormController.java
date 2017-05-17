@@ -19,7 +19,7 @@ public class FormController {
 		List<Form> result = FormService.getAllForm();
 
 		if (result == null)
-			return new ResponseEntity<List<Form>>(result, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<Form>>(result, HttpStatus.OK);
 
 		return new ResponseEntity<List<Form>>(result, HttpStatus.OK);
 	}
@@ -35,42 +35,47 @@ public class FormController {
 	}
 
 	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.POST)
-	public ResponseEntity<Integer> updateForm(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Form form) {
+	public ResponseEntity<SuccessEntity> updateForm(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Form form) {
+		System.out.println(form.toString());
 		int result = FormService.updateForm(candidatcnp, form);
 		if (result == 0)
-			return new ResponseEntity<>(result, HttpStatus.NOT_MODIFIED);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
 		else
-			return new ResponseEntity<>(result, HttpStatus.OK);
+			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/formuri/set_status/{candidatcnp}", method = RequestMethod.POST)
 	public ResponseEntity<SuccessEntity> updateFormStatus(@PathVariable("candidatcnp") String candidatcnp, @RequestBody String status) {
         System.out.println(candidatcnp + " " + status);
         Form form = FormService.getForm(candidatcnp);
+        if (form == null){
+        	return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
+		}
+
 	    form.setStatus(status);
 		int result = FormService.updateForm(candidatcnp, form);
 		if (result == 0)
-			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
 		else
 			return new ResponseEntity<> (new SuccessEntity(true), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.DELETE)
-	public ResponseEntity<Integer> deleteForm(@PathVariable("candidatcnp") String candidatcnp) {
+	public ResponseEntity<SuccessEntity> deleteForm(@PathVariable("candidatcnp") String candidatcnp) {
 		int result = FormService.deleteForm(candidatcnp);
 		if (result == 0)
-			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
 		else
-			return new ResponseEntity<Integer>(result, HttpStatus.OK);
+			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/formuri", method = RequestMethod.PUT)
-	public ResponseEntity<Integer> insertForm(@RequestBody Form form) {
+	public ResponseEntity<SuccessEntity> insertForm(@RequestBody Form form) {
 		int result = FormService.insertForm(form);
 		if (result == 0)
-			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.BAD_REQUEST);
 		else
-			return new ResponseEntity<Integer>(result, HttpStatus.OK);
+			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.CREATED);
 	}
 }
 

@@ -6,14 +6,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Base64;
+
 public class UserUtils {
     public static String getCandidateCnp(String username){
         try{
             RestTemplate template = new RestTemplate();
             ResponseEntity<CandidatEntity> response = template.getForEntity(
-                    ServerProperties.modelUrl + "/candidat/email/{email}",
+                    ServerProperties.modelUrl + "/candidati/email/{email}",
                     CandidatEntity.class,
-                    username
+                    new String(Base64.getEncoder().encode(username.getBytes()))
             );
             return response.getBody().getCNP();
         }

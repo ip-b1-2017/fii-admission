@@ -28,4 +28,11 @@ public class AuthEntity {
         this.token = token;
     }
 
+    @Override
+    public String toString() {
+        return "AuthEntity{" +
+                "username='" + username + '\'' +
+                ", token='" + token + '\'' +
+                '}';
+    }
 }

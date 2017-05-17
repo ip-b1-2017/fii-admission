@@ -1,17 +1,17 @@
 package fii.admission.users;
 
 public class User {
-    private String rol;
+    private String role;
     private String email;
     private String password;
     private String token;
 
-    public String getRol() {
-        return rol;
+    public String getRole() {
+        return role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {
@@ -40,6 +40,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "email: " + email + " | rol: " + rol + " | password: " + password + " | token: " + token;
+        return "email: " + email + " | role: " + role + " | password: " + password + " | token: " + token;
     }
 }

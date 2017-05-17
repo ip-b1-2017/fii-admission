@@ -5,15 +5,16 @@ public class CandidateInEntity {
     private String cnp;
     private String firstname;
     private String lastname;
-    private String address;
     private String phoneNumber;
 
-    public CandidateInEntity(AuthEntity auth, String cnp, String firstname, String lastname, String address, String phoneNumber) {
+    public CandidateInEntity() {
+    }
+
+    public CandidateInEntity(AuthEntity auth, String cnp, String firstname, String lastname, String phoneNumber) {
         this.auth = auth;
         this.cnp = cnp;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.address = address;
         this.phoneNumber = phoneNumber;
     }
 
@@ -47,14 +48,6 @@ public class CandidateInEntity {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPhoneNumber() {

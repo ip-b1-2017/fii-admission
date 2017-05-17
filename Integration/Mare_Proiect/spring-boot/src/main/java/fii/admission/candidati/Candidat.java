@@ -1,50 +1,61 @@
 package fii.admission.candidati;
 
 public class Candidat {
-    private String nume;
-    private String prenume;
-    private String CNP;
-    private String useremail;
-    private String telefon;
+    private String lastname;
+    private String firstname;
+    private String cnp;
+    private String email;
+    private String phone;
 
-    public String getTelefon() {
-        return telefon;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelefon(String telefon) {
-        this.telefon = telefon;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getNume() {
-        return nume;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setNume(String nume) {
-        this.nume = nume;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getPrenume() {
-        return prenume;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setPrenume(String prenume) {
-        this.prenume = prenume;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getCNP() {
-        return CNP;
+    public String getCnp() {
+        return cnp;
     }
 
-    public void setCNP(String CNP) {
-        this.CNP = CNP;
+    public void setCnp(String cnp) {
+        this.cnp = cnp;
     }
 
-    public String getUserEmail() {
-        return useremail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String useremail) {
-        this.useremail = useremail;
+    public void setEmail(String useremail) {
+        this.email = useremail;
+    }
+
+    @Override
+    public String toString() {
+        return "Candidat{" +
+                "lastname='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", cnp='" + cnp + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }
 
