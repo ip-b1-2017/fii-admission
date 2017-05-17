@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/controller/{sessionId}/get_application_by_Email/{email}")
+@RequestMapping("/controller/get_application_by_Email/{email}")
 public class GetApplicationByEmail {
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<FormOutEntity> run(@PathVariable String sessionId, @PathVariable String email, @RequestBody AuthEntity auth) {
+    public ResponseEntity<FormOutEntity> run( @PathVariable String email, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuthIsAdmin(auth)) {
 
             return new ResponseEntity<>(
@@ -27,7 +27,9 @@ public class GetApplicationByEmail {
 
             ResponseEntity<FormOutEntity> entity = template.getForEntity(
                     ServerProperties.modelUrl + "}/get_application_by_email/{email}",
-                    FormOutEntity.class
+                    FormOutEntity.class,
+                    email
+
 
             );
             if (entity.getBody() == null)

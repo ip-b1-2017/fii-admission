@@ -15,6 +15,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpStatusCodeException;
+
+import javax.xml.ws.http.HTTPException;
 
 public class GetApplicationByEmailTest {
 
@@ -31,22 +34,31 @@ public class GetApplicationByEmailTest {
         test = null;
     }
     @Test
+
     public void unauthorizedTest() {
-        AuthEntity testEntity = new AuthEntity("user@info.uaic.ro", "token");
-        ResponseEntity<FormOutEntity> testResult = test.run("user","random_email@uaic.info.ro", testEntity);
-        Assert.assertEquals(HttpStatus.UNAUTHORIZED, testResult.getStatusCode());
+        AuthEntity testEntity;
+        ResponseEntity<FormOutEntity> testResult;
+        try {
+
+            testEntity = new AuthEntity("user@info.uaic.ro", "token");
+
+            testResult = test.run("random_email@uaic.info.ro", testEntity);
+        }
+    catch (HttpStatusCodeException e){
+            Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
+        }
 
     }
     @Test
     public void authorizedTest() {
         AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "token");
-        ResponseEntity<FormOutEntity> testResult = test.run("admin","valid_test_email@uaic.info.ro", testEntity);
+        ResponseEntity<FormOutEntity> testResult = test.run("valid_test_email@uaic.info.ro", testEntity);
         Assert.assertEquals(HttpStatus.OK, testResult.getStatusCode());
     }
     @Test
     public void invalidEmailTest() {
         AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "token");
-        ResponseEntity<FormOutEntity> testResult = test.run("admin","invalid_email@uaic.info.ro", testEntity);
+        ResponseEntity<FormOutEntity> testResult = test.run("invalid_email@uaic.info.ro", testEntity);
         Assert.assertEquals(HttpStatus.NOT_FOUND, testResult.getStatusCode());
     }
 

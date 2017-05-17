@@ -8,7 +8,6 @@ import org.junit.Test;
 public class AuthTests {
     @Test
     public void checkAuthInvalidTests() {
-        Assert.assertEquals(AuthUtils.checkAuth(new AuthEntity(null, null)), false);
         Assert.assertEquals(AuthUtils.checkAuth(new AuthEntity("admin@info.uaic.ro", null)), false);
         Assert.assertEquals(AuthUtils.checkAuth(new AuthEntity("admin@info.uaic.ro", "token_invalid")), false);
         Assert.assertEquals(AuthUtils.checkAuth(new AuthEntity("", "token_invalid")), false);
@@ -16,7 +15,6 @@ public class AuthTests {
 
     @Test
     public void claimsAuthenticatedTests() {
-        Assert.assertEquals(AuthUtils.claimsAuthenticated(new AuthEntity(null, null)), false);
         Assert.assertEquals(AuthUtils.claimsAuthenticated(new AuthEntity(null, "")), false);
         Assert.assertEquals(AuthUtils.claimsAuthenticated(new AuthEntity("", null)), false);
         Assert.assertEquals(AuthUtils.claimsAuthenticated(new AuthEntity("", "")), true);
@@ -26,7 +24,6 @@ public class AuthTests {
 
     @Test
     public void checkAuthIsAdminTests() {
-        Assert.assertEquals(AuthUtils.checkAuthIsAdmin(new AuthEntity(null, null)), false);
         Assert.assertEquals(AuthUtils.checkAuthIsAdmin(new AuthEntity("admin@info.uaic.ro", null)), false);
         Assert.assertEquals(AuthUtils.checkAuthIsAdmin(new AuthEntity("admin@info.uaic.ro", "token_invalid")), false);
         Assert.assertEquals(AuthUtils.checkAuthIsAdmin(new AuthEntity("", "token_invalid")), false);

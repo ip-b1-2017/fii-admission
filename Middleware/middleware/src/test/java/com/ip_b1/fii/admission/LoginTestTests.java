@@ -16,21 +16,30 @@ public class LoginTestTests {
         LoginTest obj = new LoginTest();
         LoginTestInEntity loginTestInEntity = new LoginTestInEntity("sdvxc ", "Sgf");
         try {
+            Assert.assertNotEquals(HttpStatus.OK,obj.testLogin(loginTestInEntity).getStatusCode());
 
-            System.out.println(obj.testLogin(loginTestInEntity).getStatusCode().toString());
-            Assert.assertEquals(HttpStatus.UNAUTHORIZED, obj.testLogin(
-                    loginTestInEntity).getStatusCodeValue()
-            );
-            Assert.assertEquals(obj.testLogin(new LoginTestInEntity(null, null)).getStatusCode(),
-                  HttpStatus.UNAUTHORIZED);
-            Assert.assertEquals(obj.testLogin(new LoginTestInEntity("admin@info.uaic.ro", "not_password")).getStatusCode(),
-                    HttpStatus.UNAUTHORIZED);
-            Assert.assertEquals(obj.testLogin(new LoginTestInEntity("nonexistent@email.address", "password")).getStatusCode(),
-                   HttpStatus.UNAUTHORIZED);
         } catch (HttpStatusCodeException e) {
             Assert.assertEquals(HttpStatus.UNAUTHORIZED,e.getStatusCode());
             System.out.println(e.getStatusCode());
         }
+
+
+        try {
+            Assert.assertNotEquals(HttpStatus.OK,obj.testLogin(new LoginTestInEntity("nonexistent@email.address", "password")).getStatusCode());
+
+        } catch (HttpStatusCodeException e) {
+            Assert.assertEquals(HttpStatus.UNAUTHORIZED,e.getStatusCode());
+
+        }
+        try {
+            Assert.assertNotEquals(HttpStatus.OK, obj.testLogin(new LoginTestInEntity("admin@info.uaic.ro", "not_password")).getStatusCode());
+
+        } catch (HttpStatusCodeException e) {
+            Assert.assertEquals(HttpStatus.UNAUTHORIZED,e.getStatusCode());
+
+        }
+
+
     }
 
     @Test
