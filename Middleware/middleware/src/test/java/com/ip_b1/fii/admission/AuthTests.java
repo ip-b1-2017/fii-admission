@@ -27,6 +27,7 @@ public class AuthTests {
         Assert.assertEquals(AuthUtils.checkAuthIsAdmin(new AuthEntity("admin@info.uaic.ro", null)), false);
         Assert.assertEquals(AuthUtils.checkAuthIsAdmin(new AuthEntity("admin@info.uaic.ro", "token_invalid")), false);
         Assert.assertEquals(AuthUtils.checkAuthIsAdmin(new AuthEntity("", "token_invalid")), false);
+        Assert.assertEquals(AuthUtils.checkAuthIsAdmin(new AuthEntity("admin@info.uaic.ro", "topkek")), true);
     }
 
 
