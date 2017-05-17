@@ -30,7 +30,7 @@ public  class GetForm {
                     ServerProperties.modelUrl + "/{sessionId}/get_form?username={username}",
                     FormOutEntity.class,
                     sessionId,
-                    auth.getUsername()
+                    auth.getEmail()
             );
 
             return new ResponseEntity<>(

@@ -18,7 +18,7 @@ public class CandidateOutEntity {
     }
 
     public CandidateOutEntity(CandidateInEntity entity){
-        this.email = entity.getAuth().getUsername();
+        this.email = entity.getAuth().getEmail();
         this.cnp = entity.getCnp();
         this.firstname = entity.getFirstname();
         this.lastname = entity.getLastname();

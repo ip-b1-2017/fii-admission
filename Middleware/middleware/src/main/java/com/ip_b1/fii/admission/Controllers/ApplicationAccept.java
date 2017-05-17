@@ -1,7 +1,7 @@
 package com.ip_b1.fii.admission.Controllers;
 
+import com.ip_b1.fii.admission.DTO.ApplicationReview;
 import com.ip_b1.fii.admission.DTO.AuthEntity;
-import com.ip_b1.fii.admission.DTO.FormStatusEntity;
 import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
@@ -11,30 +11,33 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("controller/(sessionId)/application_review_accept")
+@RequestMapping("controller/application_review_accept/")
 public class ApplicationAccept {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> accept(@PathVariable String sessionId, AuthEntity user, String CNP){
+    public ResponseEntity<SuccessEntity> accept(@RequestBody ApplicationReview body) {
 
-        if(!AuthUtils.checkAuthIsAdmin(user)){
+        if (!AuthUtils.checkAuthIsAdmin(body.getUser())) {
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
         }
 
-        if(!process(sessionId, CNP))
+        body.setMessage("acceptat");
+
+        if (!process(body.getCnp(), body.getMessage()))
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
 
     }
 
-    private static boolean process(String sessionId, String cnp) {
+    private static boolean process(String cnp, String message) {
 
         RestTemplate restTemplate = new RestTemplate();
+
         ResponseEntity<SuccessEntity> success = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/model/(sessionId)/form_set_status",
-                new FormStatusEntity(cnp, "accepted"),
-                SuccessEntity.class,
-                sessionId);
+                ServerProperties.modelUrl + "/formuri/set_status/" + cnp,
+                "accepted",
+                SuccessEntity.class
+                );
         return success.getBody().isSuccess();
     }
 
