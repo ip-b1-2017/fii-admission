@@ -37,7 +37,7 @@ public class LoginTest {
             }
         });
         ResponseEntity<SuccessEntity> entity = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/users/is_logged_in",
+                ServerProperties.modelUrl + "/users/check_password",
                 login,
                 SuccessEntity.class);
         return entity.getBody().isSuccess();

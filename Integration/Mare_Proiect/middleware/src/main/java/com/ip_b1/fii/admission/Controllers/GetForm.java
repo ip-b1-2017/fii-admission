@@ -18,7 +18,7 @@ public class GetForm {
     public ResponseEntity<FormOutEntity> run(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
-                    new FormOutEntity(null),
+                    new FormOutEntity(null, null, null),
                     HttpStatus.UNAUTHORIZED
             );
         } else {

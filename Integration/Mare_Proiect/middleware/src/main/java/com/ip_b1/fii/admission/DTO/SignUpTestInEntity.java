@@ -5,7 +5,7 @@ public class SignUpTestInEntity {
     private String pswall;
 
 
-    public SignUpTestInEntity(){
+    public SignUpTestInEntity() {
 
     }
 
@@ -13,12 +13,12 @@ public class SignUpTestInEntity {
         return email;
     }
 
-    public String getPswall() {
-        return pswall;
-    }
-
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPswall() {
+        return pswall;
     }
 
     public void setPswall(String password) {

@@ -5,6 +5,7 @@ package com.ip_b1.fii.admission.DTO;
  */
 public class RoleEntity {
     private String Role;
+
     public RoleEntity() {
     }
 

@@ -1,13 +1,11 @@
-package fii.admission.users;
+package fii.admission.DTO;
 
-public class Success {
+public class SuccessEntity {
     private boolean success;
-
-    public Success() {
+    public SuccessEntity(){
 
     }
-
-    public Success(boolean success) {
+    public SuccessEntity(boolean success) {
         this.success = success;
     }
 

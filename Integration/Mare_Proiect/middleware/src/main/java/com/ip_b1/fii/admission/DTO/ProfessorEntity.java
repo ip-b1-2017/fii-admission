@@ -1,22 +1,37 @@
 package com.ip_b1.fii.admission.DTO;
 
 public class ProfessorEntity {
-	private Integer id;
-	private String nameProfessor;
-	public ProfessorEntity(){
-		
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getNameProfessor() {
-		return nameProfessor;
-	}
-	public void setNameProfessor(String nameProfessor) {
-		this.nameProfessor = nameProfessor;
-	}
-	
+
+    private String nume;
+    private String prenume;
+    private String PCNP;
+
+    public ProfessorEntity() {
+
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public String getPrenume() {
+        return prenume;
+    }
+
+    public String getPCNP() {
+        return PCNP;
+    }
+
+    public void setNume(String nume) {
+        this.nume = nume;
+    }
+
+    public void setPrenume(String prenume) {
+        this.prenume = prenume;
+    }
+
+    public void setPCNP(String PCNP) {
+        this.PCNP = PCNP;
+    }
+
 }

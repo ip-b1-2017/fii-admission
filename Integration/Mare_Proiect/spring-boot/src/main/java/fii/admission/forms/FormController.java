@@ -2,6 +2,7 @@ package fii.admission.forms;
 
 import java.util.List;
 
+import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,9 +38,21 @@ public class FormController {
 	public ResponseEntity<Integer> updateForm(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Form form) {
 		int result = FormService.updateForm(candidatcnp, form);
 		if (result == 0)
-			return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+			return new ResponseEntity<>(result, HttpStatus.NOT_MODIFIED);
 		else
-			return new ResponseEntity<Integer>(result, HttpStatus.OK);
+			return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/formuri/set_status/{candidatcnp}", method = RequestMethod.POST)
+	public ResponseEntity<SuccessEntity> updateFormStatus(@PathVariable("candidatcnp") String candidatcnp, @RequestBody String status) {
+        System.out.println(candidatcnp + " " + status);
+        Form form = FormService.getForm(candidatcnp);
+	    form.setStatus(status);
+		int result = FormService.updateForm(candidatcnp, form);
+		if (result == 0)
+			return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
+		else
+			return new ResponseEntity<> (new SuccessEntity(true), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.DELETE)

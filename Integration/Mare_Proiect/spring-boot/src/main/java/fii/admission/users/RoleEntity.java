@@ -1,10 +1,8 @@
 package fii.admission.users;
 
-/**
- * Created by cosmin on 5/15/2017.
- */
 public class RoleEntity {
     private String Role;
+
     public RoleEntity() {
     }
 
