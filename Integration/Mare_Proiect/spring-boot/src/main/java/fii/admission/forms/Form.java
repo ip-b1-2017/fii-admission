@@ -1,16 +1,16 @@
 package fii.admission.forms;
 
 public class Form {
-    private String informatii;
+    private String fields;
     private String status;
-    private String candidatcnp;
+    private String candidateCnp;
 
-    public String getInformatii() {
-        return informatii;
+    public String getFields() {
+        return fields;
     }
 
-    public void setInformatii(String informatii) {
-        this.informatii = informatii;
+    public void setFields(String fields) {
+        this.fields = fields;
     }
 
     public String getStatus() {
@@ -21,20 +21,20 @@ public class Form {
         this.status = status;
     }
 
-    public String getCandidatCnp() {
-        return candidatcnp;
+    public String getCandidateCnp() {
+        return candidateCnp;
     }
 
-    public void setCandidatCnp(String candidatcnp) {
-        this.candidatcnp = candidatcnp;
+    public void setCandidateCnp(String candidatcnp) {
+        this.candidateCnp = candidatcnp;
     }
 
     @Override
     public String toString() {
         return "Form{" +
-                "informatii='" + informatii + '\'' +
+                "fields='" + fields + '\'' +
                 ", status='" + status + '\'' +
-                ", candidatcnp='" + candidatcnp + '\'' +
+                ", candidateCnp='" + candidateCnp + '\'' +
                 '}';
     }
 }

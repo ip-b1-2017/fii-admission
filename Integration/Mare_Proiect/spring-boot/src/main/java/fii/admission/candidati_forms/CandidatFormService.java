@@ -34,8 +34,8 @@ public class CandidatFormService {
                 candidat.setEmail("USEREMAIL");
                 //salvam campurile pentru formular in form
                 Form form = new Form();
-                form.setCandidatCnp(rs.getString("CANDIDATCNP"));
-                form.setInformatii(rs.getString("FORMULAR"));
+                form.setCandidateCnp(rs.getString("CANDIDATCNP"));
+                form.setFields(rs.getString("FORMULAR"));
                 form.setStatus(rs.getString("STATUS"));
                 //punem candidatul si formularul in candidatform
                 CandidatForm candidatForm = new CandidatForm();

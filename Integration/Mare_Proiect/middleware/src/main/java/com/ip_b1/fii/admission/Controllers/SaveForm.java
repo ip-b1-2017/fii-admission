@@ -46,6 +46,7 @@ public class SaveForm {
                     new ObjectMapper().writeValueAsString(formEntity.getFields()),
                     cnp,
                     getStatus(formEntity.getFields()));
+            System.out.println("out the printing press: " + formOutEntity);
         } catch (JsonProcessingException e) {
             System.out.println("Could not serialize JSON form.");
             return false;
@@ -69,11 +70,10 @@ public class SaveForm {
         catch(RestClientException ex1){
             try{
                 ResponseEntity<SuccessEntity> result = restTemplate.exchange(
-                        ServerProperties.modelUrl + "/formuri/{cnp}",
+                        ServerProperties.modelUrl + "/formuri",
                         HttpMethod.PUT,
                         new HttpEntity<>(formOutEntity),
-                        SuccessEntity.class,
-                        cnp);
+                        SuccessEntity.class);
                 return result.getStatusCode() == HttpStatus.CREATED && result.getBody().isSuccess();
             }
             catch (RestClientException ex2){
