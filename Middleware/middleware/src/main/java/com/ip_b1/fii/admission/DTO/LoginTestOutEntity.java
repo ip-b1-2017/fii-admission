@@ -35,4 +35,7 @@ public class LoginTestOutEntity {
     public void setFailureReason(String failureReason) {
         this.failureReason = failureReason;
     }
+
+    public LoginTestOutEntity() {
+    }
 }

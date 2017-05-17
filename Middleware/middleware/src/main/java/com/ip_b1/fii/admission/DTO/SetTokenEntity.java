@@ -9,6 +9,9 @@ public class SetTokenEntity {
         this.token = token;
     }
 
+    public SetTokenEntity() {
+    }
+
     public String getUsername() {
         return username;
     }

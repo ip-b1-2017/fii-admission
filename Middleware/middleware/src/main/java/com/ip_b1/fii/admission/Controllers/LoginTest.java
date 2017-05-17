@@ -21,11 +21,14 @@ public class LoginTest {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<LoginTestOutEntity>testLogin(@RequestBody LoginTestInEntity login) {
+
         if (!check(login)) {
+
             return new ResponseEntity<>(
                     new LoginTestOutEntity(false, null, "Failed login"),
                     HttpStatus.UNAUTHORIZED
             );
+
         }
 
         String token = authenticateUser(login.getUsername());
@@ -72,10 +75,12 @@ public class LoginTest {
 
     private static boolean check(LoginTestInEntity login) {
         RestTemplate restTemplate = new RestTemplate();
+        System.out.println(login.getUsername()+ " " + login.getPassword());
         SuccessEntity entity = restTemplate.postForObject(
                 ServerProperties.modelUrl + "/users/check_password",
                 login,
                 SuccessEntity.class);
+        System.out.println(entity.isSuccess());
         return entity.isSuccess();
     }
 
