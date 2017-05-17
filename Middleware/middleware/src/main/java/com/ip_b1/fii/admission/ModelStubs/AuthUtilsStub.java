@@ -19,7 +19,7 @@ public class AuthUtilsStub {
     }
 
     @RequestMapping(value = "/get_user", method = RequestMethod.POST)
-    public ResponseEntity<User> checkAuth(@RequestBody Email email) {
+    public ResponseEntity<User> getUser(@RequestBody Email email) {
         switch (email.getEmail()){
             case "admin@info.uaic.ro":
                 User u = new User();

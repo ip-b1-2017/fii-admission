@@ -5,15 +5,19 @@ import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("controller/application_review_reject/")
 public class ApplicationReject {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> reject(@RequestBody ApplicationReview body) {
+    public static ResponseEntity<SuccessEntity> reject(@RequestBody ApplicationReview body) {
 
         if (!AuthUtils.checkAuthIsAdmin(body.getUser())) {
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
@@ -27,6 +31,17 @@ public class ApplicationReject {
 
     private static boolean process(String cnp, String rejectionMessage) {
         RestTemplate restTemplate = new RestTemplate();
+
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+            }
+        });
 
         ResponseEntity<SuccessEntity> success = restTemplate.postForEntity(
                 ServerProperties.modelUrl + "/formuri/set_status/" + cnp,
