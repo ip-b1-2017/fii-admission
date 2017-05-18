@@ -66,7 +66,7 @@ public class SaliService {
 		String query = "UPDATE SALI SET id = ? , locatie = ?, locuri = ? where id = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, sali.getId());
 			pstmt.setString(2, sali.getLocatie());
 			pstmt.setInt(3, sali.getNrLocuri());
@@ -85,7 +85,7 @@ public class SaliService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM SALI WHERE id = ?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, id);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -104,7 +104,7 @@ public class SaliService {
 				+ " VALUES ( ?, ?, ?)";		
 		
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, sali.getId());
 			pstmt.setString(2, sali.getLocatie());
 			pstmt.setInt(3, sali.getNrLocuri());

@@ -70,7 +70,7 @@ public class ExamenService {
 		String query = "UPDATE Examen SET id=?, start_date = ?, end_date = ?, nr_proba = ?, tip = ? where id = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, examen.getId());
 			pstmt.setString(2, examen.getStartDate());
 			pstmt.setString(3, examen.getEndDate());
@@ -91,7 +91,7 @@ public class ExamenService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM Examen WHERE id = ?";
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, id);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -110,7 +110,7 @@ public class ExamenService {
 				+ " VALUES ( ?, ?, ?, ?, ?)";		
 		
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, examen.getId());
 			pstmt.setString(2, examen.getStartDate());
 			pstmt.setString(3, examen.getEndDate());

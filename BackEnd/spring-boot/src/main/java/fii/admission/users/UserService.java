@@ -88,12 +88,12 @@ public class UserService {
 				+ "token = ? where email = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getRol());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getParola());
 			pstmt.setString(4, user.getToken());
-			pstmt.setString(7, email);
+			pstmt.setString(5, email);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
@@ -108,7 +108,7 @@ public class UserService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM USER WHERE email = ?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, email);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -126,7 +126,7 @@ public class UserService {
 			     + " VALUES ( ?, ?, ?, ?)";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getRol());
 			pstmt.setString(2, user.getEmail());
 			pstmt.setString(3, user.getParola());
@@ -146,7 +146,7 @@ public class UserService {
 			     + "token = ? where email = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, ust.getToken());
 			pstmt.setString(2, ust.getEmail());
 			result = pstmt.executeUpdate();

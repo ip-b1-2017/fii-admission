@@ -66,7 +66,7 @@ public class NotificariService {
 		String query = "UPDATE NOTIFICARI SET text = ?, seen = ?, useremail =?  where useremail = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, notificari.getText());
 			pstmt.setString(2, notificari.getSeen());
 			pstmt.setString(3, notificari.getUserEmail());
@@ -85,7 +85,7 @@ public class NotificariService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM NOTIFICARI WHERE useremail = ?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, useremail);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -104,7 +104,7 @@ public class NotificariService {
 				+ " VALUES ( ?, ?, ?)";		
 		
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, notificari.getText());
 			pstmt.setString(2, notificari.getSeen());
 			pstmt.setString(3, notificari.getUserEmail());

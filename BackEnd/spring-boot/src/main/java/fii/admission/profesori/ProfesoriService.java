@@ -71,7 +71,7 @@ public class ProfesoriService {
 			     + "sali_examensaliid = ?, sali_examenexamenid = ? where pcnp = ?";
 			
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, prof.getNume());
 			pstmt.setString(2, prof.getPrenume());
 			pstmt.setString(3, prof.getPCNP());
@@ -92,7 +92,7 @@ public class ProfesoriService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM PROFESORI WHERE pcnp = ?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, pcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -110,7 +110,7 @@ public class ProfesoriService {
 				+ "VALUES ( ?, ?, ?, ?, ?)";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, prof.getNume());
 			pstmt.setString(2, prof.getPrenume());
 			pstmt.setString(3, prof.getPCNP());

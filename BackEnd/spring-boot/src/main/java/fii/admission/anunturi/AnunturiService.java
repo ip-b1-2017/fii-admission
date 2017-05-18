@@ -70,7 +70,7 @@ public class AnunturiService {
 				"where id = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, anunt.getId());
 			pstmt.setString(2, anunt.getAnunt());
 			pstmt.setInt(3, id);
@@ -88,7 +88,7 @@ public class AnunturiService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM Anunturi WHERE id = ?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, id);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -110,7 +110,7 @@ public class AnunturiService {
 			PreparedStatement deleteStmt = con.prepareStatement(deleteOld);
 			deleteStmt.executeUpdate();
 			deleteStmt.close();
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, anunt.getId());
 			pstmt.setString(2, anunt.getAnunt());
 			result = pstmt.executeUpdate();
