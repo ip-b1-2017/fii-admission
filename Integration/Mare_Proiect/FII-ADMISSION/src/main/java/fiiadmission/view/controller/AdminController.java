@@ -59,7 +59,7 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView("/tabel_candidati");
         modelAndView.addObject("lists", list);
 
-        model.addAttribute("listValue")
+        model.addAttribute("listValue");
         return modelAndView;
     }
 
