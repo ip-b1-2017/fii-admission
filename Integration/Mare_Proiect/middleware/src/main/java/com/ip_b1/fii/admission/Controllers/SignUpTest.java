@@ -66,7 +66,7 @@ public class SignUpTest {
         UserEntity user = new UserEntity();
         user.setEmail(signup.getEmail());
         System.out.println(signup.getEmail());
-        user.setRol("user");
+        user.setRole("user");
         System.out.println(signup.getPswall());
         user.setParola(signup.getPswall());
         user.setToken(".");

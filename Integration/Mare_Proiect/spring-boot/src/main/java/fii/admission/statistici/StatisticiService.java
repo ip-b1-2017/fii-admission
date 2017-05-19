@@ -14,6 +14,10 @@ import java.sql.SQLException;
 @Service
 public class StatisticiService {
 
+    public StatisticiAdmin getStatistici(){
+        return null;
+    }
+
     public static String getNumarCandidati(String email){
         Connection con = MainApp.getDBConnection();
         PreparedStatement pstmt =null;

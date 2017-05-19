@@ -23,6 +23,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,9 +83,9 @@ public class AuthenticationController {
         cookie1.setSecure(true);
         cookie2.setSecure(true);
 
-        Map<String, String> urlParams = new HashMap<String, String>();
-        urlParams.put("token", si.getToken());
-        ResponseEntity<RoleEntity> role = rt.getForEntity(ServerProperties.middleUrl + "/get_role/{token}", RoleEntity.class, urlParams);
+
+
+        ResponseEntity<RoleEntity> role = rt.getForEntity(ServerProperties.middleUrl + "/get_role/{email}/", RoleEntity.class,singleValueParams.get("email"));
 
         res.addCookie(cookie1);
         res.addCookie(cookie2);

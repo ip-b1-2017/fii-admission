@@ -35,6 +35,7 @@ public class UserController {
 		User result = UserService.getUser(email);
 		System.out.println(result);
 
+
 		if (result == null)
 			return new ResponseEntity<User>(result, HttpStatus.NOT_FOUND);
 
