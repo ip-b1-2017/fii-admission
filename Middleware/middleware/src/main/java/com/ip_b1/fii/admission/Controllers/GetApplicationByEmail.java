@@ -15,33 +15,33 @@ public class GetApplicationByEmail {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<FormOutEntity> run( @PathVariable String email, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuthIsAdmin(auth)) {
-
+            System.out.println("hello");
             return new ResponseEntity<>(
                     new FormOutEntity(),
                     HttpStatus.UNAUTHORIZED
             );
         } else {
 
-
             RestTemplate template = new RestTemplate();
 
             ResponseEntity<FormOutEntity> entity = template.getForEntity(
-                    ServerProperties.modelUrl + "}/get_application_by_email/{email}",
-                    FormOutEntity.class,
-                    email
-
+                    ServerProperties.modelUrl + "/get_application_by_email/" + email,
+                    FormOutEntity.class
 
             );
-            if (entity.getBody() == null)
+            if (entity.getBody().isEmpty())
                 return new ResponseEntity<>(
                         entity.getBody(),
                         HttpStatus.NOT_FOUND
 
                 );
-            return new ResponseEntity<>(
-                    entity.getBody(),
-                    HttpStatus.OK
-            );
+            else {
+                return new ResponseEntity<>(
+                        entity.getBody(),
+                        HttpStatus.OK
+                );
+            }
+
         }
     }
 }
