@@ -67,7 +67,7 @@ public class Sali_Examen_CandidatService {
 				+ "where candidatcnp = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, prof.getCandidatCNP());
 			pstmt.setString(2, prof.getSaliExamenSaliId());
 			pstmt.setString(3, prof.getSaliExamenExamenId());
@@ -86,7 +86,7 @@ public class Sali_Examen_CandidatService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM SALI_EXAMEN_CANDIDAT WHERE candidatcnp = ?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidatcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -104,7 +104,7 @@ public class Sali_Examen_CandidatService {
 				+ "VALUES ( ?, ?, ?)";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, prof.getCandidatCNP());
 			pstmt.setString(2, prof.getSaliExamenSaliId());
 			pstmt.setString(3, prof.getSaliExamenExamenId());

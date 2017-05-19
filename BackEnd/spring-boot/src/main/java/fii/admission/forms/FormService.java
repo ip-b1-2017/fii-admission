@@ -46,7 +46,7 @@ public class FormService {
 			pstmt.setString(1, candidatcnp);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result.setInformatii(rs.getString("INFORMATII"));
+				result.setInformatii(rs.getString("FORMULAR"));
 				result.setStatus(rs.getString("STATUS"));
 				result.setCandidatCnp(rs.getString("CANDIDATCNP"));
 			} else
@@ -63,10 +63,10 @@ public class FormService {
 	public static int updateForm(String candidatcnp, Form form) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE FORM SET informatii = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
+		String query = "UPDATE FORM SET formualr = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
 			
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, form.getInformatii());
 			pstmt.setString(2, form.getStatus());
 			pstmt.setString(3, form.getCandidatCnp());
@@ -85,7 +85,7 @@ public class FormService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM FORM WHERE candidatcnp = ?";
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidatcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -100,11 +100,11 @@ public class FormService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "INSERT INTO FORM "
-				+ " (INFORMATII, STATUS, CANDIDATCNP)"
+				+ " (FORMULAR, STATUS, CANDIDATCNP)"
 				+ " VALUES ( ?, ?, ?)";		
 		
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, form.getInformatii());
 			pstmt.setString(2, form.getStatus());
 			pstmt.setString(3, form.getCandidatCnp());

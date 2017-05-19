@@ -64,7 +64,7 @@ public class MedieService {
 		String query = "UPDATE MEDIE SET CANDIDATCNP = ?, VALOARE = ? WHERE CANDIDATCNP = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, medie.getCandidatCNP());
 			pstmt.setFloat(2, medie.getValoare());
 			pstmt.setString(3, candidatCNP);
@@ -82,7 +82,7 @@ public class MedieService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM MEDIE WHERE CANDIDATCNP = ?";
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidatCNP);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -101,7 +101,7 @@ public class MedieService {
 				+ " VALUES ( ?, ?)";		
 		
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, medie.getCandidatCNP());
 			pstmt.setFloat(2, medie.getValoare());
 			result = pstmt.executeUpdate();

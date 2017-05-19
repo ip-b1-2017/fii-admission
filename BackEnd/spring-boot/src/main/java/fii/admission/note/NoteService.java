@@ -67,7 +67,7 @@ public class NoteService {
 			     + "valoare = ?, examenid = ? WHERE candidatcnp = ?";
 			
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, note.getCandidatCNP());
 			pstmt.setFloat(2, note.getValoare());
 			pstmt.setString(3, note.getExamenId());
@@ -86,7 +86,7 @@ public class NoteService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM NOTE WHERE CANDIDATCNP = ?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidatcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -105,7 +105,7 @@ public class NoteService {
 				+ " VALUES ( ?, ?, ?)";		
 		
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, note.getCandidatCNP());
 			pstmt.setFloat(2, note.getValoare());
 			pstmt.setString(3, note.getExamenId());

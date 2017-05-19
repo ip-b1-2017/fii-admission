@@ -64,7 +64,7 @@ public class SaliExamenService {
 		String query = "UPDATE SALI_EXAMEN SET saliid = ?, examenid = ? where saliid = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, saliExamen.getSaliId());
 			pstmt.setString(2, saliExamen.getExamenId());
 			pstmt.setString(3, saliid);
@@ -82,7 +82,7 @@ public class SaliExamenService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM SALI_EXAMEN WHERE saliid = ?";
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, saliid);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -101,7 +101,7 @@ public class SaliExamenService {
 				+ " VALUES ( ?, ?)";
 		
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, saliExamen.getSaliId());
 			pstmt.setString(2, saliExamen.getExamenId());
 			result = pstmt.executeUpdate();

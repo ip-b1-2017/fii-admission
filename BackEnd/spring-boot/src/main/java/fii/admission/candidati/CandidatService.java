@@ -72,7 +72,7 @@ public class CandidatService {
 				"where cnp = ?";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidat.getNume());
 			pstmt.setString(2, candidat.getPrenume());
 			pstmt.setString(3, candidat.getCNP());
@@ -93,7 +93,7 @@ public class CandidatService {
 		Connection con = MainApp.getDBConnection();
 		String query = "DELETE FROM CANDIDAT WHERE cnp = ?";
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, cnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
@@ -111,7 +111,7 @@ public class CandidatService {
 			     + " VALUES ( ?, ?, ?, ?,?)";
 
 		try {
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
+			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, candidat.getNume());
 			pstmt.setString(2, candidat.getPrenume());
 			pstmt.setString(3, candidat.getCNP());
