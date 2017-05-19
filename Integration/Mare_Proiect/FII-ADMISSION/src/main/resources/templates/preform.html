@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Preformular</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"/>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'/>
+
+<!-- our own files -->
+<link rel="stylesheet" href="../style/preformular.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="../JS/preform.js"></script>
+
+</head>
+<body>
+	<div class="form">
+
+		<div id="preform">
+			
+			<h1>Preformular</h1>
+			
+			<form id="MyPreform" action="/form">
+				
+				<div class="field-wrap">
+					<label >Nume:</label><br>
+					<input type="text" placeholder="Ex. Apopei" name="nume" required>
+				</div>
+				
+				<div class="field-wrap">
+					<label >Prenume:</label><br>
+					<input type="text" placeholder="Ex. Ioana Maria" name="prenume" required>
+				</div>
+				
+				<div class="field-wrap">
+					<label >CNP:</label><br>
+					<input type="text" placeholder="Ex. 2960923232525" maxlength="13" name="cnp" pattern="[0-9]+" required>
+				</div>
+				
+				<div class="field-wrap">
+					<label >Telefon:</label><br>
+					<input type="text" placeholder="Ex. 0745363678" maxlength="10" pattern="[0-9]+" name="telefon" required>
+				</div>
+			</form>
+				<button class="button button-block" id="submit" tabindex="1" accesskey="b"/>Trimite</button>
+			
+
+		</div>
+	</div>
+</body>
+</html>
