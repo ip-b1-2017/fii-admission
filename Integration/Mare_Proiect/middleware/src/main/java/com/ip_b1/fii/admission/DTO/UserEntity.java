@@ -1,20 +1,21 @@
 package com.ip_b1.fii.admission.DTO;
 
 public class UserEntity {
-    private String role;
+    private String rol;
     private String email;
     private String password;
     private String token;
 
-    public UserEntity(){
+    public UserEntity() {
 
     }
-    public String getRole() {
-        return role;
+
+    public String getRol() {
+        return rol;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public String getEmail() {
@@ -29,8 +30,8 @@ public class UserEntity {
         return password;
     }
 
-    public void setParola(String password) {
-        this.password = password;
+    public void setParola(String parola) {
+        this.password = parola;
     }
 
     public String getToken() {
@@ -39,10 +40,5 @@ public class UserEntity {
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    @Override
-    public String toString() {
-        return "email: " + email + " | role: " + role + " | password: " + password + " | token: " + token;
     }
 }

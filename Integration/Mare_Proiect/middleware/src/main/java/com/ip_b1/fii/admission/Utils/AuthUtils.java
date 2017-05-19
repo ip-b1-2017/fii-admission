@@ -52,6 +52,6 @@ public class AuthUtils {
         );
         return entity.getStatusCode() != HttpStatus.NOT_FOUND &&
                 entity.getBody().getToken().equals(auth.getToken()) &&
-                entity.getBody().getRole().equals("admin");
+                entity.getBody().getRol().equals("admin");
     }
 }
