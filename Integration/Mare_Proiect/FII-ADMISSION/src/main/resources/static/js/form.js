@@ -3371,7 +3371,6 @@ function encodeImageFileAsURL(element) {
 			processData: false,
 			data: formData})
 				.done(function(e){
-				alert('done!');
 		});
 	}
 }

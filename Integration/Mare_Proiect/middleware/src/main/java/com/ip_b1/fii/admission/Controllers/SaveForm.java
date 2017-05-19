@@ -27,8 +27,7 @@ public class SaveForm {
         String cnp = UserUtils.getCandidateCnp(formEntity.getAuth().getUsername());
 
         if (cnp == null){
-            //De modificat odata ce se pune pre-formularul.
-            CandidateInEntity candidate = getCandidate(formEntity);
+            /*CandidateInEntity candidate = getCandidate(formEntity);            //De modificat odata ce se pune pre-formularul.
             System.out.println(candidate);
             if (candidate != null && SaveCandidate.addCandidate(candidate)) {
                 cnp = candidate.getCnp();
@@ -36,7 +35,8 @@ public class SaveForm {
             else {
                 System.out.println("Candidate NULL or could not be added!");
                 return false;
-            }
+            }*/
+            return false;
         }
 
         FormOutEntity formOutEntity;
@@ -46,7 +46,7 @@ public class SaveForm {
                     new ObjectMapper().writeValueAsString(formEntity.getFields()),
                     cnp,
                     getStatus(formEntity.getFields()));
-            System.out.println("out the printing press: " + formOutEntity);
+            System.out.println("PRINTLN@CLASS:[SaveForm] CNP IS:" + formOutEntity.getCandidateCnp());
         } catch (JsonProcessingException e) {
             System.out.println("Could not serialize JSON form.");
             return false;
@@ -83,7 +83,7 @@ public class SaveForm {
         }
     }
 
-    private static CandidateInEntity getCandidate(FormInEntity formEntity) {
+    /*private static CandidateInEntity getCandidate(FormInEntity formEntity) {
         String cnp = formEntity.getFields().getOrDefault("initial-name", null); //?? aparent asa se cheama in frontend...
         String firstname = formEntity.getFields().getOrDefault("prenume-alfa", null);
         String lastname = formEntity.getFields().getOrDefault("actual-name-alfa", null);
@@ -94,7 +94,7 @@ public class SaveForm {
         }
 
         return new CandidateInEntity(formEntity.getAuth(), cnp, firstname, lastname, phone);
-    }
+    }*/
 
     private static String getStatus(Map<String, String> fields) {
         for (Map.Entry<String, String> field : fields.entrySet()){
@@ -109,7 +109,6 @@ public class SaveForm {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SaveFormOutEntity> saveFormPost(@RequestBody FormInEntity formEntity) {
         System.out.println("in saveFormPost");
-        System.out.println(formEntity);
         if (!AuthUtils.checkAuth(formEntity.getAuth())) {
             return new ResponseEntity<>(
                     new SaveFormOutEntity(false, "Unauthorized"),

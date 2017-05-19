@@ -15,11 +15,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class FiiAdmissionApplication {
     public static void main(String[] args){
+
         SpringApplication.run(FiiAdmissionApplication.class, args);
     }
 
     @Bean
     EmbeddedServletContainerCustomizer containerCustomizer() throws Exception {
+
         return (ConfigurableEmbeddedServletContainer container) -> {
 
             if (container instanceof TomcatEmbeddedServletContainerFactory) {
