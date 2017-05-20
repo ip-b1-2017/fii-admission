@@ -4,8 +4,6 @@ public class Profesor {
 	private String nume;
 	private String prenume;
 	private String PCNP;
-	private String sali_examensaliid;
-	private String sali_examenexamenid;
 
 	public String getNume() {
 		return nume;
@@ -29,21 +27,5 @@ public class Profesor {
 
 	public void setPCNP(String PCNP) {
 		this.PCNP = PCNP;
-	}
-
-	public String getSaliExamenSaliId() {
-		return sali_examensaliid;
-	}
-
-	public void setSaliExamenSaliId(String sali_examensaliid) {
-		this.sali_examensaliid = sali_examensaliid;
-	}
-
-	public String getSaliExamenExamenId() {
-		return sali_examenexamenid;
-	}
-
-	public void setSaliExamenExamenId(String sali_examenexamenid) {
-		this.sali_examenexamenid = sali_examenexamenid;
 	}
 }
