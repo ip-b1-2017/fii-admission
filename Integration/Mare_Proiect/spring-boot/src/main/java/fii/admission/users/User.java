@@ -22,11 +22,11 @@ public class User {
         this.email = email;
     }
 
-    public String getParola() {
+    public String getPassword() {
         return password;
     }
 
-    public void setParola(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
