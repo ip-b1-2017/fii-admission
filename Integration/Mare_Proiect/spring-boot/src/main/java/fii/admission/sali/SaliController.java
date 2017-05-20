@@ -1,5 +1,6 @@
 package fii.admission.sali;
 
+import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,29 +31,29 @@ public class SaliController {
     }
 
     @RequestMapping(value = "/sali/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Integer> updateSali(@PathVariable("id") String id, @RequestBody Sali sali) {
+    public ResponseEntity<SuccessEntity> updateSali(@PathVariable("id") String id, @RequestBody Sali sali) {
         int result = SaliService.updateSali(id, sali);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/sali/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Integer> deleteSali(@PathVariable("id") String id) {
+    public ResponseEntity<SuccessEntity> deleteSali(@PathVariable("id") String id) {
         int result = SaliService.deleteSali(id);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/sali", method = RequestMethod.PUT)
-    public ResponseEntity<Integer> insertSali(@RequestBody Sali sali) {
+    public ResponseEntity<SuccessEntity> insertSali(@RequestBody Sali sali) {
         int result = SaliService.insertSali(sali);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 }

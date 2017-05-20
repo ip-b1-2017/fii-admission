@@ -1,5 +1,6 @@
 package fii.admission.note;
 
+import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,29 +31,29 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/note/{candidatcnp}", method = RequestMethod.POST)
-    public ResponseEntity<Integer> updateNote(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Note note) {
+    public ResponseEntity<SuccessEntity> updateNote(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Note note) {
         int result = NoteService.updateNote(candidatcnp, note);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/note/{candidatcnp}", method = RequestMethod.DELETE)
-    public ResponseEntity<Integer> deleteNote(@PathVariable("candidatcnp") String candidatcnp) {
+    public ResponseEntity<SuccessEntity> deleteNote(@PathVariable("candidatcnp") String candidatcnp) {
         int result = NoteService.deleteNote(candidatcnp);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/note", method = RequestMethod.PUT)
-    public ResponseEntity<Integer> insertNote(@RequestBody Note note) {
+    public ResponseEntity<SuccessEntity> insertNote(@RequestBody Note note) {
         int result = NoteService.insertNote(note);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 }
