@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.Base64;
 
 
@@ -52,6 +51,6 @@ public class AuthUtils {
         );
         return entity.getStatusCode() != HttpStatus.NOT_FOUND &&
                 entity.getBody().getToken().equals(auth.getToken()) &&
-                entity.getBody().getRol().equals("admin");
+                entity.getBody().getRole().equals("admin");
     }
 }

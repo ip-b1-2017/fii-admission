@@ -1,17 +1,12 @@
 package fii.admission.users;
 
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
-
 import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Base64;
+import java.util.List;
 
 @RequestMapping(value = "/model")
 @RestController
@@ -22,9 +17,9 @@ public class UserController {
 		List<User> result = UserService.getAllUser();
 
 		if (result == null)
-			return new ResponseEntity<List<User>>(result, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(result, HttpStatus.NO_CONTENT);
 
-		return new ResponseEntity<List<User>>(result, HttpStatus.OK);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/users/get_user/{emailB64}", method = RequestMethod.GET)
@@ -36,9 +31,9 @@ public class UserController {
 		System.out.println(result);
 
 		if (result == null)
-			return new ResponseEntity<User>(result, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
 
-		return new ResponseEntity<User>(result, HttpStatus.OK);
+		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/users/check_email", method = RequestMethod.POST)

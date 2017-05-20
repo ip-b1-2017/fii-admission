@@ -23,6 +23,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,13 +83,12 @@ public class AuthenticationController {
         cookie1.setSecure(true);
         cookie2.setSecure(true);
 
-        Map<String, String> urlParams = new HashMap<String, String>();
-        urlParams.put("token", si.getToken());
-        ResponseEntity<RoleEntity> role = rt.getForEntity(ServerProperties.middleUrl + "/get_role/{token}", RoleEntity.class, urlParams);
+        ResponseEntity<RoleEntity> roleResponse = rt.getForEntity(ServerProperties.middleUrl + "/get_role/{emailB64}",
+                RoleEntity.class, new String(Base64.getEncoder().encode(singleValueParams.get("email").getBytes())));
 
         res.addCookie(cookie1);
         res.addCookie(cookie2);
-        if (role.getBody().getRole().equals("user")) {
+        if (roleResponse.getBody().getRole().equals("user")) {
             return new ModelAndView("redirect:/dashboard");
         } else {
             return new ModelAndView("redirect:/dashboard_admin");
@@ -96,7 +96,7 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView getAuthenticationFormular(HttpServletResponse res) {
+    public ModelAndView getAuthenticationForm(HttpServletResponse res) {
         return new ModelAndView("/register");
     }
 
@@ -105,14 +105,10 @@ public class AuthenticationController {
     @ResponseBody
     public ModelAndView createAccount(String error, Model model, HttpServletRequest req, HttpServletResponse rep) {
 
-        Map params = req.getParameterMap();
+        Map<String, String[]> params = req.getParameterMap();
 
-        Map singleValueParams;
-
-
-        Map<String, String[]> paramss = req.getParameterMap();
-        if (!validator.isValid(paramss)) {
-
+        Map<String, String> singleValueParams;
+        if (!validator.isValid(params)) {
             model.addAttribute("inv", "Invalid email");
             return new ModelAndView("/register");
         }
@@ -120,7 +116,7 @@ public class AuthenticationController {
         try {
             singleValueParams = Mapper.changeToSingle(params);
         } catch (IllegalArgumentException ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
             return null;
         }
 
@@ -131,8 +127,8 @@ public class AuthenticationController {
         RestTemplate rt = new TolerantRestTemplate();
 
         SignUpTestInEntity sign_Up = new SignUpTestInEntity();
-        sign_Up.setEmail((String) singleValueParams.get("email"));
-        sign_Up.setPswall((String) singleValueParams.get("pswall"));
+        sign_Up.setEmail(singleValueParams.get("email"));
+        sign_Up.setPswall(singleValueParams.get("pswall"));
         ResponseEntity<SignUpResponse> responseSignUp = rt.postForEntity(ServerProperties.middleUrl + "/register", sign_Up, SignUpResponse.class);
 
 
