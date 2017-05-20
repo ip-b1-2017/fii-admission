@@ -1,15 +1,13 @@
 package fii.admission.forms;
 
-import java.util.List;
-
 import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+import static fii.admission.DebugHelper.printDebugMsg;
 
 @RequestMapping(value = "/model")
 @RestController
@@ -27,7 +25,7 @@ public class FormController {
 	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.GET)
 	public ResponseEntity<Form> getForm(@PathVariable String candidatcnp) {
 		Form result = FormService.getForm(candidatcnp);
-
+		printDebugMsg("getForm - GET", "merge");
 		if (result == null)
 			return new ResponseEntity<Form>(result, HttpStatus.NOT_FOUND);
 
@@ -36,6 +34,7 @@ public class FormController {
 
 	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.POST)
 	public ResponseEntity<SuccessEntity> updateForm(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Form form) {
+		printDebugMsg("updateForm - POST", "merge " + candidatcnp);
 		System.out.println(form.toString());
 		int result = FormService.updateForm(candidatcnp, form);
 		if (result == 0)
@@ -77,5 +76,6 @@ public class FormController {
 		else
 			return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.CREATED);
 	}
+
 }
 

@@ -1,12 +1,18 @@
 package fii.admission.forms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.sql.*;
-
+import com.google.gson.Gson;
+import fii.admission.MainApp;
 import org.springframework.stereotype.Service;
 
-import fii.admission.MainApp;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static fii.admission.DebugHelper.printDebugMsg;
 
 @Service
 public class FormService {
@@ -63,11 +69,26 @@ public class FormService {
 	public static int updateForm(String candidatcnp, Form form) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE FORM SET formular = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
-			
+		String getFormQuery = "SELECT formular FROM form WHERE candidatcnp = ?";
+		String updateQuery = "UPDATE FORM SET formular = ?, status = ?, candidatcnp = ? where candidatcnp = ?";
+		String oldForm, finalForm;
 		try{
-			PreparedStatement pstmt = con.prepareStatement(query.toString());
-			pstmt.setString(1, form.getFields());
+			PreparedStatement pstmt = con.prepareStatement(getFormQuery);
+			pstmt.setString(1, form.getCandidateCnp());
+			ResultSet rs = pstmt.executeQuery();
+
+			if(rs.next()){
+				oldForm = rs.getString(1);
+			}else {
+				// THERE IS NO CANDIDATE WITH SUCH CNP
+				printDebugMsg("@FormService - updateForm", "missing cnp: " + candidatcnp);
+				return 0;
+			}
+			rs.close();
+			finalForm = updateOldForm(oldForm, form.getFields());
+			System.out.println(finalForm);
+			pstmt = con.prepareStatement(updateQuery);
+			pstmt.setString(1, finalForm);
 			pstmt.setString(2, form.getStatus());
 			pstmt.setString(3, form.getCandidateCnp());
 			pstmt.setString(4, candidatcnp);
@@ -115,6 +136,30 @@ public class FormService {
 			System.out.printf("[error][updateForm] %s\n", exc.getMessage());
 		}
 		return 0;
+	}
+
+	/*
+		* Created by bogdan
+		* @param formToUpdate: form from database(in JSON) to be updated
+		* @param formWithUpdates: form (in JSON) which contains updates
+		* @return a new form built in this way:
+		 * if exists a key in both forms, new form will contain value from formWithUpdates
+		 * else key value pair, from formWithUpdates, will be appended to new form
+	 */
+	public static String updateOldForm(String formToUpdate, String formWithUpdates){
+		Gson gson = new Gson();
+		Map<String, String> finalForm, updatesForm;
+
+		finalForm = (Map<String, String>)gson.fromJson(formToUpdate, Map.class);
+		updatesForm = (Map<String, String>)gson.fromJson(formWithUpdates, Map.class);
+
+		for(Map.Entry<String, String> update : updatesForm.entrySet() ){
+			if(update.getValue().equals(""))
+				continue;
+			finalForm.put(update.getKey(), update.getValue());
+		}
+
+		return gson.toJson(finalForm);
 	}
 }
 
