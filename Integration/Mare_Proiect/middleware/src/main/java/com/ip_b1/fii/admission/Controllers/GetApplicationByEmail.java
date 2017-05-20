@@ -17,7 +17,7 @@ public class GetApplicationByEmail {
         if (!AuthUtils.checkAuthIsAdmin(auth)) {
 
             return new ResponseEntity<>(
-                    new FormOutEntity(),
+                    //new FormOutEntity(),
                     HttpStatus.UNAUTHORIZED
             );
         } else {

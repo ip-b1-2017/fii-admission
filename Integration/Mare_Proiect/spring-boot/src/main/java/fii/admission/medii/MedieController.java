@@ -1,5 +1,6 @@
 package fii.admission.medii;
 
+import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,29 +31,29 @@ public class MedieController {
     }
 
     @RequestMapping(value = "/medii/{candidatCNP}", method = RequestMethod.POST)
-    public ResponseEntity<Integer> updateMedie(@PathVariable("candidatCNP") String candidatCNP, @RequestBody Medie medie) {
+    public ResponseEntity<SuccessEntity> updateMedie(@PathVariable("candidatCNP") String candidatCNP, @RequestBody Medie medie) {
         int result = MedieService.updateMedie(candidatCNP, medie);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/medii/{candidatCNP}", method = RequestMethod.DELETE)
-    public ResponseEntity<Integer> deleteMedie(@PathVariable("candidatCNP") String candidatCNP) {
+    public ResponseEntity<SuccessEntity> deleteMedie(@PathVariable("candidatCNP") String candidatCNP) {
         int result = MedieService.deleteMedie(candidatCNP);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/medii", method = RequestMethod.PUT)
-    public ResponseEntity<Integer> insertMedie(@RequestBody Medie medie) {
+    public ResponseEntity<SuccessEntity> insertMedie(@RequestBody Medie medie) {
         int result = MedieService.insertMedie(medie);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package fii.admission.sali_examen;
 
+import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,30 +31,30 @@ public class SaliExamenController {
     }
 
     @RequestMapping(value = "/saliexamen/{saliid}", method = RequestMethod.POST)
-    public ResponseEntity<Integer> updateSaliExamen(@PathVariable("saliid") String saliid,
-                                                    @RequestBody SaliExamen saliExamen) {
+    public ResponseEntity<SuccessEntity> updateSaliExamen(@PathVariable("saliid") String saliid,
+                                                          @RequestBody SaliExamen saliExamen) {
         int result = SaliExamenService.updateSaliExamen(saliid, saliExamen);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/saliexamen/{saliid}", method = RequestMethod.DELETE)
-    public ResponseEntity<Integer> deleteSaliExamen(@PathVariable("saliid") String saliid) {
+    public ResponseEntity<SuccessEntity> deleteSaliExamen(@PathVariable("saliid") String saliid) {
         int result = SaliExamenService.deleteSaliExamen(saliid);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/saliexamen", method = RequestMethod.PUT)
-    public ResponseEntity<Integer> insertSaliExamen(@RequestBody SaliExamen saliExamen) {
+    public ResponseEntity<SuccessEntity> insertSaliExamen(@RequestBody SaliExamen saliExamen) {
         int result = SaliExamenService.insertSaliExamen(saliExamen);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 }

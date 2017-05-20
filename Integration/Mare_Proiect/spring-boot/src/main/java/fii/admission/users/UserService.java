@@ -24,7 +24,7 @@ public class UserService {
                 User user = new User();
                 user.setRole(rs.getString("ROL"));
                 user.setEmail(rs.getString("EMAIL"));
-                user.setParola(rs.getString("PAROLA"));
+                user.setPassword(rs.getString("PAROLA"));
                 user.setToken(rs.getString("TOKEN"));
                 result.add(user);
             }
@@ -51,7 +51,7 @@ public class UserService {
             if (rs.next()) {
                 result.setRole(rs.getString("ROL"));
                 result.setEmail(rs.getString("EMAIL"));
-                result.setParola(rs.getString("PAROLA"));
+                result.setPassword(rs.getString("PAROLA"));
                 result.setToken(rs.getString("TOKEN"));
             } else
                 return null;
@@ -93,7 +93,7 @@ public class UserService {
             PreparedStatement pstmt = con.prepareStatement(query.toString());
             pstmt.setString(1, user.getRole());
             pstmt.setString(2, user.getEmail());
-            pstmt.setString(3, user.getParola());
+            pstmt.setString(3, user.getPassword());
             pstmt.setString(4, user.getToken());
             pstmt.setString(7, email);
             result = pstmt.executeUpdate();
@@ -124,20 +124,19 @@ public class UserService {
     public static int insertUser(User user) {
         int result;
         Connection con = MainApp.getDBConnection();
-        String query = "INSERT INTO USER " + "(ROL, EMAIL, PAROLA, TOKEN)"
-                + " VALUES ( ?, ?, ?, ?)";
+        String query = "INSERT INTO USER (ROL, EMAIL, PAROLA, TOKEN) VALUES ( ?, ?, ?, ?)";
 
         try {
-            PreparedStatement pstmt = con.prepareStatement(query.toString());
+            PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, user.getRole());
             pstmt.setString(2, user.getEmail());
-            pstmt.setString(3, user.getParola());
+            pstmt.setString(3, user.getPassword());
             pstmt.setString(4, user.getToken());
             result = pstmt.executeUpdate();
             pstmt.close();
             return result;
         } catch (Exception exc) {
-            System.out.printf("[error][updateUser] %s\n", exc.getMessage());
+            System.out.printf("[error][InsertUser] %s\n", exc.getMessage());
         }
         return 0;
     }
@@ -161,7 +160,7 @@ public class UserService {
                 Exception exc)
 
         {
-            System.out.printf("[error][updateUser] %s\n", exc.getMessage());
+            System.out.printf("[error][updateToken] %s\n", exc.getMessage());
         }
         return false;
     }

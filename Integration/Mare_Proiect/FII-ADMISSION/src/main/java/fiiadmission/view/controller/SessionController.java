@@ -29,28 +29,5 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping("/{sesion}")
 public class SessionController {
-
-    IValidator validator = new Validator();
-
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public void mainPage(@PathVariable("sesion") String session){
-        //send info about form or statistics
-    }
-
-    /*@RequestMapping(value = "/form", method = RequestMethod.GET)
-    public void seeForm(@PathVariable("sesion") String session,
-                        HttpServletRequest req){
-        if(req.getCookies() == null){
-            //access denied;
-        }
-        else{
-            //return form;
-        }
-    }*/
-
-
-
-
 }

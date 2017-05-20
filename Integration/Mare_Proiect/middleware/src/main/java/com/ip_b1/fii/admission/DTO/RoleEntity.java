@@ -9,6 +9,10 @@ public class RoleEntity {
     public RoleEntity() {
     }
 
+    public RoleEntity(String role) {
+        Role = role;
+    }
+
     public String getRole() {
         return Role;
     }

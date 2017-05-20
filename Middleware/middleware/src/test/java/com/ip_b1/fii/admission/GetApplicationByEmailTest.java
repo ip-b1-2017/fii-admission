@@ -38,11 +38,13 @@ public class GetApplicationByEmailTest {
     public void unauthorizedTest() {
         AuthEntity testEntity;
         ResponseEntity<FormOutEntity> testResult;
+       test = new GetApplicationByEmail();
         try {
 
-            testEntity = new AuthEntity("user@info.uaic.ro", "token");
+            testEntity = new AuthEntity("admin@info.uaic.ro", "tokek");
 
             testResult = test.run("random_email@uaic.info.ro", testEntity);
+            Assert.assertNotEquals(HttpStatus.OK, testResult.getStatusCode());
         }
     catch (HttpStatusCodeException e){
             Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
@@ -51,15 +53,22 @@ public class GetApplicationByEmailTest {
     }
     @Test
     public void authorizedTest() {
-        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "token");
-        ResponseEntity<FormOutEntity> testResult = test.run("valid_test_email@uaic.info.ro", testEntity);
+        test = new GetApplicationByEmail();
+        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
+        ResponseEntity<FormOutEntity> testResult = test.run("valid_test_email", testEntity);
         Assert.assertEquals(HttpStatus.OK, testResult.getStatusCode());
     }
     @Test
     public void invalidEmailTest() {
-        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "token");
-        ResponseEntity<FormOutEntity> testResult = test.run("invalid_email@uaic.info.ro", testEntity);
-        Assert.assertEquals(HttpStatus.NOT_FOUND, testResult.getStatusCode());
+        test = new GetApplicationByEmail();
+        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
+        ResponseEntity<FormOutEntity> testResult ;
+        try {
+            testResult = test.run("invalid_email", testEntity);
+            Assert.assertNotEquals(HttpStatus.OK, testResult.getStatusCode());
+        }catch(HttpStatusCodeException e) {
+            Assert.assertEquals(HttpStatus.NOT_FOUND, e.getStatusCode());
+        }
     }
 
 }

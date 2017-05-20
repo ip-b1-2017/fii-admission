@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
+import fii.admission.hash.HashConvertor;
 import org.springframework.stereotype.Service;
 
 import fii.admission.MainApp;
@@ -122,6 +123,7 @@ public class UserService {
 	public static int insertUser(User user) {
 		int result;
 		Connection con = MainApp.getDBConnection();
+		HashConvertor hashConvertor;
 		String query = "INSERT INTO USER " + "(ROL, EMAIL, PAROLA, TOKEN)" 
 			     + " VALUES ( ?, ?, ?, ?)";
 
@@ -129,7 +131,8 @@ public class UserService {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getRol());
 			pstmt.setString(2, user.getEmail());
-			pstmt.setString(3, user.getParola());
+			hashConvertor = new HashConvertor(user.getParola());
+			pstmt.setString(3, hashConvertor.toString());
 			pstmt.setString(4, user.getToken());
 			result = pstmt.executeUpdate();
 			pstmt.close();

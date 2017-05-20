@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
+import static fii.admission.DebugHelper.printDebugMsg;
+
 @RequestMapping(value = "/model")
 @RestController
 public class CandidatController {
@@ -36,7 +38,6 @@ public class CandidatController {
     public ResponseEntity<Candidat> getCandidatByEmail(@PathVariable String emailB64){
         String email = new String(Base64.getDecoder().decode(emailB64));
         Candidat result = CandidatService.getCandidatByEmail(email);
-
         System.out.println("Request to " + email + " got " + result);
 
         if (result == null){

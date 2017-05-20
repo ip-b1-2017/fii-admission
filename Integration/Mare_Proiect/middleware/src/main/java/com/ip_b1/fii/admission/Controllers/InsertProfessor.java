@@ -31,13 +31,11 @@ public class InsertProfessor {
         template.put(
                 ServerProperties.modelUrl + "/profesori",
                 professorToAdd);
-/*
-        ResponseEntity<String> response = template.exchange(ServerProperties.modelUrl + "/profesori",
-                HttpMethod.PUT, ProfessorEntity, ProfessorEntity.class, professorToAdd);
-*/
+
+
         return new ResponseEntity<ProfessorEntity>(
                 //response,
                 HttpStatus.OK
         );
     }
-    }
+}

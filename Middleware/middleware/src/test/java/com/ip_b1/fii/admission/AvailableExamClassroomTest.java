@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpStatusCodeException;
 
 public class AvailableExamClassroomTest {
 
@@ -28,10 +29,14 @@ public class AvailableExamClassroomTest {
     }
     @Test
     public void unauthorizedTest() {
+        ResponseEntity<AvailableExamClassromEntity> testResult;
         AuthEntity testEntity = new AuthEntity("email@info.uaic.ro", "invalid-token");
+        try {
 
-        ResponseEntity<AvailableExamClassromEntity> testResult = test.run(validClassroomId,testEntity);
-        Assert.assertEquals(HttpStatus.UNAUTHORIZED, testResult.getStatusCode());
+            testResult = test.run(validClassroomId, testEntity);
+        } catch(HttpStatusCodeException e) {
+            Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
+        }
 
     }
     @Test

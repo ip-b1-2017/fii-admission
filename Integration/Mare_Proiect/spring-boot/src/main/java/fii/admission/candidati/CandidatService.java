@@ -61,7 +61,7 @@ public class CandidatService {
             rs.close();
             return result;
         } catch (Exception exc) {
-            System.out.printf("[error][getCandidat] %s\n", exc.getMessage());
+            System.out.printf("[error][getCandidate] %s\n", exc.getMessage());
         }
         return null;
     }

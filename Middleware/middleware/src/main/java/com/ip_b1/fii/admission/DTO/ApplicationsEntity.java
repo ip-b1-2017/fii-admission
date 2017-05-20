@@ -6,6 +6,7 @@ public class ApplicationsEntity {
     List<String> applications;
 
     public ApplicationsEntity() {
+
     }
 
     public List<String> getApplications() {
@@ -14,5 +15,8 @@ public class ApplicationsEntity {
 
     public void setApplications(List<String> applications) {
         this.applications = applications;
+    }
+    public boolean isEmpty(){
+        return applications.isEmpty();
     }
 }

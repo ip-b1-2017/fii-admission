@@ -1,6 +1,5 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.CandidatEntity;
 import com.ip_b1.fii.admission.DTO.ProfessorEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.core.ParameterizedTypeReference;
@@ -17,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/controller/get_professors")
 public class GetProfessors {
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<List<ProfessorEntity>> run() {
 
         RestTemplate template = new RestTemplate();
