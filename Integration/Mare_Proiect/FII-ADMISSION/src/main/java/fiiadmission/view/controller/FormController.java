@@ -7,6 +7,7 @@ import fiiadmission.dto.CandidateOutEntity;
 import fiiadmission.dto.FormOutEntity;
 import fiiadmission.dto.SuccessReasonEntity;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.apache.xerces.impl.dv.util.Base64;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,24 @@ public class FormController {
             return new ModelAndView("/login");
         }
         else{
+            RestTemplate template = new TolerantRestTemplate();
+            String emailB64 = new String(Base64.encode(auth.getUsername().getBytes()));
+            System.out.println("[debug][@FormController] emailB64: " + emailB64);
+
+            ResponseEntity<Map> response = template.getForEntity(
+                    ServerProperties.middleUrl + "/get_form/{emailB64}",
+                    Map.class,
+                    emailB64);
+            Map<String, String> form;
+            if(response.getStatusCode() == HttpStatus.NO_CONTENT){
+                //TODO do something
+            }
+            else {
+                 form = (Map<String, String>) response.getBody();
+                for (Map.Entry<String, String> entry : form.entrySet()) {
+                    System.out.println(entry.getKey() + " " + entry.getValue());
+                }
+            }
             return new ModelAndView("/form");
         }
     }

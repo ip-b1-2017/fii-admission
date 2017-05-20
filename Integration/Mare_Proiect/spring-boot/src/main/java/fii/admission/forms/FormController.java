@@ -1,11 +1,13 @@
 package fii.admission.forms;
 
+import com.google.gson.Gson;
 import fii.admission.DTO.SuccessEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 import static fii.admission.DebugHelper.printDebugMsg;
 
@@ -23,13 +25,15 @@ public class FormController {
 	}
 
 	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.GET)
-	public ResponseEntity<Form> getForm(@PathVariable String candidatcnp) {
+	public ResponseEntity<Map<String, String>> getForm(@PathVariable String candidatcnp) {
 		Form result = FormService.getForm(candidatcnp);
 		printDebugMsg("getForm - GET", "merge");
 		if (result == null)
-			return new ResponseEntity<Form>(result, HttpStatus.NOT_FOUND);
-
-		return new ResponseEntity<Form>(result, HttpStatus.OK);
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		Map<String, String> form = (Map<String, String>)new Gson()
+				.fromJson(result.getFields(), Map.class);
+		form.put("status_code", result.getStatus());
+		return new ResponseEntity<Map<String, String>>(form, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/formuri/{candidatcnp}", method = RequestMethod.POST)
