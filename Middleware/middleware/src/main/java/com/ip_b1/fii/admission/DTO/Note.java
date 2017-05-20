@@ -1,4 +1,4 @@
-package fii.admission.note;
+package com.ip_b1.fii.admission.DTO;
 
 public class Note {
     private float valoare;
@@ -8,6 +8,7 @@ public class Note {
     public Note(){
 
     }
+
 
     public float getValoare() {
         return valoare;

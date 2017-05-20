@@ -1,13 +1,19 @@
 package com.ip_b1.fii.admission.Controllers;
 
+import com.ip_b1.fii.admission.DTO.Note;
 import com.ip_b1.fii.admission.DTO.ResultInEntity;
 import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping("/controller/set_result")
@@ -21,17 +27,28 @@ public class AddResults {
                     HttpStatus.UNAUTHORIZED
             );
         } else {
-            RestTemplate template = new RestTemplate();
 
-            ResponseEntity<SuccessEntity> entity = template.getForEntity(
-                    ServerProperties.modelUrl + "/set_result",
-                    SuccessEntity.class
-            );
+            try {
+                URI modelURI = new URI(ServerProperties.modelUrl + "/note");
+                RestTemplate template = new RestTemplate();
+                HttpEntity<Note> requestEntity = new HttpEntity<>(result.getNote());
+                ResponseEntity<SuccessEntity> entity =
+                        template.exchange(modelURI,
+                                HttpMethod.PUT,
+                                requestEntity,
+                                SuccessEntity.class);
 
-            return new ResponseEntity<>(
-                    entity.getBody(),
-                    HttpStatus.OK
-            );
+                if(entity.getBody().isSuccess())
+                    return new ResponseEntity<>(
+                        entity.getBody(),
+                        HttpStatus.OK
+                    );
+                else return new ResponseEntity<>(entity.getBody(),
+                        HttpStatus.NOT_MODIFIED);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
         }
+        return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
