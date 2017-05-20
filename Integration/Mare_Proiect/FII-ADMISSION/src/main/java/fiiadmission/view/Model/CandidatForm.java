@@ -1,18 +1,15 @@
 package fiiadmission.view.Model;
 
-/**
- * Created by andy on 16.05.2017.
- */
 public class CandidatForm {
-    private Candidat candidat;
+    private Candidate candidate;
     private Form form;
 
-    public Candidat getCandidat() {
-        return candidat;
+    public Candidate getCandidate() {
+        return candidate;
     }
 
-    public void setCandidat(Candidat candidat) {
-        this.candidat = candidat;
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
     }
 
     public Form getForm() {

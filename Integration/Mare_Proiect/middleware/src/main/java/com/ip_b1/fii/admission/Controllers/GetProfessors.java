@@ -1,6 +1,5 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.CandidatEntity;
 import com.ip_b1.fii.admission.DTO.ProfessorEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.core.ParameterizedTypeReference;

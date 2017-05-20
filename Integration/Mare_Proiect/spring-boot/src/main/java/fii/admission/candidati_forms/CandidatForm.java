@@ -7,15 +7,15 @@ import fii.admission.forms.Form;
  * Created by andy on 16.05.2017.
  */
 public class CandidatForm {
-    private Candidat candidat;
+    private Candidat candidate;
     private Form form;
 
-    public Candidat getCandidat() {
-        return candidat;
+    public Candidat getCandidate() {
+        return candidate;
     }
 
-    public void setCandidat(Candidat candidat) {
-        this.candidat = candidat;
+    public void setCandidate(Candidat candidate) {
+        this.candidate = candidate;
     }
 
     public Form getForm() {

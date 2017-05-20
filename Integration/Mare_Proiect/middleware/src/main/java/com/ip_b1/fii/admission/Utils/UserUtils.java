@@ -1,6 +1,6 @@
 package com.ip_b1.fii.admission.Utils;
 
-import com.ip_b1.fii.admission.DTO.CandidatEntity;
+import com.ip_b1.fii.admission.DTO.CandidateOutEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
@@ -12,12 +12,12 @@ public class UserUtils {
     public static String getCandidateCnp(String username){
         try{
             RestTemplate template = new RestTemplate();
-            ResponseEntity<CandidatEntity> response = template.getForEntity(
+            ResponseEntity<CandidateOutEntity> response = template.getForEntity(
                     ServerProperties.modelUrl + "/candidati/email/{email}",
-                    CandidatEntity.class,
+                    CandidateOutEntity.class,
                     new String(Base64.getEncoder().encode(username.getBytes()))
             );
-            return response.getBody().getCNP();
+            return response.getBody().getCnp();
         }
         catch(RestClientException ex){
             return null;

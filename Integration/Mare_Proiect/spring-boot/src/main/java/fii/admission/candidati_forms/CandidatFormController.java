@@ -15,11 +15,12 @@ public class CandidatFormController {
     public ResponseEntity<List<CandidatForm>> getAllCandidatiAndForms() {
         System.out.print("[debug][getAllCandidatiAndForms] ");
         List<CandidatForm> result = CandidatFormService.getAllCandidatForm();
-        System.out.println(result.size() + " results");
 
-        if (result == null)
+        if (result == null) {
             return new ResponseEntity<List<CandidatForm>>(result, HttpStatus.NO_CONTENT);
+        }
 
+        System.out.println(result.size() + " results");
         return new ResponseEntity<List<CandidatForm>>(result, HttpStatus.OK);
     }
 }

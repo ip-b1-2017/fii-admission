@@ -2,11 +2,13 @@ package fiiadmission.view.controller;
 
 import com.sun.deploy.net.HttpResponse;
 import fiiadmission.ServerProperties;
+import fiiadmission.dto.AuthEntity;
 import fiiadmission.dto.ProfessorEntity;
 import fiiadmission.dto.SuccessReasonEntity;
 import io.swagger.models.Model;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,36 +68,26 @@ public class AdminController {
         return  new ModelAndView("redirect:/operation");
     }
 
-    @RequestMapping(value = "/candidati", method = RequestMethod.GET)
+    @RequestMapping(value = "/candidates_admin", method = RequestMethod.GET)
     public ModelAndView loadTable(String error, org.springframework.ui.Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
+        AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
+        if (auth == null){
+            return new ModelAndView("redirect:/login");
+        }
+
         RestTemplate template = new RestTemplate();
         ResponseEntity<List<CandidatForm>> candidatResponse;
-        candidatResponse = template.exchange("http://localhost:9999/model/candidati_formuri", HttpMethod.GET,
-                null, new ParameterizedTypeReference<List<CandidatForm>>() {
-                });
+        candidatResponse = template.exchange(ServerProperties.middleUrl + "/get_applications",
+                HttpMethod.POST,
+                new HttpEntity<>(auth),
+                new ParameterizedTypeReference<List<CandidatForm>>() {}
+                );
         List<CandidatForm> candidates = candidatResponse.getBody();
 
-        model.addAttribute("message", "TEST SIMPLU!");
+        ModelAndView modelAndView = new ModelAndView("/candidates_admin");
+        modelAndView.addObject("candidates", candidates);
 
-        List<String> list = getList();
-        ModelAndView modelAndView = new ModelAndView("/tabel_candidati");
-        modelAndView.addObject("lists", list);
-
-        model.addAttribute("listValue");
         return modelAndView;
     }
 
-    private List<String> getList() {
-
-        List<String> list = new ArrayList<String>();
-        list.add("List A");
-        list.add("List B");
-        list.add("List C");
-        list.add("List D");
-        list.add("List 1");
-        list.add("List 2");
-        list.add("List 3");
-
-        return list;
-    }
 }

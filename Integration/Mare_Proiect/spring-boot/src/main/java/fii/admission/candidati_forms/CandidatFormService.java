@@ -29,9 +29,9 @@ public class CandidatFormService {
                 Candidat candidat = new Candidat();
                 candidat.setCnp(rs.getString("CNP"));
                 candidat.setPhone(rs.getString("TELEFON"));
-                candidat.setLastname("NUME");
-                candidat.setFirstname("PRENUME");
-                candidat.setEmail("USEREMAIL");
+                candidat.setLastname(rs.getString("NUME"));
+                candidat.setFirstname(rs.getString("PRENUME"));
+                candidat.setEmail(rs.getString("USEREMAIL"));
                 //salvam campurile pentru formular in form
                 Form form = new Form();
                 form.setCandidateCnp(rs.getString("CANDIDATCNP"));
@@ -39,7 +39,7 @@ public class CandidatFormService {
                 form.setStatus(rs.getString("STATUS"));
                 //punem candidatul si formularul in candidatform
                 CandidatForm candidatForm = new CandidatForm();
-                candidatForm.setCandidat(candidat);
+                candidatForm.setCandidate(candidat);
                 candidatForm.setForm(form);
                 //adaugam rezultatul in lista
                 result.add(candidatForm);

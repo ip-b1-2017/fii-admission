@@ -1,6 +1,6 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.CandidatEntity;
+import com.ip_b1.fii.admission.DTO.CandidateOutEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -18,17 +18,17 @@ import java.util.List;
 public class GetCandidates {
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<CandidatEntity>> run() {
+    public ResponseEntity<List<CandidateOutEntity>> run() {
 
         RestTemplate template = new RestTemplate();
 
-        ResponseEntity<List<CandidatEntity>> candidatResponse =
+        ResponseEntity<List<CandidateOutEntity>> candidatResponse =
                 template.exchange(ServerProperties.modelUrl + "/candidati",
-                        HttpMethod.GET, null, new ParameterizedTypeReference<List<CandidatEntity>>() {
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<CandidateOutEntity>>() {
                         });
-        List<CandidatEntity> candidates = candidatResponse.getBody();
+        List<CandidateOutEntity> candidates = candidatResponse.getBody();
 
-        return new ResponseEntity<List<CandidatEntity>>(
+        return new ResponseEntity<>(
                 candidates,
                 HttpStatus.OK
         );
