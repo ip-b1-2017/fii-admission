@@ -45,13 +45,13 @@ public class AdminController {
         if (test.get("button").equals("delete")) {
             ResponseEntity<SuccessReasonEntity> nume = template.postForEntity(ServerProperties.middleUrl + "/remove_professor",
                     test.get("pcnp"), SuccessReasonEntity.class);
-            return new ModelAndView("redirect:/delete_teacher");
+            return new ModelAndView("redirect:/operation");
         }
         if (test.get("button").equals("add")) {
             test.remove("button");
             ResponseEntity<SuccessReasonEntity> nume = template.postForEntity(ServerProperties.middleUrl + "/add_professor",
                     test, SuccessReasonEntity.class);
-            return new ModelAndView("redirect:/delete_teacher");
+            return new ModelAndView("redirect:/operation");
         }
 
         if (test.get("button").equals("see teachers")) {
@@ -60,10 +60,10 @@ public class AdminController {
                             HttpMethod.POST, null, new ParameterizedTypeReference<List<ProfessorEntity>>() {
                             });
             List<ProfessorEntity> professors = professorResponse.getBody();
-            return new ModelAndView("redirect:/tabel_profesori");
+            return new ModelAndView("redirect:/operation");
         }
 
-        return  new ModelAndView("redirect:/delete_teacher");
+        return  new ModelAndView("redirect:/operation");
     }
 
     @RequestMapping(value = "/candidati", method = RequestMethod.GET)
