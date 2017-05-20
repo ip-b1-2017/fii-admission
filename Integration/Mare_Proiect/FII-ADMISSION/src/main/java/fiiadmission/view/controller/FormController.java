@@ -50,7 +50,7 @@ public class FormController {
                 //TODO do something
             }
             else {
-                 form = (Map<String, String>) response.getBody();
+                form = (Map<String, String>) response.getBody();
                 for (Map.Entry<String, String> entry : form.entrySet()) {
                     System.out.println(entry.getKey() + " " + entry.getValue());
                 }

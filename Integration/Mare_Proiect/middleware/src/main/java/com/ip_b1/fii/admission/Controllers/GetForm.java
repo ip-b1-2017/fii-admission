@@ -44,7 +44,7 @@ public class GetForm {
     }
 
     @Deprecated
-    @RequestMapping(value = "/controller/sessionId/get_form", method = RequestMethod.POST)
+    @RequestMapping(value = "/controller/{sessionId}/get_form", method = RequestMethod.POST)
     public ResponseEntity<FormOutEntity> run(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
