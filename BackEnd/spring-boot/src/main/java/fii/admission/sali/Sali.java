@@ -2,23 +2,28 @@ package fii.admission.sali;
 
 public class Sali {
 	private String id;
-	private String locatie;
+	private String etaj;
 	private int nr_locuri;
 
 	public String getId() {
+
 		return id;
 	}
 
 	public void setId(String id) {
+
 		this.id = id;
 	}
 
-	public String getLocatie() {
-		return locatie;
+	public String getEtaj() {
+
+		return etaj;
+
 	}
 
-	public void setLocatie(String locatie) {
-		this.locatie = locatie;
+	public void setEtaj(String etaj) {
+
+		this.etaj = etaj;
 	}
 
 	public int getNrLocuri() {
@@ -26,6 +31,7 @@ public class Sali {
 	}
 
 	public void setNrLocuri(int nr_locuri) {
+
 		this.nr_locuri = nr_locuri;
 	}
 }
