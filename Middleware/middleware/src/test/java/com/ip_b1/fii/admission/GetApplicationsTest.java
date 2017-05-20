@@ -12,10 +12,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import javax.xml.ws.http.HTTPException;
 
 
-
-    public class GetApplicationsTest {
+public class GetApplicationsTest {
 
         private GetApplications test;
 
@@ -31,17 +31,28 @@ import org.springframework.http.ResponseEntity;
         }
         @Test
         public void unauthorizedTest() {
-            AuthEntity testEntity = new AuthEntity("invlid_email@info.uaic.ro", "invalid_token");
-            ResponseEntity<ApplicationsEntity> testResult = test.run("user", testEntity);
-            Assert.assertEquals(HttpStatus.UNAUTHORIZED, testResult.getStatusCode());
+            test = new GetApplications();
+            AuthEntity testEntity;
+            try {
+                testEntity = new AuthEntity("invlid_email@info.uaic.ro", "invalid_token");
+                ResponseEntity<ApplicationsEntity> testResult = test.run("user", testEntity);
+                Assert.assertNotEquals(HttpStatus.OK, testResult.getStatusCode());
+            }
+                    catch(HTTPException e){
+                        Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
+                }
+
+
 
         }
         @Test
         public void authorizedTest() {
-            AuthEntity testEntity = new AuthEntity("user@info.uaic.ro", "token");
-            ResponseEntity<ApplicationsEntity> testResult = test.run("user", testEntity);
+            test = new GetApplications();
+            AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
+            ResponseEntity<ApplicationsEntity> testResult = test.run("admin", testEntity);
             Assert.assertEquals(HttpStatus.OK, testResult.getStatusCode());
         }
+
 
 
 

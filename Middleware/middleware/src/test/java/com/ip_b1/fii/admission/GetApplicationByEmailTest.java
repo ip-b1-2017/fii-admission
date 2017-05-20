@@ -44,7 +44,7 @@ public class GetApplicationByEmailTest {
             testEntity = new AuthEntity("admin@info.uaic.ro", "tokek");
 
             testResult = test.run("random_email@uaic.info.ro", testEntity);
-
+            Assert.assertNotEquals(HttpStatus.OK, testResult.getStatusCode());
         }
     catch (HttpStatusCodeException e){
             Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
@@ -65,6 +65,7 @@ public class GetApplicationByEmailTest {
         ResponseEntity<FormOutEntity> testResult ;
         try {
             testResult = test.run("invalid_email", testEntity);
+            Assert.assertNotEquals(HttpStatus.OK, testResult.getStatusCode());
         }catch(HttpStatusCodeException e) {
             Assert.assertEquals(HttpStatus.NOT_FOUND, e.getStatusCode());
         }
