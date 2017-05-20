@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpStatusCodeException;
 
 public class GetDistributionListTest {
 
@@ -22,15 +23,36 @@ public class GetDistributionListTest {
 
     @Test
     public void unauthorized_user() {
-        AuthEntity testEntity = new AuthEntity("alexd@info.uaic.ro", "some_invalid_token");
-        ResponseEntity<DistributionListEntity> testResult = test.run(testEntity);
-        Assert.assertEquals(HttpStatus.UNAUTHORIZED, testResult.getStatusCode());
+        test = new GetDistributionList();
+        AuthEntity testEntity;
+        try {
+            testEntity = new AuthEntity("alexd@info.uaic.ro", "some_invalid_token");
+            ResponseEntity<DistributionListEntity> testResult = test.run(testEntity);
+            Assert.assertNotEquals(HttpStatus.OK ,testResult.getStatusCode());
+        }catch(HttpStatusCodeException e) {
+            Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
+        }
     }
 
     @Test
     public void test_ok() {
-        AuthEntity testEntity = new AuthEntity("alexd@info.uaic.ro", "some_valid_token");
+        test = new GetDistributionList();
+        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
         ResponseEntity<DistributionListEntity> testResult = test.run(testEntity);
-        Assert.assertTrue(HttpStatus.OK == testResult.getStatusCode() || HttpStatus.NOT_FOUND == testResult.getStatusCode());
+        Assert.assertTrue(HttpStatus.OK == testResult.getStatusCode());
     }
+ /*   @Test
+    public void notFound() {
+        test = new GetDistributionList();
+        AuthEntity testEntity;
+        try {
+            testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
+            ResponseEntity<DistributionListEntity> testResult = test.run(testEntity);
+            Assert.assertNotEquals(HttpStatus.OK ,testResult.getStatusCode());
+        }
+        catch(HttpStatusCodeException e) {
+            Assert.assertTrue(HttpStatus.NOT_FOUND == e.getStatusCode());
+        }
+    }
+    */
 }
