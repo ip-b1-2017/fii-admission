@@ -28,7 +28,7 @@ public class GetApplications {
             RestTemplate template = new RestTemplate();
 
             ResponseEntity<ApplicationsEntity> entity = template.getForEntity(
-                    ServerProperties.modelUrl + "}/get_applications",
+                    ServerProperties.modelUrl + "model/get_applications",
                     ApplicationsEntity.class
 
             );

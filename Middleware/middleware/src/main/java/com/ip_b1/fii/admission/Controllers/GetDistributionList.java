@@ -27,7 +27,7 @@ public class GetDistributionList {
                 RestTemplate template = new RestTemplate();
 
                 ResponseEntity<DistributionListEntity> entity = template.getForEntity(
-                        ServerProperties.modelUrl + "get_distribution",
+                        ServerProperties.modelUrl + "/get_distribution",
                         DistributionListEntity.class
                 );
                 if (entity.getBody() == null)

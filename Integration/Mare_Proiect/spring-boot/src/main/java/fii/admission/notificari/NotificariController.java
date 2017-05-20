@@ -1,5 +1,7 @@
 package fii.admission.notificari;
 
+import fii.admission.DTO.SuccessEntity;
+import fii.admission.users.Success;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,30 +32,30 @@ public class NotificariController {
     }
 
     @RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.POST)
-    public ResponseEntity<Integer> updateNotificari(@PathVariable("useremail") String useremail,
-                                                    @RequestBody Notificari notificari) {
+    public ResponseEntity<SuccessEntity> updateNotificari(@PathVariable("useremail") String useremail,
+                                                          @RequestBody Notificari notificari) {
         int result = NotificariService.updateNotificari(useremail, notificari);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.DELETE)
-    public ResponseEntity<Integer> deleteNotificari(@PathVariable("useremail") String useremail) {
+    public ResponseEntity<SuccessEntity> deleteNotificari(@PathVariable("useremail") String useremail) {
         int result = NotificariService.deleteNotificari(useremail);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/notificari", method = RequestMethod.PUT)
-    public ResponseEntity<Integer> insertNotificari(@RequestBody Notificari notificari) {
+    public ResponseEntity<SuccessEntity> insertNotificari(@RequestBody Notificari notificari) {
         int result = NotificariService.insertNotificari(notificari);
         if (result == 0)
-            return new ResponseEntity<Integer>(result, HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
-            return new ResponseEntity<Integer>(result, HttpStatus.OK);
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 }
