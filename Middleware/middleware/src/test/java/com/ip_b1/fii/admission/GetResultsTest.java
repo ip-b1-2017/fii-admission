@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+import javax.xml.ws.http.HTTPException;
 
 /**
  * Created by Claudia Lucasi on 5/13/2017.
@@ -25,16 +25,23 @@ public class GetResultsTest {
 
     @Test
     public void unauthorized_user() {
-        AuthEntity testEntity = new AuthEntity("email@info.uaic.ro", "invalid-token");
+        test = new GetResults();
+        AuthEntity testEntity;
+        try {
+            testEntity = new AuthEntity("admin@info.uaic.ro", "tkek");
+            ResponseEntity<String> testResult = test.getResults(testEntity);
+            Assert.assertNotEquals(HttpStatus.OK, testResult.getStatusCode());
 
-        ResponseEntity<String> testResult = test.getResults(testEntity);
-        Assert.assertEquals(UNAUTHORIZED, testResult.getStatusCode());
-
+        }
+        catch(HTTPException e) {
+            Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
+        }
     }
     @Test
     public void test_ok() {
-        AuthEntity testEntity = new AuthEntity("claudia.lucasi@info.uaic.ro", "some_valid_token");
-        ResponseEntity<String> testResult = test.getResults( testEntity);
+        test = new GetResults();
+        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
+        ResponseEntity<String> testResult = test.getResults(testEntity);
         Assert.assertTrue(HttpStatus.OK == testResult.getStatusCode() || HttpStatus.NOT_FOUND == testResult.getStatusCode());
     }
 

@@ -1,22 +1,21 @@
 // <<<<<<< HEAD
 var modal = document.getElementById('news_modal');
 var btn = document.getElementById("news");
+var span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function() {
     modal.style.display = "block";
-    var x = document.getElementById("anuntP").innerHTML;
-    document.getElementById("news_text").value = x;
 }
 
-
-function prost() {
-
+span.onclick = function() {
     modal.style.display = "none";
-    var x = document.getElementById("news_text").value;
-    alert(x);
-    document.getElementById("anuntP").innerHTML=x;
 }
 
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 // =======
 // var modal = document.getElementById('news_modal');
 // var btn = document.getElementById("news");

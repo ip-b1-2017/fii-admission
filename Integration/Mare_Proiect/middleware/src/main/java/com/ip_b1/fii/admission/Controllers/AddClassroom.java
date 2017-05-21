@@ -1,8 +1,6 @@
 package com.ip_b1.fii.admission.Controllers;
 
-import com.ip_b1.fii.admission.DTO.ProfessorEntity;
-import com.ip_b1.fii.admission.DTO.ResultInEntity;
-import com.ip_b1.fii.admission.DTO.SuccessEntity;
+import com.ip_b1.fii.admission.DTO.*;
 import com.ip_b1.fii.admission.ServerProperties;
 import com.ip_b1.fii.admission.Utils.AuthUtils;
 import org.springframework.http.HttpEntity;
@@ -16,25 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/controller/add_professor")
-public class InsertProfessor {
+@RequestMapping("/controller/add_classroom")
+public class AddClassroom {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ProfessorEntity> setResult(@RequestBody ProfessorEntity professor) {
-        System.out.println("insert prof");
-        ProfessorEntity professorToAdd = new ProfessorEntity();
-        professorToAdd.setNume(professor.getNume());
-        professorToAdd.setPrenume(professor.getPrenume());
-        professorToAdd.setPCNP(professor.getPCNP());
+    public ResponseEntity<ClassroomEntity> setResult(@RequestBody ClassroomsEntity classroom) {
+        System.out.println("insert class");
+        ClassroomsEntity classroomToAdd = new ClassroomsEntity();
+        classroomToAdd.setId(classroom.getId());
+        classroomToAdd.setLocatie(classroom.getLocatie());
+        classroomToAdd.setNrLocuri(classroom.getNrLocuri());
 
         RestTemplate template = new RestTemplate();
 
         template.put(
-                ServerProperties.modelUrl + "/profesori",
-                professorToAdd);
+                ServerProperties.modelUrl + "/sali",
+                classroomToAdd);
 
 
-        return new ResponseEntity<ProfessorEntity>(
+        return new ResponseEntity<ClassroomEntity>(
                 //response,
                 HttpStatus.OK
         );
