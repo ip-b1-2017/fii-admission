@@ -123,24 +123,23 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/candidates_view_form", method = RequestMethod.GET)
-    public void loadFormForCNP(@RequestParam("cnp") String cnp) throws IOException {
-            System.out.println("CNPul este: " + cnp);
-        /*AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
+    public ModelAndView loadFormForCNP(@RequestParam("cnp") String cnp,  HttpServletRequest req) throws IOException {
+        AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
         if (auth == null){
             return new ModelAndView("redirect:/login");
         }
         RestTemplate template = new RestTemplate();
-        ResponseEntity<List<CandidatForm>> candidatResponse;
-        candidatResponse = template.exchange(ServerProperties.middleUrl + "/get_applications",
-                HttpMethod.POST,
-                new HttpEntity<>(auth),
-                new ParameterizedTypeReference<List<CandidatForm>>() {}
-        );
-        List<CandidatForm> candidates = candidatResponse.getBody();
+        ResponseEntity<Map<String, String>> candidatResponse;
+        candidatResponse = template.exchange(
+                ServerProperties.modelUrl + "/formuri/" + cnp,
+                HttpMethod.GET,
+                null, new ParameterizedTypeReference<Map<String, String>>() {
+                });
+        Map<String, String> form = candidatResponse.getBody();
 
-        ModelAndView modelAndView = new ModelAndView("/candidates_admin");
-        modelAndView.addObject("candidates", candidates);
+        ModelAndView modelAndView = new ModelAndView("/candidate_form");
+        modelAndView.addObject("candidate_form", form);
 
-        return modelAndView;*/
+        return modelAndView;
     }
 }
