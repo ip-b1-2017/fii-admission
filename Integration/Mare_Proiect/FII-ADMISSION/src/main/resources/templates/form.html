@@ -1,170 +1,1016 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Form</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="../JS/jquery.dform-1.1.0.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/form.css">
-
+    <script src="../JS/jquery.dform-1.1.0.min.js" type="text/javascript"></script>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+    <link href="../style/form.css" rel="stylesheet">
+    <script src="../JS/form.js"></script>
 </head>
 <body>
-
-
-    <div class="container">
-        <div class="row form-group">
-            <div class="col-xs-12">
-                <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-                    <li class="active">
-                        <a href="#step-1">
-                            <h4 class="list-group-item-heading">Pas 1</h4>
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a href="#step-2">
-                            <h4 class="list-group-item-heading">Pas 2</h4>
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a href="#step-3">
-                            <h4 class="list-group-item-heading">Pas 3</h4>
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a href="#step-4">
-                            <h4 class="list-group-item-heading">Pas 4</h4>
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a href="#step-5">
-                            <h4 class="list-group-item-heading">Pas 5</h4>
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a href="#step-6">
-                            <h4 class="list-group-item-heading">Pas 6</h4>
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a href="#step-7">
-                            <h4 class="list-group-item-heading">Pas 7</h4>
-                        </a>
-                    </li>
-                     <li class="disabled">
-                        <a href="#step-8">
-                            <h4 class="list-group-item-heading">Pas 8</h4>
-                        </a>
-                    </li>
-                </ul>
+<div class="container">
+    <div class="row form-group">
+        <div class="col-xs-12">
+            <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                <li class="active">
+                    <a href="#step-1">
+                        <h4 class="list-group-item-heading">Pas 1</h4>
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a href="#step-2">
+                        <h4 class="list-group-item-heading">Pas 2</h4>
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a href="#step-3">
+                        <h4 class="list-group-item-heading">Pas 3</h4>
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a href="#step-4">
+                        <h4 class="list-group-item-heading">Pas 4</h4>
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a href="#step-5">
+                        <h4 class="list-group-item-heading">Pas 5</h4>
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a href="#step-6">
+                        <h4 class="list-group-item-heading">Pas 6</h4>
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a href="#step-7">
+                        <h4 class="list-group-item-heading">Pas 7</h4>
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a href="#step-8">
+                        <h4 class="list-group-item-heading">Pas 8</h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row setup-content" id="step-1" style="display: block;">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h3>Date personale ale candidatului</h3>
+                <!-- <form> -->
+                <form id="myform" action="https://localhost:8090/form_save" method="post" class="ui-dform-form">
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Nume de familie la nastere</label>
+                                <input type="text" name="initial-name-alfa" th:value="${initial_name_alfa}" th:style="'background-color:'+ ${initial_name_alfas} +';'" placeholder="Ex. Apopei" class="ui-dform-text form-control">
+                            </div>
+                            <p class="ui-dform-p bg-info">Din certificatul de naştere </p>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Initiala tatalui/mamei</label>
+                            <input type="text" name="parent-initial-alfa" th:value="${parent_initial_alfa}" th:style="'background-color:'+ ${parent_initial_alfas} +';'" maxlength="1" class="ui-dform-text form-control">
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Nume de familie actual</label>
+                                <input type="text" th:value="${actual_name_alfa}" th:style="'background-color:'+ ${actual_name_alfas} +';'" name="actual-name-alfa" placeholder="Ex. Mihaila" class="ui-dform-text form-control">
+                            </div>
+                            <p class="ui-dform-p bg-info">După căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul</p>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Prenume candidat</label>
+                            <input type="text" th:value="${prenume_alfa}" th:style="'background-color:'+ ${prenume_alfas} +';'" name="prenume-alfa" placeholder="Ex. Ioana Maria" class="ui-dform-text form-control">
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Prenumele mamei</label>
+                                <input type="text" th:value="${mother_name_alfa}" th:style="'background-color:'+ ${mother_name_alfas} +';'"  name="mother-name-alfa" placeholder="Ex. Mihaila" class="ui-dform-text form-control">
+                            </div>
+                            <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Prenumele tatalui</label>
+                                <input type="text" th:value="${father_name_alfa}" th:style="'background-color:'+ ${father_name_alfas} +';'"  name="father-name-alfa" placeholder="Ex. Andrei" class="ui-dform-text form-control">
+                            </div>
+                            <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">CNP-num</label>
+                                <input type="text" th:value="${initial_name}" th:style="'background-color:'+ ${initial_names} +';'"  name="initial-name" placeholder="2780923232" maxlength="13" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Sex</label>
+                            <select name="sex-alfa" th:value="${sex_alfa}"  th:style="'background-color:'+ ${sex_alfas} +';'" class="ui-dform-select form-control">
+                                <option  class="ui-dform-option" value="" >Alege</option>
+                                <option  class="ui-dform-option" th:selected="${ sex_alfa=='fe' }" value="fe" >Feminin</option>
+                                <option class="ui-dform-option" th:selected="${ sex_alfa=='ma' }" value="ma" >Masculin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data Nasterii</label>
+                                <input type="text" th:value="${birth_date}" th:style="'background-color:'+ ${birth_dates} +';'"  name="birth-date" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Tara</label>
+                                <input type="text" th:value="${birth_country_alfa}" th:style="'background-color:'+ ${birth_country_alfas} +';'" name="birth-country-alfa" class="ui-dform-text form-control"></div>
+                            <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Judetul</label>
+                                <input type="text" th:value="${birth_county_alfa}" th:style="'background-color:'+ ${birth_county_alfas} +';'" name="birth-county-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                            <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Orasul</label>
+                                <input type="text"  th:value="${birth_city_alfa}" th:style="'background-color:'+ ${birth_city_alfas} +';'"  name="birth-city-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                            <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Starea civila</label>
+                            <select name="stare-civila" th:value="${stare_civila}"  th:style="'background-color:'+ ${stare_civilas} +';'" class="ui-dform-select form-control">
+                                <option  class="ui-dform-option" value="" >Alege</option>
+                                <option class="ui-dform-option" th:selected="${ stare_civila=='cas' }" value="cas">Casatorit(a)</option>
+                                <option class="ui-dform-option" th:selected="${ stare_civila=='necas' }" value="necas">Necasatorit(a)</option>
+                                <option class="ui-dform-option" th:selected="${ stare_civila=='divor' }" value="divor">Divortat(a)/Vaduv(a)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Tipul actului de identitate</label>
+                            <select name="tip-act-identitate" th:value="${tip_act_identitate}"  th:style="'background-color:'+ ${tip_act_identitates} +';'" class="ui-dform-select form-control">
+                                <option  class="ui-dform-option" value="" >Alege</option>
+                                <option class="ui-dform-option" th:selected="${ tip_act_identitate=='ci' }" value="ci">CI</option>
+                                <option class="ui-dform-option" th:selected="${ tip_act_identitate=='pas' }" value="pas">Pasaport</option>
+                            </select>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Seria </label>
+                            <input type="text" th:value="${serie_act_alfa}" th:style="'background-color:'+ ${serie_act_alfas} +';'" name="serie-act-alfa" placeholder="Ex. MZ" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numarul </label>
+                                <input type="text" th:value="${act_number_num}" th:style="'background-color:'+ ${act_number_nums} +';'" name="act-number-num" placeholder="Ex. MZ" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Eliberat de</label>
+                            <input type="text"  th:value="${act_elibeat_alfn}" th:style="'background-color:'+ ${act_elibeat_alfns} +';'" name="act-elibeat-alfn" placeholder="Ex. SPCLEP Iasi" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data eliberarii </label>
+                                <input type="text" th:value="${act_elib_date}" th:style="'background-color:'+ ${act_elib_dates} +';'" name="act-elib-date" placeholder="Ex. 25.02.2016" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data expirarii</label>
+                            <input type="text" th:value="${act_exp_date}" th:style="'background-color:'+ ${act_exp_dates} +';'" name="act-exp-date" placeholder="Ex. 25.02.2020" class="ui-dform-text form-control"></div>
+                    </div>
+                    <h4 class="ui-dform-h4">Domiciliu actual stabil</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Domiciliu stabil</label>
+                            <select name="domiciliu-stabil" th:value="${domiciliu_stabil}"  th:style="'background-color:'+ ${domiciliu_stabils} +';'" class="ui-dform-select form-control">
+                                <option  class="ui-dform-option" value="" >Alege</option>
+                                <option class="ui-dform-option" th:selected="${ domiciliu_stabil=='urb' }" value="urb">Urban</option>
+                                <option class="ui-dform-option" th:selected="${ domiciliu_stabil=='rur' }" value="rur">Rural</option>
+                            </select>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Tara</label>
+                            <input type="text"  th:value="${domiciliu_tara_alfa}" th:style="'background-color:'+ ${domiciliu_tara_alfas} +';'"  name="domiciliu-tara-alfa" placeholder="Ex. Romania" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Judetul </label>
+                            <input type="text" th:value="${domiciliu_judet_alfa}" th:style="'background-color:'+ ${domiciliu_judet_alfas} +';'" name="domiciliu-judet-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Localitatea</label>
+                            <input type="text" th:value="${domiciliu_loc_alfa}" th:style="'background-color:'+ ${domiciliu_loc_alfas} +';'"  name="domiciliu-loc-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Strada </label>
+                            <input type="text" th:value="${domiciliu_strada_alfnum}" th:style="'background-color:'+ ${domiciliu_strada_alfnums} +';'" name="domiciliu-strada-alfnum" placeholder="Ex. Plopilor" class="ui-dform-text form-control"></div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numarul</label>
+                            <input type="number" th:value="${domiciliu_nr_num}" th:style="'background-color:'+ ${domiciliu_nr_nums} +';'" name="domiciliu-nr-num" placeholder="Ex. 25" class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Bloc </label>
+                            <input type="text" th:value="${domiciliu_bloc_alfnum}" th:style="'background-color:'+ ${domiciliu_bloc_alfnums} +';'" name="domiciliu-bloc-alfnum" placeholder="Ex. C7" class="ui-dform-text form-control"></div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Scara</label>
+                            <input type="number" th:value="${domiciliu_sc_alfnum}" th:style="'background-color:'+ ${domiciliu_sc_alfnums} +';'" name="domiciliu-sc-alfnum" placeholder="Ex. B" class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Etaj </label>
+                            <input type="text" th:value="${domiciliu_et_alfnum}" th:style="'background-color:'+ ${domiciliu_et_alfnums} +';'" name="domiciliu-et-alfnum" placeholder="Ex. 5" class="ui-dform-text form-control"></div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Apartament</label>
+                            <input type="number" th:value="${domiciliu_ap}" th:style="'background-color:'+ ${domiciliu_aps} +';'" name="domiciliu-ap" placeholder="Ex. 7" class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Cod </label>
+                            <input type="text" th:value="${domiciliu_cod_alfnum}" th:style="'background-color:'+ ${domiciliu_cod_alfnums} +';'" name="domiciliu-cod-alfnum" placeholder="Ex.700340" class="ui-dform-text form-control"></div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Telefon</label>
+                            <input type="number" th:value="${phone}" th:style="'background-color:'+ ${phones} +';'" name="phone" placeholder="Ex. 0741542032" class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Email </label>
+                            <input type="text" th:value="${email}" th:style="'background-color:'+ ${emails} +';'" name="email" placeholder="Ex. user@gmail.com" class="ui-dform-text form-control"></div>
+                    </div>
+                </form>
+                <!-- </form> -->
+                <button class="btn btn-primary btn-md" id="activate-step-2">Pasul urmator</button>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row setup-content" id="step-1">
-            <div class="col-xs-12">
-                <div class="col-md-12 well text-center">
-                    <h3>Date personale ale candidatului</h3>
-                    <!-- <form> -->
-                    <form id="myform"></form>
-
-                    <!-- </form> -->
-                    <button id="activate-step-2" class="btn btn-primary btn-md">Pasul urmator</button>
-                </div>
+</div>
+<div class="container">
+    <div class="row setup-content" id="step-2" style="display: none;">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h1 class="text-center"> STEP 2</h1>
+                <form id="myform2" action="https://localhost:8090/form_save" method="post" class="ui-dform-form">
+                    <h4 class="ui-dform-h4 sub-title"> II.a. Studiile preuniversitare absolvite, nivel liceu</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Instituţia unde a absolvit </label>
+                                <input type="text" th:value="${graduate_institution_alfn}" th:style="'background-color:'+ ${graduate_institution_alfns} +';'" name="graduate-institution-alfn" placeholder="Ex. Liceul Teoretic de Informatică &quot;Grigore Moisil&quot;" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Țara</label>
+                            <input type="text" th:value="${graduate_country_alfa}" th:style="'background-color:'+ ${graduate_country_alfas} +';'" name="graduate-country-alfa" placeholder="Ex. România" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Localitatea</label>
+                                <input type="text" th:value="${graduate_town_alfa}" th:style="'background-color:'+ ${graduate_town_alfas} +';'" name="graduate-town-alfa" placeholder="Ex. Iași" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Județul</label>
+                            <input type="text"  th:value="${graduate_county_alfa}" th:style="'background-color:'+ ${graduate_county_alfas} +';'" name="graduate-county-alfa" placeholder="Ex. Iași" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Profilul/Domeniul</label>
+                                <input type="text" th:value="${graduate_field_alfa}" th:style="'background-color:'+ ${graduate_field_alfas} +';'" name="graduate-field-alfa" placeholder="Ex. Matematică-Informatică" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Durata studiilor</label>
+                            <input type="number" th:value="${length_of_studies_num}" th:style="'background-color:'+ ${length_of_studies_nums} +';'" name="length-of-studies-num" class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Anul absolvirii</label>
+                                <input type="number" th:value="${graduation_year_num}" th:style="'background-color:'+ ${graduation_year_nums} +';'" name="graduation-year-num" min="1950" max="2015" placeholder="Ex. 2010" class="ui-dform-number form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input-row">
+                            <label class="ui-dform-label">Forma de invatamant</label>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline"><input type="radio" class="ui-dform-radio" value="zi" name="education-form4-alfa" th:checked="${ education_form4_alfa=='zi' }" ><label class="ui-dform-label">Zi</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline"><input type="radio" class="ui-dform-radio" value="ser" name="education-form4-alfa" th:checked="${ education_form4_alfa=='ser' }"><label class="ui-dform-label">Seral</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline"><input type="radio" class="ui-dform-radio" value="fr" name="education-form4-alfa" th:checked="${ education_form4_alfa=='fr' }"><label class="ui-dform-label">FR</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline"><input type="radio" class="ui-dform-radio" value="ip" name="education-form4-alfa" th:checked="${ education_form4_alfa=='ip' }"><label class="ui-dform-label">IP</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="ui-dform-h4 sub-title">Diploma de bacalaureat</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Seria</label>
+                                <input type="text" th:value="${bac_series_alfn}" th:style="'background-color:'+ ${bac_series_alfns} +';'" name="bac-series-alfn" placeholder="Ex. n2s90" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numarul</label>
+                            <input type="number" th:value="${bac_num}" th:style="'background-color:'+ ${bac_nums} +';'" name="bac-num" class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Emisă de</label>
+                                <input type="text" th:value="${issued_by_alfnum}" th:style="'background-color:'+ ${issued_by_alfnums} +';'" name="issued-by-alfnum" placeholder="Ex. n2s90" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data emiterii</label>
+                            <input type="text" th:value="${bac_number_date}" th:style="'background-color:'+ ${bac_number_dates} +';'" name="bac-number-date" placeholder="Ex. 21.04.2016" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numărul foii matricole care însoțește actul de studii</label>
+                                <input type="text" th:value="${nr_foaie_matricola_alfnum}" th:style="'background-color:'+ ${nr_foaie_matricola_alfnums} +';'" name="nr-foaie-matricola-alfnum" placeholder="Ex. ncc32s90" class="ui-dform-text form-control"></div>
+                        </div>
+                    </div>
+                    <h4 class="ui-dform-h4 sub-title">Alte observaţii (pentru cazurile în care candidatul a absolvit studiile anterioare în străinătate)</h4>
+                    <h4 class="ui-dform-h4 sub-title">Act de recunoaştere/ echivalare (eliberat de DPIRP/CNRED)</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Număr</label>
+                                <input type="number" th:value="${nr_echivalare_num}" th:style="'background-color:'+ ${nr_echivalare_nums} +';'" name="nr-echivalare-num" placeholder="Ex. 12353" class="ui-dform-number form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Serie</label>
+                            <input type="text" th:value="${serie_echivalare_alfnum}" th:style="'background-color:'+ ${serie_echivalare_alfnums} +';'" name="serie-echivalare-alfnum" placeholder="Ex. w6346" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Data echivalării</label>
+                                <input name="echivalare-date" th:value="${echivalare_date}" th:style="'background-color:'+ ${echivalare_dates} +';'" placeholder="Ex. 21.04.2016" class="ui-dform-date form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="ui-dform-h4 sub-title">II.b. Studiile universitare în curs/ absolvite</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <div class="ui-dform-radiobuttons">
+                                    <input type="radio" class="ui-dform-radio" value="cu" th:checked="${ absolvent_licenta_diploma_alfa=='cu' }" name="absolvent-licenta-diploma-alfa"><label class="ui-dform-label">Sunt student la alta facultate</label>
+                                    <input type="radio" class="ui-dform-radio" value="fara" th:checked="${ absolvent_licenta_diploma_alfa=='fara' }" name="absolvent-licenta-diploma-alfa"><label class="ui-dform-label">Nu sunt student la alta facultate</label></div>
+                            </div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Țara</label>
+                            <input type="text" th:value="${tara_alte_studii_alfa}" th:style="'background-color:'+ ${tara_alte_studii_alfas} +';'" name="tara-alte-studii-alfa" placeholder="Ex. Franța" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Localitatea</label>
+                                <input type="text" th:value="${alte_studii_localitate_alfa}" th:style="'background-color:'+ ${alte_studii_localitate_alfas} +';'" name="alte-studii-localitate-alfa" placeholder="Ex. Paris" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Județul</label>
+                            <input type="text" th:value="${alte_studii_judetul_alfa}" th:style="'background-color:'+ ${alte_studii_judetul_alfas} +';'" name="alte-studii-judetul-alfa" placeholder="Ex. Paris" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Denumirea instituţiei de învăţământ superior</label>
+                                <input type="text" th:value="${alte_studii_institutie_alfn}" th:style="'background-color:'+ ${alte_studii_institutie_alfns} +';'" name="alte-studii-institutie-alfn" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Facultatea</label>
+                            <input type="text" th:value="${alte_studii_facultatea_alfn}" th:style="'background-color:'+ ${alte_studii_facultatea_alfns} +';'" name="alte-studii-facultatea-alfn" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Domeniul de licenţă </label>
+                                <input type="text" th:value="${alte_studii_domeniu_licenta_alfa}" th:style="'background-color:'+ ${alte_studii_domeniu_licenta_alfas} +';'" name="alte-studii-domeniu-licenta-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Programul de studii /Specializarea</label>
+                            <input type="text" th:value="${alte_studii_specializarea_alfa}" th:style="'background-color:'+ ${alte_studii_specializarea_alfas} +';'"  name="alte-studii-specializarea-alfa" placeholder="Ex." class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input-row">
+                            <label class="ui-dform-label">Forma de invatamant</label>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline">
+                                    <input type="radio" class="ui-dform-radio" value="zi" th:checked="${ education_form3_alfa=='zi' }" name="education-form3-alfa"><label class="ui-dform-label">Zi</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline">
+                                    <input type="radio" class="ui-dform-radio" value="ser" th:checked="${ education_form3_alfa=='ser' }" name="education-form3-alfa"><label class="ui-dform-label">Seral</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline">
+                                    <input type="radio" class="ui-dform-radio" value="fr" th:checked="${ education_form3_alfa=='fr' }" name="education-form3-alfa"><label class="ui-dform-label">FR</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline">
+                                    <input type="radio" class="ui-dform-radio" value="ip" th:checked="${ education_form3_alfa=='ip' }" name="education-form3-alfa"><label class="ui-dform-label">IP</label></div>
+                            </div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Anul</label>
+                            <input type="number" th:value="${alte_studii_anul_1_num}" th:style="'background-color:'+ ${alte_studii_anul_1_nums} +';'" name="alte-studii-anul-1-num" placeholder="Ex. 2000" class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numărul semestrelor finanţate de la bugetul de stat</label>
+                                <input type="number" th:value="${alte_studii_semestre_la_buget_num}" th:style="'background-color:'+ ${alte_studii_semestre_la_buget_nums} +';'"  name="alte-studii-semestre-la-buget-num" placeholder="Ex. " class="ui-dform-number form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numărul semestrelor în care aţi beneficiat de bursă </label>
+                            <input type="number" th:value="${alte_studii_semestre_la_bursa_num}" th:style="'background-color:'+ ${alte_studii_semestre_la_bursa_nums} +';'" name="alte-studii-semestre-la-bursa-num" placeholder="Ex." class="ui-dform-number form-control"></div>
+                    </div>
+                    <h4 class="ui-dform-h4 sub-title">Absolvent al studiilor de licenţă </h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Anul</label>
+                                <input type="number" th:value="${absolvent_licenta_an_num}" th:style="'background-color:'+ ${absolvent_licenta_an_nums} +';'" name="absolvent-licenta-an-num" placeholder="Ex. " class="ui-dform-number form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input-row">
+                            <div class="ui-dform-radiobuttons">
+                                <input type="radio" class="ui-dform-radio" value="cu" th:checked="${ absolvent_licenta_diploma2_alfa=='cu' }" name="absolvent-licenta-diploma2-alfa"><label class="ui-dform-label">Fără diplomă de licenţă</label>
+                                <input type="radio" class="ui-dform-radio" value="fara" th:checked="${ absolvent_licenta_diploma2_alfa=='fara' }"  name="absolvent-licenta-diploma2-alfa"><label class="ui-dform-label">Cu diplomă de licenţă</label></div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Țara</label>
+                                <input type="text" th:value="${abslovent_licenta_tara_alfa}" th:style="'background-color:'+ ${abslovent_licenta_tara_alfas} +';'"  name="abslovent-licenta-tara-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Localitate</label>
+                            <input type="text" th:value="${absolvett_licenta_localitatea_alfa}" th:style="'background-color:'+ ${absolvett_licenta_localitatea_alfas} +';'"  name="absolvett-licenta-localitatea-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Județul</label>
+                                <input type="text" th:value="${abslovent_licenta_judet_alfa}" th:style="'background-color:'+ ${abslovent_licenta_judet_alfas} +';'" name="abslovent-licenta-judet-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Denumirea instituţiei de învăţământ superior</label>
+                            <input type="text" th:value="${absolvett_licenta_institutie_alfa}" th:style="'background-color:'+ ${absolvett_licenta_institutie_alfas} +';'"  name="absolvett-licenta-institutie-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Facultatea</label>
+                                <input type="text" th:value="${abslovent_licenta_facultate_alfnum}" th:style="'background-color:'+ ${abslovent_licenta_facultate_alfnums} +';'" name="abslovent-licenta-facultate-alfnum" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Domeniul de licenţă</label>
+                            <input type="text" th:value="${absolvett_licenta_domeniu_licenta_alfa}" th:style="'background-color:'+ ${absolvett_licenta_domeniu_licenta_alfas} +';'" name="absolvett-licenta-domeniu-licenta-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Programul de studii /Specializarea </label>
+                                <input type="text"  th:value="${abslovent_licenta_specializare_alfa}" th:style="'background-color:'+ ${abslovent_licenta_specializare_alfas} +';'"  name="abslovent-licenta-specializare-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Titlul obţinut </label>
+                            <input type="text" th:value="${absolvett_licenta_titlu_alfa}" th:style="'background-color:'+ ${absolvett_licenta_titlu_alfas} +';'" name="absolvett-licenta-titlu-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input-row">
+                            <label class="ui-dform-label">Forma de invatamant</label>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline">
+                                    <input type="radio" class="ui-dform-radio" value="zi" th:checked="${ education_form5_alfa=='zi' }" name="education-form5-alfa"><label class="ui-dform-label">Zi</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline">
+                                    <input type="radio" class="ui-dform-radio" value="ser" th:checked="${ education_form5_alfa=='ser' }" name="education-form5-alfa"><label class="ui-dform-label">Seral</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline">
+                                    <input type="radio" class="ui-dform-radio" value="fr" th:checked="${ education_form5_alfa=='fr' }" name="education-form5-alfa"><label class="ui-dform-label">FR</label></div>
+                            </div>
+                            <div class="ui-dform-div custom-section">
+                                <div class="ui-dform-radiobuttons radio-inline">
+                                    <input type="radio" class="ui-dform-radio" value="ip" th:checked="${ education_form5_alfa=='ip' }" name="education-form5-alfa"><label class="ui-dform-label">IP</label></div>
+                            </div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Nu marul semestrelor finantate de bugetul de stat</label>
+                            <input type="number" th:value="${alte_studii_anul_2_num}" th:style="'background-color:'+ ${alte_studii_anul_2_nums} +';'" name="alte-studii-anul-2-num" placeholder="Ex.3 " class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numărul semestrelor în care aţi beneficiat de bursă</label>
+                                <input type="number" th:value="${abslovent_licenta_semestre_bursa_num}" th:style="'background-color:'+ ${abslovent_licenta_semestre_bursa_nums} +';'" name="abslovent-licenta-semestre-bursa-num" placeholder="Ex. " class="ui-dform-number form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Durata studiilor (număr de ani)  </label>
+                            <input type="number" th:value="${absolvett_licenta_durata_studii_num}" th:style="'background-color:'+ ${absolvett_licenta_durata_studii_nums} +';'"  name="absolvett-licenta-durata-studii-num" placeholder="Ex. 4" class="ui-dform-number form-control"></div>
+                    </div>
+                    <h4 class="ui-dform-h4 sub-title">Diploma de licenţă:</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Seria</label>
+                                <input type="text" th:value="${abslovent_licenta_diploma_seria_alfn}" th:style="'background-color:'+ ${abslovent_licenta_diploma_seria_alfns} +';'"  name="abslovent-licenta-diploma-seria-alfn" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Număr</label>
+                            <input type="text" th:value="${absolvett_licenta_diploma_num}" th:style="'background-color:'+ ${absolvett_licenta_diploma_nums} +';'" name="absolvett-licenta-diploma-num" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Emisă de </label>
+                                <input type="text" th:value="${abslovent_licenta_diploma_emisade_alfa}" th:style="'background-color:'+ ${abslovent_licenta_diploma_emisade_alfas} +';'"  name="abslovent-licenta-diploma-emisade-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data emiterii</label>
+                            <input type="text" th:value="${absolvett_licenta_diploma_date}" th:style="'background-color:'+ ${absolvett_licenta_diploma_dates} +';'" name="absolvett-licenta-diploma-date" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numărul suplimentului / foii matricole care însoțește actul de studii</label>
+                                <input type="text" th:value="${absolvent_licenta_diploma_nr_supliment_alfn}" th:style="'background-color:'+ ${absolvent_licenta_diploma_nr_supliment_alfns} +';'" name="absolvent-licenta-diploma-nr-supliment-alfn" placeholder="Ex. ncc32s90" class="ui-dform-text form-control"></div>
+                        </div>
+                    </div>
+                    <h4 class="ui-dform-h4 sub-title">Alte observaţii (pentru cazurile în care candidatul a absolvit studiile anterioare în străinătate)</h4>
+                    <h4 class="ui-dform-h4 sub-title">Act de recunoaştere/ echivalare (eliberat de DPIRP/CNRED)</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Număr</label>
+                                <num name="nr-echivalare-num" th:value="${nr_echivalare_num}" th:style="'background-color:'+ ${nr_echivalare_nums} +';'" placeholder="Ex. 12353" class="ui-dform-num form-control"></num>
+                            </div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Serie</label>
+                            <input type="text" th:value="${serie_echivalare_alfn}" th:style="'background-color:'+ ${serie_echivalare_alfns} +';'" name="serie-echivalare-alfn" placeholder="Ex. w6346" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Data echivalării</label>
+                                <input name="data-echivalare-date" th:value="${data_echivalare_date}" th:style="'background-color:'+ ${data_echivalare_dates} +';'"  placeholder="Ex. 21.04.2016" class="ui-dform-date form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button class="btn btn-primary btn-md" id="activate-step-3">Pasul urmator</button>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row setup-content" id="step-2">
-            <div class="col-xs-12">
-                <div class="col-md-12 well text-center">
-                    <h1 class="text-center"> STEP 2</h1>
-
-                    
-                         <form id="myform2"></form>
-
-                    <button id="activate-step-3" class="btn btn-primary btn-md">Pasul urmator</button>
-                </div>
+</div>
+<div class="container">
+    <div class="row setup-content" id="step-3" style="display: none;">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h1 class="text-center"> STEP 3</h1>
+                <form id="myform3" action="https://localhost:8090/form_save" method="post" class="ui-dform-form">
+                    <h4 class="ui-dform-h4 sub-title">III. Cerinţe specifice facultăţii</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Media generală la examenul de bacalaureat</label>
+                                <input type="text" th:value="${media_bac_num}" th:style="'background-color:'+ ${media_bac_nums} +';'"  name="media-bac-num" placeholder="Ex. 8.90" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Media la disciplina mate/info (maxima)</label>
+                            <input type="text" name="media-mate-info-num" th:value="${media_mate_info_num}" th:style="'background-color:'+ ${media_mate_info_nums} +';'" placeholder="Ex. 9.40" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Optiunea pentru testul scris</label>
+                                <select name="option-test-scris" th:style="'background-color:'+ ${option_test_scriss} +';'" class="ui-dform-select form-control">
+                                    <option class="ui-dform-option" value="">Alege</option>
+                                    <option class="ui-dform-option" th:selected="${ option_test_scris=='mate' }" value="mate">Matematica</option>
+                                    <option class="ui-dform-option" th:selected="${ option_test_scris=='info1' }" value="info1">Informatica (Pascal)</option>
+                                    <option class="ui-dform-option" th:selected="${ option_test_scris=='info2' }" value="info2">Informatica (C)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Solicitati echivalare cu diploma la olimpiada organizata MEN?</label>
+                                <select name="option-test-MEN" th:style="'background-color:'+ ${option_test_MENs} +';'" class="ui-dform-select form-control">
+                                    <option class="ui-dform-option" value="">Alege</option>
+                                    <option class="ui-dform-option" th:selected="${ option_test_MEN=='da' }"  value="da">Da</option>
+                                    <option class="ui-dform-option" th:selected="${ option_test_MEN=='nu' }"  value="nu">Nu</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Ați participat la preadmitere la Facultatea de Informatică din Iași și doriți luarea în considerare a notei la examenul din sesiunea curentă?</label>
+                                <select name="option-test-preadmitere" th:style="'background-color:'+ ${option_test_preadmiteres} +';'" class="ui-dform-select form-control">
+                                    <option class="ui-dform-option" value="">Alege</option>
+                                    <option class="ui-dform-option" th:selected="${ option_test_preadmitere=='da' }" value="da">Da</option>
+                                    <option class="ui-dform-option" th:selected="${ option_test_preadmitere=='nu' }" value="nu">Nu</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ui-dform-div custom-input"><label class="ui-dform-label">Dacă da, în ce an?</label>
+                            <input type="number" name="an-preadmitere-num" th:value="${an_preadmitere_num}" th:style="'background-color:'+ ${an_preadmitere_nums} +';'" placeholder="Ex. 2015" class="ui-dform-number form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <label class="ui-dform-label">Daca ati raspuns DA la intrebarea anterioara, doriti sa sustineti din nou testul scris in aceasta sesiune de admitere**?</label>
+                                <select name="option-test-again" th:style="'background-color:'+ ${option_test_agains} +';'" class="ui-dform-select form-control">
+                                    <option class="ui-dform-option" th:selected="${ option_test_again=='da' }" value="da">Da</option>
+                                    <option class="ui-dform-option" th:selected="${ option_test_again=='nu' }" value="nu">Nu</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div">
+                        <div class="ui-dform-div">
+                            <p name="cerinte-facultate-info" class="ui-dform-p info">*opțiune valabilă la o singură sesiune de admitere</p>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div">
+                        <div class="ui-dform-div">
+                            <p name="cerinte-facultate-info" class="ui-dform-p info">** în acest caz, va luată în considerare nota cea mai mare</p>
+                        </div>
+                    </div>
+                </form>
+                <button class="btn btn-primary btn-md" id="activate-step-4">Pasul urmator</button>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row setup-content" id="step-3">
-            <div class="col-xs-12">
-                <div class="col-md-12 well text-center">
-                    <h1 class="text-center"> STEP 3</h1>
-
-                    <form id="myform3"></form>
-
-                    <button id="activate-step-4" class="btn btn-primary btn-md">Pasul urmator</button>
-                </div>
+</div>
+<div class="container">
+    <div class="row setup-content" id="step-4" style="display: none;">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h1 class="text-center"> STEP 4</h1>
+                <form id="myform4" action="https://localhost:8090/form_save" method="post" class="ui-dform-form">
+                    <h4 class="ui-dform-h4 sub-title">IV. Opţiuni de admitere, în ordinea preferinţelor</h4>
+                </form>
+                <button class="btn btn-primary btn-md" id="activate-step-5">Pasul urmator</button>
             </div>
         </div>
     </div>
-    <div class="container">
-
-        <div class="row setup-content" id="step-4">
-            <div class="col-xs-12">
-                <div class="col-md-12 well text-center">
-                    <h1 class="text-center"> STEP 4</h1>
-
-                    <form id="myform4"></form>
-                     <button id="activate-step-5" class="btn btn-primary btn-md">Pasul urmator</button>
-                </div>
+</div>
+<div class="container">
+    <div class="row setup-content" id="step-5" style="display: none;">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h1 class="text-center"> STEP 5</h1>
+                <form id="myform5" action="https://localhost:8090/form_save" method="post" class="ui-dform-form">
+                    <h4 class="ui-dform-h4 sub-title">V. Informaţii privind documentele de studii depuse la dosar</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" name="documente-diploma-bac-or" th:checked="${ documente_diploma_bac_or=='on' }" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Diploma de bacalaureat (original)</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" name="documente-diploma-bac-copie" th:checked="${ documente_diploma_bac_copie=='on' }" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Diploma de bacalaureat (copie legalizată)</label></div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" name="documente-adeverinta-or" th:checked="${ documente_adeverinta_or=='on' }" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Adeverinţă (original)</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" name="documente-adeverinta-copie" th:checked="${ documente_adeverinta_copie=='on' }" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Adeverinţă (copie legalizată)</label></div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ documente_echiv_studii_or=='on' }" name="documente-echiv-studii-or" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Document echivalare studii (original)</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ documente_echiv_studii_copie=='on' }" name="documente-echiv-studii-copie" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Document echivalare studii (copie legalizată)</label></div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ documente_diploma_olimp_or=='on' }" name="documente-diploma-olimp-or" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Diplomă olimpiadă (original)</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ participare_alta_admitere=='on' }" name="participare-alta-admitere" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Participaţi la alt/e concurs/uri de admitere?</label></div>
+                        </div>
+                    </div>
+                    <h5 class="ui-dform-h5 sub-title">La ce alte concursuri de admitere participaţi? </h5>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 sub-title">Facultatea </h5>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 sub-title">Domeniu/Specializarea </h5>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="text" th:value="${alta_facultate_1_alfa}" th:style="'background-color:'+ ${alta_facultate_1_alfas} +';'" name="alta-facultate-1-alfa" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="text" th:value="${alt_domeniu_1_alfa}" th:style="'background-color:'+ ${alt_domeniu_1_alfas} +';'" name="alt-domeniu-1-alfa" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="text" th:value="${alta_facultate_2_alfa}" th:style="'background-color:'+ ${alta_facultate_2_alfas} +';'" name="alta-facultate-2-alfa" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="text" th:value="${alt_domeniu_2_alfa}" th:style="'background-color:'+ ${alt_domeniu_2_alfas} +';'" name="alt-domeniu-2-alfa" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="text" th:value="${alta_facultate_3_alfa}" th:style="'background-color:'+ ${alta_facultate_3_alfas} +';'" name="alta-facultate-3-alfa" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="text" th:value="${alt_domeniu_3_alfa}" th:style="'background-color:'+ ${alt_domeniu_3_alfas} +';'" name="alt-domeniu-3-alfa" class="ui-dform-text form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="text" th:value="${alta_facultate_4_alfa}" th:style="'background-color:'+ ${alta_facultate_4_alfas} +';'" name="alta-facultate-4-alfa" class="ui-dform-text form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="text" th:value="${alt_domeniu_4_alfa}" th:style="'background-color:'+ ${alt_domeniu_4_alfas} +';'" name="alt-domeniu-4-alfa" class="ui-dform-text form-control"></div>
+                    </div>
+                </form>
+                <button class="btn btn-primary btn-md" id="activate-step-6">Pasul urmator</button>
             </div>
         </div>
     </div>
-    <div class="container">
-
-        <div class="row setup-content" id="step-5">
-            <div class="col-xs-12">
-                <div class="col-md-12 well text-center">
-                    <h1 class="text-center"> STEP 5</h1>
-
-                    <form id="myform5"></form>
-                    <button id="activate-step-6" class="btn btn-primary btn-md">Pasul urmator</button>
-                </div>
-            </div>
- 
-    </div>
-    </div>
-     <div class="container">
-
-        <div class="row setup-content" id="step-6">
-            <div class="col-xs-12">
-                <div class="col-md-12 well text-center">
-                    <h3 class="text-center"> Condiţii de încheiere a contractului</h3>
-                    <form id="myform6"></form>
-                    <button id="activate-step-7" class="btn btn-primary btn-md">Pasul urmator</button>
-                </div>
-            </div>
-        </div>
-    </div>
-     <div class="container">
-
-        <div class="row setup-content" id="step-7">
-            <div class="col-xs-12">
-                <div class="col-md-12 well text-center">
-                    <h1 class="text-center"> STEP 7</h1>
-
-                    <form id="myform7"></form>
-                    <button id="activate-step-8" class="btn btn-primary btn-md">Pasul urmator</button>
-                </div>
-            </div>
-        </div>
-    </div>
-     <div class="container">
-
-        <div class="row setup-content" id="step-8">
-            <div class="col-xs-12">
-                <div class="col-md-12 well text-center">
-                    <h1 class="text-center"> STEP 8</h1>
-
-                    <form id="myform8"></form>
-                    <button id="finish-button" class="btn btn-primary btn-md">Submit form</button>
-                </div>
+</div>
+<div class="container">
+    <div class="row setup-content" id="step-6" style="display: none;">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h3 class="text-center"> Condiţii de încheiere a contractului</h3>
+                <form id="myform6" action="https://localhost:8090/form_save" method="post" class="ui-dform-form">
+                    <h4 class="ui-dform-h4 sub-title">Taxe:</h4>
+                    <ul class="ui-dform-ul">
+                        <li class="ui-dform-li">Taxă de înscriere: 300 Ron</li>
+                        <li class="ui-dform-li">Taxă de şcolarizare: 3500 Ron</li>
+                    </ul>
+                    <h4 class="ui-dform-h4 sub-title">Acte necesare:</h4>
+                    <ul class="ui-dform-ul">
+                        <li class="ui-dform-li">fişa de înscriere</li>
+                        <li class="ui-dform-li">trei fotografii tip buletin de identitate</li>
+                        <li class="ui-dform-li">diploma de bacalaureat sau echivalentă cu aceasta, recunoscută de M.E.N.</li>
+                        <ul class="ui-dform-ul">
+                            <li class="ui-dform-li">candidaţii care au promovat examenul de bacalaureat în sesiunea iunie-iulie 2016 pot prezenta la înscriere, în locul diplomei de bacalaureat, adeverinţa eliberată de liceu, în care se menţionează atât media generală, cât şi notele obţinute la probele susţinute şi notele la disciplinele care se iau în calcul la stabilirea mediei</li>
+                            <li class="ui-dform-li">dacă un candidat nu depune la o specializare diploma în original, va depune şi o adeverinţă de la facultatea unde are actele în original</li>
+                        </ul>
+                        <li class="ui-dform-li">certificat de naştere, în copie legalizată</li>
+                        <li class="ui-dform-li">certificatul de căsătorie sau documentul care atestă schimbarea numelui, în copie legalizată (dacă este cazul)</li>
+                        <li class="ui-dform-li">copie după cartea de identitate, care atestă domiciliul în România</li>
+                        <li class="ui-dform-li">adeverinţă medicală tip</li>
+                        <li class="ui-dform-li">chitanţă care dovedeşte plata taxei de înscriere sau actele necesare pentru scutirea de plata taxei</li>
+                        <li class="ui-dform-li">dosar plic</li>
+                    </ul>
+                    <p class="ui-dform-p">Candidaţii cetăţeni români cu domiciliul în România, dar cu studii efectuate în străinătate (inclusiv Republica Moldova) vor prezenta la înscriere diploma de bacalaureat echivalată de către Ministerul Educaţiei Naţionale (CNRED).</p>
+                    <h4 class="ui-dform-h4 sub-title">Candidaţii care au absolvit liceul inainte de 2016 vor depune la dosar, după caz:</h4>
+                    <ul class="ui-dform-ul">
+                        <li class="ui-dform-li">declaraţie pe propria răspundere că nu au urmat cursurile nici unei facultăţi</li>
+                        <li class="ui-dform-li">adeverinţă de la facultatea urmată, care să ateste numărul de semestre finanţate de la buget de care au beneficiat</li>
+                    </ul>
+                    <p class="ui-dform-p">Întrucât candidaţii au dreptul de a se prezenta concomitent la două sau mai multe domenii, în vederea admiterii în învăţământul superior, dosarul cu actele originale se depune la prima opţiune. Înscrierea pentru celelalte domenii se face pe baza documentelor mai sus menţionate, prezentate în copie (pentru domeniile din Universitatea „Alexandru Ioan Cuza” Iaşi) sau în copie legalizată (pentru domeniile altor instituţii în afara Universităţii „Alexandru Ioan Cuza” Iaşi), la care se adaugă o adeverinţă de înscriere de la facultatea unde s-a depus dosarul cu actele originale. Indiferent dacă Facultatea de Informatică reprezintă sau nu prima opţiune, testul scris este obligatoriu pentru toţi candidaţii</p>
+                </form>
+                <button class="btn btn-primary btn-md" id="activate-step-7">Pasul urmator</button>
             </div>
         </div>
     </div>
-    <script src="../JS/form.js"></script>
+</div>
+<div class="container">
+    <div class="row setup-content" id="step-7" style="display: none;">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h1 class="text-center"> STEP 7</h1>
+                <form id="myform7" action="https://localhost:8090/form_save" method="post" class="ui-dform-form">
+                    <h4 class="ui-dform-h4 sub-title">VIII. Acte necesare</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Fişa de înscriere </h5>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title"> Fotografie tip buletin de identitate</h5>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="file" th:style="'background-color:'+ ${fisa_de_inscrieres} +';'" name="fisa-de-inscriere" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="file" th:style="'background-color:'+ ${fotografies} +';'" name="fotografie" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Diploma de bacalaureat sau echivalentă cu aceasta, recunoscută de M.E.N. </h5>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Certificat de naştere</h5>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="file" th:style="'background-color:'+ ${diploma_bacs} +';'" name="diploma-bac" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="file" th:style="'background-color:'+ ${certificat_nasteres} +';'" name="certificat-nastere" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Certificatul de căsătorie sau documentul care atestă schimbarea numelui</h5>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Cartea de identitate, care atestă domiciliul în România</h5>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="file" th:style="'background-color:'+ ${certificat_casatories} +';'" name="certificat-casatorie" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="file" th:style="'background-color:'+ ${carte_identitates} +';'" name="carte-identitate" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Adeverinţă medicală tip </h5>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Chitanţă care dovedeşte plata taxei de înscriere sau actele necesare pentru scutirea de plata taxei</h5>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="file" th:style="'background-color:'+ ${adeverinta_medicalas} +';'"  name="adeverinta-medicala" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="file" th:style="'background-color:'+ ${chitanta_taxas} +';'" name="chitanta-taxa" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                    </div>
+                    <h4 class="ui-dform-h4 sub-title">Candidaţii care au absolvit liceul inainte de 2016 vor depune la dosar, după caz:</h4>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Declaraţie pe propria răspundere că nu au urmat cursurile nici unei facultăţi </h5>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <h5 class="ui-dform-h5 input-title">Adeverinţă de la facultatea urmată, care să ateste numărul de semestre finanţate de la buget de care au beneficiat</h5>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input">
+                                <input type="file" th:style="'background-color:'+ ${declaratie_absolvent_2016s} +';'" name="declaratie-absolvent-2016" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <input type="file" th:style="'background-color:'+ ${adeverinta_semestre_finantates} +';'" name="adeverinta-semestre-finantate" onchange="encodeImageFileAsURL(this)" class="ui-dform-file form-control"></div>
+                    </div>
+                </form>
+                <button class="btn btn-primary btn-md" id="activate-step-8">Pasul urmator</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row setup-content" id="step-8" style="display: none;">
+        <div class="col-xs-12">
+            <div class="col-md-12 well text-center">
+                <h1 class="text-center"> STEP 8</h1>
+                <form id="myform8" action="https://localhost:8090/form_save" method="post" class="ui-dform-form">
+                    <h4 class="ui-dform-h4 sub-title">VII. Chestionar privind alegerea Dumneavoastră</h4>
+                    <h5 class="ui-dform-h5 sub-title">1. De unde ați aflat despre admiterea la Universitatea „Alexandru Ioan Cuza” din Iași (UAIC)?  (puteți evidenția mai multe surse)</h5>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_site_admitere_alfn=='on' }" name="sursa-info-site-admitere-alfn" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Site-ul dedicat admiterii (admitere.uaic.ro)</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_site_fac=='on' }" name="sursa-info-site-fac" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Site-ul facultății</label></div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_brosura=='on' }"  name="sursa-info-brosura" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Broșură sau pliant despre admitere</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_facebook=='on' }" name="sursa-info-facebook" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Pagina de Facebook a Universității</label></div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_prieteni=='on' }" name="sursa-info-prieteni" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Prieteni, cunoștințe, rude</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_porti_deschise=='on' }" name="sursa-info-porti-deschise" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Săptămâna Porților Deschise la UAIC</label></div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_prezentare_liceu=='on' }" name="sursa-info-prezentare-liceu" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Am participat la o prezentare în liceu</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_profesori_liceu=='on' }" name="sursa-info-profesori-liceu" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Profesorii din liceu</label></div>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input-row">
+                                <input type="checkbox" th:checked="${ sursa_info_presa=='on' }" name="sursa-info-presa" class="ui-dform-checkbox checkbox"><label class="ui-dform-label">Presă</label></div>
+                        </div>
+                        <div class="ui-dform-div information-pair">
+                            <div class="ui-dform-div custom-input"><label class="ui-dform-label">Alte surse (menționați care) :</label>
+                                <input type="text" th:value="${sursa_info_altele_alfn}" th:style="'background-color:'+ ${sursa_info_altele_alfns} +';'" name="sursa-info-altele-alfn" class="ui-dform-text form-control"></div>
+                        </div>
+                    </div>
+                    <h5 class="ui-dform-h5 sub-title">2. Cât de importanți au fost următorii factorii în alegerea facultății, apreciaţi cât de mult a contat fiecare în opţiunea dv. privind alegerea facultăţii? (0 – deloc, ... 5 – foarte mult)</h5>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Prestigiul Universității/facultății</label>
+                            <select name="option-test-prestigiu" th:style="'background-color:'+ ${option_test_prestigius} +';'" class="ui-dform-select form-control">
+                                <option class="ui-dform-option" value="">Alege</option>
+                                <option class="ui-dform-option"  th:selected="${ option_test_prestigiu=='0' }" value="0">0</option>
+                                <option class="ui-dform-option"  th:selected="${ option_test_prestigiu=='1' }" value="1">1</option>
+                                <option class="ui-dform-option"  th:selected="${ option_test_prestigiu=='2' }" value="2">2</option>
+                                <option class="ui-dform-option"  th:selected="${ option_test_prestigiu=='3' }" value="3">3</option>
+                                <option class="ui-dform-option"  th:selected="${ option_test_prestigiu=='4' }" value="4">4</option>
+                                <option class="ui-dform-option"  th:selected="${ option_test_prestigiu=='5' }" value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Calitatea educației la UAIC</label>
+                            <select name="option-test-calitate" th:style="'background-color:'+ ${option_test_calitates} +';'" class="ui-dform-select form-control">
+                                <option class="ui-dform-option" value="">Alege</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_calitate=='0' }" value="0">0</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_calitate=='1' }" value="1">1</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_calitate=='2' }" value="2">2</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_calitate=='3' }" value="3">3</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_calitate=='4' }" value="4">4</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_calitate=='5' }" value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Sfatul persoanelor apropiate</label>
+                            <select name="option-test-sfat-pers-apr" th:style="'background-color:'+ ${option_test_sfat_pers_aprs} +';'" class="ui-dform-select form-control">
+                                <option class="ui-dform-option" value="">Alege</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_pers_apr=='0' }" value="0">0</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_pers_apr=='1' }" value="1">1</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_pers_apr=='2' }" value="2">2</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_pers_apr=='3' }" value="3">3</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_pers_apr=='4' }" value="4">4</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_pers_apr=='5' }" value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Statutul profesiei pentru care optaţi</label>
+                            <select name="option-test-sfat-prof-opt" th:style="'background-color:'+ ${option_test_sfat_prof_opts} +';'" class="ui-dform-select form-control">
+                                <option class="ui-dform-option" value="">Alege</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_prof_opt=='0' }" value="0">0</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_prof_opt=='1' }" value="1">1</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_prof_opt=='2' }" value="2">2</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_prof_opt=='3' }" value="3">3</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_prof_opt=='4' }" value="4">4</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_sfat_prof_opt=='5' }" value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div form-group">
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Colegii</label>
+                            <select name="option-test-colegii" th:style="'background-color:'+ ${option_test_colegiis} +';'" class="ui-dform-select form-control">
+                                <option class="ui-dform-option" value="">Alege</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_colegii=='0' }" value="0">0</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_colegii=='1' }" value="1">1</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_colegii=='2' }" value="2">2</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_colegii=='3' }" value="3">3</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_colegii=='4' }" value="4">4</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_colegii=='5' }" value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Materiile care se studiază</label>
+                            <select name="option-test-materii" th:style="'background-color:'+ ${option_test_materiis} +';'" class="ui-dform-select form-control">
+                                <option class="ui-dform-option" value="">Alege</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_materii=='0' }" value="0">0</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_materii=='1' }" value="1">1</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_materii=='2' }" value="2">2</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_materii=='3' }" value="3">3</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_materii=='4' }" value="4">4</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_materii=='5' }" value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Informațiile furnizate de Universitate</label>
+                            <select name="option-test-furnizate" th:style="'background-color:'+ ${option_test_furnizates} +';'" class="ui-dform-select form-control">
+                                <option class="ui-dform-option" value="">Alege</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_furnizate=='0' }" value="0">0</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_furnizate=='1' }" value="1">1</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_furnizate=='2' }" value="2">2</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_furnizate=='3' }" value="3">3</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_furnizate=='4' }" value="4">4</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_furnizate=='5' }" value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="ui-dform-div custom-input">
+                            <label class="ui-dform-label">Apropierea de domiciliu</label>
+                            <select name="option-test-domiciliu" th:style="'background-color:'+ ${option_test_domicilius} +';'" class="ui-dform-select form-control">
+                                <option class="ui-dform-option" value="">Alege</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_domiciliu=='0' }" value="0">0</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_domiciliu=='1' }" value="1">1</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_domiciliu=='2' }" value="2">2</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_domiciliu=='3' }" value="3">3</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_domiciliu=='4' }" value="4">4</option>
+                                <option class="ui-dform-option" th:selected="${ option_test_domiciliu=='5' }" value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ui-dform-div">
+                        <div class="ui-dform-div">
+                            <p name="cerinte-facultate-info" class="ui-dform-p info">Declar pe propria răspundere, cunoscând consecinţele administrative şi juridice ale declaraţiilor inexacte/ false, că datele furnizate în această fişă sunt conforme cu realitatea şi că am luat cunoştinţă prevederile metodologiei de admitere. </p>
+                        </div>
+                        <div class="ui-dform-div">
+                            <p name="cerinte-facultate-info" class="ui-dform-p info">Datele declarate de Dumneavoastră sunt prelucrate de Universitatea „Alexandru Ioan Cuza” din Iaşi, în conformitate cu prevederile Legii 677/2001, privind protecţia persoanelor cu privire la prelucrarea datelor cu caracter personal şi libera circulaţie a acestor date, modificată şi completată.  </p>
+                        </div>
+                    </div>
+                </form>
+                <button class="btn btn-primary btn-md" id="finish-button">Submit form</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
