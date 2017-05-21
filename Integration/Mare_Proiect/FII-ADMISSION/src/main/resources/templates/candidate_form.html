@@ -6,7 +6,30 @@
     <meta charset="UTF-8">
     <title>Tabel Candidati</title>
 </head>
+
+<style>
+table, td, th {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    height: 50px;
+}
+</style>
+
 <body>
-<p th:text="${candidate_form}"> </p>
+
+<table>
+    <tr th:each="entry : ${candidate_form}">
+        <td th:text="${entry.key}"></td>
+        <td th:text="${entry.value}"></td>
+    </tr>
+</table>
+
 </body>
 </html>
