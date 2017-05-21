@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import javax.xml.ws.http.HTTPException;
+
 /**
  * Created by ddpv on 5/14/2017.
  */
@@ -20,27 +22,35 @@ public class SubmitContestationTest {
     @BeforeEach
     private void setUp(){
         test = new SubmitContestation();
-        formEntity = new ContestationEntity();
+
     }
     @AfterEach
     private void tearDown(){
-        formEntity = null;
+
         test = null;
     }
 
     @Test
     public void unauthorized_user() {
-        AuthEntity testEntity = new AuthEntity("alexd@info.uaic.ro", "some_invalid_token");
-        formEntity.setAuth(testEntity);
-        ResponseEntity<SaveContestationOutEntity> testResult = test.testLogin("id", formEntity);
-        Assert.assertEquals(HttpStatus.UNAUTHORIZED, testResult.getStatusCode());
+
+        test = new SubmitContestation();
+        AuthEntity testEntity;
+        try {
+            testEntity = new AuthEntity("admin@info.uaic.ro", "tkek");
+            ResponseEntity<SaveContestationOutEntity> testResult = test.testLogin("id",new ContestationEntity());
+            Assert.assertNotEquals(HttpStatus.OK, testResult.getStatusCode());
+
+        }
+        catch(HTTPException e) {
+            Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
+        }
     }
 
     @Test
-    public void authorized_user() {
-        AuthEntity testEntity = new AuthEntity("alexd@info.uaic.ro", "valid_token");
-        formEntity.setAuth(testEntity);
-        ResponseEntity<SaveContestationOutEntity> testResult = test.testLogin("id", formEntity);
+    public void test_ok() {
+        test = new SubmitContestation();
+        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
+        ResponseEntity<SaveContestationOutEntity> testResult = test.testLogin("id",new ContestationEntity());
         Assert.assertEquals(HttpStatus.OK, testResult.getStatusCode());
     }
 }
