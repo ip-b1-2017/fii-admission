@@ -13,9 +13,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import validator.IValidator;
@@ -87,4 +85,25 @@ public class AdminController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/candidates_view_form", method = RequestMethod.GET)
+    public void loadFormForCNP(@RequestParam("cnp") String cnp) throws IOException {
+            System.out.println("CNPul este: " + cnp);
+        /*AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
+        if (auth == null){
+            return new ModelAndView("redirect:/login");
+        }
+        RestTemplate template = new RestTemplate();
+        ResponseEntity<List<CandidatForm>> candidatResponse;
+        candidatResponse = template.exchange(ServerProperties.middleUrl + "/get_applications",
+                HttpMethod.POST,
+                new HttpEntity<>(auth),
+                new ParameterizedTypeReference<List<CandidatForm>>() {}
+        );
+        List<CandidatForm> candidates = candidatResponse.getBody();
+
+        ModelAndView modelAndView = new ModelAndView("/candidates_admin");
+        modelAndView.addObject("candidates", candidates);
+
+        return modelAndView;*/
+    }
 }
