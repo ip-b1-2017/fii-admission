@@ -1,5 +1,6 @@
 package fiiadmission.view.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.sun.deploy.net.HttpResponse;
 import fiiadmission.ServerProperties;
 import fiiadmission.dto.AuthEntity;
@@ -7,6 +8,7 @@ import fiiadmission.dto.ClassroomEntity;
 import fiiadmission.dto.ProfessorEntity;
 import fiiadmission.dto.SuccessReasonEntity;
 import io.swagger.models.Model;
+import io.swagger.models.auth.In;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -24,10 +26,7 @@ import fiiadmission.view.Model.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class AdminController {
@@ -80,8 +79,14 @@ public class AdminController {
         }
         if (test.get("button").equals("Adaugare clasa")) {
             test.remove("button");
+
+            Map<String, Object> data = new HashMap<String, Object>();
+            data.put( "id", test.get("id") );
+            data.put( "locatie", test.get("locatie") );
+            data.put( "nr_locuri", Integer.parseInt(test.get("nr_locuri")) );
+
             ResponseEntity<SuccessReasonEntity> nume = template.postForEntity(ServerProperties.middleUrl + "/add_classroom",
-                    test, SuccessReasonEntity.class);
+                    data, SuccessReasonEntity.class);
             return new ModelAndView("redirect:/classroom");
         }
 

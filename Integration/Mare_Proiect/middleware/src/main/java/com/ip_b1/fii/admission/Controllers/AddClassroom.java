@@ -18,8 +18,7 @@ import org.springframework.web.client.RestTemplate;
 public class AddClassroom {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<ClassroomEntity> setResult(@RequestBody ClassroomsEntity classroom) {
-        System.out.println("insert class");
+    public ResponseEntity<ClassroomsEntity> setResult(@RequestBody ClassroomsEntity classroom) {
         ClassroomsEntity classroomToAdd = new ClassroomsEntity();
         classroomToAdd.setId(classroom.getId());
         classroomToAdd.setLocatie(classroom.getLocatie());
@@ -32,7 +31,7 @@ public class AddClassroom {
                 classroomToAdd);
 
 
-        return new ResponseEntity<ClassroomEntity>(
+        return new ResponseEntity<ClassroomsEntity>(
                 //response,
                 HttpStatus.OK
         );
