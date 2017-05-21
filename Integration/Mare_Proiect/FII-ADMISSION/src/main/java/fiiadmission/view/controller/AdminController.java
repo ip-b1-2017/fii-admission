@@ -30,9 +30,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by rusub on 5/14/2017.
- */
 @Controller
 public class AdminController {
 
