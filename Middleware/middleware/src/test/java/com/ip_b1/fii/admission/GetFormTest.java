@@ -12,6 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import javax.xml.ws.http.HTTPException;
+
 public class GetFormTest {
     private GetForm test;
 
@@ -26,15 +28,25 @@ public class GetFormTest {
 
     @Test
     public void unauthorized_user() {
-        AuthEntity testEntity = new AuthEntity("alexd@info.uaic.ro", "some_invalid_token");
-        ResponseEntity<FormOutEntity> testResult = test.run(null, testEntity);
-        Assert.assertEquals(HttpStatus.UNAUTHORIZED, testResult.getStatusCode());
+
+        test = new GetForm();
+        AuthEntity testEntity;
+        try {
+            testEntity = new AuthEntity("admin@info.uaic.ro", "tkek");
+            ResponseEntity<FormOutEntity> testResult = test.run(testEntity);
+            Assert.assertNotEquals(HttpStatus.OK, testResult.getStatusCode());
+
+        }
+        catch(HTTPException e) {
+            Assert.assertEquals(HttpStatus.UNAUTHORIZED, e.getStatusCode());
+        }
     }
 
     @Test
     public void test_ok() {
-        AuthEntity testEntity = new AuthEntity("alexd@info.uaic.ro", "some_valid_token");
-        ResponseEntity<FormOutEntity> testResult = test.run(null, testEntity);
+        test = new GetForm();
+        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
+        ResponseEntity<FormOutEntity> testResult = test.run(testEntity);
         Assert.assertEquals(HttpStatus.OK, testResult.getStatusCode());
     }
 }
