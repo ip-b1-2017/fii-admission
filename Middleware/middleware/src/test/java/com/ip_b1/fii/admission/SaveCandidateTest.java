@@ -29,7 +29,7 @@ public class SaveCandidateTest {
     public void unauthorized_user() {
         AuthEntity testEntity = new AuthEntity("email@info.uaic.ro", "invalid-token");
         CandidateInEntity testCandidate = new CandidateInEntity(testEntity, "invalid-cnp","invalid","invalid","invalid","invalid");
-        ResponseEntity<SuccessEntity> testResult = test.saveCandidate(null,testCandidate);
+        ResponseEntity<SuccessEntity> testResult = test.saveCandidate(testCandidate);
         Assert.assertEquals(UNAUTHORIZED, testResult.getStatusCode());
 
     }
@@ -38,7 +38,7 @@ public class SaveCandidateTest {
     public void test_ok() {
         AuthEntity testEntity = new AuthEntity("claudia.lucasi@info.uaic.ro", "some_valid_token");
         CandidateInEntity testCandidate = new CandidateInEntity(testEntity, "some-cnp","firstname","lastname","adress","phone");
-        ResponseEntity<SuccessEntity> testResult = test.saveCandidate(null,testCandidate);
+        ResponseEntity<SuccessEntity> testResult = test.saveCandidate(testCandidate);
         Assert.assertTrue(HttpStatus.OK == testResult.getStatusCode());
     }
 }

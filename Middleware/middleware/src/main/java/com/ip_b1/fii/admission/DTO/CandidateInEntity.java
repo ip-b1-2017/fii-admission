@@ -2,19 +2,22 @@ package com.ip_b1.fii.admission.DTO;
 
 public class CandidateInEntity {
     private AuthEntity auth;
-    private String cnp;
-    private String firstname;
     private String lastname;
-    private String address;
-    private String phoneNumber;
+    private String firstname;
+    private String cnp;
+    private String email;
+    private String phone;
 
     public CandidateInEntity(AuthEntity auth, String cnp, String firstname, String lastname, String address, String phoneNumber) {
         this.auth = auth;
         this.cnp = cnp;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
+        this.phone = phoneNumber;
+    }
+
+    public CandidateInEntity(){
+
     }
 
     public AuthEntity getAuth() {
@@ -49,19 +52,19 @@ public class CandidateInEntity {
         this.lastname = lastname;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
