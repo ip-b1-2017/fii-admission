@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Montserrat:700,400|Roboto:400,100,300,500,900'
           rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="../JS/jquery.dform-1.1.0.min.js"></script>
-    <meta charset="UTF-8">
 </head>
 <body bgcolor="#e6e6e6">
 <ul>
@@ -60,13 +57,20 @@
         </div>
         <div class="widget-content">
             <br>
-            <table>
-                <tr th:each="entry : ${teachers}">
-                    <td th:text="${entry.nume}"></td>
-                    <td th:text="${entry.prenume}"></td>
-                    <td th:text="${entry.PCNP}"></td>
-                </tr>
-            </table>
+            <form th:action="@{/teachers_operation}" method="get">
+                <label for="cod">Nume:<br>
+                </label> <input type="text" name="nume" id="cod" value="" />
+                <br><br>
+                <label for="etaj">Prenume:<br>
+                </label> <input type="text" name="prenume" id="etaj" value="" />
+                <br><br>
+                <label for="nr">CNP:<br>
+                </label> <input type="number" name="pcnp" id="nr" value="" />
+                <br><br>
+                <input type="submit" name="button" value="add">
+                <input type="submit" name="button" value="delete">
+                <input type="submit" name="button" value="see teachers">
+            </form>
         </div>
     </div>
 </div>

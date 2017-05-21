@@ -61,10 +61,10 @@
         <div class="widget-content">
             <br>
             <table>
-                <tr th:each="entry : ${teachers}">
-                    <td th:text="${entry.nume}"></td>
-                    <td th:text="${entry.prenume}"></td>
-                    <td th:text="${entry.PCNP}"></td>
+                <tr th:each="entry : ${classrooms}">
+                    <td th:text="${entry.id}"></td>
+                    <td th:text="${entry.locatie}"></td>
+                    <td th:number="${entry.nr_locuri}"></td>
                 </tr>
             </table>
         </div>

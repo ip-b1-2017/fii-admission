@@ -12,7 +12,7 @@ ul {
     position: fixed;
     height: 100%;
     overflow: auto;
-    color:white;
+	color:white;
 }
 
 li a {
@@ -21,7 +21,7 @@ li a {
     padding: 8px 16px;
     text-decoration: none;
     font-family: "Roboto", sans-serif;
-    color:white;
+	color:white;
 }
 
 li a.active {
@@ -44,121 +44,121 @@ hr {
     border-width: 1px;
 }
 p{
-    font-size:70%;
-    color: #cccccc;
-    font-family: "Roboto", sans-serif;
+	font-size:70%;
+	color: #cccccc;
+  font-family: "Roboto", sans-serif;
 }
 
 
 #contact{
-    margin-bottom: 0;
-    margin-left: 15px;
-    color:white;
-    font-size: 12px;
-    font-family: "Roboto", monospace;
+  margin-bottom: 0;
+  margin-left: 15px;
+  color:white;
+  font-size: 12px;
+  font-family: "Roboto", monospace;
 }
 .logo {
-    width: auto;
-    height: 50px;
-    background: url("../images/logo.png");
-    background-color: #1C537E;
-    background-position: left;
-    background-size: 130px auto;
-    background-repeat: no-repeat; }
+  width: auto;
+  height: 50px;
+  background: url("logo.png");
+  background-color: #1C537E;
+  background-position: left;
+  background-size: 130px auto;
+  background-repeat: no-repeat; }
 
 
 
 .content {
-    width: 200px;
-    height: 35px;
-    padding: 15px;
-    overflow: hidden;
-    font-family: "Roboto", sans-serif;
+  width: 200px;
+  height: 35px;
+  padding: 15px;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
 }
 
 .content img {
     margin-right: 10px;
     float: left;
-    border-radius: 100%;
+      border-radius: 100%;
 }
 
 #header {
-    float: left;
-    width: 100%;
-    background: #ffffff;
-    position: relative;
+  float: left;
+  width: 100%;
+  background: #ffffff;
+  position: relative;
 }
 .header-nav {
-    min-height: 50px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: white;
-    box-shadow: 3px 1px 10px 0 rgba(0, 0, 0, 0.15);
+  min-height: 50px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: white;
+  box-shadow: 3px 1px 10px 0 rgba(0, 0, 0, 0.15);
 }
 .menu-button {
-    float: left;
-    font-size: 29px;
-    color: #fff;
-    padding: 12px 19px;
+  float: left;
+  font-size: 29px;
+  color: #fff;
+  padding: 12px 19px;
 }
 .nav ul {
-    height: 64px;
-    float: right;
+  height: 64px;
+  float: right;
 }
 .nav ul li {
-    float: left;
-    position: relative;
-    padding: 11px;
+  float: left;
+  position: relative;
+  padding: 11px;
 }
 .nav > ul > li:first-child {
-    border-left: none;
+  border-left: none;
 }
 .nav ul li a {
-    color: #fff;
-    padding: 1px;
-    float: left;
+  color: #fff;
+  padding: 1px;
+  float: left;
 }
 .nav ul li i {
-    color: #fff;
+  color: #fff;
 }
 .nav ul li:hover {
-    background: #01A9F0;
-    color: #fff;
+  background: #01A9F0;
+  color: #fff;
 }
 
 
 .widget-box {
-    background: #fff;
-    border: 1px solid #E0E0E0;
-    float: left;
-    width: 100%;
-    margin: 15px 15px 0px 15px;
-    box-shadow: 3px 1px 10px 0 rgba(0, 0, 0, 0.15);
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  float: left;
+  width: 100%;
+  margin: 15px 15px 0px 15px;
+  box-shadow: 3px 1px 10px 0 rgba(0, 0, 0, 0.15);
 }
 .widget-header {
-    background: #3388CB;
+  background: #3388CB;
 }
 .widget-header h2 {
-    font-size: 15px;
-    font-weight: normal;
-    margin: 0;
-    padding: 11px 15px;
-    color: #F9F9F9;
-    display: inline-block;
+  font-size: 15px;
+  font-weight: normal;
+  margin: 0;
+  padding: 11px 15px;
+  color: #F9F9F9;
+  display: inline-block;
 }
 .sample-widget {max-width: 97%;}
 
 .sample-widget2 {
-    max-width: 30%;
+  max-width: 22%;
 }
 
 
 .widget-box .fa-cog {
-    float: right;
-    color: #fff;
-    margin: 11px 11px 0 0;
-    font-size: 20px;
+  float: right;
+  color: #fff;
+  margin: 11px 11px 0 0;
+  font-size: 20px;
 }
 
 .main {
@@ -167,99 +167,18 @@ p{
 }
 
 .main p{
-    text-indent: 1.5em;
-    font-size: 16px;
+   text-indent: 1.5em;
+   font-size: 16px;
 }
 
 h3{
-    font-family: "Roboto", sans-serif;
-    font-size:16px;
-    text-indent: 0.3em;
-    color: #cccccc;
+  font-family: "Roboto", sans-serif;
+  font-size:16px;
+  text-indent: 0.3em;
+  color: #cccccc;
 }
 .widget-content img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto ;
-}
-
-.news {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-.news_content {
-    position: relative;
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 0;
-    width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
-
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
-
-.news_header {
-    padding: 2px 16px;
-    background-color: #3388CB;
-    color: white;
-}
-
-.news_body {padding: 2px 16px;}
-
-.news_body textarea {
-    width: 99%;
-    min-height: 360px;
-    overflow: scroll;
-    margin-top: 2%;
-}
-
-.news_body input {
-    margin-top: 2%;
-    padding: 10px;
-    width: 97%;
-}
-
-.news_body button {
-    margin: 5px auto;
-    padding: 10px 30px;
-    background-color: #3388CB;
-    color: white;
-    border-style: none;
-    font-size: 1em;
-}
-
-.close {
-    padding: 15px;
-    color: #fff;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #1c537e;
-    text-decoration: none;
-    cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
 }

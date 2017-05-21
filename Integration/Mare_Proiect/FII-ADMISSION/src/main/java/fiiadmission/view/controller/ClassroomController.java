@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class ProfsController {
-    @RequestMapping(value="/teachers", method= RequestMethod.GET)
+public class ClassroomController {
+    @RequestMapping(value="/classroom", method= RequestMethod.GET)
     public ModelAndView dashboardAdmin(Model model, HttpServletRequest req){
-        return new ModelAndView("/teachers");
+        return new ModelAndView("/classroom");
     }
 }

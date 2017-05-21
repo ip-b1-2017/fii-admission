@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../style/dashboard_admin.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CMontserrat:700,400%7CRoboto:400,100,300,500,900'
-          rel='stylesheet' type='text/css'>
+<title>Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style/dashboard_admin.css" type="text/css" media="screen">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900%7CMontserrat:700,400%7CRoboto:400,100,300,500,900'
+    rel='stylesheet' type='text/css'>
 
 </head>
 <body>
 
 <ul>
 
-    <div class="logo"></div>
+<div class="logo"></div>
 
 
-    <div class="content">
-        <img src="../static/images/avatar.png" alt="avatar" width=25%>
-        <h3>Administrator</h3>
-    </div>​
+<div class="content">
+    <img src="../images/styleavatar.png" alt="avatar" width=25%>
+    <h3>Administrator</h3>
+</div>​
 
 
 
-    <li><a class="active" href="#dash">Dashboard</a></li>
-    <li><a href="#settings">Settings</a></li>
-    <li id="news"><a href="#news">Add News</a></li>
-    <li><a href="#form">View Applications</a></li>
-    <li><a href="#form">Teachers</a></li>
-    <li><a href="#form">Classrooms</a></li>
-    <li><a href="#disconn">Disconnect</a></li>
-    <hr>
+  <li><a class="active" href="#dash">Dashboard</a></li>
+  <li><a href="#settings">Settings</a></li>
+  <li><a href="candidates_admin">View Applications</a></li>
+  <li><a href="teachers">Teachers</a></li>
+  <li><a href="classroom">Classrooms</a></li>
+  <li><a href="/disconnect">Disconnect</a></li>
+  <hr>
 
 
-    <p id="contact">
+      <p id="contact">
         Contact<br>
         Adress:<br>
         Facultatea de informatica,<br>
@@ -42,76 +41,72 @@
         700483, ROMANIA <br>
         Phone: +40 232 201090<br>
         E-mail: secretariat@info.uaic.ro
-    </p>
+      	</p>
 </ul>
 
 
 <div class="main">
 
 
+   
+<div class="widget-box sample-widget2">
+                 <div class="widget-header">
+                   <h2>Numarul aplicatiilor depuse:</h2>
+                   <i class="fa fa-cog"></i>
+                 </div>
+                 <div class="widget-content">
+                   <h2> 291</h2>
+                 </div>
+               </div>
+			   
+   <div class="widget-box sample-widget2">
+         <div class="widget-header">
+           <h2>Numarul de aplicatii neverificate:</h2>
+           <i class="fa fa-cog"></i>
+         </div>
+         <div class="widget-content">
+           <h2> 200</h2>
+         </div>
+       </div>
 
-    <div class="widget-box sample-widget2">
+
+           <div class="widget-box sample-widget2">
+                 <div class="widget-header">
+                   <h2>Numarul de aplicatii verificate:</h2>
+                   <i class="fa fa-cog"></i>
+                 </div>
+                 <div class="widget-content">
+                   <h2> 91</h2>
+                 </div>
+               </div>
+	
+ <div class="widget-box sample-widget2">
+                 <div class="widget-header">
+                   <h2>Numarul studentilor inscrisi:</h2>
+                   <i class="fa fa-cog"></i>
+                 </div>
+                 <div class="widget-content">
+                   <h2> 291</h2>
+                 </div>
+               </div>	
+	
+
+	 
+
+  <div class="widget-box sample-widget">
         <div class="widget-header">
-            <h2>Numarul aplicatiilor depuse:</h2>
-            <i class="fa fa-cog"></i>
+          <h2>Adauga anunturi:</h2>
+          <i class="fa fa-cog"></i>
         </div>
         <div class="widget-content">
-            <h2> 291</h2>
+          <p>Inscrierile pentru licenta s-au terminat. S-au inscris 291 candidati.</p>
+          <p>Examenul de admitere va avea loc in data de 29 Iunie 2017.</p>
+          <p>A aparut lista cu repartizari pe sali. O poti verifica pe https://docs.google.com/document/u/0/.</p>
+          <p>S-au deschis inscrierile pentru licenta 2017. Ai timp sa te inscrii pana pe 17 iunie.</p>
         </div>
-    </div>
+      </div>
 
-    <div class="widget-box sample-widget2">
-        <div class="widget-header">
-            <h2>Numarul de aplicatii neverificate:</h2>
-            <i class="fa fa-cog"></i>
-        </div>
-        <div class="widget-content">
-            <h2> 200</h2>
-        </div>
-    </div>
+   </div>
 
-
-    <div class="widget-box sample-widget2">
-        <div class="widget-header">
-            <h2>Numarul de aplicatii verificate:</h2>
-            <i class="fa fa-cog"></i>
-        </div>
-        <div class="widget-content">
-            <h2> 91</h2>
-        </div>
-    </div>
-
-    <div class="widget-box sample-widget">
-        <div class="widget-header">
-            <h2>Adauga anunturi:</h2>
-            <i class="fa fa-cog"></i>
-        </div>
-        <div class="widget-content">
-            <p>Inscrierile pentru licenta s-au terminat. S-au inscris 291 candidati.</p>
-            <p>Examenul de admitere va avea loc in data de 29 Iunie 2017.</p>
-            <p>A aparut lista cu repartizari pe sali. O poti verifica pe https://docs.google.com/document/u/0/.</p>
-            <p>S-au deschis inscrierile pentru licenta 2017. Ai timp sa te inscrii pana pe 17 iunie.</p>
-        </div>
-    </div>
-
-</div>
-
-<div id="news_modal" class="news">
-    <div class="news_content">
-        <div class="news_header">
-            <span class="close">&times;</span>
-            <h2>Add News</h2>
-        </div>
-        <div class="news_body">
-            <form action="#post_news">
-                <!--<input type="text" name="news_title" placeholder="News title"> -->
-                <textarea id="news_text"></textarea>
-                <button>Post</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript" src="../JS/admin_news.js"></script>
 </body>
 </html>
