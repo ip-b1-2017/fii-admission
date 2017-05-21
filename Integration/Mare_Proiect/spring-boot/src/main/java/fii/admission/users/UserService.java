@@ -64,7 +64,7 @@ public class UserService {
         return null;
     }
 
-    public static boolean isLogged(UserIn user) {
+    public static boolean   isLogged(UserIn user) {
         Connection con = MainApp.getDBConnection();
         String query = "SELECT * FROM USER WHERE email = ? and parola = ?";
         try {

@@ -21,7 +21,7 @@ public class SaliService {
 			while (rs.next()) {
 				Sali p = new Sali();
 				p.setId(rs.getString("ID"));
-				p.setLocatie(rs.getString("LOCATIE"));
+				p.setEtaj(rs.getString("ETAJ"));
 				p.setNrLocuri(rs.getInt("LOCURI"));
 				result.add(p);
 			}
@@ -47,7 +47,7 @@ public class SaliService {
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result.setId(rs.getString("ID"));
-				result.setLocatie(rs.getString("LOCATIE"));
+				result.setEtaj(rs.getString("ETAJ"));
 				result.setNrLocuri(rs.getInt("LOCURI"));
 			} else
 				return null;
@@ -63,12 +63,12 @@ public class SaliService {
 	public static int updateSali(String id, Sali sali) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE SALI SET id = ? , locatie = ?, locuri = ? where id = ?";
+		String query = "UPDATE SALI SET id = ? , etaj = ?, locuri = ? where id = ?";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, sali.getId());
-			pstmt.setString(2, sali.getLocatie());
+			pstmt.setString(2, sali.getEtaj());
 			pstmt.setInt(3, sali.getNrLocuri());
 			pstmt.setString(4, id);
 			result = pstmt.executeUpdate();
@@ -100,13 +100,13 @@ public class SaliService {
 		int result;
 		Connection con = MainApp.getDBConnection();
 		String query = "INSERT INTO SALI "
-				+ " (id, locatie, locuri)"
+				+ " (id, locatie, etaj)"
 				+ " VALUES ( ?, ?, ?)";		
 		
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, sali.getId());
-			pstmt.setString(2, sali.getLocatie());
+			pstmt.setString(2, sali.getEtaj());
 			pstmt.setInt(3, sali.getNrLocuri());
 			result = pstmt.executeUpdate();
 			pstmt.close();

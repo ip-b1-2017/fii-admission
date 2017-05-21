@@ -10,7 +10,7 @@
     flex-direction: column;
     align-items: flex-start; }
     .form-group .custom-input input {
-      width: 100%; }
+      width: 90%; }
 
 .information-pair {
   width: 100%; }
@@ -58,6 +58,9 @@ input[type=checkbox] {
   font-weight: bold;
   text-align: left;
   color: #337ab7;
+}
+p{
+  width: 90%;
 }
 
 /*# sourceMappingURL=form.css.map */

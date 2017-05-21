@@ -9,13 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Base64;
+
 
 @RestController
-@RequestMapping("/controller/{sessionId}/get_form")
+@RequestMapping("/controller/get_form")
 public  class GetForm {
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<FormOutEntity> run(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
+    public ResponseEntity<FormOutEntity> run( @RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
                     new FormOutEntity(null),
@@ -25,12 +27,11 @@ public  class GetForm {
 
 
             RestTemplate template = new RestTemplate();
-
+            String emailB64 = new String(Base64.getEncoder().encode(auth.getEmail().getBytes()));
             ResponseEntity<FormOutEntity> entity = template.getForEntity(
-                    ServerProperties.modelUrl + "/{sessionId}/get_form?username={username}",
+                    ServerProperties.modelUrl + "/get_form/{email}",
                     FormOutEntity.class,
-                    sessionId,
-                    auth.getEmail()
+                    emailB64
             );
 
             return new ResponseEntity<>(

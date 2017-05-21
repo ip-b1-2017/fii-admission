@@ -31,7 +31,7 @@ public class FormController {
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView getForm(HttpServletRequest req){
+    public ModelAndView getForm(HttpServletRequest req, Model model){
         AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
         if(auth == null){
             return new ModelAndView("/login");
@@ -52,7 +52,16 @@ public class FormController {
             else {
                 form = (Map<String, String>) response.getBody();
                 for (Map.Entry<String, String> entry : form.entrySet()) {
-                    System.out.println(entry.getKey() + " " + entry.getValue());
+                    try{
+                        String att = entry.getKey().replaceAll("\\-", "_");
+                        String val = entry.getValue().replaceAll("%2B","+");
+                        model.addAttribute(att,val);
+                        if(val.length()>0) {
+                            model.addAttribute(att + "s", "#C3FDB8");
+                        }
+                    }catch (Exception e){
+                        System.out.println("@FormController@getForm : User has no form in DB currently.");
+                    }
                 }
             }
             return new ModelAndView("/form");
@@ -79,7 +88,7 @@ public class FormController {
             if(result.getStatusCode() == HttpStatus.NOT_FOUND){
                 return new ModelAndView("/preform");
             }
-            return new ModelAndView("/form");
+            return new ModelAndView("redirect:/form");
         }
     }
 

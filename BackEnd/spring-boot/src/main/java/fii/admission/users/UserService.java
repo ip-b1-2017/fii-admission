@@ -65,14 +65,19 @@ public class UserService {
 
 	public static boolean isLogged(UserIn user){
 		Connection con = MainApp.getDBConnection();
-		String query = "SELECT * FROM USER WHERE email = ? and parola = ?";
+		String query = "SELECT * FROM USER WHERE email = ?";
+		HashConvertor hashConvertor;
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getUsername());
-			pstmt.setString(2,user.getPassword());
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return true;
+				String hashedPassword = rs.getString("PAROLA");//take the hashed password
+				String salt = hashedPassword.substring(hashedPassword.length()-10);//substract the last 10 letters
+				hashConvertor=new HashConvertor(user.getPassword());
+				String checkPassword = hashConvertor.toString(salt);
+				if(checkPassword.equals(hashedPassword))
+					return true;
 			}
 			pstmt.close();
 			rs.close();

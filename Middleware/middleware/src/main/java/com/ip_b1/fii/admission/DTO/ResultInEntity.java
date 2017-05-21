@@ -3,8 +3,7 @@ package com.ip_b1.fii.admission.DTO;
 public class ResultInEntity {
 
     private AuthEntity auth;
-    private String email;
-    private float result;
+    private Note note;
 
     public ResultInEntity() {
     }
@@ -17,19 +16,11 @@ public class ResultInEntity {
         this.auth = auth;
     }
 
-    public String getEmail() {
-        return email;
+    public Note getNote() {
+        return note;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public float getResult() {
-        return result;
-    }
-
-    public void setResult(float result) {
-        this.result = result;
+    public void setNote(Note note) {
+        this.note = note;
     }
 }

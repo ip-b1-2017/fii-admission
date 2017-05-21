@@ -23,8 +23,6 @@ public class ProfesoriService {
 				p.setNume(rs.getString("NUME"));
 				p.setPrenume(rs.getString("PRENUME"));
 				p.setPCNP(rs.getString("PCNP"));
-				p.setSaliExamenSaliId(rs.getString("SALI_EXAMENSALIID"));
-				p.setSaliExamenExamenId(rs.getString("SALI_EXAMENEXAMENID"));
 				result.add(p);
 			}
 			stmt.close();
@@ -51,8 +49,6 @@ public class ProfesoriService {
 				result.setNume(rs.getString("NUME"));
 				result.setPrenume(rs.getString("PRENUME"));
 				result.setPCNP(rs.getString("PCNP"));
-				result.setSaliExamenSaliId(rs.getString("SALI_EXAMENSALIID"));
-				result.setSaliExamenExamenId(rs.getString("SALI_EXAMENEXAMENID"));
 			} else
 				return null;
 			pstmt.close();
@@ -67,17 +63,15 @@ public class ProfesoriService {
 	public static int updateProfesor(String pcnp, Profesor prof) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "UPDATE PROFESORI SET nume = ?, prenume = ?, pcnp = ?, "
-			     + "sali_examensaliid = ?, sali_examenexamenid = ? where pcnp = ?";
+		String query = "UPDATE PROFESORI SET nume = ?, prenume = ?, pcnp = ?"
+			     + " where pcnp = ?";
 			
 		try{
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, prof.getNume());
 			pstmt.setString(2, prof.getPrenume());
 			pstmt.setString(3, prof.getPCNP());
-			pstmt.setString(4, prof.getSaliExamenSaliId());
-			pstmt.setString(5, prof.getSaliExamenExamenId());
-			pstmt.setString(6, pcnp);
+			pstmt.setString(4, pcnp);
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
@@ -106,16 +100,14 @@ public class ProfesoriService {
 	public static int insertProfesor(Profesor prof) {
 		int result;
 		Connection con = MainApp.getDBConnection();
-		String query = "INSERT INTO PROFESORI " + "(NUME, PRENUME, PCNP, SALI_EXAMENSALIID, SALI_EXAMENEXAMENID)"
-				+ "VALUES ( ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO PROFESORI " + "(NUME, PRENUME, PCNP)"
+				+ "VALUES ( ?, ?, ?)";
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, prof.getNume());
 			pstmt.setString(2, prof.getPrenume());
 			pstmt.setString(3, prof.getPCNP());
-			pstmt.setString(4, prof.getSaliExamenSaliId());
-			pstmt.setString(5, prof.getSaliExamenExamenId());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 			return result;
