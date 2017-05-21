@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <title>Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,21 +53,19 @@
         </div>
         <div class="widget-content">
           <br>
-            <form th:action="@{/classroom_operations}" method="get">
-          <label for="cod">ID:<br>
-    			</label> <input type="text" name="id" id="cod" value="" />
+          <label for="cod">Cod sala:<br>
+    			</label> <input type="text" name="cod" id="cod" value="" />
     			<br>
-    			<label for="etaj">Locatie:<br>
-    			</label> <input type="text" name="locatie" id="etaj" value="" />
+    			<label for="etaj">Etaj:<br>
+    			</label> <input type="text" name="etaj" id="etaj" value="" />
     			<br>
     			<label for="nr">Numar locuri:<br>
-    			</label> <input type="number" name="nr_locuri" id="nr" value="" />
+    			</label> <input type="number" name="nr" id="nr" value="" />
     			<br>
 
-                <input type="submit" name="button" value="Adaugare clasa">
-		        <input type="submit" name="button" value="Stergere clasa">
-                <input type="submit" name="button" value="Vizualizare sali">
-            </form>
+          <input type="submit" value="Adaugare clasa">
+		        <input type="submit" value="Stergere clasa">
+
         </div>
       </div>
 

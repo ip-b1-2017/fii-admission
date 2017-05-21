@@ -1,77 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:c="http://www.w3.org/1999/XSL/Transform" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Teachers</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../style/profesori.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Montserrat:700,400|Roboto:400,100,300,500,900'
-          rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="../JS/jquery.dform-1.1.0.min.js"></script>
     <meta charset="UTF-8">
+    <title>Tabel Profesori</title>
 </head>
-<body bgcolor="#e6e6e6">
-<ul>
+<body>
+<script src="../JS/get_candidati.js"></script>
+<h1 th:text="${message}"></h1>
 
-    <div class="logo"></div>
+<c:if test="${not empty lists}">
 
-    <!-- <li><div class="avatar"></div><h3>John Smith</h3></li> -->
+    <ul>
+        <c:forEach var="listValue" items="${lists}">
+            <li>${listValue}</li>
+        </c:forEach>
+    </ul>
 
-    <div class="content">
-        <img src="/images/profesori/avatar.png" alt="" width="50px" />
-        <h3>Administrator</h3>
-    </div>​
+    alta incercare....
 
-
-
-    <li><a href="#dash">Dashboard</a></li>
-    <li><a href="#settings">Settings</a></li>
-    <li><a href="#form">View Applications</a></li>
-    <li><a class="active" href="#form">Teachers</a></li>
-    <li><a href="#form">Classrooms</a></li>
-    <li><a href="#disconn">Disconnect</a></li>
-    <br>
-    <hr>
-    <br><br><br><br><br>
-    <br><br><br><br><br>
-
-    <p id="contact">
-        Contact<br>
-        Adress:<br>
-        Facultatea de informatica,<br>
-        Universitatea "Al. I. Cuza",<br>
-        General Berthelot, 16, IASI <br>
-        700483, ROMANIA <br>
-        Phone: +40 232 201090<br>
-        E-mail: secretariat@info.uaic.ro
-    </p>
-</ul>
-
-<!-- <div id="section-dash" class="tab-content" style="margin-left:20%;padding:1px 16px;height:1000px;">
- <input type="text" name="search" placeholder="Search">
- -->
-
-<div class="main">
-    <div class="widget-box sample-widget">
-        <div class="widget-header">
-            <h2>Classroom:</h2>
-            <i class="fa fa-cog"></i>
-        </div>
-        <div class="widget-content">
-            <br>
-            <table>
-                <tr th:each="entry : ${teachers}">
-                    <td th:text="${entry.nume}"></td>
-                    <td th:text="${entry.prenume}"></td>
-                    <td th:text="${entry.PCNP}"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
-
-<br><br>
+    <ul>
+        <c:forEach var="listValue2" items="${lists2}">
+            <h1 th:text="${listValue2}"></h1>
+        </c:forEach>
+    </ul>
+</c:if>
 
 </body>
 </html>

@@ -12,18 +12,28 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by cosmin on 5/16/2017.
  */
 @RestController
-@RequestMapping(value = "/model/statistici")
+@RequestMapping(value = "/model/statistics")
 public class StatisticiController {
-    @RequestMapping(value = "/get_statistici_user", method = RequestMethod.POST)
+    @RequestMapping(value = "/get_user_statistics", method = RequestMethod.POST)
     public ResponseEntity<StatisticiUser> getStatisticiUser(@RequestBody Email email){
         StatisticiUser statistici = new StatisticiUser();
         System.out.println(email.getEmail());
-        statistici.setStatusAplicatie(StatisticiService.getStatusAplicatie(email.getEmail()));
-        statistici.setNumarAplicanti(StatisticiService.getNumarCandidati(email.getEmail()));
+        statistici.setStatusAplicatie(StatisticiService.getAplicationStatus(email.getEmail()));
+        statistici.setNumarAplicanti(StatisticiService.getCandidatesNumber(email.getEmail()));
         if(statistici==null){
             return new ResponseEntity<>(statistici, HttpStatus.INTERNAL_SERVER_ERROR);
         }else{
             return new ResponseEntity<StatisticiUser>(statistici, HttpStatus.OK);
+        }
+    }
+    @RequestMapping(value="/get_admin_statistics", method = RequestMethod.GET)
+    public ResponseEntity<AdminStatistics> getStatisticiAdmin(){
+        AdminStatistics adminStatistics = new AdminStatistics();
+        adminStatistics = StatisticiService.getAdminStatistics();
+        if(adminStatistics ==null){
+            return new ResponseEntity<AdminStatistics>(adminStatistics,HttpStatus.INTERNAL_SERVER_ERROR);
+        }else{
+            return new ResponseEntity<AdminStatistics>(adminStatistics,HttpStatus.OK);
         }
     }
 }

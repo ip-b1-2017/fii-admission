@@ -10,8 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import javax.xml.ws.http.HTTPException;
-
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 /**
@@ -28,23 +26,16 @@ public class GetUserDistributionTest {
 
     @Test
     public void unauthorized_user() {
-        test = new GetUserDistribution();
-        AuthEntity testEntity;
-        try {
-            testEntity = new AuthEntity("admin@info.uaic.ro", "tkek");
-            ResponseEntity<DistributionEntity> testResults = test.getUserDist(testEntity);
-            Assert.assertEquals(UNAUTHORIZED, testResults.getStatusCode());
-        }
-        catch(HTTPException e) {
-            Assert.assertEquals (HttpStatus.UNAUTHORIZED, e.getStatusCode());
-        }
+        AuthEntity testEntity = new AuthEntity("email@info.uaic.ro", "invalid-token");
+
+        ResponseEntity<DistributionEntity> testResult = test.getUserDist(testEntity);
+        Assert.assertEquals(UNAUTHORIZED, testResult.getStatusCode());
 
     }
     @Test
     public void test_ok() {
-        test = new GetUserDistribution();
-        AuthEntity testEntity = new AuthEntity("admin@info.uaic.ro", "topkek");
-        ResponseEntity<DistributionEntity> testResults = test.getUserDist( testEntity);
-        Assert.assertTrue(HttpStatus.OK == testResults.getStatusCode() || HttpStatus.NOT_FOUND == testResults.getStatusCode());
+        AuthEntity testEntity = new AuthEntity("claudia.lucasi@info.uaic.ro", "some_valid_token");
+        ResponseEntity<DistributionEntity> testResult = test.getUserDist( testEntity);
+        Assert.assertTrue(HttpStatus.OK == testResult.getStatusCode() || HttpStatus.NOT_FOUND == testResult.getStatusCode());
     }
 }

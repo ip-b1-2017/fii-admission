@@ -57,7 +57,7 @@ public class DashboardUserController {
             }
         });*/
         ResponseEntity<StatisticiUser> response = restTemplate.postForEntity(
-                ServerProperties.middleUrl + "/statistici/get_statistici_user",
+                ServerProperties.middleUrl + "/statistics/get_user_statistics",
                 email,
                 StatisticiUser.class
         );

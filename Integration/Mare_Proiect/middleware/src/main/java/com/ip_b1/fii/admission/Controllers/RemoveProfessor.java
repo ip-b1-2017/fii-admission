@@ -21,15 +21,20 @@ public class RemoveProfessor {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SuccessEntity> setResult(@RequestBody String cnpProfessor) {
+        System.out.println("[Debug] Hello");
         String cnp = cnpProfessor;
 
         RestTemplate template = new RestTemplate();
 
         template.delete(
                 ServerProperties.modelUrl + "/profesori/"+cnp);
-
+/*
+        ResponseEntity<String> response = template.exchange(ServerProperties.modelUrl + "/profesori",
+                HttpMethod.PUT, ProfessorEntity, ProfessorEntity.class, professorToAdd);
+*/
         SuccessEntity success = new SuccessEntity();
         success.setSuccess(true);
+        success.setFailureReason("nice");
         return new ResponseEntity<SuccessEntity>(
                 success,
                 HttpStatus.OK

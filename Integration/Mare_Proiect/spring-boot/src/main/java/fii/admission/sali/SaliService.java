@@ -65,7 +65,7 @@ public class SaliService {
     public static int updateSali(String id, Sali sali) {
         int result;
         Connection con = MainApp.getDBConnection();
-        String query = "UPDATE SALI SET id = ?, locatie = ?, locuri = ? where id = ?";
+        String query = "UPDATE SALI SET id = ? , locatie = ?, locuri = ? where id = ?";
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query.toString());

@@ -21,7 +21,6 @@ public class InsertProfessor {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<ProfessorEntity> setResult(@RequestBody ProfessorEntity professor) {
-        System.out.println("insert prof");
         ProfessorEntity professorToAdd = new ProfessorEntity();
         professorToAdd.setNume(professor.getNume());
         professorToAdd.setPrenume(professor.getPrenume());
