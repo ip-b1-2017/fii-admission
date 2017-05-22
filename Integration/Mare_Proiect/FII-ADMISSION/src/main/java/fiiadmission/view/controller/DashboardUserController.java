@@ -38,7 +38,7 @@ public class DashboardUserController {
 
         model.addAttribute("nr_aplicatii_depuse", statisticiUser.getNumarAplicanti());
         model.addAttribute("status_aplicatie",statisticiUser.getStatusAplicatie());
-
+        model.addAttribute("user_name",emaill);
         return new ModelAndView("/dashboard");
     }
 
