@@ -46,7 +46,7 @@ public class BodyParser implements IBodyParser{
 
     private int hexaReprezentationToInt(char chr){
         if(chr >= '0' && chr <= '9') {
-            return (int)(chr - '0');
+            return chr - '0';
         }
         int repr = (int)chr | (1 << 5);
         return repr - 87;

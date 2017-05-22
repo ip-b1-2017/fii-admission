@@ -89,7 +89,7 @@ public class UserService {
             pstmt.setString(2, user.getEmail());
             pstmt.setString(3, user.getPassword());
             pstmt.setString(4, user.getToken());
-            pstmt.setString(5, email);
+            pstmt.setString(7, email);
             result = pstmt.executeUpdate();
             pstmt.close();
             return result;
