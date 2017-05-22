@@ -60,7 +60,7 @@ p{
 .logo {
   width: auto;
   height: 50px;
-  background: url("logo.png");
+  background: url("../images/logo.png");
   background-color: #1C537E;
   background-position: left;
   background-size: 130px auto;
@@ -150,7 +150,7 @@ p{
 .sample-widget {max-width: 97%;}
 
 .sample-widget2 {
-  max-width: 22%;
+  max-width: 30%;
 }
 
 
@@ -181,4 +181,85 @@ h3{
   display: block;
   margin-left: auto;
   margin-right: auto ;
+}
+
+.news {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.news_content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 0;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.news_header {
+    padding: 2px 16px;
+    background-color: #3388CB;
+    color: white;
+}
+
+.news_body {padding: 2px 16px;}
+
+.news_body textarea {
+  width: 99%;
+  min-height: 360px;
+  overflow: scroll;
+  margin-top: 2%;
+}
+
+.news_body input {
+  margin-top: 2%;
+  padding: 10px;
+  width: 97%;
+}
+
+.news_body button {
+  margin: 5px auto;
+  padding: 10px 30px;
+  background-color: #3388CB;
+  color: white;
+  border-style: none;
+  font-size: 1em;
+}
+
+.close {
+    padding: 15px;
+    color: #fff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #1c537e;
+    text-decoration: none;
+    cursor: pointer;
 }
