@@ -64,23 +64,17 @@ public class UserService {
         return null;
     }
 
-    public static boolean   isLogged(UserIn user) {
-        Connection con = MainApp.getDBConnection();
-        String query = "SELECT * FROM USER WHERE email = ? and parola = ?";
-        try {
-            PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setString(1, user.getUsername());
-            pstmt.setString(2, user.getPassword());
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                return true;
-            }
-            pstmt.close();
-            rs.close();
-        } catch (Exception exc) {
-            System.out.printf("[error][getUser] %s\n", exc.getMessage());
+    public static boolean isRegistered(UserIn user) {
+        User userU = getUser(user.getUsername());
+        if(userU==null){
+            return false;
         }
-        return false;
+        HashConvertor hash = new HashConvertor(user.getPassword());
+        if(userU.getPassword().equals(hash.toString(userU.getPassword().substring(userU.getPassword().length()-10)))){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public static int updateUser(String email, User user) {
@@ -125,12 +119,12 @@ public class UserService {
         int result;
         Connection con = MainApp.getDBConnection();
         String query = "INSERT INTO USER (ROL, EMAIL, PAROLA, TOKEN) VALUES ( ?, ?, ?, ?)";
-
+        HashConvertor hash = new HashConvertor(user.getPassword());
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, user.getRole());
             pstmt.setString(2, user.getEmail());
-            pstmt.setString(3, user.getPassword());
+            pstmt.setString(3, hash.toString());
             pstmt.setString(4, user.getToken());
             result = pstmt.executeUpdate();
             pstmt.close();
