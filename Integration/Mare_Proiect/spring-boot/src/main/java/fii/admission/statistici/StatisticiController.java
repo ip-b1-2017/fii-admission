@@ -26,4 +26,15 @@ public class StatisticiController {
             return new ResponseEntity<StatisticiUser>(statistici, HttpStatus.OK);
         }
     }
+    @RequestMapping(value = "/get_statistics_admin", method = RequestMethod.GET)
+    public ResponseEntity<AdminStatistics> getStatisticiAdmin(){
+        AdminStatistics statistici;
+        statistici = StatisticiService.getAdminStatistics();
+        System.out.println(statistici.getNrChecked());
+        if(statistici==null){
+            return new ResponseEntity<>(statistici, HttpStatus.INTERNAL_SERVER_ERROR);
+        }else{
+            return new ResponseEntity<>(statistici, HttpStatus.OK);
+        }
+    }
 }

@@ -13,6 +13,32 @@ import java.sql.SQLException;
  */
 @Service
 public class StatisticiService {
+    public static AdminStatistics getAdminStatistics(){  Connection con = MainApp.getDBConnection();
+        PreparedStatement pstmt =null;
+        ResultSet rs = null;
+        String nrChecked=null;
+        String nrUnchecked=null;
+        String query = "SELECT count(*) FROM FORM WHERE status='COMPLETE'";
+        try {
+            pstmt = con.prepareStatement(query);
+            rs = pstmt.executeQuery();
+            nrChecked = rs.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        query = "SELECT count(*) FROM FORM WHERE status!='COMPLETE'";
+        try {
+            pstmt = con.prepareStatement(query);
+            rs = pstmt.executeQuery();
+            nrUnchecked = rs.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        AdminStatistics adminS = new AdminStatistics();
+        adminS.setNrChecked(nrChecked);
+        adminS.setNrUnchecked(nrUnchecked);
+        return adminS;
+    }
 
     public static String getNumarCandidati(String email){
         Connection con = MainApp.getDBConnection();

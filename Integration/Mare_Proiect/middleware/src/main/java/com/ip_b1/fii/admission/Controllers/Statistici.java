@@ -4,6 +4,7 @@ package com.ip_b1.fii.admission.Controllers;
  * Created by cosmin on 5/16/2017.
  */
 
+import com.ip_b1.fii.admission.DTO.AdminStatisticsEntity;
 import com.ip_b1.fii.admission.DTO.EmailEntity;
 import com.ip_b1.fii.admission.DTO.StatisticiUserEntity;
 
@@ -38,6 +39,42 @@ public class Statistici {
         }
 
     }
+
+    @RequestMapping(value = "/get_statistics_admin", method = RequestMethod.GET)
+    public ResponseEntity<AdminStatisticsEntity> getStatisticiAdmin(){
+        AdminStatisticsEntity statistici;
+        statistici = getStatisticsAdmin();
+
+        if(statistici==null){
+            return new ResponseEntity<>(statistici, HttpStatus.INTERNAL_SERVER_ERROR);
+        }else{
+            return new ResponseEntity<>(statistici, HttpStatus.OK);
+        }
+
+    }
+
+    private AdminStatisticsEntity getStatisticsAdmin(){
+        RestTemplate restTemplate = new RestTemplate();
+        /*
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+
+            }
+        });*/
+        ResponseEntity<AdminStatisticsEntity> response = restTemplate.getForEntity(
+                ServerProperties.modelUrl + "/statistici/get_statistics_admin",
+                AdminStatisticsEntity.class
+        );
+
+        return response.getBody();
+    }
+
 
 
     private StatisticiUserEntity getStatisticiUser(EmailEntity email){
