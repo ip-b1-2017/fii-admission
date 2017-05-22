@@ -59,7 +59,7 @@ public class UserController {
 
 	@RequestMapping(value="/users/check_password", method = RequestMethod.POST)
 	public ResponseEntity<SuccessEntity> checkPassword(@RequestBody UserIn user){
-		if (UserService.isLogged(user)) {
+		if (UserService.isRegistered(user)) {
 			System.out.println("[debug][checkPassword] User is logged!");
 			return new ResponseEntity<>(new SuccessEntity(true),HttpStatus.OK);
 		}else{
