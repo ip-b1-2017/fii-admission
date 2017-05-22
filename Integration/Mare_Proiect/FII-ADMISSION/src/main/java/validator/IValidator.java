@@ -7,5 +7,5 @@ import java.util.Map;
  */
 public interface IValidator {
 
-    public boolean isValid(Map<String, String[]> params);
+    boolean isValid(Map<String, String[]> params);
 }

@@ -5,7 +5,7 @@ package validator;
  */
 public interface IBodyParser {
 
-    public void setBody(String str);
-    public boolean hasNext();
-    public String[] next();
+    void setBody(String str);
+    boolean hasNext();
+    String[] next();
 }
