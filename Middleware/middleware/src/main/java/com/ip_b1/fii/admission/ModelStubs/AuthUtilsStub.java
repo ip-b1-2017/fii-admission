@@ -29,6 +29,13 @@ public class AuthUtilsStub {
                 u.setRole("admin");
                 u.setToken("topkek");
                 return new ResponseEntity<>(u, HttpStatus.OK);
+            case "alexd@info.uaic.ro":
+                User u2 = new User();
+                u2.setEmail(emailB64);
+                u2.setParola("anotherpass");
+                u2.setRole("user");
+                u2.setToken("meme");
+                return new ResponseEntity<>(u2, HttpStatus.OK);
             default:
                 return new ResponseEntity<>(new User(), HttpStatus.NOT_FOUND);
         }

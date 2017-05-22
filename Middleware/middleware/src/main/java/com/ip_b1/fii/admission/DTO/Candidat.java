@@ -7,6 +7,10 @@ public class Candidat {
     private String email;
     private String phone;
 
+    public Candidat() {
+
+    }
+
     public Candidat(String email, String cnp, String firstname, String lastname, String address, String phoneNumber) {
         this.email = email;
         this.cnp = cnp;

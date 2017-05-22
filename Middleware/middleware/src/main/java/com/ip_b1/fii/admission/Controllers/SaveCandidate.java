@@ -36,9 +36,20 @@ public class SaveCandidate {
         }
     }
 
-    public static boolean addCandidate(CandidateInEntity candidate) {
+    private static boolean addCandidate(CandidateInEntity candidate) {
         Candidat candidateOut = new Candidat(candidate);
         RestTemplate template = new RestTemplate();
+
+        template.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+            }
+        });
 
         ResponseEntity<User> existingUser;
         try {
@@ -50,7 +61,7 @@ public class SaveCandidate {
             if (existingUser.getStatusCode() != HttpStatus.NOT_FOUND) {
                 //Update
                 ResponseEntity<SuccessEntity> success = template.postForEntity(
-                        ServerProperties.modelUrl + "/candidati/{cnp}",//TODO
+                        ServerProperties.modelUrl + "/candidati/{cnp}",
                         candidateOut,
                         SuccessEntity.class,
                         candidate.getCnp()
@@ -68,6 +79,6 @@ public class SaveCandidate {
                 new HttpEntity<>(candidateOut),
                 SuccessEntity.class
         );
-        return success.getStatusCode() == HttpStatus.CREATED && success.getBody().isSuccess();
+        return success.getStatusCode() == HttpStatus.OK && success.getBody().isSuccess();
     }
 }
