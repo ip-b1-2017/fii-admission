@@ -126,5 +126,3 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-
-### Integration\Mare_Proiect\spring-boot\FiiAdmission.db
