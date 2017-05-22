@@ -7,11 +7,15 @@ import com.ip_b1.fii.admission.DTO.SuccessEntity;
 import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("controller/signup_test")
@@ -32,8 +36,20 @@ public class SignUpTest {
     private static boolean check(SignUpTestInEntity signup) {
 
         RestTemplate restTemplate = new RestTemplate();
+
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+            }
+        });
+
         SuccessEntity entity = restTemplate.postForObject(
-                ServerProperties.modelUrl + "/model/check_email",
+                ServerProperties.modelUrl + "/check_email",
                 signup,
                 SuccessEntity.class);
         return entity.isSuccess();
@@ -43,8 +59,18 @@ public class SignUpTest {
     private static boolean addToDB(SignUpTestInEntity signup) {
 
         RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+            }
+        });
         ResponseEntity<SuccessEntity> response = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/model/add",
+                ServerProperties.modelUrl + "/add",
                 signup,
                 SuccessEntity.class);
         return response.getStatusCode() == HttpStatus.CREATED && response.getBody().isSuccess();
