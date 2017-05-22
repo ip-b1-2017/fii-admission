@@ -141,10 +141,21 @@ public class AdminController {
                 null, new ParameterizedTypeReference<Map<String, String>>() {
                 });
         Map<String, String> form = candidatResponse.getBody();
+        ModelAndView model = new ModelAndView("/candidate_view_form");
+        for (Map.Entry<String, String> e : form .entrySet()) {
+            try {
+                String att = e.getKey().replaceAll("\\-", "_");
+                String val = e.getValue().replaceAll("%2B", "+");
+                model.addObject(att,val);
+                System.out.println("[debug][AdminController][loadForm]" + att + " " + val);
+                if (val.length() > 0) {
+                    model.addObject(att + "s", "#C3FDB8");
+                }
+            } catch (Exception e1) {
+                System.out.println("@FormController@getForm : User has no form in DB currently.");
+            }
+        }
 
-        ModelAndView modelAndView = new ModelAndView("/candidate_form");
-        modelAndView.addObject("candidate_form", form);
-
-        return modelAndView;
+        return model;
     }
 }
