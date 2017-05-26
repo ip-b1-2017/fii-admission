@@ -12,53 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("controller/(sessionId)/application_review_reject")
+@RequestMapping("controller/application_review_reject/cnp={CNP}")
 public class ApplicationReject {
 
-    private static int process(String sessionId, String cnp, String rejectionMessage) {
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<SuccessEntity> reject(@PathVariable(name = "CNP") String CNP) {
+        if (process(CNP))
+            return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
+        return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
+
+    private static boolean process(String cnp) {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<CandidateOutEntity> candidate = restTemplate.getForEntity(
-                ServerProperties.modelUrl + "model/(sessionId)/get_candidate?cnp={cnp}",
-                CandidateOutEntity.class,
-                sessionId,
-                cnp
-        );
-
-        if (candidate.getStatusCode() == HttpStatus.NOT_FOUND) {
-            return -1;
-        }
-
-        restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/model/(sessionId)/change_status",
-                new FormStatusEntity(candidate.getBody().getEmail(), "rejected"),
-                SuccessEntity.class,
-                sessionId);
-
         ResponseEntity<SuccessEntity> success = restTemplate.postForEntity(
-                ServerProperties.modelUrl + "/model/(sessionId)/add_notification",
-                new NotificationEntity(candidate.getBody().getEmail(), false, rejectionMessage),
-                SuccessEntity.class,
-                sessionId);
-        return success.getBody().isSuccess() ? 1 : 0;
+                ServerProperties.modelUrl + "/formuri/set_status/" + cnp,
+                "rejected",
+                SuccessEntity.class
+        );
+        return success.getBody().isSuccess();
     }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> reject(@PathVariable String sessionId, AuthEntity user, String CNP, String rejectionMessage) {
-
-        if (!AuthUtils.checkAuthIsAdmin(user)) {
-            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
-        }
-
-        int result = process(sessionId, CNP, rejectionMessage);
-
-        if (result == 0)
-            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
-        else if (result == -1)
-            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
-
-    }
-
 }

@@ -127,6 +127,71 @@ public class AdminController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/candidates_accept", method = RequestMethod.GET)
+    public ModelAndView acceptCandidate(@RequestParam("cnp") String cnp, String error,
+                                        org.springframework.ui.Model model,
+                                        HttpServletRequest req, HttpServletResponse rep) {
+        AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
+        if (auth == null) {
+            return new ModelAndView("redirect:/login");
+        }
+
+        RestTemplate template = new RestTemplate();
+
+
+        ResponseEntity<SuccessEntity> response = template.exchange(
+                ServerProperties.middleUrl + "/application_review_accept/cnp=" + cnp,
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<SuccessEntity>() {
+                });
+
+        ResponseEntity<List<CandidatForm>> candidatResponse;
+        candidatResponse = template.exchange(ServerProperties.middleUrl + "/get_applications",
+                HttpMethod.POST,
+                new HttpEntity<>(auth),
+                new ParameterizedTypeReference<List<CandidatForm>>() {}
+        );
+        List<CandidatForm> candidates = candidatResponse.getBody();
+
+        ModelAndView modelAndView = new ModelAndView("/candidates_admin");
+        modelAndView.addObject("candidates", candidates);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/candidates_reject", method = RequestMethod.GET)
+    public ModelAndView rejectCandidate(@RequestParam("cnp") String cnp, String error,
+                                        org.springframework.ui.Model model, HttpServletRequest req,
+                                        HttpServletResponse rep) {
+        AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
+        if (auth == null){
+            return new ModelAndView("redirect:/login");
+        }
+
+        RestTemplate template = new RestTemplate();
+
+        ResponseEntity<SuccessEntity> response = template.exchange(
+                ServerProperties.middleUrl + "/application_review_reject/cnp=" + cnp,
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<SuccessEntity>() {
+                });
+
+        ResponseEntity<List<CandidatForm>> candidatResponse;
+        candidatResponse = template.exchange(ServerProperties.middleUrl + "/get_applications",
+                HttpMethod.POST,
+                new HttpEntity<>(auth),
+                new ParameterizedTypeReference<List<CandidatForm>>() {}
+        );
+        List<CandidatForm> candidates = candidatResponse.getBody();
+
+        ModelAndView modelAndView = new ModelAndView("/candidates_admin");
+        modelAndView.addObject("candidates", candidates);
+
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/candidates_view_form", method = RequestMethod.GET)
     public ModelAndView loadFormForCNP(@RequestParam("cnp") String cnp,  HttpServletRequest req) throws IOException {
         AuthEntity auth = AuthEntity.fromCookies(req.getCookies());

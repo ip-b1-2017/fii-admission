@@ -61,18 +61,34 @@
         <div class="widget-content">
             <br>
             <table>
+                <style>
+                table, th, td {
+                    border: 1px solid black;
+                }
+                </style>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>CNP</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Administration</th>
+                </tr>
                 <tr th:each="entry : ${candidates}">
-                    <td th:text="${entry.candidate.cnp}"></td>
                     <td th:text="${entry.candidate.firstname}"></td>
                     <td th:text="${entry.candidate.lastname}"></td>
-
+                    <td th:text="${entry.candidate.cnp}"></td>
+                    <td th:text="${entry.candidate.email}"></td>
+                    <td th:text="${entry.candidate.phone}"></td>
+                    <td th:text="${entry.form.status}"></td>
                     <td class="view_form_button">
                         <!--Fiecare href se expandeaza intr-un "candidates_whatever?cnp=cnpul_candidatului"
                             Aparent e relevant @ si nu $.
                         -->
                         <a th:href="@{/candidates_view_form(cnp=${entry.candidate.cnp})}">Formular</a>
-                        <a th:href="@{/candidates_accept(cnp=${entry.candidate.cnp})}">Accepta</a>
-                        <a th:href="@{/candidates_reject(cnp=${entry.candidate.cnp})}">Refuza</a>
+                        <a th:href="@{/candidates_accept(cnp=${entry.candidate.cnp})}">Accept</a>
+                        <a th:href="@{/candidates_reject(cnp=${entry.candidate.cnp})}">Reject</a>
                     </td>
                 </tr>
             </table>

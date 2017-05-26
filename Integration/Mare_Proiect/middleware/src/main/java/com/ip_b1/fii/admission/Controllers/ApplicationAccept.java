@@ -15,11 +15,6 @@ public class ApplicationAccept {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SuccessEntity> accept(@PathVariable(name = "CNP") String CNP){
-
-        //if(!AuthUtils.checkAuthIsAdmin(user)){
-        //    return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.UNAUTHORIZED);
-        //}
-
         if(!process(CNP))
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK) ;
