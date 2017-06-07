@@ -38,7 +38,7 @@ public class FormController {
         }
         else{
             RestTemplate template = new TolerantRestTemplate();
-            String emailB64 = new String(Base64.encode(auth.getUsername().getBytes()));
+            String emailB64 = Base64.encode(auth.getUsername().getBytes());
             System.out.println("[debug][@FormController] emailB64: " + emailB64);
 
             ResponseEntity<Map> response = template.getForEntity(

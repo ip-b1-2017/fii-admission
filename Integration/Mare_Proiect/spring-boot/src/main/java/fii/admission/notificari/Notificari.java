@@ -2,8 +2,8 @@ package fii.admission.notificari;
 
 public class Notificari {
     private String text;
-    private String seen;
-    private String useremail;
+    private boolean seen;
+    private String email;
 
     public String getText() {
         return text;
@@ -13,19 +13,19 @@ public class Notificari {
         this.text = text;
     }
 
-    public String getSeen() {
+    public boolean getSeen() {
         return seen;
     }
 
-    public void setSeen(String seen) {
+    public void setSeen(boolean seen) {
         this.seen = seen;
     }
 
     public String getUserEmail() {
-        return useremail;
+        return email;
     }
 
     public void setUserEmail(String useremail) {
-        this.useremail = useremail;
+        this.email = useremail;
     }
 }

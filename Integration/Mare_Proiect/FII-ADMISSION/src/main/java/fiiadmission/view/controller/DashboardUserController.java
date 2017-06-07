@@ -1,9 +1,14 @@
 package fiiadmission.view.controller;
 
 import fiiadmission.ServerProperties;
+import fiiadmission.dto.AuthEntity;
 import fiiadmission.dto.Email;
 import fiiadmission.dto.StatisticiUser;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +20,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by cosmin on 5/16/2017.
@@ -25,21 +32,30 @@ public class DashboardUserController {
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public @ResponseBody
     ModelAndView getLoginForm( String error, Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
-        Cookie[] cookies = req.getCookies();
-        String emaill = null;
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("user-name")) {
-                 emaill = cookie.getValue();
-            }
-        }
+        AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
         Email email = new Email();
-        email.setEmail(emaill);
+        email.setEmail(auth.getUsername());
         StatisticiUser statisticiUser = getStatisticiUser(email);
 
         model.addAttribute("nr_aplicatii_depuse", statisticiUser.getNumarAplicanti());
         model.addAttribute("status_aplicatie",statisticiUser.getStatusAplicatie());
-        model.addAttribute("user_name",emaill);
+        model.addAttribute("user_name",auth.getUsername());
+        model.addAttribute("notifications", getNotifications(auth));
         return new ModelAndView("/dashboard");
+    }
+
+    private List<String> getNotifications(AuthEntity auth) {
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List<String>> results = restTemplate.exchange(
+                ServerProperties.middleUrl + "/get_notifications",
+                HttpMethod.POST,
+                new HttpEntity<>(auth),
+                new ParameterizedTypeReference<List<String>>() {}
+        );
+        if (results.getBody() == null){
+            return new ArrayList<>();
+        }
+        return results.getBody();
     }
 
     private StatisticiUser getStatisticiUser(Email email){

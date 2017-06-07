@@ -44,23 +44,20 @@ public class GetForm {
     }
 
     @Deprecated
-    @RequestMapping(value = "/controller/{sessionId}/get_form", method = RequestMethod.POST)
-    public ResponseEntity<FormOutEntity> run(@PathVariable String sessionId, @RequestBody AuthEntity auth) {
+    @RequestMapping(value = "/controller/get_form", method = RequestMethod.POST)
+    public ResponseEntity<FormOutEntity> run(@RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
                     new FormOutEntity(null, null, null),
                     HttpStatus.UNAUTHORIZED
             );
         } else {
-
-
             RestTemplate template = new RestTemplate();
 
             ResponseEntity<FormOutEntity> entity = template.getForEntity(
-                    ServerProperties.modelUrl + "/{sessionId}/get_form?username={username}",
+                    ServerProperties.modelUrl + "/get_form/username={username}",
                     FormOutEntity.class,
-                    sessionId,
-                    auth.getUsername()
+                    new String(Base64.getEncoder().encode(auth.getUsername().getBytes()))
             );
 
             return new ResponseEntity<>(

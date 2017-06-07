@@ -2,20 +2,20 @@ package com.ip_b1.fii.admission.DTO;
 
 public class NotificationsOutEntity {
 
-    private String notifications;
+    private String notification;
 
-    public NotificationsOutEntity(String notifications) {
-        this.notifications = notifications;
+    public NotificationsOutEntity(String notification) {
+        this.notification = notification;
     }
 
     public NotificationsOutEntity() {
     }
 
-    public String getNotifications() {
-        return notifications;
+    public String getNotification() {
+        return notification;
     }
 
-    public void setNotifications(String notifications) {
-        this.notifications = notifications;
+    public void setNotification(String notification) {
+        this.notification = notification;
     }
 }
