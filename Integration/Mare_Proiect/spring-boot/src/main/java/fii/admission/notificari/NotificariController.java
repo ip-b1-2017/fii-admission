@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Base64;
 import java.util.List;
 
 @RequestMapping(value = "/model")
@@ -23,25 +22,27 @@ public class NotificariController {
     }
 
     @RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.GET)
-    public ResponseEntity<List<Notificari>> getNotificari(@PathVariable String useremail) {
-        useremail = new String(Base64.getDecoder().decode(useremail));
-        List<Notificari> result = NotificariService.getNotificari(useremail);
+    public ResponseEntity<Notificari> getNotificari(@PathVariable String useremail) {
+        Notificari result = NotificariService.getNotificari(useremail);
 
         if (result == null)
-            return new ResponseEntity<>(result, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<Notificari>(result, HttpStatus.NOT_FOUND);
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return new ResponseEntity<Notificari>(result, HttpStatus.OK);
     }
 
-    //Edi: Am scos Update pe notificari fiindca pot fi mai multe notificari pe acelasi user si (inca) nu avem un id.
-    //     Raman notificarile fara id, si se iau in grup.
-    //     In plus, am modficat GET-ul sa returneze tot o lista, fiindca ^^^
-    //     Sincer nu cred ca trebuie schimbat, e okay, oricum astea sunt in bulk si le vezi pe toate odata.
+    @RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.POST)
+    public ResponseEntity<SuccessEntity> updateNotificari(@PathVariable("useremail") String useremail,
+                                                          @RequestBody Notificari notificari) {
+        int result = NotificariService.updateNotificari(useremail, notificari);
+        if (result == 0)
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
+        else
+            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.DELETE)
     public ResponseEntity<SuccessEntity> deleteNotificari(@PathVariable("useremail") String useremail) {
-        useremail = new String(Base64.getDecoder().decode(useremail));
-
         int result = NotificariService.deleteNotificari(useremail);
         if (result == 0)
             return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
@@ -49,7 +50,7 @@ public class NotificariController {
             return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/notificari", method = RequestMethod.POST)
+    @RequestMapping(value = "/notificari", method = RequestMethod.PUT)
     public ResponseEntity<SuccessEntity> insertNotificari(@RequestBody Notificari notificari) {
         int result = NotificariService.insertNotificari(notificari);
         if (result == 0)
