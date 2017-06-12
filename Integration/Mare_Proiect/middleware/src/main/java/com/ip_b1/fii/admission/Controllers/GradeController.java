@@ -31,10 +31,9 @@ public class GradeController {
         RestTemplate restTemplate = new RestTemplate();
 
         try{
-
-            System.out.println("[debug]@GradeController get OK status code");
             CandidateOutEntity candidateOutEntity =
                     this.getCandidate(restTemplate, auth.getUsername());
+            System.out.println("[debug]@GradeController get OK status code");
             grade.setFirstName(candidateOutEntity.getFirstname());
             grade.setLastName(candidateOutEntity.getLastname());
 
