@@ -6,11 +6,13 @@ import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletCont
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.annotation.Bean;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@EnableSwagger2
 @SpringBootApplication
 public class MainApp {
     private static final String DB_FILE = "FiiAdmission.db";
