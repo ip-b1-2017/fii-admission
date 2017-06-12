@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -45,11 +46,18 @@ public class DashboardUserController {
             rep.sendError(400, "Bad authentication.");
             return null;
         }
+        int notifsUnread = 0;
+        for (NotificationEntity notif : notifications) {
+            if (!notif.isRead()){
+                notifsUnread++;
+            }
+        }
 
         model.addAttribute("nr_aplicatii_depuse", statisticiUser.getNumarAplicanti());
         model.addAttribute("status_aplicatie",statisticiUser.getStatusAplicatie());
         model.addAttribute("user_name",auth.getUsername());
         model.addAttribute("notifications", notifications);
+        model.addAttribute("unread_notifications", notifsUnread);
         return new ModelAndView("/dashboard");
     }
 
