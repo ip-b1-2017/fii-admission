@@ -12,8 +12,6 @@
 
     <div class="logo"></div>
 
-    <!-- <li><div class="avatar"></div><h3>John Smith</h3></li> -->
-
     <div class="content">
         <h2>Administrator</h2>
     </div>​
@@ -38,10 +36,6 @@
     </p>
 </ul>
 
-<!-- <div id="section-dash" class="tab-content" style="margin-left:20%;padding:1px 16px;height:1000px;">
- <input type="text" name="search" placeholder="Search">
- -->
-
 <div class="main">
 
 
@@ -52,15 +46,15 @@
         </div>
         <div class="widget-content">
             <br>
-            <form th:action="@{/classroom_operations}" method="get">
+            <form action="/mark" method="get">
                 <label for="cod">CNP: <br>
-                </label> <input type="text" name="id" id="cod" value="" />
+                </label> <input type="text" name="cnp" id="cod" value="" />
                 <br>
                 <label for="etaj">Tip examen: <br>
-                </label> <input type="text" name="locatie" id="etaj" value="" />
+                </label> <input type="text" name="examen" id="etaj" value="" />
                 <br>
-                <label for="nr">Note: <br>
-                </label> <input type="text" name="nr_locuri" id="nr" value="" />
+                <label for="nr">Nota: <br>
+                </label> <input type="text" name="mark" id="nr" value="" />
                 <br>
 
                 <input type="submit" name="button" value="Adaugare clasa">
