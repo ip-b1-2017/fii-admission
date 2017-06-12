@@ -6,7 +6,6 @@ package com.ip_b1.fii.admission.DTO;
 public class GradeDTO extends GradeEntity {
 
     private String candidatcnp;
-
     public GradeDTO(){
 
     }
