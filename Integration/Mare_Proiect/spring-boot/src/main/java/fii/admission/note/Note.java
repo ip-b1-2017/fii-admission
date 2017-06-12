@@ -1,20 +1,10 @@
 package fii.admission.note;
 
-public class Note {
-    private float valoare;
+public class Note extends NoteDTO {
     private String candidatcnp;
-    private String examenid;
 
     public Note(){
 
-    }
-
-    public float getValoare() {
-        return valoare;
-    }
-
-    public void setValoare(float valoare) {
-        this.valoare = valoare;
     }
 
     public String getCandidatCNP() {
@@ -25,11 +15,4 @@ public class Note {
         this.candidatcnp = candidatcnp;
     }
 
-    public String getExamenId() {
-        return examenid;
-    }
-
-    public void setExamenId(String examenid) {
-        this.examenid = examenid;
-    }
 }
