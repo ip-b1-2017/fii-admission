@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,37 +11,9 @@
 </head>
 <body>
 
-<ul>
-
-    <div class="logo"></div>
-
-
-    <div class="content">
-        <h3>Administrator</h3>
-    </div>​
-
-    <li><a class="active" href="#dash">Dashboard</a></li>
-    <li id="news"><a href="#news">Add News</a></li>
-    <li><a  href="candidates_admin">View Applications</a></li>
-    <li><a href="teachers">Teachers</a></li>
-    <li><a href="classroom">Classrooms</a></li>
-    <li><a href="/marks">Add marks</a></li>
-    <li><a href="/disconnect">Disconnect</a></li>
-    <hr>
-
-
-    <p id="contact">
-        Contact<br>
-        <b>Adress:</b><br>
-        Facultatea de informatica,<br>
-        Universitatea "Al. I. Cuza",<br>
-        General Berthelot, 16, IASI <br>
-        700483, ROMANIA <br>
-        <b>Phone:</b> +40 232 201090<br>
-        <b>E-mail:</b> secretariat@info.uaic.ro
-    </p>
+<ul th:replace="frag_sidebar :: sidebar_admin">
+    sidebar goes here
 </ul>
-
 
 <div class="main">
 

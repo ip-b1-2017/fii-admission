@@ -34,9 +34,16 @@ public class NotificationController {
             rep.sendError(400, "Bad authentication.");
             return null;
         }
+        int notifsUnread = 0;
+        for (NotificationEntity notif : notifications) {
+            if (!notif.isRead()){
+                notifsUnread++;
+            }
+        }
 
         model.addAttribute("user_name",auth.getUsername());
         model.addAttribute("notifications", notifications);
+        model.addAttribute("unread_notifications", notifsUnread);
         return new ModelAndView("/notifications");
     }
 }
