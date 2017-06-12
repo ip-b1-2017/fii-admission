@@ -24,7 +24,7 @@ public class NoteService {
                 Note p = new Note();
                 p.setCandidatCNP(rs.getString("CANDIDATCNP"));
                 p.setValoare(rs.getFloat("VALOARE"));
-                p.setExamenId(rs.getString("EXAMENID"));
+                p.setExamenid(rs.getString("EXAMENID"));
                 result.add(p);
             }
             stmt.close();
@@ -39,18 +39,22 @@ public class NoteService {
         return null;
     }
 
-    public static Note getNote(String candidatcnp) {
+    public static Note getNote(String candidatcnp, String criteria) {
         Note result = new Note();
         Connection con = MainApp.getDBConnection();
         String query = "SELECT * FROM NOTE WHERE CANDIDATCNP = ?";
+        if(criteria != null)
+            query += " AND EXAMENID = ?";
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, candidatcnp);
+            if(criteria != null)
+                pstmt.setString(2, criteria);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 result.setCandidatCNP(rs.getString("CANDIDATCNP"));
                 result.setValoare(rs.getFloat("VALOARE"));
-                result.setExamenId(rs.getString("EXAMENID"));
+                result.setExamenid(rs.getString("EXAMENID"));
             } else
                 return null;
             pstmt.close();
@@ -62,18 +66,18 @@ public class NoteService {
         return null;
     }
 
-    public static int updateNote(String candidatcnp, Note note) {
+    public static int updateNote(Note note) {
         int result;
         Connection con = MainApp.getDBConnection();
-        String query = "UPDATE NOTE SET candidatcnp = ?, "
-                + "valoare = ?, examenid = ? WHERE candidatcnp = ?";
+        String query = "UPDATE NOTE SET valoare = ? " +
+                       "WHERE candidatcnp = ? AND examenid = ?";
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query.toString());
-            pstmt.setString(1, note.getCandidatCNP());
-            pstmt.setFloat(2, note.getValoare());
-            pstmt.setString(3, note.getExamenId());
-            pstmt.setString(4, candidatcnp);
+            pstmt.setFloat(1, note.getValoare());
+            pstmt.setString(2, note.getCandidatCNP());
+            pstmt.setString(3, note.getExamenid());
+
             result = pstmt.executeUpdate();
             pstmt.close();
             return result;
@@ -110,7 +114,7 @@ public class NoteService {
             PreparedStatement pstmt = con.prepareStatement(query.toString());
             pstmt.setString(1, note.getCandidatCNP());
             pstmt.setFloat(2, note.getValoare());
-            pstmt.setString(3, note.getExamenId());
+            pstmt.setString(3, note.getExamenid());
             result = pstmt.executeUpdate();
             pstmt.close();
             return result;
