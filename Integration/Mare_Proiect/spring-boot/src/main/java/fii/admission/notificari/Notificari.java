@@ -5,6 +5,15 @@ public class Notificari {
     private boolean seen;
     private String email;
 
+    public Notificari(String message, boolean seen, String email) {
+        this.message = message;
+        this.seen = seen;
+        this.email = email;
+    }
+
+    public Notificari() {
+    }
+
     public String getMessage() {
         return message;
     }
@@ -13,7 +22,7 @@ public class Notificari {
         this.message = message;
     }
 
-    public boolean getSeen() {
+    public boolean isSeen() {
         return seen;
     }
 
@@ -21,11 +30,11 @@ public class Notificari {
         this.seen = seen;
     }
 
-    public String getUserEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setUserEmail(String useremail) {
-        this.email = useremail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

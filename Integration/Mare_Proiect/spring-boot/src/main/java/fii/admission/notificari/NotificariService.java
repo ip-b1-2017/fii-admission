@@ -23,8 +23,8 @@ public class NotificariService {
             while (rs.next()) {
                 Notificari p = new Notificari();
                 p.setMessage(rs.getString("TEXT"));
-                p.setSeen(rs.getString("SEEN").compareToIgnoreCase("true") == 0);
-                p.setUserEmail(rs.getString("USEREMAIL"));
+                p.setSeen(rs.getInt("SEEN") == 1);
+                p.setEmail(rs.getString("USEREMAIL"));
                 result.add(p);
             }
             stmt.close();
@@ -39,16 +39,16 @@ public class NotificariService {
     public static List<Notificari> getNotificari(String useremail) {
         List<Notificari> result = new ArrayList<>();
         Connection con = MainApp.getDBConnection();
-        String query = "SELECT * FROM NOTIFICARI WHERE USEREMAIL = ?";
+        String query = "SELECT * FROM NOTIFICARI WHERE USEREMAIL = ? order by seen";
         try {
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, useremail);
-            ResultSet rs = pstmt.executeQuery(query);
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Notificari p = new Notificari();
                 p.setMessage(rs.getString("TEXT"));
-                p.setSeen(rs.getString("SEEN").compareToIgnoreCase("true") == 0);
-                p.setUserEmail(rs.getString("USEREMAIL"));
+                p.setSeen(rs.getInt("SEEN") == 1);
+                p.setEmail(rs.getString("USEREMAIL"));
                 result.add(p);
             }
             pstmt.close();
@@ -68,9 +68,26 @@ public class NotificariService {
         try {
             PreparedStatement pstmt = con.prepareStatement(query.toString());
             pstmt.setString(1, notificari.getMessage());
-            pstmt.setString(2, notificari.getSeen() ? "true" : "false");
-            pstmt.setString(3, notificari.getUserEmail());
+            pstmt.setInt(2, notificari.isSeen() ? 1 : 0);
+            pstmt.setString(3, notificari.getEmail());
             pstmt.setString(4, useremail);
+            result = pstmt.executeUpdate();
+            pstmt.close();
+            return result;
+        } catch (Exception exc) {
+            System.out.printf("[error][updateNotificari] %s\n", exc.getMessage());
+        }
+        return 0;
+    }
+
+    public static int setSeen(String useremail) {
+        int result;
+        Connection con = MainApp.getDBConnection();
+        String query = "UPDATE NOTIFICARI SET seen = 1 where useremail = ?";
+
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, useremail);
             result = pstmt.executeUpdate();
             pstmt.close();
             return result;
@@ -97,6 +114,7 @@ public class NotificariService {
     }
 
     public static int insertNotificari(Notificari notificari) {
+        System.out.println(notificari.toString());
         int result;
         Connection con = MainApp.getDBConnection();
         String query = "INSERT INTO NOTIFICARI "
@@ -104,16 +122,16 @@ public class NotificariService {
                 + " VALUES ( ?, ?, ?)";
 
         try {
-            PreparedStatement pstmt = con.prepareStatement(query.toString());
+            PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, notificari.getMessage());
-            pstmt.setString(2, notificari.getSeen() ? "true" : "false");
-            pstmt.setString(3, notificari.getUserEmail());
+            pstmt.setInt(2, notificari.isSeen() ? 1 : 0);
+            pstmt.setString(3, notificari.getEmail());
             result = pstmt.executeUpdate();
             pstmt.close();
             return result;
         } catch (Exception exc) {
             System.out.printf("[error][updateNotificari] %s\n", exc.getMessage());
+            return 0;
         }
-        return 0;
     }
 }

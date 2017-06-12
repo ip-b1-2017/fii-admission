@@ -1,0 +1,8 @@
+ul.notification_list .read {
+    color: #aaaaaa;
+}
+
+ul.notification_list .unread {
+    color: #111111;
+    border: solid 1px yellowgreen;
+}

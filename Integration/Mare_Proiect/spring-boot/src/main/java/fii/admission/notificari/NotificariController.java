@@ -61,4 +61,15 @@ public class NotificariController {
             return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
         }
     }
+
+    @RequestMapping(value="/notificari/{emailB64}/mark_seen", method=RequestMethod.POST)
+    public ResponseEntity<SuccessEntity> markSeen(@PathVariable String emailB64){
+        String email = new String(Base64.getDecoder().decode(emailB64));
+        int result = NotificariService.setSeen(email);
+
+        if (result == 0) {
+            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
+    }
 }
