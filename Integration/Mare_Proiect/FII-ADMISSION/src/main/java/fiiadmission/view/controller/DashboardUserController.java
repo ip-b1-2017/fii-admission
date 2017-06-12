@@ -31,13 +31,17 @@ public class DashboardUserController {
     public @ResponseBody
     ModelAndView getLoginForm( String error, Model model, HttpServletRequest req, HttpServletResponse rep) throws IOException {
         AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
+        if (auth == null){
+            rep.sendError(400, "Unauthenticated.");
+            return null;
+        }
         Email email = new Email();
         email.setEmail(auth.getUsername());
         StatisticiUser statisticiUser = getStatisticiUser(email);
         List<String> notifications = getNotifications(auth);
 
         if (statisticiUser == null || notifications == null){
-            rep.sendError(400, "Unauthenticated.");
+            rep.sendError(400, "Bad authentication.");
             return null;
         }
 
