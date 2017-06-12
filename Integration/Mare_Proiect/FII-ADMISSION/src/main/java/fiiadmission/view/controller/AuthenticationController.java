@@ -31,6 +31,13 @@ import java.util.Map;
 public class AuthenticationController {
     private IValidator validator = new Validator();
 
+
+    @RequestMapping(value="/", method= RequestMethod.GET)
+    public ModelAndView dashboardAdmin(Model model, javax.servlet.http.HttpServletRequest req){
+        return new ModelAndView("/index");
+
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public @ResponseBody
     ModelAndView getLoginForm(@RequestParam(value = "error", required = false) String error,
