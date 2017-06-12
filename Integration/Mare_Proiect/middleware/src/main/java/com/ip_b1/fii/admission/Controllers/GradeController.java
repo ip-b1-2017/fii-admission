@@ -69,16 +69,15 @@ public class GradeController {
         RestTemplate restTemplate = new RestTemplate();
 
         try{
-            CandidateOutEntity candidateOutEntity =
-                    this.getCandidate(restTemplate, grade.getEntity().getUsername());
             ResponseEntity response =
                     restTemplate.postForEntity(
                     ServerProperties.modelUrl + "/note/{cnp}",
-                    grade.getGrade(),
+                    grade.getGradeEntity(),
                     ResponseEntity.class,
-                    candidateOutEntity.getCnp()
+                    grade.getGrade().getCandidatCNP()
             );
-        } catch (BadAttributeValueExpException e) {
+        } catch (Exception e) {
+            System.out.println("[error]@/addValue " + e);
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity(HttpStatus.CREATED);

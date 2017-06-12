@@ -14,4 +14,9 @@ public class MarksController {
     public ModelAndView dashboardAdmin(Model model, HttpServletRequest req){
         return new ModelAndView("/marks");
     }
+
+    @RequestMapping(value="/marks", method= RequestMethod.POST)
+    public ModelAndView dashboardAdminAddMark(Model model, HttpServletRequest req){
+        return new ModelAndView("/marks");
+    }
 }
