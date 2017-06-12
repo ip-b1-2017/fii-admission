@@ -28,11 +28,11 @@ public class AnnouncementsController {
     public ResponseEntity save(@RequestBody Announcement announcement){
       return new ResponseEntity(AnnouncementsService.save(announcement.getTitle(),announcement.getText()));
     }
-    @RequestMapping(value="/announcements/update/{id}",method = RequestMethod.POST)
+    @RequestMapping(value="/announcements/update/{id}",method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") int id, @RequestBody Announcement announcement){
         return new ResponseEntity(AnnouncementsService.update(id, announcement.getTitle(),announcement.getText()));
     }
-    @RequestMapping(value="/announcements/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/announcements/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable("id") int id){
         return new ResponseEntity(AnnouncementsService.delete(id));
     }
