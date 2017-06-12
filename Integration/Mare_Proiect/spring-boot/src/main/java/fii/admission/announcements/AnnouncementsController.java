@@ -23,7 +23,6 @@ public class AnnouncementsController {
         }
         return new ResponseEntity<List<Announcement>>(AnnouncementsService.getAnnouncements(seek,limit),HttpStatus.OK);
     }
-
     @RequestMapping(value="/announcements/save",method = RequestMethod.POST)
     public ResponseEntity save(@RequestBody Announcement announcement){
       return new ResponseEntity(AnnouncementsService.save(announcement.getTitle(),announcement.getText()));
