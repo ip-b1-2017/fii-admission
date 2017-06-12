@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class MarksController {
-    @RequestMapping(value="/teachers", method= RequestMethod.GET)
+    @RequestMapping(value="/marks", method= RequestMethod.GET)
     public ModelAndView dashboardAdmin(Model model, HttpServletRequest req){
-        return new ModelAndView("/teachers");
+        return new ModelAndView("/marks");
     }
 }
