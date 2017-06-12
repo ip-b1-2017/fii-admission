@@ -22,7 +22,19 @@ public class NoteController {
 
     @RequestMapping(value = "/note/{candidatcnp}", method = RequestMethod.GET)
     public ResponseEntity<Note> getNote(@PathVariable String candidatcnp) {
-        Note result = NoteService.getNote(candidatcnp);
+        Note result = NoteService.getNote(candidatcnp, null);
+
+        if (result == null)
+            return new ResponseEntity<Note>(result, HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<Note>(result, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/note/{candidatcnp}/{criteria}", method = RequestMethod.GET)
+    public ResponseEntity<Note> getNoteByCriteria(
+            @PathVariable String candidatcnp,
+            @PathVariable String criteria) {
+        Note result = NoteService.getNote(candidatcnp, criteria);
 
         if (result == null)
             return new ResponseEntity<Note>(result, HttpStatus.NOT_FOUND);
@@ -31,8 +43,12 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/note/{candidatcnp}", method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> updateNote(@PathVariable("candidatcnp") String candidatcnp, @RequestBody Note note) {
-        int result = NoteService.updateNote(candidatcnp, note);
+    public ResponseEntity<SuccessEntity> updateNote(
+            @PathVariable("candidatcnp") String candidatcnp,
+            @RequestBody NoteDTO note) {
+
+        Note entity = mapDtoToEntity(note, candidatcnp);
+        int result = NoteService.insertNote(entity);
         if (result == 0)
             return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
@@ -48,12 +64,23 @@ public class NoteController {
             return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/note", method = RequestMethod.PUT)
-    public ResponseEntity<SuccessEntity> insertNote(@RequestBody Note note) {
-        int result = NoteService.insertNote(note);
+    @RequestMapping(value = "/note/{candidatcnp}", method = RequestMethod.PUT)
+    public ResponseEntity<SuccessEntity> insertNote(
+            @PathVariable("candidatcnp") String candidatcnp,
+            @RequestBody NoteDTO note) {
+        Note entity = mapDtoToEntity(note, candidatcnp);
+        int result = NoteService.updateNote(entity);
         if (result == 0)
             return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
             return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
+    }
+
+    private Note mapDtoToEntity(NoteDTO note, String candidatcnp){
+        Note entity = new Note();
+        entity.setCandidatCNP(candidatcnp);
+        entity.setExamenid(note.getExamenid());
+        entity.setValoare(note.getValoare());
+        return entity;
     }
 }
