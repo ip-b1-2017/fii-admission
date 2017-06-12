@@ -11,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -21,7 +19,7 @@ import java.util.List;
 @RequestMapping("/controller/get_notifications")
 public class GetNotifications {
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<List<String>> run(@RequestBody AuthEntity auth) {
+    public ResponseEntity<List<NotificationsOutEntity>> run(@RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
                     HttpStatus.UNAUTHORIZED
@@ -42,13 +40,13 @@ public class GetNotifications {
                 );
             }
 
-            List<String> notificationStrings = new ArrayList<>();
+            List<NotificationsOutEntity> outList = new ArrayList<>();
             for (NotificationEntity ent : entity.getBody()){
-                notificationStrings.add(ent.getMessage());
+                outList.add(new NotificationsOutEntity(ent.getMessage(), ent.isSeen()));
             }
 
-            return new ResponseEntity<List<String>>(
-                    notificationStrings,
+            return new ResponseEntity<>(
+                    outList,
                     HttpStatus.OK
             );
         }

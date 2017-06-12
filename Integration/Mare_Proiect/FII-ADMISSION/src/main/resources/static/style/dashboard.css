@@ -3,7 +3,7 @@ body {
 	background-color:#e6e6e6;
 }
 
-ul {
+ul.sidebar {
     list-style-type: none;
     margin-top: 0px;
     padding: 0;

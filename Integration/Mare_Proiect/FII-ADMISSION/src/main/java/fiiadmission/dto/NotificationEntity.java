@@ -1,15 +1,15 @@
-package com.ip_b1.fii.admission.DTO;
+package fiiadmission.dto;
 
-public class NotificationsOutEntity {
+public class NotificationEntity {
     private String message;
     private boolean read;
 
-    public NotificationsOutEntity(String message, boolean read) {
+    public NotificationEntity(String message, boolean read) {
         this.message = message;
         this.read = read;
     }
 
-    public NotificationsOutEntity() {
+    public NotificationEntity() {
     }
 
     public String getMessage() {

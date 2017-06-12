@@ -3,6 +3,7 @@ package fiiadmission.view.controller;
 import fiiadmission.ServerProperties;
 import fiiadmission.dto.AuthEntity;
 import fiiadmission.dto.Email;
+import fiiadmission.dto.NotificationEntity;
 import fiiadmission.dto.StatisticiUser;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.core.ParameterizedTypeReference;
@@ -38,7 +39,7 @@ public class DashboardUserController {
         Email email = new Email();
         email.setEmail(auth.getUsername());
         StatisticiUser statisticiUser = getStatisticiUser(email);
-        List<String> notifications = getNotifications(auth);
+        List<NotificationEntity> notifications = getNotifications(auth);
 
         if (statisticiUser == null || notifications == null){
             rep.sendError(400, "Bad authentication.");
@@ -52,14 +53,14 @@ public class DashboardUserController {
         return new ModelAndView("/dashboard");
     }
 
-    private List<String> getNotifications(AuthEntity auth) {
+    public static List<NotificationEntity> getNotifications(AuthEntity auth) {
         RestTemplate restTemplate = new RestTemplate();
         try {
-            ResponseEntity<List<String>> results = restTemplate.exchange(
+            ResponseEntity<List<NotificationEntity>> results = restTemplate.exchange(
                     ServerProperties.middleUrl + "/get_notifications",
                     HttpMethod.POST,
                     new HttpEntity<>(auth),
-                    new ParameterizedTypeReference<List<String>>() {
+                    new ParameterizedTypeReference<List<NotificationEntity>>() {
                     }
             );
             if (results.getBody() == null) {
