@@ -22,7 +22,7 @@ public class NotificariService {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 Notificari p = new Notificari();
-                p.setText(rs.getString("TEXT"));
+                p.setMessage(rs.getString("TEXT"));
                 p.setSeen(rs.getString("SEEN").compareToIgnoreCase("true") == 0);
                 p.setUserEmail(rs.getString("USEREMAIL"));
                 result.add(p);
@@ -46,7 +46,7 @@ public class NotificariService {
             ResultSet rs = pstmt.executeQuery(query);
             while (rs.next()) {
                 Notificari p = new Notificari();
-                p.setText(rs.getString("TEXT"));
+                p.setMessage(rs.getString("TEXT"));
                 p.setSeen(rs.getString("SEEN").compareToIgnoreCase("true") == 0);
                 p.setUserEmail(rs.getString("USEREMAIL"));
                 result.add(p);
@@ -67,7 +67,7 @@ public class NotificariService {
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query.toString());
-            pstmt.setString(1, notificari.getText());
+            pstmt.setString(1, notificari.getMessage());
             pstmt.setString(2, notificari.getSeen() ? "true" : "false");
             pstmt.setString(3, notificari.getUserEmail());
             pstmt.setString(4, useremail);
@@ -105,7 +105,7 @@ public class NotificariService {
 
         try {
             PreparedStatement pstmt = con.prepareStatement(query.toString());
-            pstmt.setString(1, notificari.getText());
+            pstmt.setString(1, notificari.getMessage());
             pstmt.setString(2, notificari.getSeen() ? "true" : "false");
             pstmt.setString(3, notificari.getUserEmail());
             result = pstmt.executeUpdate();

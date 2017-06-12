@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,9 +24,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by cosmin on 5/16/2017.
- */
 @Controller
 public class DashboardUserController {
 
@@ -36,48 +34,56 @@ public class DashboardUserController {
         Email email = new Email();
         email.setEmail(auth.getUsername());
         StatisticiUser statisticiUser = getStatisticiUser(email);
+        List<String> notifications = getNotifications(auth);
+
+        if (statisticiUser == null || notifications == null){
+            rep.sendError(400, "Unauthenticated.");
+            return null;
+        }
 
         model.addAttribute("nr_aplicatii_depuse", statisticiUser.getNumarAplicanti());
         model.addAttribute("status_aplicatie",statisticiUser.getStatusAplicatie());
         model.addAttribute("user_name",auth.getUsername());
-        model.addAttribute("notifications", getNotifications(auth));
+        model.addAttribute("notifications", notifications);
         return new ModelAndView("/dashboard");
     }
 
     private List<String> getNotifications(AuthEntity auth) {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<List<String>> results = restTemplate.exchange(
-                ServerProperties.middleUrl + "/get_notifications",
-                HttpMethod.POST,
-                new HttpEntity<>(auth),
-                new ParameterizedTypeReference<List<String>>() {}
-        );
-        if (results.getBody() == null){
-            return new ArrayList<>();
+        try {
+            ResponseEntity<List<String>> results = restTemplate.exchange(
+                    ServerProperties.middleUrl + "/get_notifications",
+                    HttpMethod.POST,
+                    new HttpEntity<>(auth),
+                    new ParameterizedTypeReference<List<String>>() {
+                    }
+            );
+            if (results.getBody() == null) {
+                return new ArrayList<>();
+            }
+            return results.getBody();
         }
-        return results.getBody();
+        catch(RestClientResponseException ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
 
     private StatisticiUser getStatisticiUser(Email email){
         RestTemplate restTemplate = new RestTemplate();
-        /*
-        restTemplate.setErrorHandler(new ResponseErrorHandler() {
-            @Override
-            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
-                return false;
-            }
 
-            @Override
-            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
-
-            }
-        });*/
-        ResponseEntity<StatisticiUser> response = restTemplate.postForEntity(
-                ServerProperties.middleUrl + "/statistici/get_statistici_user",
-                email,
-                StatisticiUser.class
-        );
-        return response.getBody();
+        try {
+            ResponseEntity<StatisticiUser> response = restTemplate.postForEntity(
+                    ServerProperties.middleUrl + "/statistici/get_statistici_user",
+                    email,
+                    StatisticiUser.class
+            );
+            return response.getBody();
+        }
+        catch(RestClientResponseException ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
 
 }

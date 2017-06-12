@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -17,9 +18,9 @@ public class NotificariController {
         List<Notificari> result = NotificariService.getAllNotificari();
 
         if (result == null)
-            return new ResponseEntity<List<Notificari>>(result, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NO_CONTENT);
 
-        return new ResponseEntity<List<Notificari>>(result, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.GET)
@@ -28,7 +29,7 @@ public class NotificariController {
         List<Notificari> result = NotificariService.getNotificari(useremail);
 
         if (result == null)
-            return new ResponseEntity<>(result, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NO_CONTENT);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
@@ -43,18 +44,21 @@ public class NotificariController {
         useremail = new String(Base64.getDecoder().decode(useremail));
 
         int result = NotificariService.deleteNotificari(useremail);
-        if (result == 0)
-            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
-        else
-            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
+        if (result == 0) {
+            //Nu-i bug daca incerci sa stergi notificari de la un user care nu are notificari zic eu
+            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
+        }
     }
 
     @RequestMapping(value = "/notificari", method = RequestMethod.POST)
     public ResponseEntity<SuccessEntity> insertNotificari(@RequestBody Notificari notificari) {
         int result = NotificariService.insertNotificari(notificari);
-        if (result == 0)
-            return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
-        else
-            return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);
+        if (result == 0) {
+            return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(new SuccessEntity(true), HttpStatus.OK);
+        }
     }
 }

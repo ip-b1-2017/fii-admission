@@ -1,16 +1,16 @@
 package fii.admission.notificari;
 
 public class Notificari {
-    private String text;
+    private String message;
     private boolean seen;
     private String email;
 
-    public String getText() {
-        return text;
+    public String getMessage() {
+        return message;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public boolean getSeen() {
