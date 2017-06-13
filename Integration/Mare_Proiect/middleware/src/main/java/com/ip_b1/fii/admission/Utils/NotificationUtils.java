@@ -41,4 +41,18 @@ public class NotificationUtils {
                 );
         return result.getStatusCode() == HttpStatus.OK && result.getBody().isSuccess();
     }
+
+    public static boolean markSeenNotifications(AuthEntity auth){
+        String emailB64 = new String(Base64.getEncoder().encode(auth.getUsername().getBytes()));
+
+        RestTemplate template = new TolerantRestTemplate();
+        ResponseEntity<SuccessEntity> result = template.exchange(
+                ServerProperties.modelUrl + "/notificari/{emailB64}/mark_seen",
+                HttpMethod.POST,
+                null,
+                SuccessEntity.class,
+                emailB64
+        );
+        return result.getStatusCode() == HttpStatus.OK && result.getBody().isSuccess();
+    }
 }

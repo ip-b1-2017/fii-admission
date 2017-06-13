@@ -117,10 +117,10 @@ public class NoteService {
             pstmt.setString(3, note.getExamenid());
             result = pstmt.executeUpdate();
             pstmt.close();
-            return result;
+            return 0;
         } catch (Exception exc) {
             System.out.printf("[error][updateNote] %s\n", exc.getMessage());
+            return 1;
         }
-        return 0;
     }
 }

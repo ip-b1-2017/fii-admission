@@ -31,10 +31,9 @@ public class GradeController {
         RestTemplate restTemplate = new RestTemplate();
 
         try{
-
-            System.out.println("[debug]@GradeController get OK status code");
             CandidateOutEntity candidateOutEntity =
                     this.getCandidate(restTemplate, auth.getUsername());
+            System.out.println("[debug]@GradeController get OK status code");
             grade.setFirstName(candidateOutEntity.getFirstname());
             grade.setLastName(candidateOutEntity.getLastname());
 
@@ -62,23 +61,22 @@ public class GradeController {
     @RequestMapping(value = "/addValue", method = RequestMethod.POST)
     public ResponseEntity addValue(
             @RequestBody GradePostStructure grade){
+        System.out.println("[debug] @/addValue " + grade.getEntity().getUsername());
         boolean isAuth = AuthUtils.checkAuth(grade.getEntity());
         if(!isAuth)
             return new ResponseEntity(HttpStatus.FORBIDDEN);
-
         RestTemplate restTemplate = new RestTemplate();
-
+        System.out.println("[debug] " + grade.getMark().getCandidatCNP() + " " + grade.getMark().getExamenid());
         try{
-            CandidateOutEntity candidateOutEntity =
-                    this.getCandidate(restTemplate, grade.getEntity().getUsername());
             ResponseEntity response =
                     restTemplate.postForEntity(
                     ServerProperties.modelUrl + "/note/{cnp}",
-                    grade.getGrade(),
+                    grade.getGradeEntity(),
                     ResponseEntity.class,
-                    candidateOutEntity.getCnp()
+                    grade.getMark().getCandidatCNP()
             );
-        } catch (BadAttributeValueExpException e) {
+        } catch (Exception e) {
+            System.out.println("[error]@/addValue " + e);
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity(HttpStatus.CREATED);

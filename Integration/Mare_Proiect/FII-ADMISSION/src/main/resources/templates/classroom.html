@@ -8,34 +8,7 @@
 </head>
 <body>
 
-<ul>
-
-<div class="logo"></div>
-
- <!-- <li><div class="avatar"></div><h3>John Smith</h3></li> -->
-
-<div class="content">
-    <h2>Administrator</h2>
-</div>​
-
-    <li><a href="dashboard_admin">Dashboard</a></li>
-    <li id="news"><a href="#news">Add News</a></li>
-    <li><a href="candidates_admin">View Applications</a></li>
-    <li><a href="teachers">Teachers</a></li>
-    <li><a class="active" href="classroom">Classrooms</a></li>
-    <li><a href="/disconnect">Disconnect</a></li>
-  <br>
-  <hr>
-      <p id="contact">
-        Contact<br>
-        Adress:<br>
-        Facultatea de informatica,<br>
-        Universitatea "Al. I. Cuza",<br>
-        General Berthelot, 16, IASI <br>
-        700483, ROMANIA <br>
-        Phone: +40 232 201090<br>
-        E-mail: secretariat@info.uaic.ro
-      	</p>
+<ul th:replace="frag_sidebar :: sidebar_admin ('/classroom')">
 </ul>
 
 <!-- <div id="section-dash" class="tab-content" style="margin-left:20%;padding:1px 16px;height:1000px;">

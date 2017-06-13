@@ -46,10 +46,10 @@ public class NoteController {
     public ResponseEntity<SuccessEntity> updateNote(
             @PathVariable("candidatcnp") String candidatcnp,
             @RequestBody NoteDTO note) {
-
+        System.out.println("[debug]/note/{cnp} ALL GOOD");
         Note entity = mapDtoToEntity(note, candidatcnp);
         int result = NoteService.insertNote(entity);
-        if (result == 0)
+        if (result != 0)
             return new ResponseEntity<SuccessEntity>(new SuccessEntity(false), HttpStatus.NOT_MODIFIED);
         else
             return new ResponseEntity<SuccessEntity>(new SuccessEntity(true), HttpStatus.OK);

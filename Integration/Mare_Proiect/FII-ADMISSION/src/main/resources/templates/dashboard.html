@@ -10,39 +10,8 @@
 </head>
 <body>
 
-<ul>
-
-    <li>
-        <div class="logo"></div>
-    </li>
-    <li>
-        <div class="content">
-            <!--/*@thymesVar id="user_name" type="String"*/-->
-            <h2 id="user_name" th:text="${user_name}"></h2>
-        </div>​
-    </li>
-
-
-    <li><a class="active" href="/dashboard">Dashboard</a></li>
-    <li><a href="/preform">Application Form</a></li>
-    <li><a href="/disconnect">Disconnect</a></li>
-    <!--/*@thymesVar id="notifications" type="List<String>"*/-->
-    <li><a href="/notifications">Notifications [<span th:text="${notifications.size()}"></span>]</a></li>
-
-    <li><hr></li>
-
-    <li>
-    <p id="contact">
-    Contact<br>
-    Adress:<br>
-    Facultatea de informatica,<br>
-    Universitatea "Al. I. Cuza",<br>
-    General Berthelot, 16, IASI <br>
-    700483, ROMANIA <br>
-    Phone: +40 232 201090<br>
-    E-mail: secretariat@info.uaic.ro
-    </p>
-    </li>
+<ul th:replace="frag_sidebar :: sidebar_candidates ('/dashboard')">
+    sidebar goes here
 </ul>
 
 

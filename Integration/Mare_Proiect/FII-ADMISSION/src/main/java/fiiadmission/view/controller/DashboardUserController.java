@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -39,9 +40,9 @@ public class DashboardUserController {
         Email email = new Email();
         email.setEmail(auth.getUsername());
         StatisticiUser statisticiUser = getStatisticiUser(email);
-        List<NotificationEntity> notifications = getNotifications(auth);
+        Integer notificationsCountUnread = getNotificationsCountUnread(auth);
 
-        if (statisticiUser == null || notifications == null){
+        if (statisticiUser == null || notificationsCountUnread == null){
             rep.sendError(400, "Bad authentication.");
             return null;
         }
@@ -49,22 +50,21 @@ public class DashboardUserController {
         model.addAttribute("nr_aplicatii_depuse", statisticiUser.getNumarAplicanti());
         model.addAttribute("status_aplicatie",statisticiUser.getStatusAplicatie());
         model.addAttribute("user_name",auth.getUsername());
-        model.addAttribute("notifications", notifications);
+        model.addAttribute("unread_notifications", notificationsCountUnread);
         return new ModelAndView("/dashboard");
     }
 
-    public static List<NotificationEntity> getNotifications(AuthEntity auth) {
+    public static Integer getNotificationsCountUnread(AuthEntity auth) {
         RestTemplate restTemplate = new RestTemplate();
         try {
-            ResponseEntity<List<NotificationEntity>> results = restTemplate.exchange(
-                    ServerProperties.middleUrl + "/get_notifications",
+            ResponseEntity<Integer> results = restTemplate.exchange(
+                    ServerProperties.middleUrl + "/get_notifications/count_unread",
                     HttpMethod.POST,
                     new HttpEntity<>(auth),
-                    new ParameterizedTypeReference<List<NotificationEntity>>() {
-                    }
+                    Integer.class
             );
             if (results.getBody() == null) {
-                return new ArrayList<>();
+                return 0;
             }
             return results.getBody();
         }

@@ -6,7 +6,7 @@ package com.ip_b1.fii.admission.DTO;
 public class GradePostStructure {
 
     AuthEntity entity;
-    GradeEntity grade;
+    GradeDTO mark;
 
     public GradePostStructure(){
 
@@ -20,11 +20,13 @@ public class GradePostStructure {
         this.entity = entity;
     }
 
-    public GradeEntity getGrade() {
-        return grade;
+    public GradeDTO getMark() {
+        return mark;
     }
 
-    public void setGrade(GradeEntity grade) {
-        this.grade = grade;
+    public GradeEntity getGradeEntity(){return (GradeEntity)mark;}
+
+    public void setMark(GradeDTO grade) {
+        this.mark = grade;
     }
 }
