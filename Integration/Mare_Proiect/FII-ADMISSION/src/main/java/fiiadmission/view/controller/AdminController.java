@@ -137,8 +137,10 @@ public class AdminController {
     public static boolean pushNotification(AuthEntity auth, String cnp, String message){
         NotificationSendEntity entity = new NotificationSendEntity(auth, cnp, message);
         RestTemplate template = new TolerantRestTemplate();
+        System.out.println("in push notification");
         ResponseEntity<SuccessEntity> result =
-                template.postForEntity(ServerProperties.middleUrl+ "/push_notification", entity, SuccessEntity.class);
+                template.postForEntity(ServerProperties.middleUrl + "/send_notification", entity, SuccessEntity.class);
+        System.out.println(result.getStatusCode().getReasonPhrase());
         return result.getStatusCode() == HttpStatus.OK && result.getBody().isSuccess();
     }
 

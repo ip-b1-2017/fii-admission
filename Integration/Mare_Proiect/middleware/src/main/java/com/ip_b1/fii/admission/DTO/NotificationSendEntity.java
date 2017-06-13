@@ -5,6 +5,9 @@ public class NotificationSendEntity {
     private String cnp;
     private String message;
 
+    public NotificationSendEntity() {
+    }
+
     public NotificationSendEntity(AuthEntity auth, String cnp, String message) {
         this.auth = auth;
         this.cnp = cnp;
