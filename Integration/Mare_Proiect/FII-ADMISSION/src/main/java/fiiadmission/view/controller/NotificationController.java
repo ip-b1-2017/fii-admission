@@ -44,7 +44,7 @@ public class NotificationController {
         }
         int notifsUnread = 0;
         for (NotificationEntity notif : notifications) {
-            if (!notif.isRead()){
+            if (!notif.isSeen()){
                 notifsUnread++;
             }
         }

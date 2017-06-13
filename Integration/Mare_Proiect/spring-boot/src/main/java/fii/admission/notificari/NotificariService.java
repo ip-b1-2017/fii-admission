@@ -88,6 +88,23 @@ public class NotificariService {
         return 0;
     }
 
+    public static int setSeen(String useremail) {
+        int result;
+        Connection con = MainApp.getDBConnection();
+        String query = "UPDATE NOTIFICARI SET seen = 1 where useremail = ?";
+
+        try {
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, useremail);
+            result = pstmt.executeUpdate();
+            pstmt.close();
+            return result;
+        } catch (Exception exc) {
+            System.out.printf("[error][updateNotificari] %s\n", exc.getMessage());
+        }
+        return 0;
+    }
+
     public static int deleteNotificari(String useremail) {
         int result;
         Connection con = MainApp.getDBConnection();
@@ -124,4 +141,6 @@ public class NotificariService {
         }
         return 0;
     }
+
+
 }
