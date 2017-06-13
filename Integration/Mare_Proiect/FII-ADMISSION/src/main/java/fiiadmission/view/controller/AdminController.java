@@ -134,15 +134,11 @@ public class AdminController {
         return modelAndView;
     }
 
-    public static boolean pushNotification(AuthEntity auth, String message){
-        NotificationEntity entity = new NotificationEntity(auth.getUsername(), false, message);
-        System.out.println("Trimit:");
-        System.out.println(entity.getEmail());
-        System.out.println(entity.getMessage());
-        System.out.println(entity.isSeen());
+    public static boolean pushNotification(AuthEntity auth, String cnp, String message){
+        NotificationSendEntity entity = new NotificationSendEntity(auth, cnp, message);
         RestTemplate template = new TolerantRestTemplate();
         ResponseEntity<SuccessEntity> result =
-                template.postForEntity(ServerProperties.modelUrl + "/notificari", entity, SuccessEntity.class);
+                template.postForEntity(ServerProperties.middleUrl+ "/push_notification", entity, SuccessEntity.class);
         return result.getStatusCode() == HttpStatus.OK && result.getBody().isSuccess();
     }
 
@@ -182,7 +178,7 @@ public class AdminController {
                 new ParameterizedTypeReference<SuccessEntity>() {
                 });
 
-        boolean result = pushNotification(auth, comment);
+        boolean result = pushNotification(auth, cnp, comment);
         System.out.println("accept_candidate -> " + result);
 
         return new ModelAndView("redirect:/candidates_admin");
@@ -210,7 +206,7 @@ public class AdminController {
                 new ParameterizedTypeReference<SuccessEntity>() {
                 });
 
-        boolean result = pushNotification(auth, comment);
+        boolean result = pushNotification(auth, cnp, comment);
         System.out.println("reject_candidate -> " + result);
 
         return new ModelAndView("redirect:/candidates_admin");

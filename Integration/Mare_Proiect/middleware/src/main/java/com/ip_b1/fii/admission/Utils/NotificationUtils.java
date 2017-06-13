@@ -18,8 +18,8 @@ import java.util.Base64;
 import java.util.List;
 
 public class NotificationUtils {
-    public static boolean pushNotification(AuthEntity auth, String message){
-        NotificationEntity entity = new NotificationEntity(auth.getUsername(), false, message);
+    public static boolean pushNotification(String username, String message){
+        NotificationEntity entity = new NotificationEntity(username, false, message);
 
         RestTemplate template = new TolerantRestTemplate();
         ResponseEntity<SuccessEntity> result =
