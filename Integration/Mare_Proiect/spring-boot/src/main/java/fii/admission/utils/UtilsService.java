@@ -11,12 +11,14 @@ import net.sf.dynamicreports.report.builder.column.Columns;
 import net.sf.dynamicreports.report.builder.component.Components;
 import net.sf.dynamicreports.report.builder.datatype.DataTypes;
 import net.sf.dynamicreports.report.constant.HorizontalAlignment;
+import net.sf.dynamicreports.report.datasource.DRDataSource;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
+import javax.xml.transform.Templates;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
@@ -38,11 +40,15 @@ public class UtilsService {
         return true;
     }
     public static int[] generate(int k,List<Sali>sali,TreeMap<String,Integer>probe,int[]aloc){
-        if(k>sali.size()) {
-            if (ok(probe))
+        if(k>=sali.size()) {
+//            System.out.println("Terminat de atribuit sali");
+            if (ok(probe)) {
+//                System.out.println("Gasit solutie");
                 return aloc;
+            }
             return null;
         }
+        int[]r;
         int old,i=0,dif;
         for (Map.Entry<String,Integer>ent:probe.entrySet()){
             if(ent.getValue()!=0) {
@@ -52,15 +58,18 @@ public class UtilsService {
                 if(dif<0)
                     dif=0;
                 ent.setValue(dif);
-                int []r = generate(k+1,sali, probe, aloc);
+//                System.out.println("in for");
+                r = generate(k+1,sali, probe, aloc);
                 if(r!=null)
                     return r;
                 ent.setValue(old);
             }
             i++;
         }
-        generate(k+1,sali, probe, aloc);
-        return null;
+        aloc[k]=-1;
+//        System.out.println("Dupa for");
+        r= generate(k+1,sali, probe, aloc);
+        return r;
     }
     public static int[] AssignClasses(List<Sali>sali, TreeMap<String,Integer>probe){
         int totalSali=0;
@@ -125,20 +134,24 @@ public class UtilsService {
             stmtClass.close();
             rsClass.close();
             TreeMap<String,Integer>save=new TreeMap<>(probe);
-            System.out.println("ok");
+//            System.out.println("ok");
             int aloc[]=AssignClasses(sali,probe);
             probe=save;
-            int j=0,lg;
-            System.out.println(aloc);
+            int j=0,lg,nrp;
+//            System.out.println(aloc);
+            ArrayList<Map.Entry<String,Integer>>list=new ArrayList<Map.Entry<String,Integer>>(probe.entrySet());
             for(int i=0;i<sali.size();i++){
                 lg=students.size();
                 if(lg>sali.get(i).getNrLocuri())
                     lg=sali.get(i).getNrLocuri();
-                if (lg>probe.get(aloc[i]))
-                    lg=probe.get(aloc[i]);
-                lg=lg+j;
-                for(;j<lg;j++){
-                    listStudents.add(new StudentsPlacement(students.get(j),sali.get(i),data,"09:00"));
+                if(aloc[i]!=-1) {
+                    Integer nrLocuri = list.get(aloc[i]).getValue();
+                    if (lg > nrLocuri)
+                        lg = nrLocuri;
+                    lg = lg + j;
+                    for (; j < lg; j++) {
+                        listStudents.add(new StudentsPlacement(students.get(j), sali.get(i), data, "09:00"));
+                    }
                 }
             }
 
@@ -148,6 +161,7 @@ public class UtilsService {
                 return listStudents;
         } catch (Exception exc) {
             System.out.printf("[error][getStudentsPlacement] %s\n", exc.getMessage());
+//            exc.printStackTrace();
         }
         return null;
     }
@@ -157,11 +171,12 @@ public class UtilsService {
         final List<StudentsPlacement> listStudents = getStudentsPlacement();
         report
                 .columns(
-                        Columns.column("Firstname", DataTypes.stringType()),
-                        Columns.column("Lastname", DataTypes.stringType()),
-                        Columns.column("Class",  DataTypes.stringType()),
-                        Columns.column("Type", DataTypes.stringType()),
-                        Columns.column("Hour",  DataTypes.stringType()))
+                        Columns.column("Firstname","Firstname", DataTypes.stringType()),
+                        Columns.column("Lastname","Lastname", DataTypes.stringType()),
+                        Columns.column("Class","Class" , DataTypes.stringType()),
+                        Columns.column("Type","Type", DataTypes.stringType()),
+                        Columns.column("Date","Date", DataTypes.stringType()),
+                        Columns.column("Hour","Hour",  DataTypes.stringType()))
                 .title(//title of the report
                         Components.text("Students Placement")
                                 .setHorizontalAlignment(HorizontalAlignment.CENTER))
@@ -169,15 +184,21 @@ public class UtilsService {
         ;
         try {
             //show the report
-            report.setDataSource(listStudents);
-            report.show();
+           DRDataSource dataSource = new DRDataSource("Firstname", "Lastname",
+                   "Class", "Type","Date", "Hour");
+           for (StudentsPlacement student : listStudents){
+               dataSource.add(student.getPrenume(),student.getNume(),student.getSala(),
+                       student.getProba(),student.getData(),student.getOra());
+           }
+            report.setDataSource(dataSource);
 
             //export the report to a pdf file
             report.toPdf(new FileOutputStream(filename+".pdf"));
-            //return listStudents;
+
         } catch (Exception exc) {
-            System.out.printf("[error][getStudentsPlacement( " +filename+
+            System.out.printf("[error][getStudentsPlacement( " +filename+".pdf"+
                     " )] %s\n", exc.getMessage());
+            exc.printStackTrace();
         }
         try {
             XSSFWorkbook workbook = new XSSFWorkbook();
@@ -194,9 +215,9 @@ public class UtilsService {
             Row header = sheet.createRow(rownum);
             header.createCell(0).setCellValue("First Name");
             header.createCell(1).setCellValue("Last Name");
-            header.createCell(1).setCellValue("Class");
-            header.createCell(1).setCellValue("Type");
-            header.createCell(1).setCellValue("Hour");
+            header.createCell(2).setCellValue("Class");
+            header.createCell(3).setCellValue("Type");
+            header.createCell(4).setCellValue("Hour");
             for (String key : keyset) {
                 Row row = sheet.createRow(++rownum);
                 Object[] objArr = data.get(key);
@@ -213,8 +234,10 @@ public class UtilsService {
             FileOutputStream out = new FileOutputStream(new File(filename+".xls"));
             workbook.write(out);
             out.close();
-        } catch (Exception e) {
-            System.out.printf("[error][exportStudents] %s\n", e.getMessage());
+            return listStudents;
+        } catch (Exception exc) {
+            System.out.printf("[error][getStudentsPlacement( " +filename+".xls"+
+                    " )] %s\n", exc.getMessage());
         }
         return null;
     }
@@ -257,6 +280,5 @@ public class UtilsService {
 
     }
 
-    public static void getProfesoriPlacement() {
-    }
+
 }
