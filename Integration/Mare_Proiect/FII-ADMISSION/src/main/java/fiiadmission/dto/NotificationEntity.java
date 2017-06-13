@@ -1,15 +1,36 @@
 package fiiadmission.dto;
 
 public class NotificationEntity {
-    private String message;
-    private boolean read;
 
-    public NotificationEntity(String message, boolean read) {
-        this.message = message;
-        this.read = read;
-    }
+    private String email;
+    private boolean seen;
+    private String message;
 
     public NotificationEntity() {
+
+    }
+
+    public NotificationEntity(String email, boolean seen, String message) {
+
+        this.email = email;
+        this.seen = seen;
+        this.message = message;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isSeen() {
+        return seen;
+    }
+
+    public void setSeen(boolean seen) {
+        this.seen = seen;
     }
 
     public String getMessage() {
@@ -19,12 +40,6 @@ public class NotificationEntity {
     public void setMessage(String message) {
         this.message = message;
     }
-
-    public boolean isRead() {
-        return read;
-    }
-
-    public void setRead(boolean read) {
-        this.read = read;
-    }
 }
+
+

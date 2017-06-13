@@ -3,10 +3,8 @@ package fiiadmission.view.controller;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.sun.deploy.net.HttpResponse;
 import fiiadmission.ServerProperties;
-import fiiadmission.dto.AuthEntity;
-import fiiadmission.dto.ClassroomEntity;
-import fiiadmission.dto.ProfessorEntity;
-import fiiadmission.dto.SuccessReasonEntity;
+import fiiadmission.TolerantRestTemplate;
+import fiiadmission.dto.*;
 import io.swagger.models.Model;
 import io.swagger.models.auth.In;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
@@ -15,17 +13,26 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import sun.net.www.http.HttpClient;
 import validator.IValidator;
 import validator.Mapper;
 import validator.Validator;
 import fiiadmission.view.Model.*;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URL;
 import java.util.*;
 
 @Controller
@@ -127,6 +134,90 @@ public class AdminController {
         return modelAndView;
     }
 
+    public static boolean pushNotification(AuthEntity auth, String message){
+        NotificationEntity entity = new NotificationEntity(auth.getUsername(), false, message);
+        System.out.println("Trimit:");
+        System.out.println(entity.getEmail());
+        System.out.println(entity.getMessage());
+        System.out.println(entity.isSeen());
+        RestTemplate template = new TolerantRestTemplate();
+        ResponseEntity<SuccessEntity> result =
+                template.postForEntity(ServerProperties.modelUrl + "/notificari", entity, SuccessEntity.class);
+        return result.getStatusCode() == HttpStatus.OK && result.getBody().isSuccess();
+    }
+
+    /// Returns if any notifications have been deleted (It is not a failure if there are no notifications)
+    public static boolean clearNotifications(AuthEntity auth){
+        String emailB64 = new String(Base64.getEncoder().encode(auth.getUsername().getBytes()));
+
+        RestTemplate template = new TolerantRestTemplate();
+        ResponseEntity<SuccessEntity> result = template.exchange(
+                ServerProperties.modelUrl + "/notificari/{emailB64}",
+                HttpMethod.DELETE,
+                null,
+                SuccessEntity.class,
+                emailB64
+        );
+        return result.getStatusCode() == HttpStatus.OK && result.getBody().isSuccess();
+    }
+
+    @RequestMapping(value = "/accept_candidate", method = RequestMethod.POST)
+    public ModelAndView acceptCandidateFromForm(@RequestParam("cnp") String cnp, String error,
+                                        org.springframework.ui.Model model,
+                                        HttpServletRequest req,
+                                        HttpServletResponse rep) {
+
+        AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
+        if (auth == null){
+            return new ModelAndView("redirect:/login");
+        }
+
+        String comment = req.getParameter("comment");
+
+        RestTemplate template = new RestTemplate();
+        ResponseEntity<SuccessEntity> response = template.exchange(
+                ServerProperties.middleUrl + "/application_review_accept/cnp=" + cnp,
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<SuccessEntity>() {
+                });
+
+        boolean result = pushNotification(auth, comment);
+        System.out.println("accept_candidate -> " + result);
+
+        return new ModelAndView("redirect:/candidates_admin");
+    }
+
+    @RequestMapping(value = "/reject_candidate", method = RequestMethod.POST)
+    public ModelAndView rejectCandidateFromForm(@RequestParam("cnp") String cnp, String error,
+                                                org.springframework.ui.Model model,
+                                                HttpServletRequest req,
+                                                HttpServletResponse rep) {
+
+        AuthEntity auth = AuthEntity.fromCookies(req.getCookies());
+        if (auth == null){
+            return new ModelAndView("redirect:/login");
+        }
+
+        String comment = req.getParameter("comment");
+
+        RestTemplate template = new RestTemplate();
+
+        ResponseEntity<SuccessEntity> response = template.exchange(
+                ServerProperties.middleUrl + "/application_review_reject/cnp=" + cnp,
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<SuccessEntity>() {
+                });
+
+        boolean result = pushNotification(auth, comment);
+        System.out.println("reject_candidate -> " + result);
+
+        return new ModelAndView("redirect:/candidates_admin");
+    }
+
+
+
     @RequestMapping(value = "/candidates_accept", method = RequestMethod.GET)
     public ModelAndView acceptCandidate(@RequestParam("cnp") String cnp, String error,
                                         org.springframework.ui.Model model,
@@ -137,8 +228,6 @@ public class AdminController {
         }
 
         RestTemplate template = new RestTemplate();
-
-
         ResponseEntity<SuccessEntity> response = template.exchange(
                 ServerProperties.middleUrl + "/application_review_accept/cnp=" + cnp,
                 HttpMethod.POST,
@@ -154,11 +243,11 @@ public class AdminController {
         );
         List<CandidatForm> candidates = candidatResponse.getBody();
 
-        ModelAndView modelAndView = new ModelAndView("/candidates_admin");
+    ModelAndView modelAndView = new ModelAndView("/candidates_admin");
         modelAndView.addObject("candidates", candidates);
 
         return modelAndView;
-    }
+}
 
     @RequestMapping(value = "/candidates_reject", method = RequestMethod.GET)
     public ModelAndView rejectCandidate(@RequestParam("cnp") String cnp, String error,
@@ -220,7 +309,7 @@ public class AdminController {
                 System.out.println("@FormController@getForm : User has no form in DB currently.");
             }
         }
-
+        model.addObject("cnp", cnp);
         return model;
     }
 }
