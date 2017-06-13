@@ -1,4 +1,4 @@
-package com.ip_b1.fii.admission.DTO;
+package fii.admission.notificari;
 
 public class NotificationEntity {
 
@@ -41,3 +41,5 @@ public class NotificationEntity {
         this.message = message;
     }
 }
+
+

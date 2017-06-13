@@ -19,14 +19,14 @@ import java.util.List;
 @RequestMapping("/controller/get_notifications")
 public class GetNotifications {
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<List<NotificationsOutEntity>> run(@RequestBody AuthEntity auth) {
+    public ResponseEntity<List<NotificationEntity>> run(@RequestBody AuthEntity auth) {
         if (!AuthUtils.checkAuth(auth)) {
             return new ResponseEntity<>(
                     HttpStatus.UNAUTHORIZED
             );
         } else {
             RestTemplate template = new RestTemplate();
-
+            System.out.println("Se cer notificari pentru: " + auth.getUsername());
             ResponseEntity<List<NotificationEntity>> entity = template.exchange(
                     ServerProperties.modelUrl + "/notificari/{useremail}",
                     HttpMethod.GET,
@@ -34,19 +34,23 @@ public class GetNotifications {
                     new ParameterizedTypeReference<List<NotificationEntity>>() {},
                     Base64.getEncoder().encodeToString(auth.getUsername().getBytes())
             );
+
+            for(int i = 0; i < entity.getBody().size(); i++)
+                System.out.println(entity.getBody().get(i).getMessage());
+
             if (entity.getBody() == null) {
                 return new ResponseEntity<>(
                     HttpStatus.NO_CONTENT
                 );
             }
 
-            List<NotificationsOutEntity> outList = new ArrayList<>();
-            for (NotificationEntity ent : entity.getBody()){
-                outList.add(new NotificationsOutEntity(ent.getMessage(), ent.isSeen()));
-            }
+//            List<NotificationsOutEntity> outList = new ArrayList<>();
+//            for (NotificationEntity ent : entity.getBody()){
+//                outList.add(new NotificationsOutEntity(ent.getMessage(), ent.isSeen()));
+//            }
 
             return new ResponseEntity<>(
-                    outList,
+                    entity.getBody(),
                     HttpStatus.OK
             );
         }

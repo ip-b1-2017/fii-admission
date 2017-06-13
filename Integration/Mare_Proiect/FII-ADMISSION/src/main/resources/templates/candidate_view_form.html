@@ -1053,8 +1053,8 @@
             <h2>Accept Student</h2>
         </div>
         <div class="accept_body">
-            <form action="#post_accept">
-                <textarea id="accept_text">Felicitari! Ai fost acceptat pentru sustinerea examenului de admitere la Facultatea de Informatica.</textarea>
+            <form th:action="@{/accept_candidate/?cnp=__${cnp}__}" method="POST">
+                <textarea id="accept_text" name="comment">Felicitari! Ai fost acceptat pentru sustinerea examenului de admitere la Facultatea de Informatica.</textarea>
                 <button>Send</button>
             </form>
         </div>
@@ -1068,8 +1068,8 @@
             <h2>Reject Student</h2>
         </div>
         <div class="reject_body">
-            <form action="#post_reject">
-                <textarea id="reject_text">Ne pare rau, dar nu indepliniti conditiile necesare pentru a putea participa la admiterea din cadrul Facultatii de Informatica.</textarea>
+            <form th:action="@{/reject_candidate/?cnp=__${cnp}__}" method="POST">
+                <textarea id="reject_text" name="comment">Ne pare rau, dar nu indepliniti conditiile necesare pentru a putea participa la admiterea din cadrul Facultatii de Informatica.</textarea>
                 <button>Send</button>
             </form>
         </div>

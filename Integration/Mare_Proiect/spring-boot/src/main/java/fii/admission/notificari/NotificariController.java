@@ -14,8 +14,8 @@ import java.util.List;
 @RestController
 public class NotificariController {
     @RequestMapping(value = "/notificari", method = RequestMethod.GET)
-    public ResponseEntity<List<Notificari>> getAllNotificari() {
-        List<Notificari> result = NotificariService.getAllNotificari();
+    public ResponseEntity<List<NotificationEntity>> getAllNotificari() {
+        List<NotificationEntity> result = NotificariService.getAllNotificari();
 
         if (result == null)
             return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NO_CONTENT);
@@ -24,9 +24,10 @@ public class NotificariController {
     }
 
     @RequestMapping(value = "/notificari/{useremail}", method = RequestMethod.GET)
-    public ResponseEntity<List<Notificari>> getNotificari(@PathVariable String useremail) {
+    public ResponseEntity<List<NotificationEntity>> getNotificari(@PathVariable String useremail) {
         useremail = new String(Base64.getDecoder().decode(useremail));
-        List<Notificari> result = NotificariService.getNotificari(useremail);
+        System.out.println("Se cer notificari pentru:" + useremail);
+        List<NotificationEntity> result = NotificariService.getNotificari(useremail);
 
         if (result == null)
             return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NO_CONTENT);
@@ -53,7 +54,12 @@ public class NotificariController {
     }
 
     @RequestMapping(value = "/notificari", method = RequestMethod.POST)
-    public ResponseEntity<SuccessEntity> insertNotificari(@RequestBody Notificari notificari) {
+    public ResponseEntity<SuccessEntity> insertNotificari(@RequestBody NotificationEntity notificari) {
+        System.out.println("Am primit:");
+        System.out.println(notificari.getEmail());
+        System.out.println(notificari.getMessage());
+        System.out.println(notificari.isSeen());
+        System.out.println("-----------------------");
         int result = NotificariService.insertNotificari(notificari);
         if (result == 0) {
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.BAD_REQUEST);

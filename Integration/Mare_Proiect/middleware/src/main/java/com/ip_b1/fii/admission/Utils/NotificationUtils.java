@@ -1,5 +1,6 @@
 package com.ip_b1.fii.admission.Utils;
 
+import com.ip_b1.fii.admission.DTO.ApplicationEntity;
 import com.ip_b1.fii.admission.DTO.AuthEntity;
 import com.ip_b1.fii.admission.DTO.NotificationEntity;
 import com.ip_b1.fii.admission.DTO.SuccessEntity;
@@ -7,9 +8,14 @@ import com.ip_b1.fii.admission.ServerProperties;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Base64;
+import java.util.List;
 
 public class NotificationUtils {
     public static boolean pushNotification(AuthEntity auth, String message){
