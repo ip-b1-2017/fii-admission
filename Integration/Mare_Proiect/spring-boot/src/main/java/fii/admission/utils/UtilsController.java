@@ -29,7 +29,7 @@ public class UtilsController {
         return new ResponseEntity<List<StudentsPlacement>>(result, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/placement/students/{filename}", method = RequestMethod.GET)
+    @RequestMapping(value = "/placement/students/{fileName}", method = RequestMethod.GET)
     public ResponseEntity<List<StudentsPlacement>> getStudentsPlacement(@PathVariable String fileName) {
 
         List<StudentsPlacement> result = UtilsService.getStudentsPlacement(fileName);
@@ -40,10 +40,6 @@ public class UtilsController {
         return new ResponseEntity<List<StudentsPlacement>>(result, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/placement/profesori", method = RequestMethod.GET)
-    public void getProfesoriPlacement() {
-        UtilsService.getProfesoriPlacement();
-    }
 
     @RequestMapping(value = "/export/{fileName}", method = RequestMethod.GET)
     public void exportStudents(@PathVariable String fileName) {
