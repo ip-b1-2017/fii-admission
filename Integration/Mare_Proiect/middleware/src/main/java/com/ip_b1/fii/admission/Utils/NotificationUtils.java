@@ -18,12 +18,18 @@ import java.util.Base64;
 import java.util.List;
 
 public class NotificationUtils {
-    public static boolean pushNotification(AuthEntity auth, String message){
-        NotificationEntity entity = new NotificationEntity(auth.getUsername(), false, message);
-
+    public static boolean pushNotification(String username, String message){
+        NotificationEntity entity = new NotificationEntity(username, false, message);
+        System.out.println("before post for entity");
         RestTemplate template = new TolerantRestTemplate();
         ResponseEntity<SuccessEntity> result =
-                template.postForEntity(ServerProperties.modelUrl + "/notificari", entity, SuccessEntity.class);
+                    template.postForEntity(ServerProperties.modelUrl + "/notificari", entity, SuccessEntity.class);
+        if (result.getStatusCode() != HttpStatus.OK || !result.getBody().isSuccess()){
+            System.out.println("Push status not ok!");
+            System.out.println("username: " + username);
+            System.out.println("message: " + message);
+        }
+        System.out.println("in push notification");
         return result.getStatusCode() == HttpStatus.OK && result.getBody().isSuccess();
     }
 
