@@ -2,6 +2,9 @@ package fii.admission.forms;
 
 import com.google.gson.Gson;
 import fii.admission.MainApp;
+import fii.admission.note.Note;
+import fii.admission.note.NoteController;
+import fii.admission.note.NoteService;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -85,7 +88,7 @@ public class FormService {
 				return 0;
 			}
 			rs.close();
-			finalForm = updateOldForm(oldForm, form.getFields());
+			finalForm = updateOldForm(oldForm, form.getFields(), candidatcnp);
 			System.out.println(finalForm);
 			pstmt = con.prepareStatement(updateQuery);
 			pstmt.setString(1, finalForm);
@@ -146,7 +149,10 @@ public class FormService {
 		 * if exists a key in both forms, new form will contain value from formWithUpdates
 		 * else key value pair, from formWithUpdates, will be appended to new form
 	 */
-	public static String updateOldForm(String formToUpdate, String formWithUpdates){
+	public static String updateOldForm(
+			String formToUpdate,
+			String formWithUpdates,
+			String cnp){
 		Gson gson = new Gson();
 		Map<String, String> finalForm, updatesForm;
 
@@ -160,6 +166,47 @@ public class FormService {
 		}
 
 		return gson.toJson(finalForm);
+	}
+
+	private static void updateGrades(Map<String, String> form, String cnp){
+		float gradeMeanBac = -1, gradeMaxValue = -1;
+		try{
+			String grade = form.get("media-bac-num");
+			if(grade != null)
+				gradeMeanBac = Float.parseFloat(grade);
+			grade = form.get("media-mate-info-num");
+			if(grade != null)
+				gradeMaxValue = Float.parseFloat(grade);
+
+			if(!gradeValid(gradeMeanBac) || !gradeValid(gradeMaxValue))
+				return;
+
+			updateGrade(cnp, gradeMaxValue, "MAX");
+			updateGrade(cnp, gradeMeanBac, "MEDIEBAC");
+		}catch (NumberFormatException ex){
+			System.out.println("[error]@updateGrades - format exception");
+		}
+	}
+
+	private static boolean gradeValid(float grade){
+		if(grade < 0 || grade > 10)
+			return false;
+		return true;
+	}
+
+	private static void updateGrade(String cnp, float value, String criteria){
+		Note note = NoteService.getNote(cnp, criteria);
+		if(note == null){
+			note = new Note();
+			note.setValoare(value);
+			note.setCandidatCNP(cnp);
+			note.setExamenid(criteria);
+			NoteService.insertNote(note);
+		}
+		else{
+			note.setValoare(value);
+			NoteService.updateNote(note);
+		}
 	}
 }
 

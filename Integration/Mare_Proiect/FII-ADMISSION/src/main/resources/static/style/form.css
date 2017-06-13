@@ -16,6 +16,10 @@
   width: 100%; }
   .information-pair:not(:last-child) {
     padding-right: 10px; }
+.error{
+  color:red;
+  display: none;
+}
 
 label {
   text-align: left; }

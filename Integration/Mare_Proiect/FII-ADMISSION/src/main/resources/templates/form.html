@@ -68,48 +68,55 @@
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
                                 <label class="ui-dform-label">Nume de familie la nastere</label>
-                                <input type="text" name="initial-name-alfa" th:value="${initial_name_alfa}" th:style="'background-color:'+ ${initial_name_alfas} +';'" placeholder="Ex. Apopei" class="ui-dform-text form-control">
+                                <input type="text" oninput="onlyLetters('initial-name-alfa')" name="initial-name-alfa" th:value="${initial_name_alfa}" th:style="'background-color:'+ ${initial_name_alfas} +';'" placeholder="Ex. Apopei" class="ui-dform-text form-control">
+                                <p class="error" id="initial-name-alfa-error">Sunt permise doar litere.</p>
                             </div>
                             <p class="ui-dform-p bg-info">Din certificatul de naştere </p>
                         </div>
                         <div class="ui-dform-div custom-input">
                             <label class="ui-dform-label">Initiala tatalui/mamei</label>
-                            <input type="text" name="parent-initial-alfa" th:value="${parent_initial_alfa}" th:style="'background-color:'+ ${parent_initial_alfas} +';'" maxlength="1" class="ui-dform-text form-control">
+                            <input type="text" oninput="parentInitial()" name="parent-initial-alfa" th:value="${parent_initial_alfa}" th:style="'background-color:'+ ${parent_initial_alfas} +';'"  class="ui-dform-text form-control">
+                            <p class="error" id="parent-initial-alfa-error">Format invalid. (G. sau G.D.)</p>
                         </div>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
                                 <label class="ui-dform-label">Nume de familie actual</label>
-                                <input type="text" th:value="${actual_name_alfa}" th:style="'background-color:'+ ${actual_name_alfas} +';'" name="actual-name-alfa" placeholder="Ex. Mihaila" class="ui-dform-text form-control">
+                                <input type="text"  oninput="onlyLetters('actual-name-alfa')" th:value="${actual_name_alfa}" th:style="'background-color:'+ ${actual_name_alfas} +';'" name="actual-name-alfa" placeholder="Ex. Mihaila" class="ui-dform-text form-control">
                             </div>
+                            <p class="error" id="actual-name-alfa-error">Sunt permise doar litere.</p>
                             <p class="ui-dform-p bg-info">După căsătorie, înfiere, modificare la cerere conform actului doveditor, dacă este cazul</p>
                         </div>
                         <div class="ui-dform-div custom-input">
                             <label class="ui-dform-label">Prenume candidat</label>
-                            <input type="text" th:value="${prenume_alfa}" th:style="'background-color:'+ ${prenume_alfas} +';'" name="prenume-alfa" placeholder="Ex. Ioana Maria" class="ui-dform-text form-control">
+                            <input type="text" oninput="onlyLetters('prenume-alfa')" th:value="${prenume_alfa}" th:style="'background-color:'+ ${prenume_alfas} +';'" name="prenume-alfa" placeholder="Ex. Ioana Maria" class="ui-dform-text form-control">
                         </div>
+                        <p class="error" id="prenume-alfa-error">Sunt permise doar litere.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
                                 <label class="ui-dform-label">Prenumele mamei</label>
-                                <input type="text" th:value="${mother_name_alfa}" th:style="'background-color:'+ ${mother_name_alfas} +';'"  name="mother-name-alfa" placeholder="Ex. Mihaila" class="ui-dform-text form-control">
+                                <input type="text" oninput="onlyLetters('mother-name-alfa')" th:value="${mother_name_alfa}" th:style="'background-color:'+ ${mother_name_alfas} +';'"  name="mother-name-alfa" placeholder="Ex. Mihaila" class="ui-dform-text form-control">
                             </div>
+                            <p class="error" id="mother-name-alfa-error">Sunt permise doar litere.</p>
                             <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
                         </div>
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Prenumele tatalui</label>
-                                <input type="text" th:value="${father_name_alfa}" th:style="'background-color:'+ ${father_name_alfas} +';'"  name="father-name-alfa" placeholder="Ex. Andrei" class="ui-dform-text form-control">
+                                <input type="text" oninput="onlyLetters('father-name-alfa')" th:value="${father_name_alfa}" th:style="'background-color:'+ ${father_name_alfas} +';'"  name="father-name-alfa" placeholder="Ex. Andrei" class="ui-dform-text form-control">
                             </div>
+                            <p class="error" id="father-name-alfa-error">Sunt permise doar litere.</p>
                             <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
                         </div>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">CNP-num</label>
-                                <input type="text" th:value="${initial_name}" th:style="'background-color:'+ ${initial_names} +';'"  name="initial-name" placeholder="2780923232" maxlength="13" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="CNP()" th:value="${initial_name}" th:style="'background-color:'+ ${initial_names} +';'"  name="initial-name" placeholder="2780923232" maxlength="13" class="ui-dform-text form-control"></div>
                         </div>
+                        <p class="error" id="initial-name-error">CNP invalid.</p>
                         <div class="ui-dform-div custom-input">
                             <label class="ui-dform-label">Sex</label>
                             <select name="sex-alfa" th:value="${sex_alfa}"  th:style="'background-color:'+ ${sex_alfas} +';'" class="ui-dform-select form-control">
@@ -122,23 +129,27 @@
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data Nasterii</label>
-                                <input type="text" th:value="${birth_date}" th:style="'background-color:'+ ${birth_dates} +';'"  name="birth-date" class="ui-dform-text form-control"></div>
+                                <input type="date"  th:value="${birth_date}" th:style="'background-color:'+ ${birth_dates} +';'"  name="birth-date" class="ui-dform-text form-control"></div>
                         </div>
+
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Tara</label>
-                                <input type="text" th:value="${birth_country_alfa}" th:style="'background-color:'+ ${birth_country_alfas} +';'" name="birth-country-alfa" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('birth-country-alfa')" th:value="${birth_country_alfa}" th:style="'background-color:'+ ${birth_country_alfas} +';'" name="birth-country-alfa" class="ui-dform-text form-control"></div>
+                            <p class="error" id="birth-country-alfa-error">Sunt permise doar litere.</p>
                             <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
                         </div>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Judetul</label>
-                                <input type="text" th:value="${birth_county_alfa}" th:style="'background-color:'+ ${birth_county_alfas} +';'" name="birth-county-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('birth-county-alfa')" th:value="${birth_county_alfa}" th:style="'background-color:'+ ${birth_county_alfas} +';'" name="birth-county-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                            <p class="error" id="birth-county-alfa-error">Sunt permise doar litere.</p>
                             <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
                         </div>
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Orasul</label>
-                                <input type="text"  th:value="${birth_city_alfa}" th:style="'background-color:'+ ${birth_city_alfas} +';'"  name="birth-city-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('birth-city-alfa')" th:value="${birth_city_alfa}" th:style="'background-color:'+ ${birth_city_alfas} +';'"  name="birth-city-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                            <p class="error" id="birth-city-alfa-error">Sunt permise doar litere.</p>
                             <p class="ui-dform-p bg-info">Din certificatul de nastere al candidatului</p>
                         </div>
                     </div>
@@ -163,24 +174,29 @@
                             </select>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Seria </label>
-                            <input type="text" th:value="${serie_act_alfa}" th:style="'background-color:'+ ${serie_act_alfas} +';'" name="serie-act-alfa" placeholder="Ex. MZ" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="twoLetters('serie-act-alfa')" th:value="${serie_act_alfa}" th:style="'background-color:'+ ${serie_act_alfas} +';'" name="serie-act-alfa" placeholder="Ex. MZ" class="ui-dform-text form-control"></div>
                     </div>
+                    <p class="error" id="serie-act-alfa-error">Format invalid. (Ex: MZ)</p>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numarul </label>
-                                <input type="text" th:value="${act_number_num}" th:style="'background-color:'+ ${act_number_nums} +';'" name="act-number-num" placeholder="Ex. MZ" class="ui-dform-text form-control"></div>
+                                <input type="text" maxlength="6" oninput="checkNrCNP('act-number-num')" th:value="${act_number_num}" th:style="'background-color:'+ ${act_number_nums} +';'" name="act-number-num" placeholder="Ex. 570852" class="ui-dform-text form-control"></div>
                         </div>
+                        <p class="error" id="act-number-num-error">Format invalid. (6 cifre)</p>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Eliberat de</label>
                             <input type="text"  th:value="${act_elibeat_alfn}" th:style="'background-color:'+ ${act_elibeat_alfns} +';'" name="act-elibeat-alfn" placeholder="Ex. SPCLEP Iasi" class="ui-dform-text form-control"></div>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data eliberarii </label>
-                                <input type="text" th:value="${act_elib_date}" th:style="'background-color:'+ ${act_elib_dates} +';'" name="act-elib-date" placeholder="Ex. 25.02.2016" class="ui-dform-text form-control"></div>
+                                <input type="date" th:value="${act_elib_date}" th:style="'background-color:'+ ${act_elib_dates} +';'" name="act-elib-date" placeholder="Ex. 25.02.2016" class="ui-dform-text form-control"></div>
                         </div>
+
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data expirarii</label>
-                            <input type="text" th:value="${act_exp_date}" th:style="'background-color:'+ ${act_exp_dates} +';'" name="act-exp-date" placeholder="Ex. 25.02.2020" class="ui-dform-text form-control"></div>
+                            <input type="date" th:value="${act_exp_date}" th:style="'background-color:'+ ${act_exp_dates} +';'" name="act-exp-date" placeholder="Ex. 25.02.2020" class="ui-dform-text form-control"></div>
+
                     </div>
+
                     <h4 class="ui-dform-h4">Domiciliu actual stabil</h4>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input">
@@ -192,41 +208,51 @@
                             </select>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Tara</label>
-                            <input type="text"  th:value="${domiciliu_tara_alfa}" th:style="'background-color:'+ ${domiciliu_tara_alfas} +';'"  name="domiciliu-tara-alfa" placeholder="Ex. Romania" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('domiciliu-tara-alfa')"  th:value="${domiciliu_tara_alfa}" th:style="'background-color:'+ ${domiciliu_tara_alfas} +';'"  name="domiciliu-tara-alfa" placeholder="Ex. Romania" class="ui-dform-text form-control"></div>
                     </div>
+                    <p class="error" id="domiciliu-tara-alfa-error">Sunt permise doar litere.</p>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Judetul </label>
-                            <input type="text" th:value="${domiciliu_judet_alfa}" th:style="'background-color:'+ ${domiciliu_judet_alfas} +';'" name="domiciliu-judet-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('domiciliu-judet-alfa')" th:value="${domiciliu_judet_alfa}" th:style="'background-color:'+ ${domiciliu_judet_alfas} +';'" name="domiciliu-judet-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                        <p class="error" id="domiciliu-judet-alfa-error">Sunt permise doar litere..</p>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Localitatea</label>
-                            <input type="text" th:value="${domiciliu_loc_alfa}" th:style="'background-color:'+ ${domiciliu_loc_alfas} +';'"  name="domiciliu-loc-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('domiciliu-loc-alfa')" th:value="${domiciliu_loc_alfa}" th:style="'background-color:'+ ${domiciliu_loc_alfas} +';'"  name="domiciliu-loc-alfa" placeholder="Ex. Iasi" class="ui-dform-text form-control"></div>
+                        <p class="error" id="domiciliu-loc-alfa-error">Sunt permise doar litere..</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Strada </label>
-                            <input type="text" th:value="${domiciliu_strada_alfnum}" th:style="'background-color:'+ ${domiciliu_strada_alfnums} +';'" name="domiciliu-strada-alfnum" placeholder="Ex. Plopilor" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('domiciliu-strada-alfnum')" th:value="${domiciliu_strada_alfnum}" th:style="'background-color:'+ ${domiciliu_strada_alfnums} +';'" name="domiciliu-strada-alfnum" placeholder="Ex. Plopilor" class="ui-dform-text form-control">
+                            <p class="error" id="domiciliu-strada-alfnum-error">Format invalid.</p>
+                        </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Numarul</label>
-                            <input type="number" th:value="${domiciliu_nr_num}" th:style="'background-color:'+ ${domiciliu_nr_nums} +';'" name="domiciliu-nr-num" placeholder="Ex. 25" class="ui-dform-number form-control"></div>
+                            <input type="number" oninput="checkNumber('domiciliu-nr-num')" th:value="${domiciliu_nr_num}" th:style="'background-color:'+ ${domiciliu_nr_nums} +';'" name="domiciliu-nr-num" placeholder="Ex. 25" class="ui-dform-number form-control"></div>
+                        <p class="error" id="domiciliu-nr-num-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Bloc </label>
-                            <input type="text" th:value="${domiciliu_bloc_alfnum}" th:style="'background-color:'+ ${domiciliu_bloc_alfnums} +';'" name="domiciliu-bloc-alfnum" placeholder="Ex. C7" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLettersAndNumbers('domiciliu-bloc-alfnum')" th:value="${domiciliu_bloc_alfnum}" th:style="'background-color:'+ ${domiciliu_bloc_alfnums} +';'" name="domiciliu-bloc-alfnum" placeholder="Ex. C7" class="ui-dform-text form-control"></div>
+                        <p class="error" id="domiciliu-bloc-alfnum-error">Format invalid.</p>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Scara</label>
-                            <input type="number" th:value="${domiciliu_sc_alfnum}" th:style="'background-color:'+ ${domiciliu_sc_alfnums} +';'" name="domiciliu-sc-alfnum" placeholder="Ex. B" class="ui-dform-number form-control"></div>
+                            <input type="text" oninput="onlyLettersAndNumbers('domiciliu-sc-alfnum')" th:value="${domiciliu_sc_alfnum}" th:style="'background-color:'+ ${domiciliu_sc_alfnums} +';'" name="domiciliu-sc-alfnum" placeholder="Ex. B" class="ui-dform-number form-control"></div>
+                        <p class="error" id="domiciliu-sc-alfnum-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Etaj </label>
-                            <input type="text" th:value="${domiciliu_et_alfnum}" th:style="'background-color:'+ ${domiciliu_et_alfnums} +';'" name="domiciliu-et-alfnum" placeholder="Ex. 5" class="ui-dform-text form-control"></div>
+                            <input type="number" th:value="${domiciliu_et_alfnum}" th:style="'background-color:'+ ${domiciliu_et_alfnums} +';'" name="domiciliu-et-alfnum" placeholder="Ex. 5" class="ui-dform-text form-control"></div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Apartament</label>
                             <input type="number" th:value="${domiciliu_ap}" th:style="'background-color:'+ ${domiciliu_aps} +';'" name="domiciliu-ap" placeholder="Ex. 7" class="ui-dform-number form-control"></div>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Cod </label>
-                            <input type="text" th:value="${domiciliu_cod_alfnum}" th:style="'background-color:'+ ${domiciliu_cod_alfnums} +';'" name="domiciliu-cod-alfnum" placeholder="Ex.700340" class="ui-dform-text form-control"></div>
+                            <input type="number" th:value="${domiciliu_cod_alfnum}" th:style="'background-color:'+ ${domiciliu_cod_alfnums} +';'" name="domiciliu-cod-alfnum" placeholder="Ex.700340" class="ui-dform-text form-control"></div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Telefon</label>
-                            <input type="number" th:value="${phone}" th:style="'background-color:'+ ${phones} +';'" name="phone" placeholder="Ex. 0741542032" class="ui-dform-number form-control"></div>
+                            <input type="text" oninput="checkPhone('phone')" th:value="${phone}" th:style="'background-color:'+ ${phones} +';'" name="phone" placeholder="Ex. 0741542032" class="ui-dform-number form-control"></div>
+                        <p class="error" id="phone-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Email </label>
-                            <input type="text" th:value="${email}" th:style="'background-color:'+ ${emails} +';'" name="email" placeholder="Ex. user@gmail.com" class="ui-dform-text form-control"></div>
+                            <input type="email" oninput="checkEmail('email')" th:value="${email}" th:style="'background-color:'+ ${emails} +';'" name="email" placeholder="Ex. user@gmail.com" class="ui-dform-text form-control"></div>
+                        <p class="error" id="email-error">Format invalid.</p>
                     </div>
                 </form>
                 <!-- </form> -->
@@ -245,23 +271,28 @@
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Instituţia unde a absolvit </label>
-                                <input type="text" th:value="${graduate_institution_alfn}" th:style="'background-color:'+ ${graduate_institution_alfns} +';'" name="graduate-institution-alfn" placeholder="Ex. Liceul Teoretic de Informatică &quot;Grigore Moisil&quot;" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('graduate-institution-alfn')" th:value="${graduate_institution_alfn}" th:style="'background-color:'+ ${graduate_institution_alfns} +';'" name="graduate-institution-alfn" placeholder="Ex. Liceul Teoretic de Informatică &quot;Grigore Moisil&quot;" class="ui-dform-text form-control"></div>
+                            <p class="error" id="graduate-institution-alfn-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Țara</label>
-                            <input type="text" th:value="${graduate_country_alfa}" th:style="'background-color:'+ ${graduate_country_alfas} +';'" name="graduate-country-alfa" placeholder="Ex. România" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('graduate-country-alfa')" th:value="${graduate_country_alfa}" th:style="'background-color:'+ ${graduate_country_alfas} +';'" name="graduate-country-alfa" placeholder="Ex. România" class="ui-dform-text form-control"></div>
+                        <p class="error" id="graduate-country-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Localitatea</label>
-                                <input type="text" th:value="${graduate_town_alfa}" th:style="'background-color:'+ ${graduate_town_alfas} +';'" name="graduate-town-alfa" placeholder="Ex. Iași" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('graduate-town-alfa')" th:value="${graduate_town_alfa}" th:style="'background-color:'+ ${graduate_town_alfas} +';'" name="graduate-town-alfa" placeholder="Ex. Iași" class="ui-dform-text form-control"></div>
+                            <p class="error" id="graduate-town-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Județul</label>
-                            <input type="text"  th:value="${graduate_county_alfa}" th:style="'background-color:'+ ${graduate_county_alfas} +';'" name="graduate-county-alfa" placeholder="Ex. Iași" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('graduate-county-alfa')"   th:value="${graduate_county_alfa}" th:style="'background-color:'+ ${graduate_county_alfas} +';'" name="graduate-county-alfa" placeholder="Ex. Iași" class="ui-dform-text form-control"></div>
+                        <p class="error" id="graduate-county-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Profilul/Domeniul</label>
-                                <input type="text" th:value="${graduate_field_alfa}" th:style="'background-color:'+ ${graduate_field_alfas} +';'" name="graduate-field-alfa" placeholder="Ex. Matematică-Informatică" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('graduate-field-alfa')" th:value="${graduate_field_alfa}" th:style="'background-color:'+ ${graduate_field_alfas} +';'" name="graduate-field-alfa" placeholder="Ex. Matematică-Informatică" class="ui-dform-text form-control"></div>
+                            <p class="error" id="graduate-field-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Durata studiilor</label>
                             <input type="number" th:value="${length_of_studies_num}" th:style="'background-color:'+ ${length_of_studies_nums} +';'" name="length-of-studies-num" class="ui-dform-number form-control"></div>
@@ -302,7 +333,7 @@
                                 <input type="text" th:value="${issued_by_alfnum}" th:style="'background-color:'+ ${issued_by_alfnums} +';'" name="issued-by-alfnum" placeholder="Ex. n2s90" class="ui-dform-text form-control"></div>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data emiterii</label>
-                            <input type="text" th:value="${bac_number_date}" th:style="'background-color:'+ ${bac_number_dates} +';'" name="bac-number-date" placeholder="Ex. 21.04.2016" class="ui-dform-text form-control"></div>
+                            <input type="date" th:value="${bac_number_date}" th:style="'background-color:'+ ${bac_number_dates} +';'" name="bac-number-date" placeholder="Ex. 21.04.2016" class="ui-dform-text form-control"></div>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
@@ -324,7 +355,7 @@
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
                                 <label class="ui-dform-label">Data echivalării</label>
-                                <input name="echivalare-date" th:value="${echivalare_date}" th:style="'background-color:'+ ${echivalare_dates} +';'" placeholder="Ex. 21.04.2016" class="ui-dform-date form-control">
+                                <input type="date" name="echivalare-date" th:value="${echivalare_date}" th:style="'background-color:'+ ${echivalare_dates} +';'" placeholder="Ex. 21.04.2016" class="ui-dform-date form-control">
                             </div>
                         </div>
                     </div>
@@ -338,31 +369,38 @@
                             </div>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Țara</label>
-                            <input type="text" th:value="${tara_alte_studii_alfa}" th:style="'background-color:'+ ${tara_alte_studii_alfas} +';'" name="tara-alte-studii-alfa" placeholder="Ex. Franța" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('tara-alte-studii-alfa')" th:value="${tara_alte_studii_alfa}" th:style="'background-color:'+ ${tara_alte_studii_alfas} +';'" name="tara-alte-studii-alfa" placeholder="Ex. Franța" class="ui-dform-text form-control"></div>
+                        <p class="error" id="tara-alte-studii-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Localitatea</label>
-                                <input type="text" th:value="${alte_studii_localitate_alfa}" th:style="'background-color:'+ ${alte_studii_localitate_alfas} +';'" name="alte-studii-localitate-alfa" placeholder="Ex. Paris" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('alte-studii-localitate-alfa')" th:value="${alte_studii_localitate_alfa}" th:style="'background-color:'+ ${alte_studii_localitate_alfas} +';'" name="alte-studii-localitate-alfa" placeholder="Ex. Paris" class="ui-dform-text form-control"></div>
+                            <p class="error" id="alte-studii-localitate-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Județul</label>
-                            <input type="text" th:value="${alte_studii_judetul_alfa}" th:style="'background-color:'+ ${alte_studii_judetul_alfas} +';'" name="alte-studii-judetul-alfa" placeholder="Ex. Paris" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('alte-studii-judetul-alfa')" th:value="${alte_studii_judetul_alfa}" th:style="'background-color:'+ ${alte_studii_judetul_alfas} +';'" name="alte-studii-judetul-alfa" placeholder="Ex. Paris" class="ui-dform-text form-control"></div>
+                        <p class="error" id="alte-studii-judetul-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Denumirea instituţiei de învăţământ superior</label>
-                                <input type="text" th:value="${alte_studii_institutie_alfn}" th:style="'background-color:'+ ${alte_studii_institutie_alfns} +';'" name="alte-studii-institutie-alfn" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('alte-studii-institutie-alfn')" th:value="${alte_studii_institutie_alfn}" th:style="'background-color:'+ ${alte_studii_institutie_alfns} +';'" name="alte-studii-institutie-alfn" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <p class="error" id="alte-studii-institutie-alfn-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Facultatea</label>
-                            <input type="text" th:value="${alte_studii_facultatea_alfn}" th:style="'background-color:'+ ${alte_studii_facultatea_alfns} +';'" name="alte-studii-facultatea-alfn" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('alte-studii-facultatea-alfn')" th:value="${alte_studii_facultatea_alfn}" th:style="'background-color:'+ ${alte_studii_facultatea_alfns} +';'" name="alte-studii-facultatea-alfn" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        <p class="error" id="alte-studii-facultatea-alfn-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Domeniul de licenţă </label>
-                                <input type="text" th:value="${alte_studii_domeniu_licenta_alfa}" th:style="'background-color:'+ ${alte_studii_domeniu_licenta_alfas} +';'" name="alte-studii-domeniu-licenta-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('alte-studii-domeniu-licenta-alfa')" th:value="${alte_studii_domeniu_licenta_alfa}" th:style="'background-color:'+ ${alte_studii_domeniu_licenta_alfas} +';'" name="alte-studii-domeniu-licenta-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <p class="error" id="alte-studii-domeniu-licenta-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Programul de studii /Specializarea</label>
-                            <input type="text" th:value="${alte_studii_specializarea_alfa}" th:style="'background-color:'+ ${alte_studii_specializarea_alfas} +';'"  name="alte-studii-specializarea-alfa" placeholder="Ex." class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('alte-studii-specializarea-alfa')" th:value="${alte_studii_specializarea_alfa}" th:style="'background-color:'+ ${alte_studii_specializarea_alfas} +';'"  name="alte-studii-specializarea-alfa" placeholder="Ex." class="ui-dform-text form-control"></div>
+                        <p class="error" id="alte-studii-specializarea-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input-row">
@@ -410,34 +448,42 @@
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Țara</label>
-                                <input type="text" th:value="${abslovent_licenta_tara_alfa}" th:style="'background-color:'+ ${abslovent_licenta_tara_alfas} +';'"  name="abslovent-licenta-tara-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('abslovent-licenta-tara-alfa')" th:value="${abslovent_licenta_tara_alfa}" th:style="'background-color:'+ ${abslovent_licenta_tara_alfas} +';'"  name="abslovent-licenta-tara-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <p class="error" id="abslovent-licenta-tara-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Localitate</label>
-                            <input type="text" th:value="${absolvett_licenta_localitatea_alfa}" th:style="'background-color:'+ ${absolvett_licenta_localitatea_alfas} +';'"  name="absolvett-licenta-localitatea-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('absolvett-licenta-localitatea-alfa')" th:value="${absolvett_licenta_localitatea_alfa}" th:style="'background-color:'+ ${absolvett_licenta_localitatea_alfas} +';'"  name="absolvett-licenta-localitatea-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        <p class="error" id="absolvett-licenta-localitatea-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Județul</label>
-                                <input type="text" th:value="${abslovent_licenta_judet_alfa}" th:style="'background-color:'+ ${abslovent_licenta_judet_alfas} +';'" name="abslovent-licenta-judet-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('abslovent-licenta-judet-alfa')" th:value="${abslovent_licenta_judet_alfa}" th:style="'background-color:'+ ${abslovent_licenta_judet_alfas} +';'" name="abslovent-licenta-judet-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <p class="error" id="abslovent-licenta-judet-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Denumirea instituţiei de învăţământ superior</label>
-                            <input type="text" th:value="${absolvett_licenta_institutie_alfa}" th:style="'background-color:'+ ${absolvett_licenta_institutie_alfas} +';'"  name="absolvett-licenta-institutie-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('absolvett-licenta-institutie-alfa')" th:value="${absolvett_licenta_institutie_alfa}" th:style="'background-color:'+ ${absolvett_licenta_institutie_alfas} +';'"  name="absolvett-licenta-institutie-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        <p class="error" id="absolvett-licenta-institutie-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Facultatea</label>
-                                <input type="text" th:value="${abslovent_licenta_facultate_alfnum}" th:style="'background-color:'+ ${abslovent_licenta_facultate_alfnums} +';'" name="abslovent-licenta-facultate-alfnum" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('abslovent-licenta-facultate-alfnum')" th:value="${abslovent_licenta_facultate_alfnum}" th:style="'background-color:'+ ${abslovent_licenta_facultate_alfnums} +';'" name="abslovent-licenta-facultate-alfnum" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <p class="error" id="abslovent-licenta-facultate-alfnum-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Domeniul de licenţă</label>
-                            <input type="text" th:value="${absolvett_licenta_domeniu_licenta_alfa}" th:style="'background-color:'+ ${absolvett_licenta_domeniu_licenta_alfas} +';'" name="absolvett-licenta-domeniu-licenta-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('absolvett-licenta-domeniu-licenta-alfa')" th:value="${absolvett_licenta_domeniu_licenta_alfa}" th:style="'background-color:'+ ${absolvett_licenta_domeniu_licenta_alfas} +';'" name="absolvett-licenta-domeniu-licenta-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        <p class="error" id="absolvett-licenta-domeniu-licenta-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Programul de studii /Specializarea </label>
-                                <input type="text"  th:value="${abslovent_licenta_specializare_alfa}" th:style="'background-color:'+ ${abslovent_licenta_specializare_alfas} +';'"  name="abslovent-licenta-specializare-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('abslovent-licenta-specializare-alfa')"  th:value="${abslovent_licenta_specializare_alfa}" th:style="'background-color:'+ ${abslovent_licenta_specializare_alfas} +';'"  name="abslovent-licenta-specializare-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <p class="error" id="abslovent-licenta-specializare-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Titlul obţinut </label>
-                            <input type="text" th:value="${absolvett_licenta_titlu_alfa}" th:style="'background-color:'+ ${absolvett_licenta_titlu_alfas} +';'" name="absolvett-licenta-titlu-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('absolvett-licenta-titlu-alfa')" th:value="${absolvett_licenta_titlu_alfa}" th:style="'background-color:'+ ${absolvett_licenta_titlu_alfas} +';'" name="absolvett-licenta-titlu-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                        <p class="error" id="absolvett-licenta-titlu-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div custom-input-row">
@@ -485,7 +531,7 @@
                                 <input type="text" th:value="${abslovent_licenta_diploma_emisade_alfa}" th:style="'background-color:'+ ${abslovent_licenta_diploma_emisade_alfas} +';'"  name="abslovent-licenta-diploma-emisade-alfa" placeholder="Ex. " class="ui-dform-text form-control"></div>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Data emiterii</label>
-                            <input type="text" th:value="${absolvett_licenta_diploma_date}" th:style="'background-color:'+ ${absolvett_licenta_diploma_dates} +';'" name="absolvett-licenta-diploma-date" placeholder="Ex. " class="ui-dform-text form-control"></div>
+                            <input type="date" th:value="${absolvett_licenta_diploma_date}" th:style="'background-color:'+ ${absolvett_licenta_diploma_dates} +';'" name="absolvett-licenta-diploma-date" placeholder="Ex. " class="ui-dform-text form-control"></div>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
@@ -509,7 +555,7 @@
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
                                 <label class="ui-dform-label">Data echivalării</label>
-                                <input name="data-echivalare-date" th:value="${data_echivalare_date}" th:style="'background-color:'+ ${data_echivalare_dates} +';'"  placeholder="Ex. 21.04.2016" class="ui-dform-date form-control">
+                                <input type="date" name="data-echivalare-date" th:value="${data_echivalare_date}" th:style="'background-color:'+ ${data_echivalare_dates} +';'"  placeholder="Ex. 21.04.2016" class="ui-dform-date form-control">
                             </div>
                         </div>
                     </div>
@@ -529,10 +575,12 @@
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Media generală la examenul de bacalaureat</label>
-                                <input type="text" th:value="${media_bac_num}" th:style="'background-color:'+ ${media_bac_nums} +';'"  name="media-bac-num" placeholder="Ex. 8.90" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="checkGrade('media-bac-num')" th:value="${media_bac_num}" th:style="'background-color:'+ ${media_bac_nums} +';'"  name="media-bac-num" placeholder="Ex. 8.90" class="ui-dform-text form-control"></div>
+                            <p class="error" id="media-bac-num-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input"><label class="ui-dform-label">Media la disciplina mate/info (maxima)</label>
-                            <input type="text" name="media-mate-info-num" th:value="${media_mate_info_num}" th:style="'background-color:'+ ${media_mate_info_nums} +';'" placeholder="Ex. 9.40" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="checkGrade('media-mate-info-num')" name="media-mate-info-num" th:value="${media_mate_info_num}" th:style="'background-color:'+ ${media_mate_info_nums} +';'" placeholder="Ex. 9.40" class="ui-dform-text form-control"></div>
+                        <p class="error" id="media-mate-info-num-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
@@ -670,34 +718,42 @@
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
-                                <input type="text" th:value="${alta_facultate_1_alfa}" th:style="'background-color:'+ ${alta_facultate_1_alfas} +';'" name="alta-facultate-1-alfa" class="ui-dform-text form-control"></div>
+                                <input type="text"  oninput="onlyLetters('alta-facultate-1-alfa')" th:value="${alta_facultate_1_alfa}" th:style="'background-color:'+ ${alta_facultate_1_alfas} +';'" name="alta-facultate-1-alfa" class="ui-dform-text form-control"></div>
+                            <p class="error" id="alta-facultate-1-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input">
-                            <input type="text" th:value="${alt_domeniu_1_alfa}" th:style="'background-color:'+ ${alt_domeniu_1_alfas} +';'" name="alt-domeniu-1-alfa" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('alt-domeniu-1-alfa')" th:value="${alt_domeniu_1_alfa}" th:style="'background-color:'+ ${alt_domeniu_1_alfas} +';'" name="alt-domeniu-1-alfa" class="ui-dform-text form-control"></div>
+                        <p class="error" id="alt-domeniu-1-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
-                                <input type="text" th:value="${alta_facultate_2_alfa}" th:style="'background-color:'+ ${alta_facultate_2_alfas} +';'" name="alta-facultate-2-alfa" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('alta-facultate-2-alfa')" th:value="${alta_facultate_2_alfa}" th:style="'background-color:'+ ${alta_facultate_2_alfas} +';'" name="alta-facultate-2-alfa" class="ui-dform-text form-control"></div>
+                            <p class="error" id="alta-facultate-2-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input">
-                            <input type="text" th:value="${alt_domeniu_2_alfa}" th:style="'background-color:'+ ${alt_domeniu_2_alfas} +';'" name="alt-domeniu-2-alfa" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('alt-domeniu-2-alfa')" th:value="${alt_domeniu_2_alfa}" th:style="'background-color:'+ ${alt_domeniu_2_alfas} +';'" name="alt-domeniu-2-alfa" class="ui-dform-text form-control"></div>
+                        <p class="error" id="alt-domeniu-2-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
-                                <input type="text" th:value="${alta_facultate_3_alfa}" th:style="'background-color:'+ ${alta_facultate_3_alfas} +';'" name="alta-facultate-3-alfa" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('alta-facultate-3-alfa')" th:value="${alta_facultate_3_alfa}" th:style="'background-color:'+ ${alta_facultate_3_alfas} +';'" name="alta-facultate-3-alfa" class="ui-dform-text form-control"></div>
+                            <p class="error" id="alta-facultate-3-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input">
-                            <input type="text" th:value="${alt_domeniu_3_alfa}" th:style="'background-color:'+ ${alt_domeniu_3_alfas} +';'" name="alt-domeniu-3-alfa" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('alt-domeniu-3-alfa')" th:value="${alt_domeniu_3_alfa}" th:style="'background-color:'+ ${alt_domeniu_3_alfas} +';'" name="alt-domeniu-3-alfa" class="ui-dform-text form-control"></div>
+                        <p class="error" id="alt-domeniu-3-alfa-error">Format invalid.</p>
                     </div>
                     <div class="ui-dform-div form-group">
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input">
-                                <input type="text" th:value="${alta_facultate_4_alfa}" th:style="'background-color:'+ ${alta_facultate_4_alfas} +';'" name="alta-facultate-4-alfa" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('alta-facultate-4-alfa')" th:value="${alta_facultate_4_alfa}" th:style="'background-color:'+ ${alta_facultate_4_alfas} +';'" name="alta-facultate-4-alfa" class="ui-dform-text form-control"></div>
+                            <p class="error" id="alta-facultate-4-alfa-error">Format invalid.</p>
                         </div>
                         <div class="ui-dform-div custom-input">
-                            <input type="text" th:value="${alt_domeniu_4_alfa}" th:style="'background-color:'+ ${alt_domeniu_4_alfas} +';'" name="alt-domeniu-4-alfa" class="ui-dform-text form-control"></div>
+                            <input type="text" oninput="onlyLetters('alt-domeniu-4-alfa')" th:value="${alt_domeniu_4_alfa}" th:style="'background-color:'+ ${alt_domeniu_4_alfas} +';'" name="alt-domeniu-4-alfa" class="ui-dform-text form-control"></div>
+                        <p class="error" id="alt-domeniu-4-alfa-error">Format invalid.</p>
                     </div>
                 </form>
                 <button class="btn btn-primary btn-md" id="activate-step-6">Pasul urmator</button>
@@ -894,7 +950,8 @@
                         </div>
                         <div class="ui-dform-div information-pair">
                             <div class="ui-dform-div custom-input"><label class="ui-dform-label">Alte surse (menționați care) :</label>
-                                <input type="text" th:value="${sursa_info_altele_alfn}" th:style="'background-color:'+ ${sursa_info_altele_alfns} +';'" name="sursa-info-altele-alfn" class="ui-dform-text form-control"></div>
+                                <input type="text" oninput="onlyLetters('sursa-info-altele-alfn')" th:value="${sursa_info_altele_alfn}" th:style="'background-color:'+ ${sursa_info_altele_alfns} +';'" name="sursa-info-altele-alfn" class="ui-dform-text form-control"></div>
+                            <p class="error" id="sursa-info-altele-alfn-error">Format invalid.</p>
                         </div>
                     </div>
                     <h5 class="ui-dform-h5 sub-title">2. Cât de importanți au fost următorii factorii în alegerea facultății, apreciaţi cât de mult a contat fiecare în opţiunea dv. privind alegerea facultăţii? (0 – deloc, ... 5 – foarte mult)</h5>

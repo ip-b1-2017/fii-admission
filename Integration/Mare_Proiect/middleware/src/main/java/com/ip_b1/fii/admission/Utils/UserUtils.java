@@ -23,4 +23,19 @@ public class UserUtils {
             return null;
         }
     }
+
+    public static String getUsernameFromCnp(String cnp) {
+        try{
+            RestTemplate template = new RestTemplate();
+            ResponseEntity<CandidateOutEntity> response = template.getForEntity(
+                    ServerProperties.modelUrl + "/candidati/{cnp}",
+                    CandidateOutEntity.class,
+                    cnp
+            );
+            return response.getBody().getEmail();
+        }
+        catch(RestClientException ex){
+            return null;
+        }
+    }
 }

@@ -55,6 +55,7 @@ public class StudentsPlacement {
         nume=sf.getNume();
         prenume=sf.getPrenume();
         proba=sf.getProba();
+        this.data=data;
         this.sala=sala.getLocatie();
         this.ora=ora;
     }
