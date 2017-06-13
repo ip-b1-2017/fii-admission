@@ -25,7 +25,7 @@ class FormServiceTest {
         String oldForm = "\"prenume\":\"bogdan\"";
         String updates = "\"nume\":\"rusu\"";
         String finalForm = formService.updateOldForm("{" + oldForm + "}",
-                                                     "{" + updates + "}");
+                                                     "{" + updates + "}", "123");
         boolean res = finalForm.contains(oldForm) && finalForm.contains(updates);
         assertTrue(res);
     }
@@ -35,7 +35,7 @@ class FormServiceTest {
         String oldForm = "\"prenume\":\"gigel\"";
         String updates = "\"prenume\":\"bogdan\"";
         String finalForm = formService.updateOldForm("{" + oldForm + "}",
-                "{" + updates + "}");
+                "{" + updates + "}", "123");
         boolean res = finalForm.contains(updates);
         assertTrue(res);
     }
@@ -46,7 +46,7 @@ class FormServiceTest {
         String oldFormPart2 = "\"nume\":\"popescu\"";
         String updates = "\"prenume\":\"bogdan\"";
         String finalForm = formService.updateOldForm("{" + oldFormPart1 + "," + oldFormPart2 + "}",
-                "{" + updates + "}");
+                "{" + updates + "}", "123");
         boolean res = finalForm.contains(updates) && finalForm.contains(oldFormPart2);
         assertTrue(res);
     }
@@ -57,7 +57,7 @@ class FormServiceTest {
         String oldFormPart2 = "\"nume\":\"popescu\"";
         String updates = "\"prenume\":\"bogdan\"";
         String finalForm = formService.updateOldForm("{" + oldFormPart1 + "," + oldFormPart2 + "}",
-                "{" + updates + "}");
+                "{" + updates + "}", "123");
         boolean res = finalForm.contains(updates) && finalForm.contains(oldFormPart1);
         assertFalse(res);
     }
