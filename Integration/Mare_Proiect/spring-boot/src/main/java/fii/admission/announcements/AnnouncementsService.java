@@ -42,7 +42,7 @@ public class AnnouncementsService {
     public static List<Announcement> getAnnouncements(int seek, int limit){
         ArrayList<Announcement> ads = new ArrayList<>();
         Connection con = MainApp.getDBConnection();
-        String querry = "select * from announcements order by announcement_date";
+        String querry = "select * from announcements order by announcement_date desc";
         Statement stmt = null;
         ResultSet rs;
         try {

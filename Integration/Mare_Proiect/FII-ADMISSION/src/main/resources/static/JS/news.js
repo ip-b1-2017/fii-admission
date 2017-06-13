@@ -65,6 +65,24 @@ function initialize(){
         close[i].onclick = function() {
             var div = this.parentElement;
             div.style.display = "none";
+            $.ajax({
+                type: "POST",
+                url: "/view/announcements/delete/"+$(this).parent().attr('id'),
+                async: false,
+                data: JSON.stringify( {
+                }),
+                contentType: "application/json",
+                success: function() {
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    if (xhr.status == 401 || xhr.status == 404) {
+                        $("#errorLogin").show();
+                        alert($("#errorLogin").text(xhr.responseText));
+                    }
+                }
+            });
+
         }
     }
 }
