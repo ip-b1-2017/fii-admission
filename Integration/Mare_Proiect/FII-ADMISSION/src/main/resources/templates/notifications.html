@@ -4,45 +4,14 @@
     <title>Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href=/style/dashboard.css" type="text/css" media="screen">
+    <link rel="stylesheet" href=/style/notifications.css" type="text/css" media="screen">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900|Montserrat:700,400|Roboto:400,100,300,500,900"
           rel='stylesheet' type='text/css'/>
 </head>
 <body>
 
-<ul class="sidebar">
-
-    <li>
-        <div class="logo"></div>
-    </li>
-    <li>
-        <div class="content">
-            <!--/*@thymesVar id="user_name" type="String"*/-->
-            <h2 id="user_name" th:text="${user_name}"></h2>
-        </div>​
-    </li>
-
-
-    <li><a class="active" href="/dashboard">Dashboard</a></li>
-    <li><a href="/preform">Application Form</a></li>
-    <li><a href="/disconnect">Disconnect</a></li>
-    <!--/*@thymesVar id="notifications" type="List<String>"*/-->
-    <li><a href="/notifications">Notifications [<span th:text="${notifications.size()}"></span>]</a></li>
-
-    <li><hr></li>
-
-    <li>
-        <p id="contact">
-            Contact<br>
-            Adress:<br>
-            Facultatea de informatica,<br>
-            Universitatea "Al. I. Cuza",<br>
-            General Berthelot, 16, IASI <br>
-            700483, ROMANIA <br>
-            Phone: +40 232 201090<br>
-            E-mail: secretariat@info.uaic.ro
-        </p>
-    </li>
+<ul th:replace="frag_sidebar :: sidebar_candidates ('/dashboard')">
 </ul>
 
 <div class="main">
@@ -50,7 +19,8 @@
         <h2>Notificarile tale:</h2>
         <ul th::if="${notifications.size() != 0}">
             <th:block th:each="notification : ${notifications}">
-                <li><p th:text="${notification.message}"></p></li>
+                <li><p th:class="${notification.isSeen()} ? 'notification-read' : 'notification-unread'"
+                       th:text="${notification.message}"></p></li>
             </th:block>
         </ul>
         <h4 th:if="${notifications.size() == 0}">Nu ai notificari.</h4>

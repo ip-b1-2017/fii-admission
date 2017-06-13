@@ -1,8 +1,8 @@
-ul.notification_list .read {
+.notification-read {
     color: #aaaaaa;
 }
 
-ul.notification_list .unread {
+.notification-unread {
     color: #111111;
     border: solid 1px yellowgreen;
 }
