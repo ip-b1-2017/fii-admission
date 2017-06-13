@@ -37,10 +37,12 @@ public class GetNotifications {
             );
             if (entity.getBody() == null) {
                 return new ResponseEntity<>(
-                        HttpStatus.NO_CONTENT
+                        0,
+                        HttpStatus.OK
                 );
             }
 
+            System.out.println("counting...");
             int unread = 0;
             for (NotificationEntity ent : entity.getBody()){
                 if (!ent.isSeen()){
@@ -72,14 +74,16 @@ public class GetNotifications {
                     Base64.getEncoder().encodeToString(auth.getUsername().getBytes())
             );
 
-            for(int i = 0; i < entity.getBody().size(); i++)
-                System.out.println(entity.getBody().get(i).getMessage());
-
             if (entity.getBody() == null) {
                 return new ResponseEntity<>(
-                    HttpStatus.NO_CONTENT
+                        HttpStatus.NO_CONTENT
                 );
             }
+
+            for(int i = 0; i < entity.getBody().size(); i++) {
+                System.out.println(entity.getBody().get(i).getMessage());
+            }
+
 
 //            List<NotificationsOutEntity> outList = new ArrayList<>();
 //            for (NotificationEntity ent : entity.getBody()){

@@ -53,6 +53,9 @@ public class NotificationUtils {
                 SuccessEntity.class,
                 emailB64
         );
+        if (result.getStatusCode() != HttpStatus.OK){
+            System.out.println("Erorr: markSeen returned not OK!");
+        }
         return result.getStatusCode() == HttpStatus.OK && result.getBody().isSuccess();
     }
 }

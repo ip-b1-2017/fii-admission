@@ -42,9 +42,12 @@ public class NotificationController {
             rep.sendError(400, "Bad authentication.");
             return null;
         }
+
+        System.out.println("counting...");
         int notifsUnread = 0;
         for (NotificationEntity notif : notifications) {
             if (!notif.isSeen()){
+                System.out.println("counted " + notif.getMessage() + " as unread.");
                 notifsUnread++;
             }
         }

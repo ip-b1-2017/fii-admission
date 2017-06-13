@@ -72,6 +72,7 @@ public class NotificariController {
     public ResponseEntity<SuccessEntity> markSeen(@PathVariable String emailB64){
         String email = new String(Base64.getDecoder().decode(emailB64));
         int result = NotificariService.setSeen(email);
+        System.out.println("Marking seen: nr of marked: " + result);
 
         if (result == 0) {
             return new ResponseEntity<>(new SuccessEntity(false), HttpStatus.OK);
