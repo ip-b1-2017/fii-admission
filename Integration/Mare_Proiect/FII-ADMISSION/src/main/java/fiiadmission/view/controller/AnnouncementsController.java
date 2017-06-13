@@ -22,6 +22,33 @@ import java.util.List;
 @Controller
 @RequestMapping("/view/announcements")
 public class AnnouncementsController {
+    @RequestMapping(value="/all", method = RequestMethod.GET)
+    public ResponseEntity <List<Announcement>> getAll(){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) throws IOException {
+                return false;
+            }
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) throws IOException {
+            }
+        });
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        UriComponentsBuilder builder =  builder = UriComponentsBuilder.fromHttpUrl(ServerProperties.modelUrl + "/announcements")
+                .queryParam("limit",100);
+        System.out.println(builder.toUriString());
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        ResponseEntity<Announcement[]> response = restTemplate.exchange(
+                builder.build().encode().toUri(),
+                HttpMethod.GET,
+                entity,
+                Announcement[].class);
+        ArrayList<Announcement> arraylist = new ArrayList<Announcement>(Arrays.asList(response.getBody()));
+        return new ResponseEntity<>(arraylist,response.getStatusCode());
+    }
+
     @RequestMapping(value="", method = RequestMethod.GET)
     public ResponseEntity <List<Announcement>> getFirstAdsSet(){
         RestTemplate restTemplate = new RestTemplate();
@@ -75,7 +102,7 @@ public class AnnouncementsController {
         return new ResponseEntity<>(arraylist,response.getStatusCode());
     }
     @RequestMapping(value="/add",method = RequestMethod.POST)
-    public ResponseEntity add(Announcement announcement){
+    public ResponseEntity add(@RequestBody Announcement announcement){
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new ResponseErrorHandler() {
             @Override

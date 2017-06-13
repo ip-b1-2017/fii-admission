@@ -15,7 +15,7 @@ public class AnnouncementsService {
     public static List<Announcement> getAnnouncements(int limit){
         ArrayList<Announcement> ads = new ArrayList<>();
         Connection con = MainApp.getDBConnection();
-        String querry = "select * from announcements order by announcement_date";
+        String querry = "select * from announcements order by announcement_date desc";
         Statement stmt = null;
         ResultSet rs;
         try {
@@ -33,7 +33,7 @@ public class AnnouncementsService {
             e.printStackTrace();
         }
         ArrayList<Announcement> page = new ArrayList<>();
-                for(int i=0; i<limit; i++){
+                for(int i=0; i<limit && i<ads.size(); i++){
                     page.add(ads.get(i));
                 }
         return page;
