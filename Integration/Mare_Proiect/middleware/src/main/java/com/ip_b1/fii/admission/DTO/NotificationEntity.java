@@ -17,9 +17,6 @@ public class NotificationEntity {
         this.message = message;
     }
 
-    public NotificationEntity() {
-    }
-
     public String getEmail() {
         return email;
     }
